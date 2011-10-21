@@ -8,6 +8,6 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello Bert!");
+		resp.getWriter().println("Hello Toeval!");
 	}
 }
