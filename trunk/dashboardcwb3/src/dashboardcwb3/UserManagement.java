@@ -29,7 +29,7 @@ public class UserManagement
 		else {
 		
 		while(i < loglist.size() && !id) {
-			if (loglist.get(i).getUserName().equals(userName)) {
+			if (loglist.get(i).getUserName().equals("userName")) {
 				id = true;
 				selected = i;
 			}

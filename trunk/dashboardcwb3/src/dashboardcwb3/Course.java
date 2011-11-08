@@ -1,66 +1,42 @@
 package dashboardcwb3;
-import java.util.*;
+//import java.util.*;
 
-import sun.util.resources.CalendarData_da;
+//import sun.util.resources.CalendarData_da;
 
-public class Course extends Activity {
+public class Course {
 
-	
-	private int totalL; 
-	private int totalOZ;
-	private HashMap<Date,Integer> doelstellingen; // er komt een doelstelling per week...
 	private Prof prof;
-	private ArrayList<Study> studies;	
+	private int studyPoints;
+	private int totalLes;  //aantal uur les van dit vak over hele semester
+	private int totalOZ; //aantal uur oefenzitting van dit vak over heel semester
+	private String name; //naam van het vak vb: analyse
 	
-	public Course(int totalL, int totalOZ, Prof prof) {
-		totalL = this.totalL;
+	public Course(int totalLes, int totalOZ, Prof prof, String name, int studyPoints) {
+		totalLes = this.totalLes;
 		totalOZ = this.totalOZ;
 		prof = this.prof;
-		doelstellingen = new HashMap<Date,Integer>();
-		studies = new ArrayList<Study>();
+		name=this.name;
+		studyPoints=this.studyPoints;
 	}	
 	
-	public int getTimeL(){
-		int time = 0;
-		int i = 0;
-		while(i < studies.size()) {
-			if(studies.get(i).getType().equals("les")) {
-				time = time + studies.get(i).getDuration();
-			}
-			i++;
-		}
-		return time;
+	public Prof getProf(){
+		return prof;
 	}
 	
-	public int getTimeOZ(){
-		int time = 0;
-		int i = 0;
-		while(i < studies.size()) {
-			if(studies.get(i).getType().equals("OZ")) {
-				time = time + studies.get(i).getDuration();
-			}
-			i++;
-		}
-		return time;
-	}
-	public int getTimeZS(){
-		int time = 0;
-		int i = 0;
-		while(i < studies.size()) {
-			if(studies.get(i).getType().equals("ZS")) {
-				time = time + studies.get(i).getDuration();
-			}
-			i++;
-		}
-		return time;
+	public int getStudyPoints(){
+		return studyPoints;
 	}
 	
-	public HashMap<Date,Integer> getDoelstellingen()
-	{
-		return doelstellingen;
+	public int getTotalLes(){
+		return totalLes;
 	}
 	
-	public ArrayList<Study> getStudies() {
-		return studies;
+	public int getTotalOZ(){
+		return totalOZ;
 	}
+	
+	public String getName(){
+		return name;
+	}
+	
 }
