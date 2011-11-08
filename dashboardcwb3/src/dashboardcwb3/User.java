@@ -1,5 +1,5 @@
 package dashboardcwb3;
-// import java.util.*;
+import java.util.*;
 
 public abstract class User {
 
@@ -40,6 +40,11 @@ public abstract class User {
 	public String getName() {
 		return firstName + " " + lastName;
 	}
+	
+	public void setPassword(String password){
+		password=this.password;
+	}
+	
 	
 	
 }

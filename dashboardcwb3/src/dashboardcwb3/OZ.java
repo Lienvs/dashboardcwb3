@@ -1,10 +1,10 @@
 package dashboardcwb3;
 import java.util.*;
 
-public class OZ extends Study{
+public class OZ extends Scolair{
 	
-	public OZ(Date start) {
-		super(start,"OZ");
+	public OZ(Course course, Date start) {
+		super(course, start,"OZ");
 	}
 	
 	

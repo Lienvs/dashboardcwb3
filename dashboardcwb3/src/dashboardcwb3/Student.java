@@ -26,5 +26,21 @@ public class Student extends User {
 		return check;
 	}
 	
+	public ArrayList<Activity> getActivities(){
+		return myActivities;
+	}
+	
+	public int getTotalScolair(Course course, String type){  //totaal aantal tyd besteed aan course van type (oz/ZS/..)
+		//itereren over scolair activiteiten met course en type
+		return 5;
+	}
+	
+	public int getTotalFun()
+	{
+		return 5;
+	}
+	
+	
+	
 	
 }
