@@ -9,8 +9,9 @@ public class UserManagement
 	
 	public UserManagement() {
 		loglist = new ArrayList<User>();
-		currentUser = null;
+		
 		makeTim();
+		currentUser = null;
 	}
 	
 	public void makeTim() {
@@ -19,7 +20,7 @@ public class UserManagement
 		loglist.add(tim); loglist.add(alex);
 	}
 	public boolean login(String userName,String password) {
-		boolean id = false;
+	boolean id = false;
 		boolean pass = false;
 		boolean result = false;
 		int selected = 0;
@@ -27,11 +28,10 @@ public class UserManagement
 		if(loglist.size() == 0) {
 		}
 		else {
-		
-		while(i < loglist.size() && !id) {
-			if (loglist.get(i).getUserName().equals("userName")) {
+			while(i < loglist.size() && !id) {
+			if (loglist.get(i).getUserName().equals(userName)) {
 				id = true;
-				selected = i;
+			selected = i;
 			}
 			i++;
 		}

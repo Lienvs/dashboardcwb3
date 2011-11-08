@@ -30,14 +30,34 @@ public class Student extends User {
 		return myActivities;
 	}
 	
-	public int getTotalScolair(Course course, String type){  //totaal aantal tyd besteed aan course van type (oz/ZS/..)
-		//itereren over scolair activiteiten met course en type
-		return 5;
+	public int getTotalScolair(Course course, String type){ 
+		int i =0;
+		int resultaat = 0;
+		while(i<myActivities.size()){
+			Activity act = myActivities.get(i);
+			if(act.getGenre().equals("scolair")){
+				Scolair scol = (Scolair) act;
+				if(scol.getCourse().equals(course) && scol.getType().equals(type)){
+					resultaat = resultaat+scol.getDuration();
+					
+				}
+			}
+		i++;}
+		return resultaat;
 	}
 	
 	public int getTotalFun()
 	{
-		return 5;
+		int i =0;
+		int resultaat = 0;
+		while(i<myActivities.size()){
+			Activity act = myActivities.get(i);
+			if(act.getGenre().equals("fun")){
+				resultaat = resultaat+act.getDuration();
+			}
+		i++;}
+		return resultaat;
+	
 	}
 	
 	

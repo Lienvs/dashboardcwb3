@@ -7,7 +7,7 @@ public class Scolair extends Activity{
 	private String type;  //les, OZ of ZS
 	
 	public Scolair(Course course, Date start, String type){
-		super(start);
+		super(start,"scolair");
 		course=this.course;
 		type=this.type;
 	}
