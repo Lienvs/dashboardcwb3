@@ -11,13 +11,15 @@ public abstract class Activity {
 	private String comment;
 	private int rating;
 	private boolean stopped;
+	private String genre;
 	
-	public Activity(Date start) {
+	public Activity(Date start,String genre) {
 		start = this.start;
 		stop = this.start;
 		stopped = false;
 		comment = null;
-		rating  = -1;		
+		rating  = -1;	
+		genre = this.genre;
 	}
 	
 	public void postComment(String x) { 
@@ -60,6 +62,9 @@ public abstract class Activity {
 	
 	public int getRating() {
 		return rating;
+	}
+	public String getGenre(){
+		return genre;
 	}
 
 	
