@@ -14,13 +14,12 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
-		if(network.login(req.getParameter("username"),req.getParameter("password"))) {
-			resp.getWriter().println(req.getParameter("username") + ", u bent ingelogd.");
+		if(network.login(req.getParameter("userName"),req.getParameter("password"))) {
+			resp.getWriter().println(req.getParameter("userName") + ", u bent ingelogd.");
 		}
 		else {
 			resp.getWriter().println("Uw login is niet geslaagd.");
 		}
-		
 		
 	}
 	
