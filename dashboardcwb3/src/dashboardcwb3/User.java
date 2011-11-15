@@ -42,7 +42,7 @@ public abstract class User {
 	}
 	
 	public void setPassword(String password){
-		password=this.password;
+		this.password = password;
 	}
 	
 	
