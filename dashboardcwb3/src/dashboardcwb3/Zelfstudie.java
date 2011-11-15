@@ -1,12 +1,12 @@
 package dashboardcwb3;
 import java.util.*;
 
-public class ZS extends Scolair {
+public class Zelfstudie extends Scolair {
 	
 	private String location;
 	private String what; // theorie / oefeningen
 	
-	public ZS(Course course, Date start) {
+	public Zelfstudie(Course course, Date start) {
 		super(course, start,"ZS");
 	}
 	
