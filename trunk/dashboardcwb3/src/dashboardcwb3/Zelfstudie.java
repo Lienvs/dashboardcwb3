@@ -3,8 +3,9 @@ import java.util.*;
 
 public class Zelfstudie extends Scolair {
 	
+	
 	private StudyLocation location;
-	private String what; // theorie / oefeningen
+	private String what;
 	
 	public Zelfstudie(Course course, Date start) {
 		super(course, start,"ZS");
@@ -18,7 +19,7 @@ public class Zelfstudie extends Scolair {
 		what = x;
 	}
 	
-	public String getLocation() {
+	public StudyLocation getLocation() {		
 		return location;
 	}
 	
