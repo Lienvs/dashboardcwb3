@@ -54,10 +54,21 @@ public class UserManagement
 		
 	}
 	
-	public boolean register(String Username,String password, String firstName, String lastName, String gender, String rNumber) {
+	public boolean register(String userName,String password, String firstName, String lastName, String gender, String rNumber) {
 		boolean registered = false;
-			
-			
+		boolean freeUserName = false;
+		boolean freeRNumber = false;
+			for(User user : loglist){
+				if(!user.getUserName().equals(userName)){
+					freeUserName=true;
+				}
+				if(!user.getRNumber().equals(rNumber)){
+					freeRNumber=true;
+				}
+			}
+		if(freeUserName&&freeRNumber){
+			registered=true;
+		}
 		return registered;
 	}
 	
