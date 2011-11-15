@@ -11,12 +11,12 @@ public abstract class User {
 	private String rNumber;
 	
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
-		userName = this.userName;
-		password = this.password;
-		firstName = this.firstName;
-		lastName = this.lastName;
-		gender = this.gender;
-		rNumber = this.rNumber;	
+		this.userName = userName;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.rNumber = rNumber;	
 	}
 	
 	public String getUserName() {
