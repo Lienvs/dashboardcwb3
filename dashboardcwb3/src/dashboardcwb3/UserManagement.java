@@ -48,16 +48,14 @@ public class UserManagement
 	}
 	
 	public void logout() {
-		
-		currentUser=null;
-		
-		
+		currentUser=null;	
 	}
 	
-	public boolean register(String userName,String password, String firstName, String lastName, String gender, String rNumber) {
+	public boolean register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
 		boolean registered = false;
 		boolean freeUserName = false;
 		boolean freeRNumber = false;
+		boolean passwordConfirmed=false;
 			for(User user : loglist){
 				if(!user.getUserName().equals(userName)){
 					freeUserName=true;
@@ -66,9 +64,16 @@ public class UserManagement
 					freeRNumber=true;
 				}
 			}
-		if(freeUserName&&freeRNumber){
+			if(password.equals(confirmedPassword)){
+				passwordConfirmed=true;
+			}
+		if(freeUserName&&freeRNumber&&passwordConfirmed){
 			registered=true;
+			User user=new Student("userName","password","firstName","lastName","gender","rNumber");
+			loglist.add(user);
+			currentUser=user;
 		}
+		
 		return registered;
 	}
 	
@@ -81,4 +86,7 @@ public class UserManagement
 	
 	
 
+
+
+	
 }
