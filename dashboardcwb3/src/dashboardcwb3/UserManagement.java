@@ -19,6 +19,7 @@ public class UserManagement
 		User alex = new Student("alex","ja","a","a","a","a");
 		loglist.add(tim); loglist.add(alex);
 	}
+	
 	public boolean login(String userName,String password) {
 	boolean id = false;
 		boolean pass = false;
@@ -48,16 +49,16 @@ public class UserManagement
 	
 	public void logout() {
 		
-		
+		currentUser=null;
 		
 		
 	}
 	
-	public void register() {
-		
+	public boolean register(String Username,String password, String firstName, String lastName, String gender, String rNumber) {
+		boolean registered = false;
 			
 			
-			
+		return registered;
 	}
 	
 	

@@ -14,12 +14,12 @@ public abstract class Activity {
 	private String genre;
 	
 	public Activity(Date start,String genre) {
-		start = this.start;
-		stop = this.start;
+		this.start = start;
+		this.stop = start;
 		stopped = false;
 		comment = null;
 		rating  = -1;	
-		genre = this.genre;
+		this.genre = genre;
 	}
 	
 	public void postComment(String x) { 

@@ -12,11 +12,11 @@ public class Course {
 	private String name; //naam van het vak vb: analyse
 	
 	public Course(int totalLes, int totalOZ, Prof prof, String name, int studyPoints) {
-		totalLes = this.totalLes;
-		totalOZ = this.totalOZ;
-		prof = this.prof;
-		name=this.name;
-		studyPoints=this.studyPoints;
+		this.totalLes = totalLes;
+		this.totalOZ = totalOZ;
+		this.prof = prof;
+		this.name=name;
+		this.studyPoints=studyPoints;
 	}	
 	
 	public Prof getProf(){
