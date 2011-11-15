@@ -9,7 +9,7 @@ private String description;
 
 public Fun(Date start,String place){
 	super(start,"fun");
-	place=this.place;
+	this.place=place;
 	description = "";//Dit kan ng aangepast worden natuurlijk
 	
 }

@@ -8,8 +8,8 @@ public class Scolair extends Activity{
 	
 	public Scolair(Course course, Date start, String type){
 		super(start,"scolair");
-		course=this.course;
-		type=this.type;
+		this.course=course;
+		this.type=type;
 	}
 	
 	public Course getCourse(){
