@@ -3,14 +3,14 @@ import java.util.*;
 
 public class Zelfstudie extends Scolair {
 	
-	private String location;
+	private StudyLocation location;
 	private String what; // theorie / oefeningen
 	
 	public Zelfstudie(Course course, Date start) {
 		super(course, start,"ZS");
 	}
 	
-	public void setLocation(String x) {
+	public void setLocation(StudyLocation x) {
 		location = x;
 	}
 	
