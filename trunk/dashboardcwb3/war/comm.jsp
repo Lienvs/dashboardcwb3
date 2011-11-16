@@ -24,8 +24,9 @@
 	Password:  <input type="password" name="password" />
 	<input type="submit" value="Login"/>
 	</form>
-	<form action="/reg" method="post">
-	<input type="button" value="Sign up" name="signup">
+	
+	<form action="registratie.jsp" method="post">
+	<input type="submit" value="Sign up" name="signup">
 	</form>
 
 </body>
