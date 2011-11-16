@@ -1,5 +1,10 @@
 package dashboardcwb3;
 import java.util.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import java.io.IOException;
 import javax.servlet.http.*;
@@ -13,14 +18,18 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 		network = new UserManagement();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
-
+		
 		throws IOException {
+			PrintWriter out = resp.getWriter();
 			resp.setContentType("text/plain");
-				if(network.login(req.getParameter("username"),req.getParameter("password"))) {    
-					resp.getWriter().println(req.getParameter("username") + ", you are now logged in.");
+			String userName=req.getParameter("username");
+			String password=req.getParameter("password");
+				if(network.login(userName,password)) {    
+					out.println("userName" + ", you are now logged in.");
 				}
 				else {
-					resp.getWriter().println("Login failed.");
+					out.println("Login failed, please try again");
+		
 				}
 				
 		}
