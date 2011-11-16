@@ -28,6 +28,8 @@
 	<form action="registratie.jsp" method="post">
 	<input type="submit" value="Sign up" name="signup">
 	</form>
+	
+	
 
 </body>
 
