@@ -36,6 +36,10 @@
 	r-number: <input type="text" name="rnumber"> <br />
 	<input type="submit" value="Sign up"/>
 	</form>
+	
+	<form action="comm.jsp" method="post">
+	<input type="submit" value="Login" name="login">
+	</form>
 
 </body>
 
