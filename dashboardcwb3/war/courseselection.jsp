@@ -17,39 +17,25 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+<body>
 
 
-
-
-</html>
-
-	<body>
-	
-	
-	<% String message=(String)request.getAttribute("message");
-		if(message==null){}
-		else{
-		 out.println(message);}%>
-
-	<form action="/register" method="post">
-	User Name: <input type="text" name="username" > <br />
-	Password:  <input type="password" name="password" /> <br />
-	Confirm password:  <input type="password" name="confirmedpassword" /><br />
-	First Name:  <input type="text" name="firstname" /><br />
-	Last Name: <input type="text" name="lastname"> <br />
-	<input type="radio" name="gender" value="male" /> Male<br />
-	<input type="radio" name="gender" value="female" /> Female<br />
-	r-number: <input type="text" name="rnumber"> <br />
-	<input type="submit" value="Sign up"/>
-	</form>
-	
-	Already signed up? Login here:
-	
-	<form action="portal.jsp" method="post">
-	<input type="submit" value="Login" name="login">
-	</form>
+	<% int amountCourses=(Integer)request.getAttribute("amountCourses");
+	%> 
+	<form>
+    <%for(int i=0;i<amountCourses;i++){
+    %>
+    
+    	<input type="checkbox" name="course<%out.print(i)%>" /> <%(String)request.getAttribute("course"+i)%> <br/>
+    
+    <%
+    }
+    %>
+    </form>
+    
 
 </body>
+
 
 
 </html>
