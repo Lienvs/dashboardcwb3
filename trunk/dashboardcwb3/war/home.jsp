@@ -24,8 +24,24 @@
 	</script>
 	
 	
-	<form action="?.jsp" method="post">
+	<form action="" method="post">
 	<input type="submit" value="Start" name="start">
+	</form>
+	
+	<form action="home.jsp" method="post">
+	<input type="submit" value="Stop" name="stop">
+	</form>
+	
+	<form action="statistics.jsp" method="post">
+	<input type="submit" value="Statistics" name="statistics">
+	</form>
+	
+	<form action="options.jsp" method="post">
+	<input type="submit" value="Options" name="options">
+	</form>
+	
+	<form action="/logout" method="post">
+	<input type="submit" value="Logout" name="logout">		
 	</form>
 	
 	
