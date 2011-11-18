@@ -16,8 +16,15 @@ public class RegisterServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				if(network.register(req.getParameter("username"),req.getParameter("password"),req.getParameter("confirmedpassword"),req.getParameter("fistname"),req.getParameter("lastname"),req.getParameter("gender"),req.getParameter("rnumber"))){
-					resp.getWriter().println(req.getParameter("username") + ", you have succesfully been signed up.");
+				String userName =req.getParameter("username");
+				String password=req.getParameter("password");
+				String confirmedPassword=req.getParameter("confirmedpassword");
+				String firstName= req.getParameter("firstname");
+				String lastName=req.getParameter("lastname");
+				String gender = req.getParameter("gender");
+				String rNumber=req.getParameter("rNumber");
+				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
+					getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
 				}
 				else{
 					req.setAttribute("message", "Sign up failed, please try again, or login.");
