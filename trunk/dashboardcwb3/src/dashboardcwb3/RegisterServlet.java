@@ -6,9 +6,9 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 
 public class RegisterServlet extends HttpServlet{
-	private UserManagement network;
+	private RegisterController network;
 	public RegisterServlet() {
-		network = new UserManagement();
+		network = new RegisterController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
