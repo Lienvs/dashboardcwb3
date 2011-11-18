@@ -10,16 +10,16 @@ public class RegisterController {
 	
 	public boolean register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
 		boolean registered = false;
-		boolean freeUserName = false;
-		boolean freeRNumber = false;
+		boolean freeUserName = true;
+		boolean freeRNumber = true;
 		
 		boolean passwordConfirmed=false;
 			for(User user : UserManager.getInstance().getUsers()){
-				if(!user.getUserName().equals(userName)){
-					freeUserName=true;
+				if(user.getUserName().equals(userName)&& freeUserName){
+					freeUserName=false;
 				}
-				if(!user.getRNumber().equals(rNumber)){
-					freeRNumber=true;
+				if(user.getRNumber().equals(rNumber)&&freeRNumber&&freeUserName){
+					freeRNumber=false;
 				}
 			}
 			if(password.equals(confirmedPassword)){

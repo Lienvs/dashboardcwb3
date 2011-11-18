@@ -7,35 +7,43 @@ public class LoginController {
 
 
 public LoginController(){
+	makeTim();
 	
-	
+}
+public void makeTim() {
+	User tim = new Student("tim","mit","a","a","a","a");
+	User alex = new Student("alex","ja","a","a","a","a");
+	UserManager.getInstance().addUser(tim); UserManager.getInstance().addUser(alex);
 }
 public boolean login(String userName,String password) {
 	boolean id = false;
 	    User currentUser = null;
 		boolean pass = false;
 		boolean result = false;
-		int selected =0;
-		int i = 0;
+		User selected = null;
+		
 		if(UserManager.getInstance().getUsers().size() == 0) {
 		}
 		else {
-			while(i < UserManager.getInstance().getUsers().size() && !id) {
-			if (UserManager.getInstance().getUser(i).getUserName().equals(userName)) {
+			
+				for(User user : UserManager.getInstance().getUsers()){
+					
+				 if (user.getUserName().equals(userName)) {
 				id = true;
-			selected = i;
+			selected = user;
 			}
-			i++;
-		}
-		if(UserManager.getInstance().getUser(selected).getPassword().equals(password) && id) {
+			
+		}}
+			if (id){		
+		if(selected.getPassword().equals(password)) {
 			pass = true;
 		}
-		if(id && pass) {
+		if(pass) {
 			result = true;
-			currentUser = UserManager.getInstance().getUser(selected);
-		}		
-	}
-		UserManager.getInstance().setCurrentUser(currentUser);
+			UserManager.getInstance().setCurrentUser(selected);;
+		}	}	
+	
+		
 		return result;	
 	}
 	

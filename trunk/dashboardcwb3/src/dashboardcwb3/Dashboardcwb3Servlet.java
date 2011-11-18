@@ -25,7 +25,7 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 			String userName=req.getParameter("username");
 			String password=req.getParameter("password");
 				if(network.login(userName,password)) {    
-					out.println("userName" + ", you are now logged in.");
+					out.println(userName + ", you are now logged in.");
 				}
 				else {
 					out.println("Login failed, please try again");
