@@ -25,12 +25,14 @@ public class RegisterController {
 			if(password.equals(confirmedPassword)){
 				passwordConfirmed=true;
 			}
+			
 		if(freeUserName&&freeRNumber&&passwordConfirmed){
+			if(userName != null&& password != null&& firstName!= null&& lastName!=null&&gender!=null&&rNumber!=null ){
 			registered=true;
-			User user=new Student("userName","password","firstName","lastName","gender","rNumber");
+			User user=new Student(userName,password,firstName,lastName,gender,rNumber);
 			UserManager.getInstance().addUser(user);
 			UserManager.getInstance().setCurrentUser(user);
-		}
+		}}
 		
 			
 		return registered;
