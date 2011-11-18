@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet{
 				String firstName= req.getParameter("firstname");
 				String lastName=req.getParameter("lastname");
 				String gender = req.getParameter("gender");
-				String rNumber=req.getParameter("rNumber");
+				String rNumber=req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
 					getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
 				}
