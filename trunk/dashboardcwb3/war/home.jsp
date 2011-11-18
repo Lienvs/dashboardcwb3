@@ -19,36 +19,38 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 <body>
 
-	<script type="text/javascript">
-	network.getCurrentUser().getUserName();
-	</script>
-	
-	
-	<form action="" method="post">
+<table width="1500" border="0">
+<tr>
+<td colspan="2" style="background-color:#FFA500;text-align:center">
+<h1>Hello</h1>
+</td>
+</tr>
+
+<tr valign="top">
+<td style="background-color:#C0C0C0;width:100px;text-align:top;">
+<b>Menu</b><br />
+<form action="" method="post">
 	<input type="submit" value="Start" name="start">
-	</form>
-	
-	<form action="home.jsp" method="post">
+	</form> <br />
+<form action="home.jsp" method="post">
 	<input type="submit" value="Stop" name="stop">
-	</form>
-	
-	<form action="statistics.jsp" method="post">
+	</form><br />
+<form action="statistics.jsp" method="post">
 	<input type="submit" value="Statistics" name="statistics">
-	</form>
-	
+	</form><br />
 	<form action="options.jsp" method="post">
 	<input type="submit" value="Options" name="options">
-	</form>
-	
+	</form><br />
 	<form action="/logout" method="post">
 	<input type="submit" value="Logout" name="logout">		
 	</form>
 	
-	
-	
-	
-	
-	
+</td>
+<td style="background-color:#EEEEEE;height:200px;width:1400px;text-align:top;">
+Content goes here</td>
+</tr>
+
+
 
 </body>
 
