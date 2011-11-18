@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet{
 				String gender = req.getParameter("gender");
 				String rNumber=req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
-					getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);
 				}
 				else{
 					req.setAttribute("message", "Sign up failed, please try again, or login.");

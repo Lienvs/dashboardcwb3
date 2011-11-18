@@ -26,28 +26,43 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 			
 			if(req.getParameter("logout")==null){
 			
-			}
 			
-			if(UserManager.getInstance().getCurrentUser()==null){  //atribuut currentuser definieren
-				req.setAttribute("currentuser", "No user online.");
+			
+				if(UserManager.getInstance().getCurrentUser()==null){  //atribuut currentuser definieren
+					req.setAttribute("currentuser", "No user online.");
+				}
+				else{
+					req.setAttribute("currentuser", UserManager.getInstance().getCurrentUser().getUserName());
+				}
+			
+			
+			
+					String userName=req.getParameter("username");    //login afhandelen
+					String password=req.getParameter("password");
+						if(network.login(userName,password)) {    
+							req.setAttribute("currentUser", UserManager.getInstance().getCurrentUser().getUserName());
+							getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+						}
+						else {
+							req.setAttribute("message", "Login failed, please try again, or sign up.");
+							getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+						}
+					
 			}
 			else{
-				req.setAttribute("currentuser", UserManager.getInstance().getCurrentUser().getUserName());
+				
+				network.logout();
+				
+				if(UserManager.getInstance().getCurrentUser()==null){  //atribuut currentuser definieren
+					req.setAttribute("currentuser", "No user online.");
+				}
+				else{
+					req.setAttribute("currentuser", UserManager.getInstance().getCurrentUser().getUserName());
+				}
+				getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+				
+				
 			}
-			
-			
-			
-				String userName=req.getParameter("username");    //login afhandelen
-				String password=req.getParameter("password");
-					if(network.login(userName,password)) {    
-						getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
-					}
-					else {
-						req.setAttribute("message", "Login failed, please try again, or sign up.");
-						getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
-					}
-					
-			
 				
 		}
 	
