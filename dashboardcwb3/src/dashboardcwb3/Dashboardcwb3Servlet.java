@@ -13,9 +13,9 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 public class Dashboardcwb3Servlet extends HttpServlet {
 	
-	private UserManagement network;
+	private LoginController network;
 	public Dashboardcwb3Servlet() {
-		network = new UserManagement();
+		network = new LoginController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 		
