@@ -10,13 +10,13 @@ public abstract class Activity {
 	private Date stop;
 	private String comment;
 	private int rating;
-	private boolean stopped;
+	
 	private String genre;
 	
 	public Activity(Date start,String genre) {
 		this.start = start;
 		this.stop = start;
-		stopped = false;
+		
 		comment = null;
 		rating  = -1;	
 		this.genre = genre;
@@ -30,15 +30,16 @@ public abstract class Activity {
 		rating = x; // overschrijven
 	}
 	
-	public void setStop() {
-		stopped = true;
-		Calendar cal = Calendar.getInstance();
-		stop = cal.getTime();
+	public void setStop(Date date) {
+		
+		stop = date;
+	}
+public void setStart(Date date) {
+		
+		start = date;
 	}
 	
-	public boolean isStopped() {
-		return stopped;
-	}
+	
 	
 	public Date getStart() {
 		return start;
