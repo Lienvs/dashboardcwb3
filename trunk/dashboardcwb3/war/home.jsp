@@ -20,7 +20,7 @@
 <body>
 
 	<script type="text/javascript">
-	network.getCurrentUser();
+	network.getCurrentUser().getUserName();
 	</script>
 	
 	
