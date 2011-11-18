@@ -11,45 +11,43 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
-<html>     
+<html>   
+
+  
            
   <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+<body>
 
 
-
-
-</html>
-
-	<body>
-	
-	
+	<% String currentuser=(String)request.getAttribute("currentuser");
+		if(currentuser==null){}
+		else{
+		out.println(currentuser);}%> 
+  
+  
 	<% String message=(String)request.getAttribute("message");
 		if(message==null){}
 		else{
-		 out.println(message);}%>
+		out.println(message);}%>
 
-	<form action="/register" method="post">
+	<form action="/login" method="post">
 	User Name: <input type="text" name="username"> <br />
-	Password:  <input type="password" name="password" /> <br />
-	Confirm password:  <input type="password" name="confirmedpassword" /><br />
-	First Name:  <input type="text" name="firstname" /><br />
-	Last Name: <input type="text" name="lastname"> <br />
-	<input type="radio" name="gender" value="male" /> Male<br />
-	<input type="radio" name="gender" value="female" /> Female<br />
-	r-number: <input type="text" name="rnumber"> <br />
-	<input type="submit" value="Sign up"/>
+	Password:  <input type="password" name="password" />
+	<input type="submit" value="Login"/>
 	</form>
 	
-	Already signed up? Login here:
-	
-	<form action="portal.jsp" method="post">
-	<input type="submit" value="Login" name="login">
+	<form action="registratie.jsp" method="post">
+	<input type="submit" value="Sign up" name="signup">
 	</form>
+	
+	
 
 </body>
 
 
+
 </html>
+
