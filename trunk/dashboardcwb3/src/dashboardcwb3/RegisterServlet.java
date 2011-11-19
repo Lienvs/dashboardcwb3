@@ -8,9 +8,15 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 
 public class RegisterServlet extends HttpServlet{
+	
+	private CourseManager courseManager;
+	
 	private RegisterController network;
 	public RegisterServlet() {
 		network = new RegisterController();
+		
+		courseManager= new CourseManager();
+		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
@@ -24,6 +30,14 @@ public class RegisterServlet extends HttpServlet{
 				String gender = req.getParameter("gender");
 				String rNumber=req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
+					
+					
+					int totalCourses= courseManager.getAllCourses().size();
+					req.setAttribute("amountCourses", totalCourses);
+						req.setAttribute("course", courseManager.getAllCourses());
+					
+					
+					
 					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);
 				}
 				else{
