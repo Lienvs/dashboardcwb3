@@ -16,11 +16,17 @@ public class CourseSelectionServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				int totalCourses= courseManager.getCourses().size();
-				req.setAttribute("amountCourses", totalCourses);
-				for(int i=0; i<totalCourses; i++){
-					req.setAttribute("course"+i, courseManager.getCourses().get(i).toString());
+				int j=0;
+				for(int i=0; i<courseManager.getAllCourses().size() ;i++){
+					if(req.getParameter(courseManager.getAllCourses().get(i).toString())==null){}
+					else{
+					j++;   //toevoegen aan student?	
+					}
+					
 				}
+				req.setAttribute("intCourses", Integer.toString(j));
+				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
+				
 				
 	
 			}
