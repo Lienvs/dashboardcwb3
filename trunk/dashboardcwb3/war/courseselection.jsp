@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.*" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -20,19 +20,20 @@
 <body>
 
 
-	<% int amountCourses=(Integer)request.getAttribute("amountCourses");
-	%> 
-	<form>
-    <%for(int i=0;i<amountCourses;i++){
-    %>
-    
-    	<input type="checkbox" name="course<%out.print(i)%>" /> <%(String)request.getAttribute("course"+i)%> <br/>
-    
-    <%
-    }
-    %>
+	<form action="/courses" method="post">
+ 		<%
+ 		ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
+ 		for(int i=0 ; i<courses.size(); i++){
+ 		%>
+    	<input type="checkbox" name="<%out.print(courses.get(i).toString());%>" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
+    	<%
+    	}
+    	%>
+    	<input type="submit" value="Submit" />
     </form>
-    
+
+
+
 
 </body>
 
