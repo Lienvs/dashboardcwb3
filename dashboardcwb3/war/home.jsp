@@ -29,7 +29,7 @@
 <table width="1500" border="0">
 <tr>
 <td colspan="2" style="background-color:#FFA500;text-align:center">
-<h1>Hello</h1>
+<h1>Welkom</h1>
 </td>
 </tr>
 
