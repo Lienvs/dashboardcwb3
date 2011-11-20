@@ -16,7 +16,7 @@ public void makeTim() {
 	UserManager.getInstance().addUser(tim); UserManager.getInstance().addUser(alex);
 }
 public boolean login(String userName,String password) {
-	boolean id = false;
+		boolean id = false;
 	    User currentUser = null;
 		boolean pass = false;
 		boolean result = false;
@@ -30,10 +30,10 @@ public boolean login(String userName,String password) {
 					
 				 if (user.getUserName().equals(userName)) {
 				id = true;
-			selected = user;
+				selected = user;
+				 }
 			}
-			
-		}}
+		}
 			if (id){		
 		if(selected.getPassword().equals(password)) {
 			pass = true;
