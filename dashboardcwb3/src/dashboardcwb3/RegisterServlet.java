@@ -22,13 +22,13 @@ public class RegisterServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				String userName =req.getParameter("username");
-				String password=req.getParameter("password");
-				String confirmedPassword=req.getParameter("confirmedpassword");
-				String firstName= req.getParameter("firstname");
-				String lastName=req.getParameter("lastname");
+				String userName = req.getParameter("username");
+				String password = req.getParameter("password");
+				String confirmedPassword = req.getParameter("confirmedpassword");
+				String firstName = req.getParameter("firstname");
+				String lastName = req.getParameter("lastname");
 				String gender = req.getParameter("gender");
-				String rNumber=req.getParameter("rnumber");
+				String rNumber = req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
 					
 					
