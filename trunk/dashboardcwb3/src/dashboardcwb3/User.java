@@ -1,13 +1,22 @@
 package dashboardcwb3;
 import java.util.*;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 
+@PersistenceCapable
 public abstract class User {
 
+	@Persistent
 	private String userName;
+	@Persistent
 	private String password;
+	@Persistent
 	private String firstName;
+	@Persistent
 	private String lastName;
+	@Persistent
 	private String gender;
+	@Persistent
 	private String rNumber;
 	
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){

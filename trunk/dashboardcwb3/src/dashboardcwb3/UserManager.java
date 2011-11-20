@@ -1,14 +1,18 @@
 package dashboardcwb3;
 
 import java.util.*;
+import javax.jdo.PersistenceManager;
 
 // Singleton
 public class UserManager {
 
 	private static UserManager instance = null;
 	
+	
 	private ArrayList<User> users;
 	private User currentUser;
+	public PersistenceManager pm;
+	
 	public static UserManager getInstance() {
 		if( instance == null ) {
 		
@@ -20,6 +24,14 @@ public class UserManager {
 	public UserManager() {
 		// Vraag alle Users op uit de database en voeg toe aan de list van users.
 		users = new ArrayList<User>();
+		
+		pm = PMF.get().getPersistenceManager();
+			try {
+				pm.makePersistentAll(users);
+			}
+			finally {
+				pm.close();
+		}
 	}
 	
 	
