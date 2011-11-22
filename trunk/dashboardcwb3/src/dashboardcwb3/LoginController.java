@@ -7,7 +7,7 @@ public class LoginController {
 
 
 public LoginController(){
-	makeTim();
+	//makeTim();
 	
 }
 public void makeTim() {
