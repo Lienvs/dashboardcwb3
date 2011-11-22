@@ -19,34 +19,109 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 <body>
 
-
-	<form action="/start" method="post">
+	<% 
+	int keuze1 = -1;
+	int keuze2=-1;
+	int keuze3=-1;
+	%>
+	
+	<% if(keuze1==-1){
+	%>
+	<form action="#" method=setKeuze(1,0)>
+	<input type="submit" value="Scolair" name="Scolair">
+	</form>
+	<form action="#" method=setKeuze11(1,1)>
+	<input type="submit" value="Extrascolair" name="extrascolair">
+	</form>
+	<%	
+	}%>
+	
+	<% private void setKeuze(int i, int j){
+		if(i==1){
+			keuze1=j;
+		}
+		if(i==2){
+			keuze2=j;
+		}
+		if(i==3){
+			keuze3=j;
+		}
+	}%>
+	
+	
+	<% if(keuze1==0 && keuze2=-1){
+	%>
+	<form action="#" method=setKeuze(2,0)>
  		<%
- 		ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
+ 		ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
  		for(int i=0 ; i<courses.size(); i++){
  		%>
-    	<input type="radio" name="<%out.print(courses.get(i).toString());%>" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
+    	<input type="radio" name="gekozenvak" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
     	<%
     	}
     	%>
     	<input type="submit" value="Submit" />
     </form>
-    
-    <form action="home.jsp" method="post">
-	<input type="submit" value="Zelfstudie" name="zelfstudie">
-	</form>
-	<form action="home.jsp" method="post">
+	<%
+	}
+	%>	
+	
+	
+	<% if(keuze1==0 && keuze2==0 && keuze3=-1){%>
+	
+	<form action="#" method=keuze(3,0)>
 	<input type="submit" value="Les" name="les">
 	</form>
-	<form action="home.jsp" method="post">
+	
+	<form action="#" method=keuze(3,1)>
+	<input type="submit" value="Zelfstudie" name="zelfstudie">
+	</form>
+		
+	<form action="#" method=keuze(3,2)>
 	<input type="submit" value="Oefenzitting" name="oefenzitting">
-	</form>
-    
-    
-    
-    <form action="home.jsp" method="post">
-	<input type="submit" value="Extra Scolair" name="extrascolair">
-	</form>
+	</form>	
+	<%
+	}
+	%>
+	
+	<% if(!(keuze1==-1 && keuze2==-1 && keuze3==-1)){%>
+	Please confirm this choice: </br>
+	<% String voorstel="";
+	if(keuze1==0){
+		voorstel= "Scolair";}
+	if(keuze1==1){
+		voorstel="Extrascolair";}
+	voorstel=voorstel + " --> " + gekozenvak.getValue() + " --> ";
+	if(keuze3==0){
+		voorstel=voorstel + "Les";}
+	if(keuze3==1){
+		voorstel=voorstel + "Zelfstudie";}
+	if(keuze3==2){
+		voorstel=voorstel + "Oefenzitting";}
+	System.out.println(voorstel);%>
+	
+		
+	<form action="/starttrack" method="post">
+	<input type="submit" value="OK" name="ok">
+	</form>	
+	
+	<form action="/home" method="post">
+	<input type="submit" value="Back to home" name="home">
+	</form>		
+	
+	
+	
+	
+	
+	
+	
+	<%
+	}
+	%>
+	
+	
+
+
 
 
 

@@ -21,22 +21,18 @@
 
 
 
-<% String intCourses=(String)request.getAttribute("intCourses");
-		if(intCourses==null){}
-		else{
-		out.println(intCourses);}%> 
 
 <table width="1500" border="0">
 <tr>
 <td colspan="2" style="background-color:#FFA500;text-align:center">
-<h1>Welkom</h1>
+<h1>Hello</h1>
 </td>
 </tr>
 
 <tr valign="top">
 <td style="background-color:#C0C0C0;width:100px;text-align:top;">
 <b>Menu</b><br />
-<form action="" method="post">
+<form action="/start" method="post">
 	<input type="submit" value="Start" name="start">
 	</form> <br />
 <form action="home.jsp" method="post">

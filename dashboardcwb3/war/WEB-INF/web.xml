@@ -64,4 +64,31 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>register</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>start</servlet-name>
+		<servlet-class>dashboardcwb3.StartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>start</servlet-name>
+		<url-pattern>/start</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>starttrack</servlet-name>
+		<servlet-class>dashboardcwb3.StartTrackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>starttrack</servlet-name>
+		<url-pattern>/starttrack</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>dashboardcwb3.HomeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
 </web-app>
