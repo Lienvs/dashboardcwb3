@@ -8,7 +8,7 @@ import javax.jdo.annotations.InheritanceStrategy;
 
 @PersistenceCapable
 @Inheritance (strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class User {
+public class User {
 
 	@Persistent
 	private String userName;
