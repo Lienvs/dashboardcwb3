@@ -1,27 +1,35 @@
 package dashboardcwb3;
 import java.util.*;
 public class TimerController {
+	Activity currentActivity;
 	
-	boolean isBusy;
 	public TimerController(){
+		currentActivity = null;
 		
-		isBusy = false;
 	}
 	public void startTiming(Activity act){
-		Activity currentActivity = act;
+		currentActivity = act;
 		Calendar cal = Calendar.getInstance();
 		currentActivity.setStart(cal.getTime());
-		isBusy = true;
+		
 		
 	}
-	public void stopTiming(Activity act){
-		Activity currentActivity = act;
+	public void stopTiming(){
+		
 		Calendar cal = Calendar.getInstance();
 		currentActivity.setStop(cal.getTime());
-		isBusy = false;
+		
 		currentActivity = null;
 	}
 	public boolean isBusy(){
+		boolean isBusy = false;
+		if(currentActivity == null){
+			
+		}
+		else{isBusy = true;}
 		return isBusy;
+	}
+	public Activity getCurrentActivity(){
+		return currentActivity;
 	}
 }
