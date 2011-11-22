@@ -9,13 +9,13 @@ import javax.servlet.http.*;
 
 public class RegisterServlet extends HttpServlet{
 	
-	private CourseManager courseManager;
+	
 	
 	private RegisterController network;
 	public RegisterServlet() {
 		network = new RegisterController();
 		
-		courseManager= new CourseManager();
+	
 		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -32,9 +32,9 @@ public class RegisterServlet extends HttpServlet{
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
 					
 					
-					int totalCourses= courseManager.getAllCourses().size();
+					int totalCourses= CourseManager.getInstance().getAllCourses().size();
 					req.setAttribute("amountCourses", totalCourses);
-						req.setAttribute("course", courseManager.getAllCourses());
+						req.setAttribute("course", CourseManager.getInstance().getAllCourses());
 					
 					
 					

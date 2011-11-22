@@ -10,19 +10,15 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 
 public class HomeServlet extends HttpServlet{
-	private CourseManager courseManager;
-	private UserManager userManager;
 	private TimerController timerController;
 	public HomeServlet() {
-		courseManager= new CourseManager();
-		userManager=new UserManager();
 		timerController=new TimerController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				Student student =(Student) userManager.getCurrentUser();
+				Student student =(Student) UserManager.getInstance().getCurrentUser();
 				if(req.getParameter("ok").equals("OK")){
 					if(req.getParameter("scolair").equals("Scolair")){
 						String keuze=req.getParameter("gekozenvak");
