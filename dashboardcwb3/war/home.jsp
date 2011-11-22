@@ -32,12 +32,28 @@
 <tr valign="top">
 <td style="background-color:#C0C0C0;width:100px;text-align:top;">
 <b>Menu</b><br />
-<form action="/start" method="post">
-	<input type="submit" value="Start" name="start">
-	</form> <br />
-<form action="home.jsp" method="post">
+
+<%String bezig=(String)request.getAttribute("bezig");%>
+
+<%if(bezig.equals("ja")){
+	%>
+	<form action="home.jsp" method="post">
 	<input type="submit" value="Stop" name="stop">
 	</form><br />
+	<%}
+	else{%>
+	<form action="/start" method="post">
+	<input type="submit" value="Start" name="start">
+	</form> <br />
+	<%}%>
+
+
+
+
+	
+	
+	
+	
 <form action="statistics.jsp" method="post">
 	<input type="submit" value="Statistics" name="statistics">
 	</form><br />
