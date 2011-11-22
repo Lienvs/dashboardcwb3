@@ -1,9 +1,13 @@
 package dashboardcwb3;
+
 import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
 
 @PersistenceCapable
+@Inheritance (strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class User {
 
 	@Persistent
