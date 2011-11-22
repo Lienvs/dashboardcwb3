@@ -8,15 +8,15 @@ import javax.servlet.http.*;
 @SuppressWarnings("serial")
 
 public class StartServlet extends HttpServlet{
-	private UserManager userManager;
+	
 	public StartServlet() {
-		userManager= new UserManager();
+		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				Student student =(Student) userManager.getCurrentUser();
+				Student student =(Student) UserManager.getInstance().getCurrentUser();
 				req.setAttribute("courses", student.getCourses());
 				getServletContext().getRequestDispatcher("/start.jsp").forward(req, resp);	
 				
