@@ -19,7 +19,8 @@ public class HomeServlet extends HttpServlet{
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
 				Student student =(Student) UserManager.getInstance().getCurrentUser();
-				if(req.getParameter("ok").equals("OK")){
+				if(req.getParameter("ok")==null){}
+				else{
 					if(req.getParameter("scolair").equals("Scolair")){
 						String keuze=req.getParameter("gekozenvak");
 						Course vak=null;
