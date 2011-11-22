@@ -48,12 +48,14 @@
 	
 	<% if(keuze1==-1){
 	%>
-	<form action="setKeuze(1,0)" >
-	<input type="button" value="Scolair" name="Scolair" >
+	<form action="setKeuze(1,0)" methode="post">
+	<input type="button" value="Scolair" name="Scolair" onclick="setKeuze(1,0)" >
 	</form>
-	<form action="setKeuze(1,1)">
+	<form action="setKeuze(1,1)" methode="post">
 	<input type="button" value="Extrascolair" name="extrascolair" >
 	</form>
+	
+	
 	<%	
 	}%>
 	
