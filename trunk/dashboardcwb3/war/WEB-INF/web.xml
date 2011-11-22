@@ -75,15 +75,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>starttrack</servlet-name>
-		<servlet-class>dashboardcwb3.StartTrackServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>starttrack</servlet-name>
-		<url-pattern>/starttrack</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
 		<servlet-name>home</servlet-name>
 		<servlet-class>dashboardcwb3.HomeServlet</servlet-class>
 	</servlet>

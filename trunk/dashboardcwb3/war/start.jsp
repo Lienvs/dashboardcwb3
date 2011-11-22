@@ -101,7 +101,7 @@
 	System.out.println(voorstel);%>
 	
 		
-	<form action="/starttrack" method="post">
+	<form action="/home" method="post">
 	<input type="submit" value="OK" name="ok">
 	</form>	
 	
