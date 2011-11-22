@@ -7,8 +7,8 @@ public class Zelfstudie extends Scolair {
 	private StudyLocation location;
 	private String what;
 	
-	public Zelfstudie(Course course, Date start) {
-		super(course, start,"ZS");
+	public Zelfstudie(Course course) {
+		super(course,"ZS");
 	}
 	
 	public void setLocation(StudyLocation x) {
