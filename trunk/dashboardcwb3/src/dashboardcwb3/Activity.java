@@ -13,9 +13,9 @@ public abstract class Activity {
 	
 	private String genre;
 	
-	public Activity(Date start,String genre) {
-		this.start = start;
-		this.stop = start;
+	public Activity(String genre) {
+		this.start = null;
+		this.stop = null;
 		
 		comment = null;
 		rating  = -1;	

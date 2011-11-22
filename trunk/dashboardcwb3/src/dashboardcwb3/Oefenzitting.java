@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Oefenzitting extends Scolair{
 	
-	public Oefenzitting(Course course, Date start) {
-		super(course, start,"OZ");
+	public Oefenzitting(Course course) {
+		super(course,"OZ");
 		
 //		UserManager.getInstance().sdjfg();
 	}

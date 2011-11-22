@@ -9,8 +9,8 @@ private String place;
 private String description;
 
 
-public Fun(Date start,String place){
-	super(start,"fun");
+public Fun(String place){
+	super("fun");
 	this.place=place;
 	description = "";//Dit kan ng aangepast worden natuurlijk
 	
