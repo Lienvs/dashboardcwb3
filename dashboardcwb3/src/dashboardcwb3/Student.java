@@ -3,10 +3,12 @@ import java.util.*;
 
 public class Student extends User {
     private ArrayList<Activity> myActivities;
+    private ArrayList<Course> myCourses;
     
 	public Student(String userName, String password, String firstName,String lastName, String gender, String rNumber){
 		super(userName,password,firstName,lastName,gender,rNumber);
 		myActivities = new ArrayList<Activity>(); 
+		myCourses = new ArrayList<Course>();
 	}
 	
 	public void addActivity(Activity x) {
@@ -58,6 +60,14 @@ public class Student extends User {
 		i++;}
 		return resultaat;
 	
+	}
+	
+	public void addCourse(Course course){
+		myCourses.add(course);
+	}
+	
+	public ArrayList<Course> getCourses(){
+		return myCourses;
 	}
 	
 	
