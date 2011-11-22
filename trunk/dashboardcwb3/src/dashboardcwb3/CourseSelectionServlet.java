@@ -9,22 +9,24 @@ import javax.servlet.http.*;
 
 public class CourseSelectionServlet extends HttpServlet{
 	private CourseManager courseManager;
+	private UserManager userManager;
 	public CourseSelectionServlet() {
 		courseManager= new CourseManager();
+		userManager=new UserManager();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				int j=0;
+
 				for(int i=0; i<courseManager.getAllCourses().size() ;i++){
 					if(req.getParameter(courseManager.getAllCourses().get(i).toString())==null){}
 					else{
-					j++;   //toevoegen aan student?	
+						userManager.getCurrentUser().add(courseManager.getAllCourses().get(i));
 					}
 					
 				}
-				req.setAttribute("intCourses", Integer.toString(j));
+				
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 				
 				
