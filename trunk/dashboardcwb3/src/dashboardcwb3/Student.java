@@ -1,8 +1,13 @@
 package dashboardcwb3;
-import java.util.*;
 
+import java.util.*;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+
+@PersistenceCapable
 public class Student extends User {
-    private ArrayList<Activity> myActivities;
+    @Persistent
+	private ArrayList<Activity> myActivities;
     private ArrayList<Course> myCourses;
     
 	public Student(String userName, String password, String firstName,String lastName, String gender, String rNumber){
