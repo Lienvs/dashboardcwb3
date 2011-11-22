@@ -5,10 +5,18 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PrimaryKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import com.google.appengine.api.datastore.Key;
+
 
 @PersistenceCapable
-@Inheritance (strategy = InheritanceStrategy.SUBCLASS_TABLE)
+@Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public class User {
+
+	@PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Key key;
 
 	@Persistent
 	private String userName;
@@ -57,7 +65,5 @@ public class User {
 	public void setPassword(String password){
 		this.password = password;
 	}
-	
-	
 	
 }
