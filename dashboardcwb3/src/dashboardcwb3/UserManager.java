@@ -2,6 +2,7 @@ package dashboardcwb3;
 
 import java.util.*;
 import javax.jdo.PersistenceManager;
+import dashboardcwb3.PMF;
 
 // Singleton
 public class UserManager {
