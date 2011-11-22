@@ -15,43 +15,53 @@
            
   <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    
+    
+    
   </head>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 <body>
 
-	<% 
+
+	<%! 
 	int keuze1 = -1;
 	int keuze2=-1;
 	int keuze3=-1;
 	%>
+
+	<%!
+		public void setKeuze(int i, int j)
+		{
+			if(i==1){
+				keuze1=j;
+			}
+			if(i==2){
+				keuze2=j;
+			}
+			if(i==3){
+				keuze3=j;
+			}
+		}
+	%>
+
+	
 	
 	<% if(keuze1==-1){
 	%>
-	<form action="#" method=setKeuze(1,0)>
-	<input type="submit" value="Scolair" name="Scolair">
+	<form action="setKeuze(1,0)" >
+	<input type="button" value="Scolair" name="Scolair" >
 	</form>
-	<form action="#" method=setKeuze11(1,1)>
-	<input type="submit" value="Extrascolair" name="extrascolair">
+	<form action="setKeuze(1,1)">
+	<input type="button" value="Extrascolair" name="extrascolair" >
 	</form>
 	<%	
 	}%>
 	
-	<% private void setKeuze(int i, int j){
-		if(i==1){
-			keuze1=j;
-		}
-		if(i==2){
-			keuze2=j;
-		}
-		if(i==3){
-			keuze3=j;
-		}
-	}%>
 	
 	
-	<% if(keuze1==0 && keuze2=-1){
+	<% if(keuze1==0 && keuze2==-1){
 	%>
-	<form action="#" method=setKeuze(2,0)>
+	<form>
  		<%
  		ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
  		for(int i=0 ; i<courses.size(); i++){
@@ -60,38 +70,43 @@
     	<%
     	}
     	%>
-    	<input type="submit" value="Submit" />
+    	<input type="submit" value="Submit" onclick="<%setKeuze(2,0);%>">
+    	
     </form>
 	<%
 	}
 	%>	
 	
 	
-	<% if(keuze1==0 && keuze2==0 && keuze3=-1){%>
+	<% if(keuze1==0 && keuze2==0 && keuze3==-1){%>
 	
-	<form action="#" method=keuze(3,0)>
-	<input type="submit" value="Les" name="les">
+	<form >
+	<input type="submit" value="Les" name="les" onclick="<%setKeuze(3,0);%>">
 	</form>
 	
-	<form action="#" method=keuze(3,1)>
-	<input type="submit" value="Zelfstudie" name="zelfstudie">
+	<form >
+	<input type="submit" value="Zelfstudie" name="zelfstudie" onclick="<%setKeuze(3,1);%>">
 	</form>
 		
-	<form action="#" method=keuze(3,2)>
-	<input type="submit" value="Oefenzitting" name="oefenzitting">
+	<form >
+	<input type="submit" value="Oefenzitting" name="oefenzitting" onclick="<%setKeuze(3,2);%>">
 	</form>	
 	<%
 	}
 	%>
 	
+	
+	
+	
 	<% if(!(keuze1==-1 && keuze2==-1 && keuze3==-1)){%>
+	<% String gekozenvak=(String)request.getParameter("gekozenvak");%>
 	Please confirm this choice: </br>
 	<% String voorstel="";
 	if(keuze1==0){
 		voorstel= "Scolair";}
 	if(keuze1==1){
 		voorstel="Extrascolair";}
-	voorstel=voorstel + " --> " + gekozenvak.getValue() + " --> ";
+	voorstel=voorstel + " --> " + gekozenvak + " --> ";
 	if(keuze3==0){
 		voorstel=voorstel + "Les";}
 	if(keuze3==1){
