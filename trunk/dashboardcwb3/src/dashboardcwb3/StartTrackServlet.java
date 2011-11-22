@@ -7,9 +7,9 @@ import javax.servlet.http.*;
 
 @SuppressWarnings("serial")
 
-public class StartServlet extends HttpServlet{
+public class StartTrackServlet extends HttpServlet{
 	private UserManager userManager;
-	public StartServlet() {
+	public StartTrackServlet() {
 		userManager= new UserManager();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
