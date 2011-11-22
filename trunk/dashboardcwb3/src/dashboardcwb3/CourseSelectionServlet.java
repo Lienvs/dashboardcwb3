@@ -29,7 +29,7 @@ public class CourseSelectionServlet extends HttpServlet{
 					
 				}
 				
-				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
+				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				
 				
 	
