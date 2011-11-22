@@ -6,8 +6,8 @@ public class CourseManager {
 	
 	
 	private static CourseManager instance = null;
-	private Map<String,Course> courses;
-	private ArrayList<Course> course;
+	
+	private ArrayList<Course> courses;
 	public static CourseManager getInstance() {
 		if( instance == null ) {
 		
@@ -17,8 +17,8 @@ public class CourseManager {
 	}
 	
 	public CourseManager(){
-		courses = new HashMap<String,Course>();
-		course = new ArrayList<Course>();
+		
+		courses = new ArrayList<Course>();
 		makeCourses();
 	}
 		public void makeCourses(){
@@ -26,23 +26,24 @@ public class CourseManager {
 			Prof prof2 = new Prof("VDSlooten","","","","","");
 			Course anal = new Course(5*30,15,prof1,"Analyse 3",5);
 			Course mech = new Course(5*30,15,prof2,"mechanica 2",5);
-			courses.put(anal.toString(), anal); courses.put(mech.toString(),mech);
-			course.add(anal);course.add(mech);
+			
+			courses.add(anal);courses.add(mech);
 		}
 		
-		public List<Course> getCourses(){
-			
-			List<Course> lijst = (List) courses.values();
-			return lijst;
-		}
+	
 		
 		public ArrayList<Course> getAllCourses(){
-			return course;
+			return courses;
 		}
 		
 		public Course getCourse (String name){
-			
-			return courses.get(name);
+			Course coursje = null;
+			for(Course course: courses){
+				if(course.toString().equals(name)){
+					coursje= course;
+				}
+			}
+			return coursje;
 		}
 		
 		
