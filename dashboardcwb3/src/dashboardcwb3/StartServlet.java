@@ -16,8 +16,8 @@ public class StartServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				
-				req.setAttribute("courses", userManager.getCurrentUser().getCourses());
+				Student student =(Student) userManager.getCurrentUser();
+				req.setAttribute("courses", student.getCourses());
 				getServletContext().getRequestDispatcher("/start.jsp").forward(req, resp);	
 				
 				
