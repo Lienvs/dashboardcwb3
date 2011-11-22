@@ -27,24 +27,25 @@ public class HomeServlet extends HttpServlet{
 					if(req.getParameter("scolair").equals("Scolair")){
 						String keuze=req.getParameter("gekozenvak");
 						Course vak=null;
-						Calendar cal= Calendar.getInstance();
-						Date date = cal.getTime();
 						for(int i=0; i<student.getCourses().size(); i++){
 							if(student.getCourses().get(i).toString().equals("gekozenvak")){
 								vak=student.getCourses().get(i);
 							}
 						}
 						if(req.getParameter("les").equals("Les")){
-							Les les=new Les(vak,date);
+							Les les=new Les(vak);
 							student.addActivity(les);
+							timerController.startTiming(les);
 						}
 						if(req.getParameter("zelfstudie").equals("Zelfstudie")){
-							Zelfstudie zelfstudie=new Zelfstudie(vak,date);
+							Zelfstudie zelfstudie=new Zelfstudie(vak);
 							student.addActivity(zelfstudie);
+							timerController.startTiming(zelfstudie);
 						}
 						if(req.getParameter("oefenzitting").equals("Oefenzitting")){
-							Oefenzitting oefenzitting=new Oefenzitting(vak,date);
+							Oefenzitting oefenzitting=new Oefenzitting(vak);
 							student.addActivity(oefenzitting);
+							timerController.startTiming(oefenzitting);
 						}
 					}
 					if(req.getParameter("extrascolair").equals("Extrascolair")){

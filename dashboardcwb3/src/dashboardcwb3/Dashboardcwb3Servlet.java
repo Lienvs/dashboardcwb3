@@ -41,7 +41,7 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 					String password=req.getParameter("password");
 						if(network.login(userName,password)) {    
 							req.setAttribute("currentUser", UserManager.getInstance().getCurrentUser().getUserName());
-							getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);
+							getServletContext().getRequestDispatcher("/home").forward(req, resp);
 						}
 						else {
 							req.setAttribute("message", "Login failed, please try again, or sign up.");
