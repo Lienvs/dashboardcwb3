@@ -66,7 +66,18 @@
 	
 </td>
 <td style="background-color:#EEEEEE;height:200px;width:1400px;text-align:top;">
-Content goes here</td>
+
+<%if(request.getAttribute("bezig").equals("ja")){
+	String voorstel = (String)request.getAttribute("voorstel");%>
+	<%=voorstel%>
+	
+	<%
+}%>
+
+
+
+
+</td>
 </tr>
 
 
