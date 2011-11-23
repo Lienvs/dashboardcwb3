@@ -15,6 +15,12 @@
            
   <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <%! String voorstel=null;
+    String scol=null;
+    String extra=null;
+    String vak=null;
+    String type=null;
+    %>
     
     
     
@@ -22,48 +28,19 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 <body>
 
-
-	<%! 
-	int keuze1 = -1;
-	int keuze2=-1;
-	int keuze3=-1;
-	%>
-
-	<%!
-		public void setKeuze(int i, int j)
-		{
-			if(i==1){
-				keuze1=j;
-			}
-			if(i==2){
-				keuze2=j;
-			}
-			if(i==3){
-				keuze3=j;
-			}
-		}
-	%>
-
-	
-	
-	<% if(keuze1==-1){
-	%>
-	<form action="setKeuze(1,0)" methode="post">
-	<input type="button" value="Scolair" name="Scolair" onclick="setKeuze(1,0)" >
+	<% if(request.getParameter("scolair")==null && request.getParameter("extrascolair")==null  && request.getParameter("gekozenvak")==null && request.getParameter("les")==null && request.getParameter("oefenzitting")==null && request.getParameter("zelfstudie")==null ){%>
+	<form method="post">
+	<input type="submit" value="Scolair" name="scolair" >
 	</form>
-	<form action="setKeuze(1,1)" methode="post">
-	<input type="button" value="Extrascolair" name="extrascolair" >
+	<form  method="post">
+	<input type="submit" value="Extrascolair" name="extrascolair">
 	</form>
-	
-	
-	<%	
-	}%>
+	<%}%>
 	
 	
 	
-	<% if(keuze1==0 && keuze2==-1){
-	%>
-	<form>
+	<% if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
+		<form method="post">
  		<%
  		ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
  		for(int i=0 ; i<courses.size(); i++){
@@ -72,76 +49,91 @@
     	<%
     	}
     	%>
-    	<input type="submit" value="Submit" onclick="<%setKeuze(2,0);%>">
-    	
-    </form>
-	<%
-	}
-	%>	
+    	<input type="submit" value="Submit" >
+  	  </form>
+  	
+  	  <%scol="scolair";%>
+  	
+	<%}%>
 	
+	<% if(request.getParameter("extrascolair")!=null){%>
+		Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
+		<form  	action="/home" method="post">
+		<input type="submit" value="Home" name="home">
+		</form>
 	
-	<% if(keuze1==0 && keuze2==0 && keuze3==-1){%>
-	
-	<form >
-	<input type="submit" value="Les" name="les" onclick="<%setKeuze(3,0);%>">
-	</form>
-	
-	<form >
-	<input type="submit" value="Zelfstudie" name="zelfstudie" onclick="<%setKeuze(3,1);%>">
-	</form>
+		<%extra="extrascolair";%>
 		
-	<form >
-	<input type="submit" value="Oefenzitting" name="oefenzitting" onclick="<%setKeuze(3,2);%>">
-	</form>	
+	<%}%>
+	
+	<% if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
+		<form method="post">
+		<input type="submit" value="Les" name="les" >
+		</form>
+		<form method="post">
+		<input type="submit" value="Zelfstudie" name="zelfstudie" >
+		</form>	
+		<form method="post">
+		<input type="submit" value="Oefenzitting" name="oefenzitting" >
+		</form>	
+		
+		<% vak=request.getParameter("gekozenvak");%>
+		
+	<%}%>
+	
+	<% if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
+	
+	Please confirm this choice: </br>
+	
 	<%
+	if(request.getParameter("les")!=null){
+		
+		type="les";}
+	if(request.getParameter("zelfstudie")!=null){
+		
+		type="zelfstudie";}
+		
+	if(request.getParameter("oefenzitting")!=null){
+		
+		type="oefenzitting";}
+		
+	%>
+	
+	<% if(extra==null && scol!=null && vak!=null && type!=null){
+	voorstel = scol + " --> " + vak +" --> "+ type;
+	}
+	
+	if(scol==null && extra!=null){
+	voorstel = extra;
 	}
 	%>
 	
 	
-	
-	
-	<% if(!(keuze1==-1 && keuze2==-1 && keuze3==-1)){%>
-	<% String gekozenvak=(String)request.getParameter("gekozenvak");%>
-	Please confirm this choice: </br>
-	<% String voorstel="";
-	if(keuze1==0){
-		voorstel= "Scolair";}
-	if(keuze1==1){
-		voorstel="Extrascolair";}
-	voorstel=voorstel + " --> " + gekozenvak + " --> ";
-	if(keuze3==0){
-		voorstel=voorstel + "Les";}
-	if(keuze3==1){
-		voorstel=voorstel + "Zelfstudie";}
-	if(keuze3==2){
-		voorstel=voorstel + "Oefenzitting";}
-	System.out.println(voorstel);%>
-	
+	<%=voorstel%>
+	<%
+	session.setAttribute("scol",scol);
+	session.setAttribute("extra",extra);
+	session.setAttribute("type",type);
+	session.setAttribute("vak",vak);
+	session.setAttribute("voorstel",voorstel);
+	%>
 		
 	<form action="/home" method="post">
 	<input type="submit" value="OK" name="ok">
 	</form>	
 	
 	<form action="/home" method="post">
-	<input type="submit" value="Back to home" name="home">
+	<input type="submit" value="Don't confirm" name="home">
 	</form>		
 	
 	
 	
+	<%}%>
 	
 	
 	
 	
-	<%
-	}
-	%>
 	
-	
-
-
-
-
-
 
 </body>
 
