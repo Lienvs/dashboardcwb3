@@ -16,56 +16,56 @@ import javax.servlet.http.*;
 public class Dashboardcwb3Servlet extends HttpServlet {
 	
 	private LoginController network;
+	private RegisterController registreNetwork;
 	public Dashboardcwb3Servlet() {
 		network = new LoginController();
+		registreNetwork=new RegisterController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 		
 		throws ServletException, IOException {
 			resp.setContentType("text/plain");
 			
-			if(req.getParameter("logout")==null){
-			
-			
-			
-				if(UserManager.getInstance().getCurrentUser()==null){  //atribuut currentuser definieren
-					req.setAttribute("currentuser", "No user online.");
-				}
-				else{
-					req.setAttribute("currentuser", UserManager.getInstance().getCurrentUser().getUserName());
-				}
-			
-			
-			
-					String userName=req.getParameter("username");    //login afhandelen
-					String password=req.getParameter("password");
-						if(network.login(userName,password)) {    
-							req.setAttribute("currentUser", UserManager.getInstance().getCurrentUser().getUserName());
-							getServletContext().getRequestDispatcher("/home").forward(req, resp);
-						}
-						else {
-							req.setAttribute("message", "Login failed, please try again, or sign up.");
-							getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
-						}
-					
-			}
-			else{
-				
+			if(req.getParameter("logout")!=null){
 				network.logout();
-				
-				if(UserManager.getInstance().getCurrentUser()==null){  //atribuut currentuser definieren
-					req.setAttribute("currentuser", "No user online.");
-				}
-				else{
-					req.setAttribute("currentuser", UserManager.getInstance().getCurrentUser().getUserName());
-				}
 				getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 				
-				
 			}
-				
-		}
+			if(req.getParameter("login")!=null){
+				String userName=req.getParameter("username");    //login afhandelen
+				String password=req.getParameter("password");
+					if(network.login(userName,password)) {    
+						req.setAttribute("currentUser", UserManager.getInstance().getCurrentUser().getUserName());
+						getServletContext().getRequestDispatcher("/home").forward(req, resp);
+					}
+					else {
+						req.setAttribute("message", "Login failed, please try again, or sign up.");
+						getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+					}
+			}
+			if(req.getParameter("signup")!=null){
+				String userName = req.getParameter("username");
+				String password = req.getParameter("password");
+				String confirmedPassword = req.getParameter("confirmedpassword");
+				String firstName = req.getParameter("firstname");
+				String lastName = req.getParameter("lastname");
+				String gender = req.getParameter("gender");
+				String rNumber = req.getParameter("rnumber");
+				if(registreNetwork.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
+					req.setAttribute("course", CourseManager.getInstance().getAllCourses());
+					
+					
+					
+					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);
+				}
+				else{
+					req.setAttribute("message", "Sign up failed, please try again, or login.");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+				}
+			}
+			
+			
 	
 	
-	
+	}
 }
