@@ -24,8 +24,8 @@
 	
 	definitief?</br>
 	
-	<form action="/stop" method="post">
-	<input type="submit" value="Yes" name="yes">
+	<form action="/home" method="post">
+	<input type="submit" value="Yes" name="stop">
 	</form>
 	<form action="/home" method="post">
 	<input type="submit" value="No" name="no">
