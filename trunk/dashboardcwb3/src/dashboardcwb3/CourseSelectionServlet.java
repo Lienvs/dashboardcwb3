@@ -20,8 +20,8 @@ public class CourseSelectionServlet extends HttpServlet{
 				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() ;i++){
 					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){}
 					else{
-						Student student =(Student) UserManager.getInstance().getCurrentUser();
-						student.addCourse(CourseManager.getInstance().getAllCourses().get(i));
+						User user =UserManager.getInstance().getCurrentUser();
+						user.addCourse(CourseManager.getInstance().getAllCourses().get(i));
 						
 					}
 					
