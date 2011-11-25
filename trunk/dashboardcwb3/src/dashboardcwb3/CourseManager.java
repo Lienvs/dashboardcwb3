@@ -22,8 +22,8 @@ public class CourseManager {
 		makeCourses();
 	}
 		public void makeCourses(){
-			Prof prof1 = new Prof("Dierckx","","","","","");
-			Prof prof2 = new Prof("VDSlooten","","","","","");
+			Prof prof1 = new Prof("Dierckx");
+			Prof prof2 = new Prof("VDSlooten");
 			Course anal = new Course(5*30,15,prof1,"Analyse 3",5);
 			Course mech = new Course(5*30,15,prof2,"mechanica 2",5);
 			
