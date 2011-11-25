@@ -61,4 +61,5 @@ public int getDuurExtraScolair(){
 	return result;
 
 }
+
 }
