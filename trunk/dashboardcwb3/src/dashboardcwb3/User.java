@@ -8,18 +8,16 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import com.google.appengine.api.datastore.Key;
+import javax.jdo.annotations.Extension;
+
+
 
 
 @PersistenceCapable
-@Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public class User {
 
 	@PrimaryKey
-    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-    private Key key;
-
-	@Persistent
-	private String userName;
+    private String userName;
 	@Persistent
 	private String password;
 	@Persistent
