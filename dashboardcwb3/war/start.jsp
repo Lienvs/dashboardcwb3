@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.google.appengine.api.users.User" %>
@@ -40,6 +41,7 @@
 	
 	
 	<% if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
+		
 		<form method="post">
  		<%
  		ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
@@ -50,6 +52,7 @@
     	}
     	%>
     	<input type="submit" value="Submit" >
+    	
   	  </form>
   	
   	  <%scol="scolair";%>
@@ -77,7 +80,8 @@
 		<input type="submit" value="Oefenzitting" name="oefenzitting" >
 		</form>	
 		
-		<% vak=request.getParameter("gekozenvak");%>
+		<% 
+		vak=request.getParameter("gekozenvak");%>
 		
 	<%}%>
 	

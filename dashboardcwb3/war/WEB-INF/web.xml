@@ -8,10 +8,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Dashboardcwb3</servlet-name>
 		<servlet-class>dashboardcwb3.Dashboardcwb3Servlet</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>Dashboardcwb3</servlet-name>
-		<servlet-class>dashboardcwb3.RegisterServlet</servlet-class>
-	</servlet>
+	
 	<servlet>
 		<servlet-name>Dashboardcwb3</servlet-name>
 		<servlet-class>dashboardcwb3.CourseSelectionServlet</servlet-class>
