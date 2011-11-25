@@ -17,6 +17,8 @@ import javax.jdo.annotations.Extension;
 public class User {
 
 	@PrimaryKey
+	private String key;
+	@Persistent
     private String userName;
 	@Persistent
 	private String password;
@@ -35,6 +37,7 @@ public class User {
 	
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
 		this.userName = userName;
+		this.key = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
