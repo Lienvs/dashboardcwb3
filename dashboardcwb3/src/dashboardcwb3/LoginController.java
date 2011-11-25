@@ -15,7 +15,8 @@ public boolean login(String userName,String password) {
 		User selected = null;
 		
 		if (UserManager.getInstance().getUser(userName) != null){
-			selected = 	UserManager.getInstance().getUser(userName);		
+			selected = 	UserManager.getInstance().getUser(userName);
+			id=true;
 		}
 		if (id){		
 			if(selected.getPassword().equals(password)) {
