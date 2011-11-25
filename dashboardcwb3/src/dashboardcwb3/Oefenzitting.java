@@ -4,7 +4,7 @@ import java.util.*;
 public class Oefenzitting extends Scolair{
 	
 	public Oefenzitting(Course course) {
-		super(course,"OZ");
+		super(course,"Oefenzitting");
 		
 //		UserManager.getInstance().sdjfg();
 	}
