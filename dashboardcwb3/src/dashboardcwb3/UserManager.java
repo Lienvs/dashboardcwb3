@@ -26,6 +26,7 @@ public class UserManager {
 	
 	public UserManager() {
 		// Vraag alle Users op uit de database en voeg toe aan de list van users.
+		pm = PMF.get().getPersistenceManager();
 		users = new ArrayList<User>();
 	}
 	
@@ -36,16 +37,12 @@ public class UserManager {
 	}
 	
 	public User getUser(String userName){ 
-		User gezocht = null;
-		for(User user: users){
-		if(user.getUserName().equals(userName)){
-			gezocht = user;
-		}
-	}
+		User gezocht = pm.getObjectById(User.class, userName);
 		return gezocht;
 	}
 	
 	public List<User> getUsers(){
+		//users = pm.getObjectIdClass(User.class)
 		return users;
 	}
 	
@@ -57,12 +54,13 @@ public class UserManager {
 	}
 	
 	public void makePers(User user){
-		pm = PMF.get().getPersistenceManager();
+		
 		try {
 			pm.makePersistent(user);
 		}
 		finally {
-			pm.close();
+//			pm.close();
+			pm.flush();
 	}
 	}
 	
