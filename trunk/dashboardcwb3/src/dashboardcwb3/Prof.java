@@ -3,10 +3,15 @@ import java.util.ArrayList;
 
 
 public class Prof {
-
-	public Prof(String userName, String password, String firstName,String lastName, String gender, String rNumber){
+private String profName;
+	
+	public Prof(String name){
+		profName= name;
 		
-		
+	}
+	
+	public String getName(){
+		return "Prof. " + profName;
 	}
 	
 }
