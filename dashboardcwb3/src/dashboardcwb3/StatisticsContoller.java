@@ -61,5 +61,50 @@ public int getDuurExtraScolair(){
 	return result;
 
 }
+public int getDuurThuisZelfstudie(){
+	int result = 0;
+	ArrayList<Activity> actList = currentUser.getActivities();
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Zelfstudie")){
+				Zelfstudie zelf= (Zelfstudie) scol;
+				if(zelf.getLocation().toString().equals("Thuis")){
+					 result = result+ zelf.getDuration();
+				}
+			}
+		}
+	} return result;
+}
+public int getDuurBibZelfstudie(){
+	int result = 0;
+	ArrayList<Activity> actList = currentUser.getActivities();
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Zelfstudie")){
+				Zelfstudie zelf= (Zelfstudie) scol;
+				if(zelf.getLocation().toString().equals("Bibliotheek")){
+					 result = result+ zelf.getDuration();
+				}
+			}
+		}
+	} return result;
+}
+public int getDuurKotZelfstudie(){
+	int result = 0;
+	ArrayList<Activity> actList = currentUser.getActivities();
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Zelfstudie")){
+				Zelfstudie zelf= (Zelfstudie) scol;
+				if(zelf.getLocation().toString().equals("Kot")){
+					 result = result+ zelf.getDuration();
+				}
+			}
+		}
+	} return result;
+}
 
 }
