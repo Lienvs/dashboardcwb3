@@ -27,5 +27,11 @@ public String getPlace(){
 }
 public String getDescription(){
 	return description;
+	
+}
+public String toString(){
+	String result = "extra-scolair" + " "+ getDescription();
+	return result;
+	
 }
 }
