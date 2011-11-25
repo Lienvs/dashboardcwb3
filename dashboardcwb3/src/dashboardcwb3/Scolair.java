@@ -19,5 +19,8 @@ public class Scolair extends Activity{
 	public String getType(){
 		return type;
 	}
-
+	public String toString(){
+		String result = "scolair" + " - " + getType() + " - " + course.toString();
+		return result;
+	}
 }

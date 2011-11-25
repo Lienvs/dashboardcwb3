@@ -67,8 +67,10 @@ public void setStart(Date date) {
 	public String getGenre(){
 		return genre;
 	}
-
+	public abstract String toString();
+		
 	
+
 	
 	
 }
