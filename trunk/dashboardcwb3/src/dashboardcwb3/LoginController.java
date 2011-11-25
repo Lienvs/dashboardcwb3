@@ -13,22 +13,19 @@ public boolean login(String userName,String password) {
 		boolean pass = false;
 		boolean result = false;
 		User selected = null;
-			
-		for(User user : UserManager.getInstance().getUsers()){	
-			if (user.getUserName().equals(userName)) {
-				id = true;
-				selected = user;
-			}
+		
+		if (UserManager.getInstance().getUser(userName) != null){
+			selected = 	UserManager.getInstance().getUser(userName);		
 		}
-			if (id){		
-				if(selected.getPassword().equals(password)) {
-					pass = true;
-				}
-				if(pass) {
-					result = true;
-					UserManager.getInstance().setCurrentUser(selected);
-				}		
-			}	
+		if (id){		
+			if(selected.getPassword().equals(password)) {
+				pass = true;
+			}
+			if(pass) {
+				result = true;
+				UserManager.getInstance().setCurrentUser(selected);
+			}		
+		}	
 		return result;	
 	}
 	
