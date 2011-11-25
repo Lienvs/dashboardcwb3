@@ -18,31 +18,31 @@ public class HomeServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				Student student =(Student) UserManager.getInstance().getCurrentUser();
+				User user =UserManager.getInstance().getCurrentUser();
 				if(req.getParameter("ok")==null){
 				}
 				else{
 					if(req.getSession().getAttribute("scol")!=null){
 						String vak=req.getParameter("vak");
 						Course course=null;
-						for(int i=0; i<student.getCourses().size(); i++){
-							if(student.getCourses().get(i).toString().equals(vak)){
-								course=student.getCourses().get(i);
+						for(int i=0; i<user.getCourses().size(); i++){
+							if(user.getCourses().get(i).toString().equals(vak)){
+								course=user.getCourses().get(i);
 							}
 						}
 						if(req.getSession().getAttribute("type").equals("les")){
 							Les les=new Les(course);
-							student.addActivity(les);
+							user.addActivity(les);
 							timerController.startTiming(les);
 						}
 						if(req.getSession().getAttribute("type").equals("zelfstudie")){
 							Zelfstudie zelfstudie=new Zelfstudie(course);
-							student.addActivity(zelfstudie);
+							user.addActivity(zelfstudie);
 							timerController.startTiming(zelfstudie);
 						}
 						if(req.getSession().getAttribute("type").equals("oefenzitting")){
 							Oefenzitting oefenzitting=new Oefenzitting(course);
-							student.addActivity(oefenzitting);
+							user.addActivity(oefenzitting);
 							timerController.startTiming(oefenzitting);
 						}
 						
