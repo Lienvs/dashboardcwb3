@@ -20,8 +20,7 @@
   <script>
   $(document).ready(function() {
     $("#tabs").tabs();
-    $( "input:submit, a, button", ".demo" ).button();
-	$( "a", ".demo" ).click(function() { return false; });
+    $( ".check" ).button();		
   });
   </script>
 </head>
@@ -54,10 +53,10 @@
 			definitief?</br>
 	
 			<form action="/home" method="post">
-					<input type="submit" value="Yes" name="stop">
+					<input type="submit" class="check" value="Yes" name="stop">
 			</form>
 			<form action="/home" method="post">
-			<input type="submit" value="No" name="no">
+			<input type="submit" class="check" value="No" name="no">
 			</form>
   			</div>
 		<%}
@@ -72,10 +71,10 @@
     			
     			<% if(request.getParameter("scolair")==null && request.getParameter("extrascolair")==null  && request.getParameter("gekozenvak")==null && request.getParameter("les")==null && request.getParameter("oefenzitting")==null && request.getParameter("zelfstudie")==null ){%>
 					<form method="post">
-						<input type="submit" value="Scolair" name="scolair" >
+						<input type="submit" class="check" value="Scolair" name="scolair" >
 					</form>
 					<form  method="post">
-						<input type="submit" value="Extrascolair" name="extrascolair">
+						<input type="submit" class="check" value="Extrascolair" name="extrascolair">
 					</form>
 					
 				<%voorstel=null;
@@ -87,7 +86,7 @@
  						for(int i=0 ; i<courses.size(); i++){%>
     						<input type="radio" name="gekozenvak" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
     					<%}%>
-    					<input type="submit" value="Submit" >
+    					<input type="submit" class="check" value="Submit" >
     				</form>
   	  				<%scol="scolair";%>
   	  				<%voorstel=null;%>
@@ -96,7 +95,7 @@
 				<% if(request.getParameter("extrascolair")!=null){%>
 					Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
 					<form  	action="/home" method="post">
-						<input type="submit" value="Home" name="home">
+						<input type="submit" class="check" value="Home" name="home">
 					</form>
 					<%extra="extrascolair";%>
 					<%voorstel=null;%>
@@ -104,13 +103,13 @@
 	
 				<% if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
 					<form method="post">
-						<input type="submit" value="Les" name="les" >
+						<input type="submit" class="check" value="Les" name="les" >
 					</form>
 					<form method="post">
-						<input type="submit" value="Zelfstudie" name="zelfstudie" >
+						<input type="submit" class="check" value="Zelfstudie" name="zelfstudie" >
 					</form>	
 					<form method="post">
-						<input type="submit" value="Oefenzitting" name="oefenzitting" >
+						<input type="submit" class="check" value="Oefenzitting" name="oefenzitting" >
 					</form>	
 					<% vak=request.getParameter("gekozenvak");%>
 					<%voorstel=null;%>
@@ -143,11 +142,11 @@
 					%>
 		
 					<form action="/home" method="post">
-						<input type="submit" value="OK" name="ok">
+						<input type="submit" class="check" value="OK" name="ok">
 					</form>	
 	
 					<form action="/home" method="post">
-						<input type="submit" value="Don't confirm" name="home">
+						<input type="submit" class="check" value="Don't confirm" name="home">
 					</form>		
 	
 	
