@@ -169,7 +169,9 @@
         optio
     </div>
     <div id="fragment-7">
-        logout
+        <form action="/logout" method="post">
+				<input type="submit" class="check" value="Logout" name="logout">
+		</form>
     </div>
 </div>
 </body>
