@@ -50,7 +50,7 @@
 	<h3><a href="#">Login</a></h3>
 	<div>
 		<form action="/login" method="post">
-			User Name: <input type="text" name="username"> <br />
+			Username: <input type="text" name="username"> <br />
 			Password:  <input type="password" name="password" />
 			<input type="submit" class="check" name="login" value="Login"/>
 		</form>
