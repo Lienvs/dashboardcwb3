@@ -29,7 +29,10 @@
 <body style="font-size:62.5%;">
   
 <div id="tabs">
+
+
     <ul>
+    	<h1> Username!! </h1>
     	<%String bezig=(String)request.getAttribute("bezig");%>
 		<%if(bezig.equals("ja")){%>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
