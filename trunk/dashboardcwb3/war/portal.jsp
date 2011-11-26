@@ -27,10 +27,24 @@
     	autoHeight: false,
 		navigation: true
     });
+    $( ".check" ).button();	
+    $( "#dialog" ).dialog();
   });
   </script>
 </head>
 <body style="font-size:62.5%;">
+
+
+<%String message1=(String) request.getAttribute("message1");
+  String message2=(String) request.getAttribute("message2");
+  if(message1==null){}
+  else{%>
+	<div id="dialog" title="<%=message1%>">
+		<p><%=message2%></p>
+	</div>
+	<%}%>
+
+
   
 <div id="accordion">
 	<h3><a href="#">Login</a></h3>
@@ -38,7 +52,7 @@
 		<form action="/login" method="post">
 			User Name: <input type="text" name="username"> <br />
 			Password:  <input type="password" name="password" />
-			<input type="submit" value="Login" name="login"/>
+			<input type="submit" class="check" name="login" value="Login"/>
 		</form>
 	</div>
 	<h3><a href="#">Register</a></h3>
@@ -52,7 +66,7 @@
 			<input type="radio" name="gender" value="male" /> Male<br />
 			<input type="radio" name="gender" value="female" /> Female<br />
 			r-number: <input type="text" name="rnumber"> <br />
-			<input type="submit" value="Sign up" name="signup"/>
+			<input type="submit" class="check" name="signup" value="Sign up"/>
 		</form>
 	</div>
 	

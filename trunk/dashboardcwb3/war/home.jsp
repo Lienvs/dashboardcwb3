@@ -77,7 +77,9 @@
 					<form  method="post">
 						<input type="submit" value="Extrascolair" name="extrascolair">
 					</form>
-				<%}%>
+					
+				<%voorstel=null;
+				}%>
 				
 				<% if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
 					<form method="post">
@@ -88,6 +90,7 @@
     					<input type="submit" value="Submit" >
     				</form>
   	  				<%scol="scolair";%>
+  	  				<%voorstel=null;%>
   				<%}%>
 	
 				<% if(request.getParameter("extrascolair")!=null){%>
@@ -96,6 +99,7 @@
 						<input type="submit" value="Home" name="home">
 					</form>
 					<%extra="extrascolair";%>
+					<%voorstel=null;%>
 				<%}%>
 	
 				<% if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
@@ -109,6 +113,7 @@
 						<input type="submit" value="Oefenzitting" name="oefenzitting" >
 					</form>	
 					<% vak=request.getParameter("gekozenvak");%>
+					<%voorstel=null;%>
 				<%}%>
 	
 				<% if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
