@@ -67,6 +67,7 @@ public class HomeServlet extends HttpServlet{
 					req.setAttribute("bezig", "nee");
 				}
 				req.setAttribute("courses", user.getCourses());
+				req.setAttribute("activities", user.getActivities());
 				req.setAttribute("username", UserManager.getInstance().getCurrentUser().toString());
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	
