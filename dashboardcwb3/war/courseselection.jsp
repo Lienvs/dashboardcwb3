@@ -33,7 +33,7 @@
 
 </head>
 
-<body>
+<body style="font-size:62.5%;">
 
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");

@@ -24,17 +24,14 @@
   });
   </script>
 </head>
-
-
 <body style="font-size:62.5%;">
   
 <div id="tabs">
-
-
-    <ul>
+	<ul>
     	<h1> Username!! </h1>
-    	<%String bezig=(String)request.getAttribute("bezig");%>
-		<%if(bezig.equals("ja")){%>
+    	
+    	<%String bezig=(String)request.getAttribute("bezig");
+		if(bezig.equals("ja")){%>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
 		<%}
 		else{%>
@@ -48,14 +45,12 @@
         <li><a href="#fragment-7"><span>Logout</span></a></li>
     </ul>
     
-   
-		<%if(bezig.equals("ja")){%>
+    	<%if(bezig.equals("ja")){%>
 			<div id="fragment-2">
-      		  vragenlijst inladen </br>
-	
-			<form action="/home" method="post">
+      			vragenlijst inladen </br>
+				<form action="/home" method="post">
 					<input type="submit" class="check" value="Stop activity" name="stop">
-			</form>
+				</form>
   			</div>
 		<%}
 		if(!bezig.equals("ja")){%>
@@ -73,12 +68,11 @@
 					</form>
 					<form  method="post">
 						<input type="submit" class="check" value="Extrascolair" name="extrascolair">
-					</form>
-					
+					</form>	
 				<%voorstel=null;
-				}%>
+				}
 				
-				<% if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
+				if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
 					<form method="post">
  						<% ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
  						for(int i=0 ; i<courses.size(); i++){%>
@@ -88,18 +82,18 @@
     				</form>
   	  				<%scol="scolair";%>
   	  				<%voorstel=null;%>
-  				<%}%>
+  				<%}
 	
-				<% if(request.getParameter("extrascolair")!=null){%>
+				if(request.getParameter("extrascolair")!=null){%>
 					Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
 					<form  	action="/home" method="post">
 						<input type="submit" class="check" value="Home" name="home">
 					</form>
 					<%extra="extrascolair";%>
 					<%voorstel=null;%>
-				<%}%>
+				<%}
 	
-				<% if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
+				if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
 					<form method="post">
 						<input type="submit" class="check" value="Les" name="les" >
 					</form>
@@ -111,19 +105,22 @@
 					</form>	
 					<% vak=request.getParameter("gekozenvak");%>
 					<%voorstel=null;%>
-				<%}%>
+				<%}
 	
-				<% if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
+				if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
 					Please confirm this choice: </br>
 					<%
 					if(request.getParameter("les")!=null){
-						type="les";}
+						type="les";
+					}
 					if(request.getParameter("zelfstudie")!=null){
-						type="zelfstudie";}
+						type="zelfstudie";
+					}
 					if(request.getParameter("oefenzitting")!=null){
-						type="oefenzitting";}
-					%>
-					<% if(extra==null && scol!=null && vak!=null && type!=null){
+						type="oefenzitting";
+					}
+					
+					if(extra==null && scol!=null && vak!=null && type!=null){
 						voorstel = scol + " --> " + vak +" --> "+ type;
 					}
 					if(scol==null && extra!=null){
@@ -152,27 +149,30 @@
 					<%}%>
 				</div>
 		<%}%>
-    
-    
-   
-    
-    <div id="fragment-3">
-        stats
-    </div>
-    <div id="fragment-4">
-        goals
-    </div>
-    <div id="fragment-5">
-        course
-    </div>
-    <div id="fragment-6">
-        optio
-    </div>
-    <div id="fragment-7">
-        <form action="/logout" method="post">
+  
+    	<div id="fragment-3">
+        	<% ArrayList activities = null; activities=(ArrayList)request.getAttribute("activities");
+        	if(activities.size()==0){%>
+        		<p>You have no activities</p>
+        	<%}
+        	for(int i=0; i<activities.size(); i++){
+        		//tostring==>error
+        	}%>
+    	</div>
+    	<div id="fragment-4">
+        	goals
+    	</div>
+    	<div id="fragment-5">
+        	course
+    	</div>
+    	<div id="fragment-6">
+        	optio
+    	</div>
+    	<div id="fragment-7">
+        	<form action="/logout" method="post">
 				<input type="submit" class="check" value="Logout" name="logout">
-		</form>
-    </div>
+			</form>
+    	</div>
 </div>
 </body>
 </html>
