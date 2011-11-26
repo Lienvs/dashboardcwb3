@@ -39,7 +39,8 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 						getServletContext().getRequestDispatcher("/home").forward(req, resp);
 					}
 					else {
-						req.setAttribute("message", "Login failed, please try again, or sign up.");
+						req.setAttribute("message1", "Login failed.");
+						req.setAttribute("message2", "Please try again, or sign up.");
 						getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 					}
 			}
@@ -59,7 +60,8 @@ public class Dashboardcwb3Servlet extends HttpServlet {
 					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);
 				}
 				else{
-					req.setAttribute("message", "Sign up failed, please try again, or login.");
+					req.setAttribute("message1", "Sign up failed.");
+					req.setAttribute("message2", "Please try again, or login.");
 					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 				}
 			}
