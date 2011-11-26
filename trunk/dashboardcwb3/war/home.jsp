@@ -50,13 +50,8 @@
 			<div id="fragment-2">
       		  vragenlijst inladen </br>
 	
-			definitief?</br>
-	
 			<form action="/home" method="post">
-					<input type="submit" class="check" value="Yes" name="stop">
-			</form>
-			<form action="/home" method="post">
-			<input type="submit" class="check" value="No" name="no">
+					<input type="submit" class="check" value="Stop activity" name="stop">
 			</form>
   			</div>
 		<%}
