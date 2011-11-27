@@ -66,7 +66,10 @@ public class HomeServlet extends HttpServlet{
 				if(!timerController.isBusy()){
 					req.setAttribute("bezig", "nee");
 				}
-				req.setAttribute("courses", user.getCourses());
+				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
+				ArrayList<Course> courses = user.getCourses();
+				req.setAttribute("allcourses", allCourses);
+				req.setAttribute("courses", courses);
 				req.setAttribute("activities", user.getActivities());
 				req.setAttribute("username", UserManager.getInstance().getCurrentUser().toString());
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
