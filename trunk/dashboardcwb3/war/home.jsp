@@ -166,7 +166,20 @@
         	course
     	</div>
     	<div id="fragment-6">
-        	optio
+        	<form action="/courses" method="post">
+				<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
+				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
+				for(int i=0 ; i<allcourses.size(); i++){
+					if(courses.contains(allcourses.get(i))){%>
+						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+					<%}
+					else{%>
+						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+					<%}
+		
+				}%></br>
+				<input type="submit" class="check" value="Submit" name="submitcourse"/>
+			</form>	
     	</div>
     	<div id="fragment-7">
         	<form action="/logout" method="post">
