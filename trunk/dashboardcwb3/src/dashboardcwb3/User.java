@@ -127,6 +127,10 @@ public class User {
 	public void addCourse(Course course){
 		myCourses.add(course);
 	}
+	public void removeCourse(Course course){
+		myCourses.remove(course);
+	}
+	
 	
 	public ArrayList<Course> getCourses(){
 		return myCourses;

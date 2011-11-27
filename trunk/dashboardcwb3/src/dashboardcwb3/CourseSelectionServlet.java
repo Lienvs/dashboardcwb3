@@ -16,17 +16,27 @@ public class CourseSelectionServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-
+				User user =UserManager.getInstance().getCurrentUser();
+				
+				ArrayList<Course> courses=user.getCourses();
+				if(req.getParameter("submitcourse")==null){}
+				else{
 				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() ;i++){
-					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){}
+					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){
+						if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){
+							user.removeCourse((CourseManager.getInstance().getAllCourses().get(i)));
+						}
+					}
 					else{
-						User user =UserManager.getInstance().getCurrentUser();
+						if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){}
+						else{
 						user.addCourse(CourseManager.getInstance().getAllCourses().get(i));
+						}
 						
 					}
 					
 				}
-				
+				}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				
 				
