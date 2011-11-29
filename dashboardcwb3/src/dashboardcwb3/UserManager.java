@@ -32,7 +32,7 @@ public class UserManager {
 	
 	
 	public void addUser(User user){
-		users.add(user);// database-shizzle
+		users.add(user);
 		makePers(user);
 	}
 	
