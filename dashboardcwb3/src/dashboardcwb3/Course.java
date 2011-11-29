@@ -5,25 +5,20 @@ import javax.jdo.annotations.Persistent;
 
 //import sun.util.resources.CalendarData_da;
 
-@PersistenceCapable
+
 public class Course {
-	@Persistent
 	private Prof prof;
-	@Persistent
 	private int studyPoints;
-	@Persistent
 	private int totalLecture;  //aantal uur les van dit vak over hele semester
-	@Persistent
 	private int totalPractice; //aantal uur oefenzitting van dit vak over heel semester
-	@Persistent
 	private String name; //naam van het vak vb: analyse
 	
 	public Course(int totalLecture, int totalPractice, Prof prof, String name, int studyPoints) {
 		this.totalLecture = totalLecture;
 		this.totalPractice = totalPractice;
 		this.prof = prof;
-		this.name=name;
-		this.studyPoints=studyPoints;
+		this.name = name;
+		this.studyPoints = studyPoints;
 	}	
 	
 	public Prof getProf(){
