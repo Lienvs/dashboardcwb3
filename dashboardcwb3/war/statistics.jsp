@@ -32,14 +32,14 @@
 <body style="font-size:62.5%;">
 
 test
+
+
+
+
 <script>
-  $(document).ready(function() {
-  	
-  	
-  	var data = [
-    ['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14], 
-    ['Out of home', 16],['Commuting', 7], ['Orientation', 9]
-  ];
+
+	$(document).ready(function(){
+  var data = <%=request.getAttribute("stri")%>;
   var plot1 = jQuery.jqplot ('chart1', [data], 
     { 
       seriesDefaults: {
@@ -54,8 +54,12 @@ test
       legend: { show:true, location: 'e' }
     }
   );
-    	
-  });
+});
+  	
+  	
+	
+  
+  
   </script>
 <div id="chart1" style="height:300px; width:500px; " ></div>
 
