@@ -36,13 +36,17 @@ public class UserManager {
 		makePers(user);
 	}
 	
+	public void deleteUser(String userName){
+		pm.deletePersistent(userName);
+	}
+	
 	public User getUser(String userName){ 
 		User gezocht = pm.getObjectById(User.class, userName);
 		return gezocht;
 	}
 	
 	public List<User> getUsers(){
-		//users = pm.getObjectIdClass(User.class)
+		//users[i] = pm.getObjectIdClass(User.class);
 		return users;
 	}
 	
@@ -59,7 +63,6 @@ public class UserManager {
 			pm.makePersistent(user);
 		}
 		finally {
-//			pm.close();
 			pm.flush();
 	}
 	}
