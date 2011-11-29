@@ -1,9 +1,9 @@
 package dashboardcwb3;
 import java.util.*;
 
-public class DataContoller {
-	User currentUser;
-		public  DataContoller(){
+public class DataController {
+	private User currentUser;
+		public  DataController(){
 			currentUser = UserManager.getInstance().getCurrentUser();
 }
 		
