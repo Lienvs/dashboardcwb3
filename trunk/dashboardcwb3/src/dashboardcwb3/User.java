@@ -129,6 +129,11 @@ public class User {
 	}
 	public void removeCourse(Course course){
 		myCourses.remove(course);
+		for(Activity act: myActivities){
+			if(act.toString().contains(course.toString())){
+				myActivities.remove(act);
+			}
+		}
 	}
 	
 	

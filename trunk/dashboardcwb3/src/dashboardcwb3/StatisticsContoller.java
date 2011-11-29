@@ -6,7 +6,28 @@ public class StatisticsContoller {
 		public  StatisticsContoller(){
 			currentUser = UserManager.getInstance().getCurrentUser();
 }
-public int getDuurStudie(){
+		
+private int getGemiddeldeStudie(){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Zelfstudie")){
+				result = result + scol.getDuration(); 
+			}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
+
+
+private int getDuurStudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -20,7 +41,7 @@ public int getDuurStudie(){
 	return result;
 }
 
-public int getDuurLes(){
+private int getDuurLes(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -34,7 +55,7 @@ public int getDuurLes(){
 	return result;
 
 }
-public int getDuurOefenzitting(){
+private int getDuurOefenzitting(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -48,7 +69,7 @@ public int getDuurOefenzitting(){
 	return result;
 
 }
-public int getDuurExtraScolair(){
+private int getDuurExtraScolair(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -61,7 +82,7 @@ public int getDuurExtraScolair(){
 	return result;
 
 }
-public int getDuurThuisZelfstudie(){
+private int getDuurThuisZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
@@ -76,7 +97,7 @@ public int getDuurThuisZelfstudie(){
 		}
 	} return result;
 }
-public int getDuurBibZelfstudie(){
+private int getDuurBibZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
@@ -91,7 +112,7 @@ public int getDuurBibZelfstudie(){
 		}
 	} return result;
 }
-public int getDuurKotZelfstudie(){
+private int getDuurKotZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
