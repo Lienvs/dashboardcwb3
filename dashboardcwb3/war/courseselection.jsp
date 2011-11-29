@@ -24,7 +24,8 @@
   
   <script>
 	$(function() {
-		$( ".check" ).button();		
+		$( ".check" ).button();	
+		$( "#dialog" ).dialog();	
 	});
 	</script>
 	
@@ -34,6 +35,14 @@
 </head>
 
 <body style="font-size:62.5%;">
+
+<%String message=(String) request.getAttribute("message");
+  if(message==null){}
+  else{%>
+	<div id="dialog" title="Failed">
+		<p><%=message%></p>
+	</div>
+	<%}%>
 
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
