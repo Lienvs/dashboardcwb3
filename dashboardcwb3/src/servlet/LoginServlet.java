@@ -11,9 +11,11 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import dashboardcwb3.CourseManager;
-import dashboardcwb3.LoginController;
-import dashboardcwb3.RegisterController;
+import user.LoginController;
+import user.RegisterController;
+
+import course.CourseManager;
+
 
 
 

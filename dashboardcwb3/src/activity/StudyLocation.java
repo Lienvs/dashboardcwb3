@@ -1,4 +1,4 @@
-package dashboardcwb3;
+package activity;
 
 public enum StudyLocation {
 	THUIS {

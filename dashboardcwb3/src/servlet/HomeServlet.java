@@ -5,14 +5,17 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import dashboardcwb3.Course;
-import dashboardcwb3.CourseManager;
-import dashboardcwb3.Les;
-import dashboardcwb3.Oefenzitting;
-import dashboardcwb3.TimerController;
-import dashboardcwb3.User;
-import dashboardcwb3.UserManager;
-import dashboardcwb3.Zelfstudie;
+import user.User;
+import user.UserManager;
+
+import course.Course;
+import course.CourseManager;
+
+import activity.Les;
+import activity.Oefenzitting;
+import activity.TimerController;
+import activity.Zelfstudie;
+
 
 
 @SuppressWarnings("serial")

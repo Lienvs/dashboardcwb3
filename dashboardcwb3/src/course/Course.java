@@ -1,7 +1,10 @@
-package dashboardcwb3;
+package course;
 //import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+
+import user.Prof;
+
 
 //import sun.util.resources.CalendarData_da;
 

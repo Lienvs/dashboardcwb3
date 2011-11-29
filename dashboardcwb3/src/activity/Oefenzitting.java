@@ -1,5 +1,8 @@
-package dashboardcwb3;
+package activity;
 import java.util.*;
+
+import course.Course;
+
 
 public class Oefenzitting extends Scolair{
 	

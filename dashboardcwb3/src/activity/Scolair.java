@@ -1,6 +1,9 @@
-package dashboardcwb3;
+package activity;
 
 import java.util.Date;
+
+import course.Course;
+
 
 public class Scolair extends Activity{
 	private Course course;

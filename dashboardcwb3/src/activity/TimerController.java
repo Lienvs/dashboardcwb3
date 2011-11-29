@@ -1,6 +1,7 @@
-package dashboardcwb3;
+package activity;
 import java.util.*;
 import java.text.*;
+
 public class TimerController {
 	private Activity currentActivity;
 	private String dateFormat;

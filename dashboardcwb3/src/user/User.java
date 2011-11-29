@@ -1,4 +1,4 @@
-package dashboardcwb3;
+package user;
 
 import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
@@ -7,7 +7,14 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
+
+import activity.Activity;
+import activity.Scolair;
+
 import com.google.appengine.api.datastore.Key;
+
+import course.Course;
+
 import javax.jdo.annotations.Extension;
 
 

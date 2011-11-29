@@ -1,4 +1,4 @@
-package dashboardcwb3;
+package database;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
