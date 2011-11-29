@@ -26,8 +26,45 @@ private int getGemiddeldeStudie(){
 	return result;
 }
 
+private int getGemiddeldeLes(){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Les")){
+				result = result + scol.getDuration(); 
+			}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
 
-private int getDuurStudie(){
+private int getGemiddeldeOefenzitting(){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Oefenzitting")){
+				result = result + scol.getDuration(); 
+			}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
+
+private int getDuurZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -128,4 +165,73 @@ private int getDuurKotZelfstudie(){
 	} return result;
 }
 
+private int getDuurZelfstudie(Course course){
+	ArrayList<Activity> actList = currentUser.getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Zelfstudie")){
+				if(scol.getCourse().toString().equals(course.toString())){
+					result = result + scol.getDuration(); 
+				}
+			}
+		}
+	}
+	return result;
+
 }
+private int getDuurLes(Course course){
+	ArrayList<Activity> actList = currentUser.getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Les")){
+				if(scol.getCourse().toString().equals(course.toString())){
+					result = result + scol.getDuration(); 
+				}
+			}
+		}
+	}
+	return result;
+
+}
+private int getDuurOefenzitting(Course course){
+	ArrayList<Activity> actList = currentUser.getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getGenre().equals("scolair")){
+			Scolair scol = (Scolair)act;
+			if(scol.getType().equals("Oefenzitting")){
+				if(scol.getCourse().toString().equals(course.toString())){
+					result = result + scol.getDuration(); 
+				}
+			}
+		}
+	}
+	return result;
+
+}
+private String ToHourMinute(int minuten){
+	int minutes = minuten%60;
+	int hours = minuten /60;
+	return hours +" hours " + minutes + " minutes";
+}
+private String getMaximumStudie(){
+	String result = "You didn't study at all";
+	int maxDuur =0;
+	ArrayList<Course> courseList= currentUser.getCourses();
+	if(courseList.size()>0){
+	Course maxCourse= courseList.get(0);
+	for(Course course:courseList){
+		if(getDuurZelfstudie(course) > maxDuur){
+			maxDuur = getDuurZelfstudie(course);
+			maxCourse = course;
+		}
+	}
+	result = "You studied " + maxDuur + " for " + maxCourse.toString();
+	}
+	return result;
+}}
+
