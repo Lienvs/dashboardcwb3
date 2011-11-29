@@ -45,5 +45,13 @@ public class Course {
 	public String toString(){
 		return name;
 	}
-	
+	public int getAverageLecture(){//per week (in uur)
+		return getTotalLecture()/13;
+	}
+	public int getAveragePractice(){//per week (in uur)
+		return getTotalPractice()/13;
+	}
+	public int getAvarageWork(){//per week (in uur)
+		return studyPoints *30 *60/13;
+	}
 }
