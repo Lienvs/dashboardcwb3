@@ -1,22 +1,21 @@
-package dashboardcwb3;
+package servlet;
 import java.util.*;
 
 import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import dashboardcwb3.CourseManager;
+import dashboardcwb3.RegisterController;
+
+
 @SuppressWarnings("serial")
 
 public class RegisterServlet extends HttpServlet{
 	
-	
-	
 	private RegisterController network;
 	public RegisterServlet() {
 		network = new RegisterController();
-		
-	
-		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
@@ -30,24 +29,20 @@ public class RegisterServlet extends HttpServlet{
 				String gender = req.getParameter("gender");
 				String rNumber = req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
+					req.setAttribute("course", CourseManager.getInstance().getAllCourses());
 					
+					String str="[['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],['Out of home', 16],['Commuting', 7], ['Orientation', 9]]";
+					req.setAttribute("stri", str);
 					
-					int totalCourses= CourseManager.getInstance().getAllCourses().size();
-					req.setAttribute("amountCourses", totalCourses);
-						req.setAttribute("course", CourseManager.getInstance().getAllCourses());
-					
-					
-					
-					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);
+					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);   //courseselection.jsp
 				}
 				else{
-					req.setAttribute("message", "Sign up failed, please try again, or login.");
-					getServletContext().getRequestDispatcher("/registratie.jsp").forward(req, resp);
+					req.setAttribute("message1", "Sign up failed.");
+					req.setAttribute("message2", "Please try again, or login.");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 				}
 	
 			}
-	
-
 }
 
 

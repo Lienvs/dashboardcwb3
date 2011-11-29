@@ -1,11 +1,19 @@
-package dashboardcwb3;
+package servlet;
 import java.util.*;
-import java.util.Calendar;
-import java.util.Date;
 
 import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import dashboardcwb3.Course;
+import dashboardcwb3.CourseManager;
+import dashboardcwb3.Les;
+import dashboardcwb3.Oefenzitting;
+import dashboardcwb3.TimerController;
+import dashboardcwb3.User;
+import dashboardcwb3.UserManager;
+import dashboardcwb3.Zelfstudie;
+
 
 @SuppressWarnings("serial")
 
@@ -71,7 +79,7 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("allcourses", allCourses);
 				req.setAttribute("courses", courses);
 				req.setAttribute("activities", user.getActivities());
-				req.setAttribute("username", UserManager.getInstance().getCurrentUser().toString());
+				req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	
 			}
