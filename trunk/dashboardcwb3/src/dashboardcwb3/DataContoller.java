@@ -1,9 +1,9 @@
 package dashboardcwb3;
 import java.util.*;
 
-public class StatisticsContoller {
+public class DataContoller {
 	User currentUser;
-		public  StatisticsContoller(){
+		public  DataContoller(){
 			currentUser = UserManager.getInstance().getCurrentUser();
 }
 		
