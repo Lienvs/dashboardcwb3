@@ -25,7 +25,6 @@ public class UserManager {
 	}
 	
 	public UserManager() {
-		// Vraag alle Users op uit de database en voeg toe aan de list van users.
 		pm = PMF.get().getPersistenceManager();
 		users = new ArrayList<User>();
 	}
