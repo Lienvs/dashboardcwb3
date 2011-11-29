@@ -46,7 +46,7 @@ public class UserManager {
 		return gezocht;
 	}
 	
-	public List<User> getUsers(){
+	public ArrayList<User> getUsers(){
 		Extent<User> extent = pm.getExtent(User.class, true);
 	    for (User u : extent) {
 	        users.add(u);
