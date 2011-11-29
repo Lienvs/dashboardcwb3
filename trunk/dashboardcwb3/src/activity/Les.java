@@ -1,5 +1,8 @@
-package dashboardcwb3;
+package activity;
 import java.util.*;
+
+import course.Course;
+
 
 public class Les extends Scolair {
 	private int rowNumber;//rij in de aula

@@ -1,4 +1,4 @@
-package dashboardcwb3;
+package user;
 
 public class RegisterController {
 	

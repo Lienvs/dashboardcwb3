@@ -1,10 +1,12 @@
-package dashboardcwb3;
+package user;
 
 import java.util.*;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.JDOHelper;
-import dashboardcwb3.PMF;
+
+import database.PMF;
+
 import javax.jdo.Query;
 import javax.jdo.Extent;
 

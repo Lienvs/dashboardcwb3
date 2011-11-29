@@ -1,6 +1,9 @@
-package dashboardcwb3;
+package course;
 
 import java.util.*;
+
+import user.Prof;
+
 
 public class CourseManager {
 	

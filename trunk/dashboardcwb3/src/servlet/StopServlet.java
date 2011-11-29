@@ -5,7 +5,8 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import dashboardcwb3.TimerController;
+import activity.TimerController;
+
 
 
 @SuppressWarnings("serial")

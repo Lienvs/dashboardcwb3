@@ -1,5 +1,14 @@
-package dashboardcwb3;
+package statistics;
 import java.util.*;
+
+import user.User;
+import user.UserManager;
+
+import course.Course;
+
+import activity.Activity;
+import activity.Scolair;
+import activity.Zelfstudie;
 
 public class DataController {
 	private User currentUser;

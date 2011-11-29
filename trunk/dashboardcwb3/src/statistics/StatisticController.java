@@ -1,4 +1,4 @@
-package dashboardcwb3;
+package statistics;
 import java.util.*;
 public class StatisticController {
 	
