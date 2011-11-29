@@ -45,7 +45,7 @@ public class UserManager {
 	}
 	
 	public List<User> getUsers(){
-		//users[i] = pm.getObjectIdClass(User.class);
+		//users = pm.getObjectIdClass(User.class);
 		return users;
 	}
 	
