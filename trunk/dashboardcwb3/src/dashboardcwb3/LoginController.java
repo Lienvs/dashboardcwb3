@@ -14,6 +14,7 @@ public boolean login(String userName,String password) {
 		boolean result = false;
 		User selected = null;
 		
+		if(userName!=null&&password!=null){
 		if (UserManager.getInstance().getUser(userName) != null){
 			selected = 	UserManager.getInstance().getUser(userName);
 			id=true;
@@ -26,7 +27,7 @@ public boolean login(String userName,String password) {
 				result = true;
 				UserManager.getInstance().setCurrentUser(selected);
 			}		
-		}	
+		}	}
 		return result;	
 	}
 	
