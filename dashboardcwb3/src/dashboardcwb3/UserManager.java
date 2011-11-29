@@ -51,7 +51,6 @@ public class UserManager {
 	    for (User u : extent) {
 	        users.add(u);
 	    }
-	    extent.closeAll();
 		return users;
 	}
 	
