@@ -5,6 +5,9 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.JDOHelper;
 import dashboardcwb3.PMF;
+import javax.jdo.Query;
+import javax.jdo.Extent;
+
 
 // Singleton
 public class UserManager {
@@ -31,7 +34,6 @@ public class UserManager {
 	
 	
 	public void addUser(User user){
-		users.add(user);
 		makePers(user);
 	}
 	
@@ -45,7 +47,11 @@ public class UserManager {
 	}
 	
 	public List<User> getUsers(){
-		//users = pm.getObjectIdClass(User.class);
+		Extent<User> extent = pm.getExtent(User.class, true);
+	    for (User u : extent) {
+	        users.add(u);
+	    }
+	    extent.closeAll();
 		return users;
 	}
 	
