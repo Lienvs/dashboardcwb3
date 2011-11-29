@@ -32,7 +32,7 @@
   
 <div id="tabs">
 	<ul>
-    	<h1> Username!! </h1>
+    	<h1> <%=(String)request.getAttribute("username")%> </h1>
     	
     	<%String bezig=(String)request.getAttribute("bezig");
 		if(bezig.equals("ja")){%>
