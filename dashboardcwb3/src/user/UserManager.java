@@ -49,7 +49,7 @@ public class UserManager {
 	}
 	
 	public ArrayList<User> getUsers(){
-		Extent<User> extent = pm.getExtent(User.class, true);
+		Extent<User> extent = pm.getExtent(User.class);
 	    for (User u : extent) {
 	        users.add(u);
 	    }
