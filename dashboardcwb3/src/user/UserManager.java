@@ -64,13 +64,12 @@ public class UserManager {
 	}
 
 	public void makePers(User user){
-		
 		try {
 			pm.makePersistent(user);
 		}
 		finally {
 			pm.flush();
-	}
+		}
 	}
 	
 }
