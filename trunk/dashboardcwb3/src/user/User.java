@@ -7,6 +7,7 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Element;
 
 import activity.Activity;
 import activity.Scolair;
@@ -20,7 +21,7 @@ import javax.jdo.annotations.Extension;
 
 
 
-@PersistenceCapable
+@PersistenceCapable(detachable="true")
 public class User {
 
 	@PrimaryKey
@@ -37,9 +38,11 @@ public class User {
 	private String gender;
 	@Persistent
 	private String rNumber;
-	@Persistent
+	@Persistent(mappedBy = "user")
+	@Element(dependent = "true")
 	private ArrayList<Activity> myActivities;
-	@Persistent
+	@Persistent(mappedBy = "user")
+	@Element(dependent = "true")
     private ArrayList<Course> myCourses;
 	
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
