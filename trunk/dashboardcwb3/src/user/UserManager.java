@@ -62,7 +62,7 @@ public class UserManager {
 	public User getCurrentUser(){
 		return currentUser;
 	}
-	
+
 	public void makePers(User user){
 		
 		try {
