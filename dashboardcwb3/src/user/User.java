@@ -7,7 +7,6 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.Element;
 
 import activity.Activity;
 import activity.Scolair;
@@ -38,11 +37,9 @@ public class User {
 	private String gender;
 	@Persistent
 	private String rNumber;
-	@Persistent(mappedBy = "user")
-	@Element(dependent = "true")
+	@Persistent
 	private ArrayList<Activity> myActivities;
-	@Persistent(mappedBy = "user")
-	@Element(dependent = "true")
+	@Persistent
     private ArrayList<Course> myCourses;
 	
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
