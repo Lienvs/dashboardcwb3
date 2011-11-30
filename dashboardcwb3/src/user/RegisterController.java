@@ -55,7 +55,7 @@ public class RegisterController {
 			}
 			
 			//Als alle controles positief blijken, maak nieuwe user aan
-			if(freeUserName&&freeRNumber&&passwordConfirmed&&allFieldsFilledIn){
+			if(passwordConfirmed&&allFieldsFilledIn){
 				registered = true;
 				User user = new User(userName,password,firstName,lastName,gender,rNumber);
 				UserManager.getInstance().addUser(user);
