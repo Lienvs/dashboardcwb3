@@ -11,10 +11,10 @@ import user.UserManager;
 import course.Course;
 import course.CourseManager;
 
-import activity.Les;
-import activity.Oefenzitting;
+import activity.Lecture;
+import activity.Practice;
 import activity.TimerController;
-import activity.Zelfstudie;
+import activity.IndividualStudy;
 
 
 
@@ -42,17 +42,17 @@ public class HomeServlet extends HttpServlet{
 							}
 						}
 						if(req.getSession().getAttribute("type").equals("les")){
-							Les les=new Les(course);
+							Lecture les=new Lecture(course);
 							user.addActivity(les);
 							timerController.startTiming(les);
 						}
 						if(req.getSession().getAttribute("type").equals("zelfstudie")){
-							Zelfstudie zelfstudie=new Zelfstudie(course);
+							IndividualStudy zelfstudie=new IndividualStudy(course);
 							user.addActivity(zelfstudie);
 							timerController.startTiming(zelfstudie);
 						}
 						if(req.getSession().getAttribute("type").equals("oefenzitting")){
-							Oefenzitting oefenzitting=new Oefenzitting(course);
+							Practice oefenzitting=new Practice(course);
 							user.addActivity(oefenzitting);
 							timerController.startTiming(oefenzitting);
 						}

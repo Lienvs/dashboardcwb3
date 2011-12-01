@@ -3,20 +3,20 @@ package course;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
-import user.Prof;
+import user.Professor;
 
 
 //import sun.util.resources.CalendarData_da;
 
 
 public class Course {
-	private Prof prof;
+	private Professor prof;
 	private int studyPoints;
 	private int totalLecture;  //aantal uur les van dit vak over hele semester
 	private int totalPractice; //aantal uur oefenzitting van dit vak over heel semester
 	private String name; //naam van het vak vb: analyse
 	
-	public Course(int totalLecture, int totalPractice, Prof prof, String name, int studyPoints) {
+	public Course(int totalLecture, int totalPractice, Professor prof, String name, int studyPoints) {
 		this.totalLecture = totalLecture;
 		this.totalPractice = totalPractice;
 		this.prof = prof;
@@ -24,7 +24,7 @@ public class Course {
 		this.studyPoints = studyPoints;
 	}	
 	
-	public Prof getProf(){
+	public Professor getProf(){
 		return prof;
 	}
 	

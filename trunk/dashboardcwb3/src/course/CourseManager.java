@@ -2,7 +2,7 @@ package course;
 
 import java.util.*;
 
-import user.Prof;
+import user.Professor;
 
 
 public class CourseManager {
@@ -25,14 +25,14 @@ public class CourseManager {
 		makeCourses();
 	}
 		public void makeCourses(){
-			Prof prof1 = new Prof("Dierckx");
-			Prof prof2 = new Prof("Vander Sloten");
-			Prof prof3 = new Prof("Smet");
-			Prof prof4 = new Prof("Van Dyck");
-			Prof prof5 = new Prof("Nauwelaers");
-			Prof prof6 = new Prof("Meerbergen");
-			Prof prof7 = new Prof("D'haene");
-			Prof prof8 = new Prof("Duval");
+			Professor prof1 = new Professor("Dierckx");
+			Professor prof2 = new Professor("Vander Sloten");
+			Professor prof3 = new Professor("Smet");
+			Professor prof4 = new Professor("Van Dyck");
+			Professor prof5 = new Professor("Nauwelaers");
+			Professor prof6 = new Professor("Meerbergen");
+			Professor prof7 = new Professor("D'haene");
+			Professor prof8 = new Professor("Duval");
 			Course anal = new Course(5*30,15,prof1,"Analyse, deel 3",5);
 			Course mech = new Course(5*30,15,prof2,"Mechanica, deel 2",5);
 			Course org = new Course(5*30,15,prof3,"Organische scheikunde",5);
