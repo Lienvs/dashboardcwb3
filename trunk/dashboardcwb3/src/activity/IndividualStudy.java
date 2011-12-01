@@ -8,7 +8,7 @@ import course.Course;
  * @author 
  * @version
  */
-public class IndividualStudy extends Curricular {
+public class IndividualStudy extends CurricularActivity {
 	
 	
 	private StudyLocation location;

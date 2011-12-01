@@ -7,7 +7,7 @@ import user.UserManager;
 import course.Course;
 
 import activity.Activity;
-import activity.Curricular;
+import activity.CurricularActivity;
 import activity.IndividualStudy;
 
 public class DataController {
@@ -23,7 +23,7 @@ private int getGemiddeldeStudie(){
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				result = result + scol.getDuration(); 
 			}
@@ -42,7 +42,7 @@ private int getGemiddeldeLes(){
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
 				result = result + scol.getDuration(); 
 			}
@@ -61,7 +61,7 @@ private int getGemiddeldeOefenzitting(){
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
 				result = result + scol.getDuration(); 
 			}
@@ -78,7 +78,7 @@ private int getDuurZelfstudie(){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				result = result + scol.getDuration(); 
 			}
@@ -92,7 +92,7 @@ private int getDuurLes(){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
 				result = result + scol.getDuration(); 
 			}
@@ -106,7 +106,7 @@ private int getDuurOefenzitting(){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
 				result = result + scol.getDuration(); 
 			}
@@ -133,7 +133,7 @@ private int getDuurThuisZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
 				if(zelf.getLocation().toString().equals("Thuis")){
@@ -148,7 +148,7 @@ private int getDuurBibZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
 				if(zelf.getLocation().toString().equals("Bibliotheek")){
@@ -163,7 +163,7 @@ private int getDuurKotZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
 				if(zelf.getLocation().toString().equals("Kot")){
@@ -179,7 +179,7 @@ private int getDuurZelfstudie(Course course){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
@@ -195,7 +195,7 @@ private int getDuurLes(Course course){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
 				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
@@ -211,7 +211,7 @@ private int getDuurOefenzitting(Course course){
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
-			Curricular scol = (Curricular)act;
+			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
 				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 

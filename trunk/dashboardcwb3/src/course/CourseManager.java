@@ -2,12 +2,14 @@ package course;
 
 import java.util.*;
 
-import user.Professor;
-
-
+/**
+ * Klasse die de vakken beheert.Het is een singletonklasse omdat men maar ŽŽn object wil dat de vakken beheert
+ * @author
+ * @version
+ *
+ */
 public class CourseManager {
-	
-	
+
 	private static CourseManager instance = null;
 	
 	private ArrayList<Course> courses;
@@ -19,11 +21,18 @@ public class CourseManager {
 		return instance;
 	}
 	
+	/**
+	 * Controller
+	 */
 	public CourseManager(){
 		
 		courses = new ArrayList<Course>();
 		makeCourses();
 	}
+	
+	/**
+	 * Slaat de vakken op in een lijst met vakken
+	 */
 		public void makeCourses(){
 			Professor prof1 = new Professor("Dierckx");
 			Professor prof2 = new Professor("Vander Sloten");
@@ -42,17 +51,23 @@ public class CourseManager {
 			Course eco = new Course(5*30,15,prof7,"Economie",5);
 			Course pno = new Course(5*30,15,prof8,"Probleemoplossen en -ontwerpen, deel 3",5);
 			courses.add(anal);courses.add(mech);courses.add(org);courses.add(kan);courses.add(iov);
-			courses.add(num);courses.add(eco);courses.add(pno);
-			
+			courses.add(num);courses.add(eco);courses.add(pno);	
 			
 		}
 		
-	
-		
+		/**
+		 * geeft een lijst met alle vakken weer
+		 * @return courses (type: ArrayList)
+		 */
 		public ArrayList<Course> getAllCourses(){
 			return courses;
 		}
 		
+		/**
+		 * geeft het opgevraagde vak weer, indien de naam van het ingegeven vak door de gebruiker overeenkomt met de naam van een vak in de lijst
+		 * @param name : de naam van het vak dat de gebruiker wil opvragen (type: String)
+		 * @return coursje : het vak dat de gebruiker heeft opgevraagd (type: Course)
+		 */
 		public Course getCourse (String name){
 			Course coursje = null;
 			for(Course course: courses){

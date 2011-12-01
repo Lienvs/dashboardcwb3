@@ -9,7 +9,7 @@ import course.Course;
  * @version
  *
  */
-public class Lecture extends Curricular {
+public class Lecture extends CurricularActivity {
 	private RowNumber rowNumber;//rij in de aula
 	
 	/**
