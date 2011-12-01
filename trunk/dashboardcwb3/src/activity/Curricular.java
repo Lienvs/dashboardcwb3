@@ -17,7 +17,7 @@ public class Curricular extends Activity{
 	/**
 	 * Constructor
 	 * @param course : het vak dat wordt verwerkt gedurende de scholaire activiteit van de gebruiker (type: Course)
-	 * @param type : het type scholaire activiteit, dit kan zijn: "les","oefenzitting","zelfstudie"
+	 * @param type : het type scholaire activiteit, dit kan zijn: "les","oefenzitting","zelfstudie" (type: String)
 	 */
 	public Curricular(Course course, String type){
 		super("scolair"); //"scholair" is het type activiteit
