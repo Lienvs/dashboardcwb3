@@ -1,11 +1,16 @@
 package activity;
 
+/**
+ * enumeratieklasse die 4 studielocaties definieert. Er kunnen geen andere studielocaties gebruikt worden.
+ * @author 
+ *
+ */
 public enum StudyLocation {
 	
-	HOME {
+	HOME { 
 
 		@Override
-		public String toString() {
+		public String toString() { // stringweergave van object HOME
 			return "Home";
 		}
 		
@@ -35,11 +40,11 @@ public enum StudyLocation {
 	public abstract String toString();
 	
 	/**
-	 * om studylocation op te vragen
+	 * Vraagt een studylocation op. Als de gebruiker een string ingeeft die overeenkomt met een van de studielocaties, dan wordt die studielocatie weergegeven
 	 * @param sl
 	 * @return
 	 */
-	public static StudyLocation getStudyLocation(String sl) {
+	public static StudyLocation getStudyLocation(String sl) { //niet echt nuttige methode ? 
 		
 		for(StudyLocation sll : StudyLocation.values()) {
 			if( sll.toString().equals(sl) ) {

@@ -1,5 +1,9 @@
 package activity;
-
+ /**
+  * enumeratieklasse die 2 studietypen definieert: theorie en oefeningen. Enkel in deze klasse kunnen nieuwe studietypen aangemaakt worden.
+  * @author 
+  *
+  */
 public enum StudyType {
 	
 	THEORY {
