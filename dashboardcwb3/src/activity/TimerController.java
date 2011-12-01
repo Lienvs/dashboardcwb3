@@ -3,7 +3,7 @@ import java.util.*;
 import java.text.*;
 
 /**
- * Klasse die zorgt voor het timen van activiteiten
+ * Klasse met timer functies
  * @author 
  * @version
  *
