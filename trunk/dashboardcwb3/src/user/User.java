@@ -106,7 +106,7 @@ public class User {
 		int resultaat = 0;
 		while(i<myActivities.size()){
 			Activity act = myActivities.get(i);
-			if(act.getGenre().equals("scolair")){
+			if(act.getActivityType().equals("scolair")){
 				Curricular scol = (Curricular) act;
 				if(scol.getCourse().equals(course) && scol.getType().equals(type)){
 					resultaat = resultaat+scol.getDuration();
@@ -123,7 +123,7 @@ public class User {
 		int resultaat = 0;
 		while(i<myActivities.size()){
 			Activity act = myActivities.get(i);
-			if(act.getGenre().equals("fun")){
+			if(act.getActivityType().equals("fun")){
 				resultaat = resultaat+act.getDuration();
 			}
 		i++;}
