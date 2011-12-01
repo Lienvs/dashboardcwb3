@@ -9,7 +9,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 
 import activity.Activity;
-import activity.Curricular;
+import activity.CurricularActivity;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -17,10 +17,15 @@ import course.Course;
 
 import javax.jdo.annotations.Extension;
 
-
-
+/**
+ * klasse die de gebruiker definieert
+ * @author
+ * @version
+ *
+ */
 
 @PersistenceCapable(detachable="true")
+
 public class User {
 
 	@PrimaryKey
@@ -42,6 +47,15 @@ public class User {
 	@Persistent
     private ArrayList<Course> myCourses;
 	
+	/**
+	 * Constructor
+	 * @param userName (type: String)
+	 * @param password (type: String)
+	 * @param firstName (type: String)
+	 * @param lastName (type: String)
+	 * @param gender (type: String)
+	 * @param rNumber (type: String)
+	 */
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
 		this.userName = userName;
 		this.key = userName;
@@ -76,14 +90,29 @@ public class User {
 		return firstName + " " + lastName;
 	}
 	
-	public void setPassword(String password){
-		this.password = password;
+	/**
+	 * verandert paswoord als paramaeter pass overeenkomt met confirmedPass.
+	 * @param password (type: String)
+	 */
+	public void setPassword(String pass, String confirmedPass){
+		if(pass.equals(confirmedPass)){
+			password = confirmedPass;
+		}
 	}
 	
+	/**
+	 * Kent activiteiten toe aan de gebruiker. 
+	 * @param x (type: Activity)
+	 */
 	public void addActivity(Activity x) {
 		myActivities.add(x);
 	}
 	
+	/**
+	 * verwijdert activiteiten uit de activiteitenlijst van de gebruiker
+	 * @param x (type: Activity)
+	 * @return check : of de activiteit al dan niet verwijderd is (type: boolean)
+	 */
 	public boolean removeActivity(Activity x) {
 		boolean check = false;
 		int i = 0;
@@ -101,13 +130,19 @@ public class User {
 		return myActivities;
 	}
 	
-	public int getTotalScolair(Course course, String type){ 
-		int i =0;
+	/**
+	 * geeft het aantal minuten dat de gebruiker voor een bepaald vak heeft gewerkt volgens het type 'les', 'zelfstudie', 'oefenzitting'
+	 * @param course : het vak waarvoor de gebruiker het aantal minuten wil weten (type: Course)
+	 * @param type (type: String)
+	 * @return resultaat (type: int)
+	 */
+	public int getTotalCurricularActivity(Course course, String type){ 
+		int i = 0;
 		int resultaat = 0;
 		while(i<myActivities.size()){
 			Activity act = myActivities.get(i);
 			if(act.getActivityType().equals("scolair")){
-				Curricular scol = (Curricular) act;
+				CurricularActivity scol = (CurricularActivity) act;
 				if(scol.getCourse().equals(course) && scol.getType().equals(type)){
 					resultaat = resultaat+scol.getDuration();
 					
@@ -117,7 +152,7 @@ public class User {
 		return resultaat;
 	}
 	
-	public int getTotalFun()
+	public int getTotalExtraCurricularActivity()
 	{
 		int i =0;
 		int resultaat = 0;

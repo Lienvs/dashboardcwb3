@@ -9,7 +9,7 @@ import java.util.*;
  * @version
  *
  */
-public class ExtraCurricular extends Activity {
+public class ExtraCurricularActivity extends Activity {
 
 private String place;
 private String description;
@@ -18,7 +18,7 @@ private String description;
  * Constructor
  * @param place
  */
-public ExtraCurricular(String place){
+public ExtraCurricularActivity(String place){
 	super("fun");
 	this.place=place;
 	description = "";//Dit kan ng aangepast worden natuurlijk

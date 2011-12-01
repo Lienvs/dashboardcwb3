@@ -1,13 +1,36 @@
 package user;
 
+/**
+ * Klasse die zorgt voor het registreren van de gebruiker.
+ * @author 
+ * @version
+ *
+ */
 public class RegisterController {
 	
+/**
+ * Controller
+ */
 	public RegisterController(){
 		
-	
 	}
 	
-	
+	/**
+	 * registreert een nieuwe gebruiker.
+	 * ingegeven userName mag nog niet opgeslagen zijn in de databank.
+	 * ingegeven rNummer mag nog niet opgeslagen zijn in de databank.
+	 * het confirmedPassword moet overeenkomen met het password.
+	 * Alle velden moeten ingevuld zijn
+	 * 
+	 * @param userName
+	 * @param password
+	 * @param confirmedPassword
+	 * @param firstName
+	 * @param lastName
+	 * @param gender
+	 * @param rNumber
+	 * @return
+	 */
 	public boolean register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
 		boolean registered = false;
 		boolean freeUserName = true;

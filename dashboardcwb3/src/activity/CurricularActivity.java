@@ -10,7 +10,7 @@ import course.Course;
  * @version
  *
  */
-public class Curricular extends Activity{
+public class CurricularActivity extends Activity{
 	private Course course;
 	private String type;  //les, Oefenzitting of Zelfstudie, ook niet beter met enumeratieklasse?
 	
@@ -19,7 +19,7 @@ public class Curricular extends Activity{
 	 * @param course : het vak dat wordt verwerkt gedurende de scholaire activiteit van de gebruiker (type: Course)
 	 * @param type : het type scholaire activiteit, dit kan zijn: "les","oefenzitting","zelfstudie" (type: String)
 	 */
-	public Curricular(Course course, String type){
+	public CurricularActivity(Course course, String type){
 		super("scolair"); //"scholair" is het type activiteit
 		this.course=course;
 		this.type=type;
