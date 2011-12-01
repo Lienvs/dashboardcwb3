@@ -18,30 +18,33 @@ public class RegisterController {
 		//Controle of username en rNummer nog niet bestaan
 		if(!UserManager.getInstance().getUsers().isEmpty()){	
 			for(User user : UserManager.getInstance().getUsers()){
-				if(user.getUserName().equals(userName)&& freeUserName){
+				if(!user.getUserName().equals(null)){
+					if(user.getUserName().equals(userName)&& freeUserName){
 					freeUserName=false;
-				}
-				if(user.getRNumber().equals(rNumber)&&freeRNumber&&freeUserName){
+					}
+					if(user.getRNumber().equals(rNumber)&&freeRNumber&&freeUserName){
 					freeRNumber=false;					
+					}
 				}
 			}
-			//Paswoord en confirmed paswoord moeten gelijk zijn
-			if(password.equals(confirmedPassword)){
-				passwordConfirmed=true;
-			}
+					//Paswoord en confirmed paswoord moeten gelijk zijn
+					if(password.equals(confirmedPassword)){
+						passwordConfirmed=true;
+					}
 			
-			//Controleer of alle velden ingevuld zijn
-			if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
-				allFieldsFilledIn = true;
-			}
+					//Controleer of alle velden ingevuld zijn
+					if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
+						allFieldsFilledIn = true;
+					}
 			
-			//Als alle controles positief blijken, maak nieuwe user aan
-			if(freeUserName&&freeRNumber&&passwordConfirmed&&allFieldsFilledIn){
-				registered = true;
-				User user = new User(userName,password,firstName,lastName,gender,rNumber);
-				UserManager.getInstance().addUser(user);
-				UserManager.getInstance().setCurrentUser(user);
-			}		
+					//Als alle controles positief blijken, maak nieuwe user aan
+					if(freeUserName&&freeRNumber&&passwordConfirmed&&allFieldsFilledIn){
+						registered = true;
+						User user = new User(userName,password,firstName,lastName,gender,rNumber);
+						UserManager.getInstance().addUser(user);
+						UserManager.getInstance().setCurrentUser(user);
+					}		
+			
 		}
 		else{
 			//Paswoord en confirmed paswoord moeten gelijk zijn

@@ -3,12 +3,21 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Subklasse van de superklasse Activity. Stelt de buitenschoolse activiteiten van de gebruiker voor.
+ * @author 
+ * @version
+ *
+ */
 public class ExtraCurricular extends Activity {
 
 private String place;
 private String description;
 
-
+/**
+ * Constructor
+ * @param place
+ */
 public ExtraCurricular(String place){
 	super("fun");
 	this.place=place;
