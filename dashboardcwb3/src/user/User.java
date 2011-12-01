@@ -9,7 +9,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.IdGeneratorStrategy;
 
 import activity.Activity;
-import activity.Scolair;
+import activity.Curricular;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -107,7 +107,7 @@ public class User {
 		while(i<myActivities.size()){
 			Activity act = myActivities.get(i);
 			if(act.getGenre().equals("scolair")){
-				Scolair scol = (Scolair) act;
+				Curricular scol = (Curricular) act;
 				if(scol.getCourse().equals(course) && scol.getType().equals(type)){
 					resultaat = resultaat+scol.getDuration();
 					
