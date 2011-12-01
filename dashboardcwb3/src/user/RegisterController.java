@@ -15,8 +15,8 @@ public class RegisterController {
 		boolean passwordConfirmed=false;
 		boolean allFieldsFilledIn = false;
 		
-		//Controle of username en rNummer nog niet bestaan
-		if(!UserManager.getInstance().getUsers().isEmpty()){	
+		 //Controle of username en rNummer nog niet bestaan
+		/* if(!UserManager.getInstance().getUsers().isEmpty()){
 			for(User user : UserManager.getInstance().getUsers()){
 				if(!user.getUserName().equals(null)){
 					if(user.getUserName().equals(userName)&& freeUserName){
@@ -45,8 +45,10 @@ public class RegisterController {
 						UserManager.getInstance().setCurrentUser(user);
 					}		
 			
+			
 		}
-		else{
+		else{ */
+		
 			//Paswoord en confirmed paswoord moeten gelijk zijn
 			if(password.equals(confirmedPassword)){
 				passwordConfirmed=true;
@@ -64,7 +66,10 @@ public class RegisterController {
 				UserManager.getInstance().addUser(user);
 				UserManager.getInstance().setCurrentUser(user);
 			}
-		}
+			
+		
+			
+		// } haakje weg omdat een deel van de code in commentvorm staat
 		return registered;
 	}
 

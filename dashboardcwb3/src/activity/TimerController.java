@@ -2,13 +2,29 @@ package activity;
 import java.util.*;
 import java.text.*;
 
+/**
+ * Klasse die zorgt voor het timen van activiteiten
+ * @author 
+ * @version
+ *
+ */
 public class TimerController {
 	private Activity currentActivity;
 	private String dateFormat;
+	
+	/**
+	 * Constructor
+	 */
 	public TimerController(){
 		currentActivity = null;
 		
 	}
+	
+	/**
+	 * begint het timen van de huidige activiteit.Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
+	 * die tijd slaan we op in de startdatum van de activiteit (elke activiteit heeft een start- en stop datum).
+	 * @param act : de activiteit die we willen timen. (type: Activity)
+	 */
 	public void startTiming(Activity act){
 		currentActivity = act;
 		Calendar cal = Calendar.getInstance();
@@ -16,19 +32,32 @@ public class TimerController {
 		
 		
 	}
+	
+	/**
+	 * be‘indigt het timen van de huidige activiteit (=currentActivity).Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
+	 * die tijd slaan we op in de stopdatum van de activiteit (elke activiteit heeft een start- en stop datum). In deze methode wordt de huidige activiteit ook op nul gezet.
+	 * 
+	 */
 	public void stopTiming(){
 		
 		Calendar cal = Calendar.getInstance();
 		currentActivity.setStop(cal.getTime());
-		
 		currentActivity = null;
 	}
 	
-	
+	/**
+	 *methode die toelaat om het timen te starten op een moment verschillend van het huidige moment. bijvoorbeeld als na de les nog wilt ingeven dat men naar de les is geweest.
+	 *@param month (type: int)
+	 *@param day (type: int)
+	 *@param hour (type: int)
+	 *@param minute (type: int)
+	 *@param act : de activiteit waarvan men de startduur wil wijzigen (type: Activity)
+	 * 
+	 */
 	public void setStartTiming(int month, int day, int hour, int minute, Activity act){
 		String aMonth; String aDay; String anHour; String aMinute;
 		
-		if(month<10){aMonth = "0"+month;}
+		if(month<10){aMonth = "0"+month;} 
 		else{aMonth = month+"";}
 		if(day<10){aDay = "0"+day;}
 		else{aDay = day+"";}
@@ -40,6 +69,15 @@ public class TimerController {
 		act.setStart(begin);
 	}
 	
+	/**
+	 *methode die toelaat om het timen te stoppen op een moment verschillend van het huidige moment. bijvoorbeeld als na de les nog wilt ingeven dat men naar de les is geweest.
+	 *@param month (type: int)
+	 *@param day (type: int)
+	 *@param hour (type: int)
+	 *@param minute (type: int)
+	 *@param act : de activiteit waarvan men de stopduur wil wijzigen (type: Activity)
+	 * 
+	 */
 	public void setStopTiming(int month, int day, int hour, int minute, Activity act){
 		String aMonth; String aDay; String anHour; String aMinute;
 		
@@ -55,6 +93,10 @@ public class TimerController {
 		act.setStop(stop);
 	}
 	
+	/**
+	 * controleert of er al dan niet een activiteit bezig is
+	 * @return isBusy (type: boolean)
+	 */
 	public boolean isBusy(){
 		boolean isBusy = false;
 		if(currentActivity == null){
@@ -63,9 +105,20 @@ public class TimerController {
 		else{isBusy = true;}
 		return isBusy;
 	}
+	
+	/**
+	 * geeft de activiteit die op dat moment bezig is weer. 
+	 * @return currentActivity (type: Activity)
+	 */
 	public Activity getCurrentActivity(){
 		return currentActivity;
 	}
+	
+	/**
+	 * methode die van een String object een datumobject maakt. 
+	 * @param dateString (type: String)
+	 * @return newDate (type: Date)
+	 */
 	 private Date changeDate(String dateString) {
 	        dateFormat = "MM:DD:HH:mm"; // om de vorm waarin je de tijd moet ingeven te tonen
 	        
@@ -81,5 +134,7 @@ public class TimerController {
 	        newCal.set(Calendar.MINUTE, parsedCal.get(Calendar.MINUTE));// minuten worden ingesteld : gebruik opgesplitste minuten van object date
 	        Date newDate = newCal.getTime();// Nieuw Date object w aangemaakt: newDate. Krijgt de Uren en Minuten van objec newCal
 	        return newDate;
-}}
+	 }
+	 
+}
 
