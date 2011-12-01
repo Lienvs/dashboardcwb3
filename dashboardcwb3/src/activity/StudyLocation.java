@@ -1,31 +1,44 @@
 package activity;
 
 public enum StudyLocation {
-	THUIS {
+	
+	HOME {
 
 		@Override
 		public String toString() {
-			return "Thuis";
+			return "Home";
 		}
 		
-	}, KOT {
+	},KOT {
 
 		@Override
 		public String toString() {
 			return "Kot";
 		}
 		
-	}, BIB {
+	}, LIBRARY {
 
 		@Override
 		public String toString() {
-			return "Bibliotheek";
+			return "Library";
+		}
+		
+	}, OTHER {
+
+		@Override
+		public String toString() {
+			return "Other";
 		}
 		
 	};
 
 	public abstract String toString();
 	
+	/**
+	 * om studylocation op te vragen
+	 * @param sl
+	 * @return
+	 */
 	public static StudyLocation getStudyLocation(String sl) {
 		
 		for(StudyLocation sll : StudyLocation.values()) {
