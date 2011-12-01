@@ -166,9 +166,18 @@ public class User {
 	
 	}
 	
+	/**
+	 * voegt vak toe
+	 * @param course
+	 */
 	public void addCourse(Course course){
 		myCourses.add(course);
 	}
+	
+	/**
+	 * verwijdert vak en verwijdert al de activiteiten die gerelateerd zijn aan dat vak.
+	 * @param course
+	 */
 	public void removeCourse(Course course){
 		myCourses.remove(course);
 		for(Activity act: myActivities){

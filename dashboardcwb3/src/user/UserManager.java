@@ -10,8 +10,12 @@ import database.PMF;
 import javax.jdo.Query;
 import javax.jdo.Extent;
 
-
-// Singleton
+/**
+ * Singleton klasse die de gebruikers beheert.
+ * @author 
+ * @version
+ *
+ */
 public class UserManager {
 
 	private static UserManager instance = null;
@@ -28,7 +32,9 @@ public class UserManager {
 		}
 		return instance;
 	}
-	
+	/**
+	 * Constructor
+	 */
 	public UserManager() {
 		pm = PMF.get().getPersistenceManager();
 		users = new ArrayList<User>();

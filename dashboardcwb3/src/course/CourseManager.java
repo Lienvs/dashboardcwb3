@@ -3,7 +3,7 @@ package course;
 import java.util.*;
 
 /**
- * Klasse die de vakken beheert.Het is een singletonklasse omdat men maar ŽŽn object wil dat de vakken beheert
+ * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar ŽŽn object wil dat de vakken beheert
  * @author
  * @version
  *

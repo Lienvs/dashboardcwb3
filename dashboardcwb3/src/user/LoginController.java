@@ -20,7 +20,7 @@ public LoginController(){
  * de username moet in de databank worden teruggevonden, de databank mag niet leeg zijn.
  * het paswoord moet gelijk zijn aan het paswoord horende bij de username.
  * @param userName (type: String)
- * @param password (type: Stirng)
+ * @param password (type: String)
  * @return result (type: boolean)
  */
 	public boolean login(String userName,String password) {
