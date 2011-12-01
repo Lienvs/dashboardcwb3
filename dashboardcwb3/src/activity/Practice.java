@@ -4,9 +4,9 @@ import java.util.*;
 import course.Course;
 
 
-public class Oefenzitting extends Scolair{
+public class Practice extends Curricular{
 	
-	public Oefenzitting(Course course) {
+	public Practice(Course course) {
 		super(course,"Oefenzitting");
 		
 //		UserManager.getInstance().sdjfg();

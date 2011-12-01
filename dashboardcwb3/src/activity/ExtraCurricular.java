@@ -3,13 +3,13 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class Fun extends Activity {
+public class ExtraCurricular extends Activity {
 
 private String place;
 private String description;
 
 
-public Fun(String place){
+public ExtraCurricular(String place){
 	super("fun");
 	this.place=place;
 	description = "";//Dit kan ng aangepast worden natuurlijk

@@ -4,10 +4,10 @@ import java.util.*;
 import course.Course;
 
 
-public class Les extends Scolair {
+public class Lecture extends Curricular {
 	private int rowNumber;//rij in de aula
 	
-	public Les(Course course) {
+	public Lecture(Course course) {
 		super(course,"les");
 	}
 	

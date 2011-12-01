@@ -2,10 +2,10 @@ package user;
 import java.util.ArrayList;
 
 
-public class Prof {
+public class Professor {
 private String profName;
 	
-	public Prof(String name){
+	public Professor(String name){
 		profName= name;
 		
 	}

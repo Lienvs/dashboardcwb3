@@ -4,13 +4,13 @@ import java.util.*;
 import course.Course;
 
 
-public class Zelfstudie extends Scolair {
+public class IndividualStudy extends Curricular {
 	
 	
 	private StudyLocation location;
 	private String what;
 	
-	public Zelfstudie(Course course) {
+	public IndividualStudy(Course course) {
 		super(course,"ZS");
 	}
 	
