@@ -22,7 +22,7 @@ private int getGemiddeldeStudie(){
 		ArrayList<Activity> actList = usertje.getActivities();
 	
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				result = result + scol.getDuration(); 
@@ -41,7 +41,7 @@ private int getGemiddeldeLes(){
 		ArrayList<Activity> actList = usertje.getActivities();
 	
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Les")){
 				result = result + scol.getDuration(); 
@@ -60,7 +60,7 @@ private int getGemiddeldeOefenzitting(){
 		ArrayList<Activity> actList = usertje.getActivities();
 	
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Oefenzitting")){
 				result = result + scol.getDuration(); 
@@ -77,7 +77,7 @@ private int getDuurZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				result = result + scol.getDuration(); 
@@ -91,7 +91,7 @@ private int getDuurLes(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Les")){
 				result = result + scol.getDuration(); 
@@ -105,7 +105,7 @@ private int getDuurOefenzitting(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Oefenzitting")){
 				result = result + scol.getDuration(); 
@@ -119,7 +119,7 @@ private int getDuurExtraScolair(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("extra-scolair")){
+		if(act.getActivityType().equals("extra-scolair")){
 			
 				result = result + act.getDuration(); 
 			}
@@ -132,7 +132,7 @@ private int getDuurThuisZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
@@ -147,7 +147,7 @@ private int getDuurBibZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
@@ -162,7 +162,7 @@ private int getDuurKotZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
@@ -178,7 +178,7 @@ private int getDuurZelfstudie(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Zelfstudie")){
 				if(scol.getCourse().toString().equals(course.toString())){
@@ -194,7 +194,7 @@ private int getDuurLes(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Les")){
 				if(scol.getCourse().toString().equals(course.toString())){
@@ -210,7 +210,7 @@ private int getDuurOefenzitting(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
-		if(act.getGenre().equals("scolair")){
+		if(act.getActivityType().equals("scolair")){
 			Curricular scol = (Curricular)act;
 			if(scol.getType().equals("Oefenzitting")){
 				if(scol.getCourse().toString().equals(course.toString())){

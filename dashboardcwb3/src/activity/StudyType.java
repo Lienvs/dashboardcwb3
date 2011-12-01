@@ -1,5 +1,20 @@
 package activity;
 
-public class StudyType {
+public enum StudyType {
+	
+	THEORY {
 
+		@Override
+		public String toString() {
+			return "Theory";
+		}
+		
+	},PRACTICE {
+
+		@Override
+		public String toString() {
+			return "Practice";
+		}
+		
+	};
 }
