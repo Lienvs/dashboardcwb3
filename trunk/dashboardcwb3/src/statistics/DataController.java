@@ -282,6 +282,21 @@ public int getDuurKotZelfstudie(){
 		}
 	} return result;
 }
+public int getDuurOtherZelfstudie(){
+	int result = 0;
+	ArrayList<Activity> actList = currentUser.getActivities();
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity)act;
+			if(scol.getType().equals("Zelfstudie")){
+				IndividualStudy zelf= (IndividualStudy) scol;
+				if(zelf.getLocation().toString().equals("Other")){
+					 result = result+ zelf.getDuration();
+				}
+			}
+		}
+	} return result;
+}
 public int getTotalScolair(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
