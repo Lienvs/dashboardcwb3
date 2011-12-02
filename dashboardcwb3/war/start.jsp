@@ -99,19 +99,23 @@
 		</div>
 		
 		<div style="display: none" id="four">
-			<input type="button" id="foura" class="check" value="Les" name="typea" >
-			<input type="button" id="fourb" class="check" value="Zelfstudie" name="typeb" >
-			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" >
+			<input type="button" id="foura" class="check" value="Les" name="typea" ></br>
+			<input type="button" id="fourb" class="check" value="Zelfstudie" name="typeb" ></br>
+			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br>
 		</div>
+		
+					<input type="hidden" class="wat" name="wat" value="">
+					<input type="hidden" class="vak" name="vak" value="">
+					<input type="hidden" class="type" name="type" value="">
 		
 		
 
 		<div style="display: none" id="five">
-			Please confirm this choice: 
+
+			Please confirm this choice: </br>
+				<%=request.getParameter("wat")%> --> <%=request.getParameter("vak")%> --> <%=request.getParameter("type")%></br>
 				<form action="/home" method="post">
-					<input class="wat" name="wat" value="">
-					<input  class="vak" name="vak" value="">
-					<input class="type" name="type" value="">
+					
 					<input type="submit" class="check" value="OK" name="ok">
 				</form>	
 				<form action="/home" method="post">

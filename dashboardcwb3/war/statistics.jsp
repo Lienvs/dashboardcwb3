@@ -26,15 +26,8 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.css" />
   
   
-  
-</head>
-
-<body style="font-size:62.5%;">
-
-
-
-<script>
-	$(function() {
+  <script>
+	 $(document).ready(function() {
 		var stop = false;
 		$( "#accordion h3" ).click(function( event ) {
 			if ( stop ) {
@@ -54,7 +47,7 @@
 					stop = true;
 				}
 			});
-		var data = <%=request.getAttribute("stri")%>;
+		var data = <%=request.getAttribute("comparisonCourses")%>;
   		var plot1 = jQuery.jqplot ('chart1', [data], { 
       		seriesDefaults: {
         		// Make this a pie chart.
@@ -70,14 +63,22 @@
 	});
 	</script>
 
+</head>
+
+<body style="font-size:62.5%;">
 
 
-<div class="demo">
+
+
+
+
+
 
 <div id="accordion">
 	<div>
-		<h3><a href="#">Section 1</a></h3>
+		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
+			<div id="chart1" style="height:300px; width:500px; " ></div>
 		</div>
 	</div>
 	<div>
@@ -102,14 +103,7 @@
 
 
 
-test
-<script>
-  
-	$(document).ready(function(){
- 
-});
-  </script>
-<div id="chart1" style="height:300px; width:500px; " ></div>
+
 
 
 

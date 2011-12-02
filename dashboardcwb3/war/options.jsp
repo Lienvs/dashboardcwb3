@@ -27,13 +27,22 @@
 		$( ".check" ).button();		
 	});
 	</script>
-	
-
-
 
 </head>
 
 <body style="font-size:62.5%;">
+
+Courses you are currently subscribed to are in orange.</br>
+Courses you can still subscribe to are in blue.</br>
+Be aware, deleting a course once, deletes all your information regarding this course!</br> 
+
+<%String message=(String) request.getAttribute("message");
+  if(message==null){}
+  else{%>
+	<div id="dialog" title="Failed">
+		<p><%=message%></p>
+	</div>
+	<%}%>
 
 	<form action="/courses" method="post">
 				<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
@@ -47,17 +56,12 @@
 					<%}
 		
 				}%></br>
-				<input type="submit" class="check" value="Submit" name="submitcourse"/>
+				<input type="submit" class="check" value="Submit" name="submit"/>
 			</form>	
 </form>	
 
 
 
-
-
-
-
-		
 	
     		
    	 	
