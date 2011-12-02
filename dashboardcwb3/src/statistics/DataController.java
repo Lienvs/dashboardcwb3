@@ -16,7 +16,7 @@ public class DataController {
 			currentUser = UserManager.getInstance().getCurrentUser();
 }
 		
-private int getGemiddeldeStudie(){
+public int getGemiddeldeStudie(){
 	int result = 0;
 	for(User usertje:UserManager.getInstance().getUsers()){
 		ArrayList<Activity> actList = usertje.getActivities();
@@ -35,7 +35,7 @@ private int getGemiddeldeStudie(){
 	return result;
 }
 
-private int getGemiddeldeLes(){
+public int getGemiddeldeLes(){
 	int result = 0;
 	for(User usertje:UserManager.getInstance().getUsers()){
 		ArrayList<Activity> actList = usertje.getActivities();
@@ -54,7 +54,7 @@ private int getGemiddeldeLes(){
 	return result;
 }
 
-private int getGemiddeldeOefenzitting(){
+public int getGemiddeldeOefenzitting(){
 	int result = 0;
 	for(User usertje:UserManager.getInstance().getUsers()){
 		ArrayList<Activity> actList = usertje.getActivities();
@@ -73,7 +73,7 @@ private int getGemiddeldeOefenzitting(){
 	return result;
 }
 
-private int getDuurZelfstudie(){
+public int getDuurZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -87,7 +87,7 @@ private int getDuurZelfstudie(){
 	return result;
 }
 
-private int getDuurLes(){
+public int getDuurLes(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -101,7 +101,7 @@ private int getDuurLes(){
 	return result;
 
 }
-private int getDuurOefenzitting(){
+public int getDuurOefenzitting(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -115,7 +115,7 @@ private int getDuurOefenzitting(){
 	return result;
 
 }
-private int getDuurExtraScolair(){
+public int getDuurExtraScolair(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
@@ -128,7 +128,7 @@ private int getDuurExtraScolair(){
 	return result;
 
 }
-private int getDuurThuisZelfstudie(){
+public int getDuurThuisZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
@@ -143,7 +143,7 @@ private int getDuurThuisZelfstudie(){
 		}
 	} return result;
 }
-private int getDuurBibZelfstudie(){
+public int getDuurBibZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
@@ -158,7 +158,7 @@ private int getDuurBibZelfstudie(){
 		}
 	} return result;
 }
-private int getDuurKotZelfstudie(){
+public int getDuurKotZelfstudie(){
 	int result = 0;
 	ArrayList<Activity> actList = currentUser.getActivities();
 	for(Activity act : actList){
@@ -173,15 +173,30 @@ private int getDuurKotZelfstudie(){
 		}
 	} return result;
 }
+public int getTotalScolair(Course course){
+	ArrayList<Activity> actList = currentUser.getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity)act;
+			
+				if(scol.getCourse().equals(course)){
+					result = result + scol.getDuration(); 
+				}
+			
+		}
+	}
+	return result;
 
-private int getDuurZelfstudie(Course course){
+}
+public int getDuurZelfstudie(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
-				if(scol.getCourse().toString().equals(course.toString())){
+				if(scol.getCourse().equals(course)){
 					result = result + scol.getDuration(); 
 				}
 			}
@@ -190,14 +205,14 @@ private int getDuurZelfstudie(Course course){
 	return result;
 
 }
-private int getDuurLes(Course course){
+public int getDuurLes(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
-				if(scol.getCourse().toString().equals(course.toString())){
+				if(scol.getCourse().equals(course)){
 					result = result + scol.getDuration(); 
 				}
 			}
@@ -206,14 +221,14 @@ private int getDuurLes(Course course){
 	return result;
 
 }
-private int getDuurOefenzitting(Course course){
+public int getDuurOefenzitting(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
-				if(scol.getCourse().toString().equals(course.toString())){
+				if(scol.getCourse().equals(course)){
 					result = result + scol.getDuration(); 
 				}
 			}
@@ -222,12 +237,12 @@ private int getDuurOefenzitting(Course course){
 	return result;
 
 }
-private String ToHourMinute(int minuten){
+public String ToHourMinute(int minuten){
 	int minutes = minuten%60;
 	int hours = minuten /60;
 	return hours +" hours " + minutes + " minutes";
 }
-private String getMaximumStudie(){
+public String getMaximumStudie(){
 	String result = "You didn't study at all";
 	int maxDuur =0;
 	ArrayList<Course> courseList= currentUser.getCourses();
