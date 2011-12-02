@@ -47,4 +47,5 @@ public String getComparisonActivityType(Course course){
 	return result;
 	
 }
+
 }
