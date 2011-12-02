@@ -40,13 +40,18 @@ public String getDescription(){
 	return description;
 	
 }
+private ExtraFun getExtra(){
+	return extra;
+}
 public String toString(){
 	String result = "U doet momenteel een buitenschoolse activiteit."+ getDescription();
 	return result;
 	
 }
 public String getType(){
-	return "Ontspanning";
+	ExtraFun ex =  getExtra();
+	return ex.toString();
+	
 }
 public void submitVragenLijst(String place, String studyType, String comment, int rating){
 	changePlace(place);

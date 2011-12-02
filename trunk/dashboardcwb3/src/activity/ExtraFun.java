@@ -29,7 +29,7 @@ public enum ExtraFun {
 		}
 	};
 		public abstract String toString();
-public static ExtraFun getExtraFun(String sl) { //niet echt nuttige methode ? 
+		public static ExtraFun getExtraFun(String sl) { //niet echt nuttige methode ? 
 		
 		for(ExtraFun sll : ExtraFun.values()) {
 			if( sll.toString().equals(sl) ) {
