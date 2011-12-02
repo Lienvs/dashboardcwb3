@@ -9,6 +9,8 @@ import javax.servlet.http.*;
 import user.User;//betekent: User uit package user
 import user.UserManager;
 
+import statistics.StatisticController;
+
 import course.Course;
 import course.CourseManager;
 
@@ -16,6 +18,7 @@ import activity.Lecture;
 import activity.Practice;
 import activity.TimerController;
 import activity.IndividualStudy;
+import activity.StudyLocation;
 
 
 
@@ -23,18 +26,20 @@ import activity.IndividualStudy;
 
 public class HomeServlet extends HttpServlet{
 	private TimerController timerController;
+	private StatisticController statController;
 	public HomeServlet() {
 		timerController=new TimerController();
+		statController=new StatisticController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
 				User user =UserManager.getInstance().getCurrentUser();
-				if(req.getParameter("ok")==null){
-				}
-				else{
+				// indien activity gestart:
+				if(req.getParameter("ok")!=null){
 					if(req.getParameter("wat")!=null){
+						String a="a";
 						if(req.getParameter("wat").equals("Scolair")){
 							String vak=req.getParameter("vak");
 							Course course=null;
@@ -65,26 +70,50 @@ public class HomeServlet extends HttpServlet{
 					}
 				}
 				
-				if(req.getParameter("stop")==null){
-				}
-				else{
+				//indien activity gestopt
+				if(req.getParameter("stop")!=null){
+					
+					String place=(String) req.getParameter("place");
+					String stype=(String) req.getParameter("stype");
+					int rating=-1; 
+					if(req.getParameter("rating")!=null){
+						rating=new Integer(req.getParameter("rating"));
+					}
+					String comment=(String) req.getParameter("comment");
+
+					timerController.getCurrentActivity().submitVragenLijst(place, stype, comment, rating);
 					timerController.stopTiming();
-				}
-				
-				if(timerController.isBusy()){
-					req.setAttribute("bezig", "ja");
-					req.setAttribute("voorstel",req.getSession().getAttribute("type"));
 					
 				}
+				
+				//indien er een activiteit bezig is
+				if(timerController.isBusy()){
+					req.setAttribute("bezig", "ja");
+					req.setAttribute("curract", timerController.getCurrentActivity());	
+					req.setAttribute("watbezig", timerController.getCurrentActivity().toString());	
+				}
+				//indien er geen activiteit bezig is
 				if(!timerController.isBusy()){
 					req.setAttribute("bezig", "nee");
 				}
+				
+				//indien van courseselectionservlet message terug, message overnemen
+				if(req.getAttribute("message")!=null){
+					req.setAttribute("message", req.getAttribute("message"));
+				}
+				
+				// vakken student, vakken,username, plaatsen
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
 				ArrayList<Course> courses = user.getCourses();
 				req.setAttribute("allcourses", allCourses);
 				req.setAttribute("courses", courses);
-				req.setAttribute("activities", user.getActivities());
+				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());
+					// nodig?  req.setAttribute("activities", user.getActivities());
 				req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());
+				//einde attributen
+				//statistieken doorgeven
+				req.setAttribute("comparisonCourses", statController.getComparisonCourses());
+				//einde stats
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	
 			}
