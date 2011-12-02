@@ -12,7 +12,7 @@ import java.util.*;
 public class ExtraCurricularActivity extends Activity {
 
 private String place;
-private String description;
+
 private ExtraFun extra;
 
 /**
@@ -23,28 +23,23 @@ public ExtraCurricularActivity(ExtraFun extra){
 	super("fun");
 	this.extra=extra;
 	place ="";
-	description = "";//Dit kan ng aangepast worden natuurlijk
+	
 	
 }
 
-public void setDescription(String des){
-	description = place + des;
-}
+
 public void changePlace(String place){
 	place=this.place;
 }
 public String getPlace(){
 	return place;
 }
-public String getDescription(){
-	return description;
-	
-}
+
 private ExtraFun getExtra(){
 	return extra;
 }
 public String toString(){
-	String result = "U doet momenteel een buitenschoolse activiteit."+ getDescription();
+	String result =  "U doet momenteel een buitenschoolse activiteit:"+getType();
 	return result;
 	
 }
