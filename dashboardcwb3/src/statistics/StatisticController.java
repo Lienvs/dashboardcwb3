@@ -15,7 +15,7 @@ public StatisticController(){
 	data = new DataController();
 }
 public String getComparisonCourses(){
-	String result = "";
+	String result = "[";
 	 User currentUser = UserManager.getInstance().getCurrentUser();
 	 ArrayList<Course> courseList = currentUser.getCourses();
 	 Iterator<Course> it = courseList.iterator();
@@ -26,7 +26,16 @@ public String getComparisonCourses(){
 			 result = result + ",";
 		 }
 	 }
+	 result = result+"]";
 	 return result;
 }
 
+public String getComparisonPlace(){
+	String result = "[";
+	result = result +"['" +  "Bibliotheek" + "'," + data.getDuurBibZelfstudie() + "],";
+	result = result +"['" +  "Thuis" + "'," + data.getDuurThuisZelfstudie() + "],";
+	result = result +"['" +  "Kot" + "'," + data.getDuurKotZelfstudie() + "]";
+	result = result + "]";
+	return result;
+}
 }
