@@ -126,6 +126,7 @@ public abstract class Activity {
 	public String getActivityType(){
 		return activityType;
 	}
+	public abstract void submitVragenLijst(String place, String studyType, String comment, int rating);
 	
 	/**
 	 * abstracte methode die ervoor zorgt dat men de toString methode kan oproepen in de subklassen van superklasse Activity.

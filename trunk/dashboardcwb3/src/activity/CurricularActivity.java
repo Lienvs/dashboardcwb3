@@ -10,7 +10,7 @@ import course.Course;
  * @version
  *
  */
-public class CurricularActivity extends Activity{
+public abstract class CurricularActivity extends Activity{
 	private Course course;
 	private String type;  //les, Oefenzitting of Zelfstudie, ook niet beter met enumeratieklasse?
 	
@@ -50,4 +50,5 @@ public class CurricularActivity extends Activity{
 		String result = "U studeert momenteel "+course.toString() + " "+getType() + ".";
 		return result;
 	}
+	public abstract void submitVragenLijst(String place, String studyType, String comment, int rating);
 }

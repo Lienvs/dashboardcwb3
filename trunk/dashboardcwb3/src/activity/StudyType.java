@@ -21,4 +21,14 @@ public enum StudyType {
 		}
 		
 	};
+public static StudyType getStudyType(String sl) { //niet echt nuttige methode ? 
+		
+		for(StudyType sll : StudyType.values()) {
+			if( sll.toString().equals(sl) ) {
+				return sll;
+			}
+		}
+		return null;
+		
+	}
 }
