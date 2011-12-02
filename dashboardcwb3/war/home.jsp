@@ -32,7 +32,9 @@
   
 <div id="tabs">
 	<ul>
-    	<h1> <%=(String)request.getAttribute("username")%> </h1>
+    	<h1> Learnkeeper </br></h1>
+    	<h2><%=(String)request.getAttribute("username")%> </h2>
+    	<p allign="right"> test</p>
     	
     	<%String bezig=(String)request.getAttribute("bezig");
 		if(bezig.equals("ja")){%>
@@ -59,131 +61,21 @@
 		<%}
 		if(!bezig.equals("ja")){%>
 			<div id="fragment-1">
-        		<%! String voorstel=null;
-  					String scol=null;
-   					String extra=null;
-    				String vak=null;
-    				String type=null;
-    			%>
-    			
-    			<% if(request.getParameter("scolair")==null && request.getParameter("extrascolair")==null  && request.getParameter("gekozenvak")==null && request.getParameter("les")==null && request.getParameter("oefenzitting")==null && request.getParameter("zelfstudie")==null ){%>
-					<form method="post">
-						<input type="submit" class="check" value="Scolair" name="scolair" >
-					</form>
-					<form  method="post">
-						<input type="submit" class="check" value="Extrascolair" name="extrascolair">
-					</form>	
-				<%voorstel=null;
-				}
-				
-				if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
-					<form method="post">
- 						<% ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
- 						for(int i=0 ; i<courses.size(); i++){%>
-    						<input type="radio" name="gekozenvak" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
-    					<%}%>
-    					<input type="submit" class="check" value="Submit" >
-    				</form>
-  	  				<%scol="scolair";%>
-  	  				<%voorstel=null;%>
-  				<%}
-	
-				if(request.getParameter("extrascolair")!=null){%>
-					Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
-					<form  	action="/home" method="post">
-						<input type="submit" class="check" value="Home" name="home">
-					</form>
-					<%extra="extrascolair";%>
-					<%voorstel=null;%>
-				<%}
-	
-				if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
-					<form method="post">
-						<input type="submit" class="check" value="Les" name="les" >
-					</form>
-					<form method="post">
-						<input type="submit" class="check" value="Zelfstudie" name="zelfstudie" >
-					</form>	
-					<form method="post">
-						<input type="submit" class="check" value="Oefenzitting" name="oefenzitting" >
-					</form>	
-					<% vak=request.getParameter("gekozenvak");%>
-					<%voorstel=null;%>
-				<%}
-	
-				if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
-					Please confirm this choice: </br>
-					<%
-					if(request.getParameter("les")!=null){
-						type="les";
-					}
-					if(request.getParameter("zelfstudie")!=null){
-						type="zelfstudie";
-					}
-					if(request.getParameter("oefenzitting")!=null){
-						type="oefenzitting";
-					}
-					
-					if(extra==null && scol!=null && vak!=null && type!=null){
-						voorstel = scol + " --> " + vak +" --> "+ type;
-					}
-					if(scol==null && extra!=null){
-						voorstel = extra;
-					}
-					%>
-					<%=voorstel%>
-					<%
-					session.setAttribute("scol",scol);
-					session.setAttribute("extra",extra);
-					session.setAttribute("type",type);
-					session.setAttribute("vak",vak);
-					session.setAttribute("voorstel",voorstel);
-					%>
-		
-					<form action="/home" method="post">
-						<input type="submit" class="check" value="OK" name="ok">
-					</form>	
-	
-					<form action="/home" method="post">
-						<input type="submit" class="check" value="Don't confirm" name="home">
-					</form>		
-	
-	
-	
-					<%}%>
+        		<%@ include file="start.jsp" %>
 				</div>
 		<%}%>
   
     	<div id="fragment-3">
-        	<% ArrayList activities = null; activities=(ArrayList)request.getAttribute("activities");
-        	if(activities.size()==0){%>
-        		<p>You have no activities</p>
-        	<%}
-        	for(int i=0; i<activities.size(); i++){
-        		//tostring==>error
-        	}%>
+        	<%@ include file="statistics.jsp" %>
     	</div>
     	<div id="fragment-4">
-        	goals
+        	<p>goals</p>
     	</div>
     	<div id="fragment-5">
         	course
     	</div>
     	<div id="fragment-6">
-        	<form action="/courses" method="post">
-				<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
-				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
-				for(int i=0 ; i<allcourses.size(); i++){
-					if(courses.contains(allcourses.get(i))){%>
-						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
-					<%}
-					else{%>
-						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
-					<%}
-		
-				}%></br>
-				<input type="submit" class="check" value="Submit" name="submitcourse"/>
-			</form>	
+        	<%@ include file="options.jsp" %>
     	</div>
     	<div id="fragment-7">
         	<form action="/logout" method="post">

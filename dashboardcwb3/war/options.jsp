@@ -35,19 +35,20 @@
 
 <body style="font-size:62.5%;">
 
-<form action="/courses" method="post">
-	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
-	<%ArrayList coursesstudent = null; courses=(ArrayList)request.getAttribute("coursestudent");
-	for(int i=0 ; i<courses.size(); i++){
-		if(coursesstudent.contains(courses.get(i))){%>
-			<input type="checkbox" checked="yes" class="check" id="<%out.print(courses.get(i).toString());%>" name="<%out.print(courses.get(i).toString());%>"/><label for="<%out.print(courses.get(i).toString());%>" style="width:400px"><%out.print(courses.get(i).toString());%></label></br>
-		<%}
-		else{%>
-			<input type="checkbox" class="check" id="<%out.print(courses.get(i).toString());%>" name="<%out.print(courses.get(i).toString());%>"/><label for="<%out.print(courses.get(i).toString());%>" style="width:400px"><%out.print(courses.get(i).toString());%></label></br>
-		<%}
+	<form action="/courses" method="post">
+				<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
+				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
+				for(int i=0 ; i<allcourses.size(); i++){
+					if(courses.contains(allcourses.get(i))){%>
+						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+					<%}
+					else{%>
+						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+					<%}
 		
-	}%></br>
-	<input type="submit" class="check" value="Submit"/>
+				}%></br>
+				<input type="submit" class="check" value="Submit" name="submitcourse"/>
+			</form>	
 </form>	
 
 

@@ -23,113 +23,101 @@
   
   <script>
   $(document).ready(function() {
-    $( ".check" ).button();		
+    $( ".check" ).button();	
+    $('#onea').click(function() {
+ 		$('#one').hide();
+ 		$('#two').show();
+ 		$('.wat').val("Scolair");
+ 		
+    });
+    $('#oneb').click(function() {
+ 		$('#one').hide();
+ 		$('#tree').show();
+ 		$('.wat').val("Extrascolair");
+    });
+    $('#twoa').click(function() {
+ 		$('#two').hide();
+ 		$('#four').show();
+ 		var text=$("#welkvak").val();
+ 		$('.vak').val(text);
+    });
+    $('#foura').click(function() {
+ 		$('#four').hide();
+ 		$('#five').show();
+ 		$('.type').val("Les");
+
+    });
+    $('#fourb').click(function() {
+ 		$('#four').hide();
+ 		$('#five').show();
+ 		$('.type').val("Zelfstudie");
+ 		
+    });
+    $('#fourb').click(function() {
+ 		$('#four').hide();
+ 		$('#five').show();
+ 		$('.type').val("Oefenzitting");
+
+    });
+    
   });
   </script>
+  
+
+  <style type="text/css"> 
+
+  </style>
+  
 </head>
 <body style="font-size:62.5%;">
 
-	<%! String voorstel=null;
-  					String scol=null;
-   					String extra=null;
-    				String vak=null;
-    				String type=null;
-    			%>
-    			
-    			<% if(request.getParameter("scolair")==null && request.getParameter("extrascolair")==null  && request.getParameter("gekozenvak")==null && request.getParameter("les")==null && request.getParameter("oefenzitting")==null && request.getParameter("zelfstudie")==null ){%>
-					<form method="post">
-						<input type="submit" class="check" value="Scolair" name="scolair" >
-					</form>
-					<form  method="post">
-						<input type="submit" class="check" value="Extrascolair" name="extrascolair">
-					</form>	
-				<%voorstel=null;
-				}
-				
-				if(request.getParameter("scolair")!=null && request.getParameter("gekozenvak")==null){%>
-					<%System.err.println("fout");%>
-					<form method="post">
- 						<% ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
- 						for(int i=0 ; i<courses.size(); i++){%>
-    						<input type="radio" name="gekozenvak" value="<%out.print(courses.get(i).toString());%>" /> <%out.print(courses.get(i).toString());%><br/>	
-    					<%}%>
-    					<input type="submit" class="check" value="Submit" >
-    				</form>
-  	  				<%scol="scolair";%>
-  	  				<%voorstel=null;%>
-  	  				<%System.err.println("fout2");%>
-  				<%}
-	
-				if(request.getParameter("extrascolair")!=null){%>
-					Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
-					<form  	action="/home" method="post">
-						<input type="submit" class="check" value="Home" name="home">
-					</form>
-					<%extra="extrascolair";%>
-					<%voorstel=null;%>
-				<%}
-	
-				if(request.getParameter("gekozenvak")!=null && request.getParameter("les")==null && request.getParameter("zelfstudie")==null && request.getParameter("oefenzitting")==null){%>
-					<form method="post">
-						<input type="submit" class="check" value="Les" name="les" >
-					</form>
-					<form method="post">
-						<input type="submit" class="check" value="Zelfstudie" name="zelfstudie" >
-					</form>	
-					<form method="post">
-						<input type="submit" class="check" value="Oefenzitting" name="oefenzitting" >
-					</form>	
-					<% vak=request.getParameter("gekozenvak");%>
-					<%voorstel=null;%>
-				<%}
-	
-				if((request.getParameter("les")!=null || request.getParameter("zelfstudie")!=null || request.getParameter("oefenzitting")!=null)){%>
-					Please confirm this choice: </br>
-					<%
-					if(request.getParameter("les")!=null){
-						type="les";
-					}
-					if(request.getParameter("zelfstudie")!=null){
-						type="zelfstudie";
-					}
-					if(request.getParameter("oefenzitting")!=null){
-						type="oefenzitting";
-					}
-					
-					if(extra==null && scol!=null && vak!=null && type!=null){
-						voorstel = scol + " --> " + vak +" --> "+ type;
-					}
-					if(scol==null && extra!=null){
-						voorstel = extra;
-					}
-					%>
-					<%=voorstel%>
-					<%
-					session.setAttribute("scol",scol);
-					session.setAttribute("extra",extra);
-					session.setAttribute("type",type);
-					session.setAttribute("vak",vak);
-					session.setAttribute("voorstel",voorstel);
-					%>
+	<div id="one">
+		<input type="button" id="onea" class="check" value="Scolair" name="wata" > </br>
+		<input type="button" id="oneb" class="check" value="Extrascolair" name="watb" >
+	</div>
 		
-					<form action="/home" method="post">
-						<input type="submit" class="check" value="OK" name="ok">
-					</form>	
-	
-					<form action="/home" method="post">
-						<input type="submit" class="check" value="Don't confirm" name="home">
-					</form>		
-	
-	
-	
-					<%}%>
-	
-	
-	
-	
+		 
+		
+		
+		<div style="display: none" id="two">
+			<select name="welkvak" id="welkvak">
+				<% ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
+ 					for(int i=0 ; i<courses.size(); i++){%>
+ 						<option value="<%out.print(courses.get(i).toString());%>"> <%out.print(courses.get(i).toString());%></option>
+    				<%}%>
+			</select>
+    		<input type="submit" id="twoa" class="check" value="Submit" >				
+		</div>
+		
+		
+		
+		<div style="display: none" id="tree">
+		Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
+			<form  	action="/home" method="post">
+				<input type="submit" class="check" value="Home" name="home">
+			</form>
+		</div>
+		
+		<div style="display: none" id="four">
+			<input type="button" id="foura" class="check" value="Les" name="typea" >
+			<input type="button" id="fourb" class="check" value="Zelfstudie" name="typeb" >
+			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" >
+		</div>
+		
+		
+
+		<div style="display: none" id="five">
+			Please confirm this choice: 
+				<form action="/home" method="post">
+					<input class="wat" name="wat" value="">
+					<input  class="vak" name="vak" value="">
+					<input class="type" name="type" value="">
+					<input type="submit" class="check" value="OK" name="ok">
+				</form>	
+				<form action="/home" method="post">
+					<input type="submit" class="check" value="Don't confirm" name="home">
+				</form>		
+		</div>
 
 </body>
-
-
-
 </html>
