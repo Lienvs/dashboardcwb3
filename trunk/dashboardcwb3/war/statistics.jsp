@@ -31,35 +31,83 @@
 
 <body style="font-size:62.5%;">
 
-test
-
-
 
 
 <script>
+	$(function() {
+		var stop = false;
+		$( "#accordion h3" ).click(function( event ) {
+			if ( stop ) {
+				event.stopImmediatePropagation();
+				event.preventDefault();
+				stop = false;
+			}
+		});
+		$( "#accordion" )
+			.accordion({
+				header: "> div > h3"
+			})
+			.sortable({
+				axis: "y",
+				handle: "h3",
+				stop: function() {
+					stop = true;
+				}
+			});
+		var data = <%=request.getAttribute("stri")%>;
+  		var plot1 = jQuery.jqplot ('chart1', [data], { 
+      		seriesDefaults: {
+        		// Make this a pie chart.
+        		renderer: jQuery.jqplot.PieRenderer, 
+        		rendererOptions: {
+          			// Put data labels on the pie slices.
+          			// By default, labels show the percentage of the slice.
+          			showDataLabels: true
+        		}
+      		}, 
+     		 legend: { show:true, location: 'e' }
+    	});
+	});
+	</script>
 
+
+
+<div class="demo">
+
+<div id="accordion">
+	<div>
+		<h3><a href="#">Section 1</a></h3>
+		<div>
+		</div>
+	</div>
+	<div>
+		<h3><a href="#">Section 2</a></h3>
+		<div>
+		</div>
+	</div>
+	<div>
+		<h3><a href="#">Section 3</a></h3>
+		<div>
+		</div>
+	</div>
+	<div>
+		<h3><a href="#">Section 4</a></h3>
+		<div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+test
+<script>
+  
 	$(document).ready(function(){
-  var data = <%=request.getAttribute("stri")%>;
-  var plot1 = jQuery.jqplot ('chart1', [data], 
-    { 
-      seriesDefaults: {
-        // Make this a pie chart.
-        renderer: jQuery.jqplot.PieRenderer, 
-        rendererOptions: {
-          // Put data labels on the pie slices.
-          // By default, labels show the percentage of the slice.
-          showDataLabels: true
-        }
-      }, 
-      legend: { show:true, location: 'e' }
-    }
-  );
+ 
 });
-  	
-  	
-	
-  
-  
   </script>
 <div id="chart1" style="height:300px; width:500px; " ></div>
 
