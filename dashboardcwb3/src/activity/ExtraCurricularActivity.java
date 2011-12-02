@@ -39,7 +39,7 @@ public String getDescription(){
 	
 }
 public String toString(){
-	String result = "extra-scolair" + " "+ getDescription();
+	String result = "U doet momenteel een buitenschoolse activiteit."+ getDescription();
 	return result;
 	
 }
