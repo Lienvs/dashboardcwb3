@@ -13,6 +13,7 @@ import javax.jdo.annotations.Persistent;
  * @version
  *
  */
+
 public class Course {
 	private Professor prof;
 	private int studyPoints;
