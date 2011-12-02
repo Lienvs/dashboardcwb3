@@ -1,5 +1,7 @@
 package activity;
 
+import java.util.ArrayList;
+
 /**
  * enumeratieklasse die 4 studielocaties definieert. Er kunnen geen andere studielocaties gebruikt worden.
  * @author 
@@ -54,5 +56,15 @@ public enum StudyLocation {
 		return null;
 		
 	}
+	
+	public ArrayList<StudyLocation> getStudyLocationAsList(){
+		ArrayList<StudyLocation> a = new ArrayList<StudyLocation>();
+		a.add(StudyLocation.HOME);
+		a.add(StudyLocation.KOT);
+		a.add(StudyLocation.LIBRARY);
+		a.add(StudyLocation.OTHER);
+		return a;
+		}	
+
 
 }
