@@ -88,8 +88,10 @@ public abstract class Activity {
 	 * @return duur : tijd in minuten (type: int)
 	 */
 	public int getDuration() {
-		long i = (stop.getTime() - start.getTime())/60000;
-		int duur = (int) i;
+		int duur = 0;
+		if(stop !=null&&start!=null){
+		int i = (int) ((stop.getTime() - start.getTime())/60000);
+		duur =  i;}
 		return duur;
 	}
 	
