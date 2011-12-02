@@ -43,4 +43,7 @@ public String toString(){
 	return result;
 	
 }
+public String getType(){
+	return "Ontspanning";
+}
 }
