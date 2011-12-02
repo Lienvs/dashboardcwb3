@@ -3,6 +3,7 @@ package user;
 import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PrimaryKey;
@@ -14,6 +15,7 @@ import activity.CurricularActivity;
 import com.google.appengine.api.datastore.Key;
 
 import course.Course;
+import course.CourseManager;
 
 import javax.jdo.annotations.Extension;
 
@@ -27,7 +29,8 @@ import javax.jdo.annotations.Extension;
 @PersistenceCapable(detachable="true")
 
 public class User {
-
+	@NotPersistent
+	private ArrayList<Course> myCourses;
 	@PrimaryKey
 	private String key;
 	@Persistent
@@ -44,9 +47,14 @@ public class User {
 	private String rNumber;
 	@Persistent
 	private ArrayList<Activity> myActivities;
-	@Persistent
-    private ArrayList<Course> myCourses;
 	
+    
+    
+    @Persistent
+    private ArrayList<String> myCourseNames;
+	
+    
+    
 	/**
 	 * Constructor
 	 * @param userName (type: String)
@@ -66,6 +74,8 @@ public class User {
 		this.rNumber = rNumber;
 		myActivities = new ArrayList<Activity>(); 
 		myCourses = new ArrayList<Course>();
+		myCourseNames = new ArrayList<String>();
+		
 	}
 	
 	public String getUserName() {
@@ -171,7 +181,11 @@ public class User {
 	 * @param course
 	 */
 	public void addCourse(Course course){
-		myCourses.add(course);
+		myCourseNames.add(course.toString());
+		
+		
+		
+		
 	}
 	
 	/**
@@ -189,7 +203,17 @@ public class User {
 	
 	
 	public ArrayList<Course> getCourses(){
+		for(String name: myCourseNames){
+			myCourses.add(CourseManager.getInstance().getCourse(name));
+		}
+		
+		
 		return myCourses;
+	}
+	
+	public ArrayList<String> getCourseNames(){
+		
+		return myCourseNames;
 	}
 	
 }
