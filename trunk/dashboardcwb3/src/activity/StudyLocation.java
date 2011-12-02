@@ -57,7 +57,7 @@ public enum StudyLocation {
 		
 	}
 	
-	public ArrayList<StudyLocation> getStudyLocationAsList(){
+	public static ArrayList<StudyLocation> getStudyLocationAsList(){
 		ArrayList<StudyLocation> a = new ArrayList<StudyLocation>();
 		a.add(StudyLocation.HOME);
 		a.add(StudyLocation.KOT);
