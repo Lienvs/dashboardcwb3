@@ -24,20 +24,28 @@
   <script>
   $(document).ready(function() {
     $("#tabs").tabs();
-    $( ".check" ).button();		
+    $( ".check" ).button();	
+    
   });
   </script>
 </head>
 <body style="font-size:62.5%;">
   
-<div id="tabs">
+ <% if( request.getAttribute("message")!=null){%>
+ 	message
+	
+ <%}%>
+ 
+<div class="tabs" id="tabs">
 	<ul>
     	<h1> Learnkeeper </br></h1>
     	<h2><%=(String)request.getAttribute("username")%> </h2>
-    	<p allign="right"> test</p>
     	
-    	<%String bezig=(String)request.getAttribute("bezig");
+    	
+    	
+		<% String bezig=(String)request.getAttribute("bezig");
 		if(bezig.equals("ja")){%>
+			<p allign="right"> <%=request.getAttribute("watbezig")%></p>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
 		<%}
 		else{%>
@@ -53,10 +61,7 @@
     
     	<%if(bezig.equals("ja")){%>
 			<div id="fragment-2">
-      			vragenlijst inladen </br>
-				<form action="/home" method="post">
-					<input type="submit" class="check" value="Stop activity" name="stop">
-				</form>
+      			<%@ include file="stop.jsp" %>
   			</div>
 		<%}
 		if(!bezig.equals("ja")){%>
@@ -68,20 +73,25 @@
     	<div id="fragment-3">
         	<%@ include file="statistics.jsp" %>
     	</div>
+    	
     	<div id="fragment-4">
-        	<p>goals</p>
+        	goals
     	</div>
+    	
     	<div id="fragment-5">
         	course
     	</div>
+    	
     	<div id="fragment-6">
         	<%@ include file="options.jsp" %>
     	</div>
+    	
     	<div id="fragment-7">
         	<form action="/logout" method="post">
 				<input type="submit" class="check" value="Logout" name="logout">
 			</form>
     	</div>
+    	
 </div>
 </body>
 </html>
