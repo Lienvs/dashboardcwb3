@@ -38,4 +38,13 @@ public String getComparisonPlace(){
 	result = result + "]";
 	return result;
 }
+public String getComparisonActivityType(Course course){
+	String result = "[";
+	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie(course) + "],";
+	result = result +"['" +  "Bibliotheek" + "'," + data.getDuurLes(course) + "],";
+	result = result +"['" +  "Bibliotheek" + "'," + data.getDuurOefenzitting(course) + "]";
+	result = result + "]";
+	return result;
+	
+}
 }
