@@ -53,7 +53,7 @@
  		$('.type').val("Zelfstudie");
  		
     });
-    $('#fourb').click(function() {
+    $('#fourc').click(function() {
  		$('#four').hide();
  		$('#five').show();
  		$('.type').val("Oefenzitting");
