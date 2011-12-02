@@ -41,8 +41,8 @@ public String getComparisonPlace(){
 public String getComparisonActivityType(Course course){
 	String result = "[";
 	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie(course) + "],";
-	result = result +"['" +  "Bibliotheek" + "'," + data.getDuurLes(course) + "],";
-	result = result +"['" +  "Bibliotheek" + "'," + data.getDuurOefenzitting(course) + "]";
+	result = result +"['" +  "Les" + "'," + data.getDuurLes(course) + "],";
+	result = result +"['" +  "Oefenzitting" + "'," + data.getDuurOefenzitting(course) + "]";
 	result = result + "]";
 	return result;
 	
