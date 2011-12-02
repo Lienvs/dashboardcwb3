@@ -34,7 +34,25 @@ public int getGemiddeldeStudie(){
 	result = result/UserManager.getInstance().getUsers().size();
 	return result;
 }
-
+public int getGemiddeldeStudie(Course course){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity)act;
+			if(scol.getType().equals("Zelfstudie")){
+				if(scol.getCourse().equals(course)){
+				result = result + scol.getDuration(); 
+			}}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
 public int getGemiddeldeLes(){
 	int result = 0;
 	for(User usertje:UserManager.getInstance().getUsers()){
@@ -46,6 +64,25 @@ public int getGemiddeldeLes(){
 			if(scol.getType().equals("Les")){
 				result = result + scol.getDuration(); 
 			}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
+public int getGemiddeldeLes(Course course){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity)act;
+			if(scol.getType().equals("Les")){
+				if(scol.getCourse().equals(course)){
+				result = result + scol.getDuration(); 
+			}}
 		}
 	}
 	
@@ -72,7 +109,25 @@ public int getGemiddeldeOefenzitting(){
 	result = result/UserManager.getInstance().getUsers().size();
 	return result;
 }
-
+public int getGemiddeldeOefenzitting(Course course){
+	int result = 0;
+	for(User usertje:UserManager.getInstance().getUsers()){
+		ArrayList<Activity> actList = usertje.getActivities();
+	
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity)act;
+			if(scol.getType().equals("Oefenzitting")){
+				if(scol.getCourse().equals(course)){
+				result = result + scol.getDuration(); 
+			}}
+		}
+	}
+	
+}
+	result = result/UserManager.getInstance().getUsers().size();
+	return result;
+}
 public int getDuurZelfstudie(){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
@@ -257,5 +312,6 @@ public String getMaximumStudie(){
 	result = "You studied " + maxDuur + " for " + maxCourse.toString();
 	}
 	return result;
-}}
+}
+}
 
