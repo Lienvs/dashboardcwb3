@@ -104,18 +104,17 @@
 			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br>
 		</div>
 		
-					<input type="hidden" class="wat" name="wat" value="">
-					<input type="hidden" class="vak" name="vak" value="">
-					<input type="hidden" class="type" name="type" value="">
+					
 		
 		
 
 		<div style="display: none" id="five">
 
-			Please confirm this choice: </br>
-				<%=request.getParameter("wat")%> --> <%=request.getParameter("vak")%> --> <%=request.getParameter("type")%></br>
+			Please confirm your choice </br>
 				<form action="/home" method="post">
-					
+					<input type="hidden" class="wat" name="wat" value="">
+					<input type="hidden" class="vak" name="vak" value="">
+					<input type="hidden" class="type" name="type" value="">
 					<input type="submit" class="check" value="OK" name="ok">
 				</form>	
 				<form action="/home" method="post">
