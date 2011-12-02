@@ -47,9 +47,11 @@ public class CourseSelectionServlet extends HttpServlet{
 							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){}
 							else{
 								user.addCourse(CourseManager.getInstance().getAllCourses().get(i));
+								
 							}
 						}
 					}
+					UserManager.getInstance().addUser(user);
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){
