@@ -34,34 +34,35 @@ public class HomeServlet extends HttpServlet{
 				if(req.getParameter("ok")==null){
 				}
 				else{
-					if(req.getSession().getAttribute("scol")!=null){
-						String vak=req.getParameter("vak");
-						Course course=null;
-						for(int i=0; i<user.getCourses().size(); i++){
-							if(user.getCourses().get(i).toString().equals(vak)){
-								course=user.getCourses().get(i);
+					if(req.getParameter("wat")!=null){
+						if(req.getParameter("wat").equals("Scolair")){
+							String vak=req.getParameter("vak");
+							Course course=null;
+							for(int i=0; i<user.getCourses().size(); i++){
+								if(user.getCourses().get(i).toString().equals(vak)){
+									course=user.getCourses().get(i);
+								}
+							}
+							if(req.getParameter("type").equals("Les")){
+								Lecture les=new Lecture(course);
+								user.addActivity(les);
+								timerController.startTiming(les);
+							}
+							if(req.getParameter("type").equals("Zelfstudie")){
+								IndividualStudy zelfstudie=new IndividualStudy(course);
+								user.addActivity(zelfstudie);
+								timerController.startTiming(zelfstudie);
+							}
+							if(req.getParameter("type").equals("Oefenzitting")){
+								Practice oefenzitting=new Practice(course);
+								user.addActivity(oefenzitting);
+								timerController.startTiming(oefenzitting);
 							}
 						}
-						if(req.getSession().getAttribute("type").equals("les")){
-							Lecture les=new Lecture(course);
-							user.addActivity(les);
-							timerController.startTiming(les);
+						if(req.getParameter("wat").equals("Extrascolair")){
+							
 						}
-						if(req.getSession().getAttribute("type").equals("zelfstudie")){
-							IndividualStudy zelfstudie=new IndividualStudy(course);
-							user.addActivity(zelfstudie);
-							timerController.startTiming(zelfstudie);
-						}
-						if(req.getSession().getAttribute("type").equals("oefenzitting")){
-							Practice oefenzitting=new Practice(course);
-							user.addActivity(oefenzitting);
-							timerController.startTiming(oefenzitting);
-						}
-						
 					}
-					if(req.getSession().getAttribute("extra")!=null){
-					//add extrascolair
-					}	
 				}
 				
 				if(req.getParameter("stop")==null){
