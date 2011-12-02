@@ -21,7 +21,7 @@ public class IndividualStudy extends CurricularActivity {
 	 * @param studyType : type zelfstudie dat de gebruiker uitoefent, ook hier gaat het om types uit de enumeratieklasse StudyType (type: StudyType)
 	 */
 	public IndividualStudy(Course course) {// location en studyType als parameter meegeven zodat programma vraagt welk van,theorie/oefening en waar?
-		super(course,"ZS");
+		super(course,"Zelfstudie");
 		this.location=location;
 		this.studyType=studyType;
 	}
@@ -56,5 +56,11 @@ public class IndividualStudy extends CurricularActivity {
  */
 	public String getStudyType() {
 		return studyType.toString();
+	}
+	public void submitVragenLijst(String place, String studyType, String comment, int rating){
+		location = StudyLocation.getStudyLocation(place);
+		this.studyType = StudyType.getStudyType(studyType);
+		postComment(comment);
+		setRating(rating);
 	}
 }

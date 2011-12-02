@@ -35,4 +35,9 @@ public class Lecture extends CurricularActivity {
 	public String getRowNumber() {
 		return rowNumber.toString();
 	}
+	public void submitVragenLijst(String place, String studyType, String comment, int rating){
+		
+		postComment(comment);
+		setRating(rating);
+	}
 }
