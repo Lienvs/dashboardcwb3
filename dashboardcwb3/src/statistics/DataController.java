@@ -49,8 +49,25 @@ public int getGemiddeldeStudie(Course course){
 		}
 	}
 	
+}	int users =0;
+for(User user:UserManager.getInstance().getUsers()){
+	boolean vak = false;
+	
+	for(Activity act:user.getActivities()){
+	while(!vak){
+		if (act.getActivityType().equals("scolair")){
+			CurricularActivity scol = (CurricularActivity) act;
+			if(scol.getType().equals("Zelfstudie")){
+				if(scol.getCourse().equals(course)){
+					users++;
+					vak=true;
+				}
+			}
+		}
+	}
+	}
 }
-	result = result/UserManager.getInstance().getUsers().size();
+	result = result/users;
 	return result;
 }
 public int getGemiddeldeLes(){
@@ -68,7 +85,8 @@ public int getGemiddeldeLes(){
 	}
 	
 }
-	result = result/UserManager.getInstance().getUsers().size();
+	
+	result= result/UserManager.getInstance().getUsers().size();
 	return result;
 }
 public int getGemiddeldeLes(Course course){
@@ -87,7 +105,25 @@ public int getGemiddeldeLes(Course course){
 	}
 	
 }
-	result = result/UserManager.getInstance().getUsers().size();
+	int users =0;
+	for(User user:UserManager.getInstance().getUsers()){
+		boolean vak = false;
+		
+		for(Activity act:user.getActivities()){
+		while(!vak){
+			if (act.getActivityType().equals("scolair")){
+				CurricularActivity scol = (CurricularActivity) act;
+				if(scol.getType().equals("Les")){
+					if(scol.getCourse().equals(course)){
+						users++;
+						vak=true;
+					}
+				}
+			}
+		}
+		}
+	}
+		result = result/users;
 	return result;
 }
 
@@ -125,7 +161,25 @@ public int getGemiddeldeOefenzitting(Course course){
 	}
 	
 }
-	result = result/UserManager.getInstance().getUsers().size();
+	int users =0;
+	for(User user:UserManager.getInstance().getUsers()){
+		boolean vak = false;
+		
+		for(Activity act:user.getActivities()){
+		while(!vak){
+			if (act.getActivityType().equals("scolair")){
+				CurricularActivity scol = (CurricularActivity) act;
+				if(scol.getType().equals("Les")){
+					if(scol.getCourse().equals(course)){
+						users++;
+						vak=true;
+					}
+				}
+			}
+		}
+		}
+	}
+		result = result/users;
 	return result;
 }
 public int getDuurZelfstudie(){
@@ -191,7 +245,7 @@ public int getDuurThuisZelfstudie(){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
-				if(zelf.getLocation().toString().equals("Thuis")){
+				if(zelf.getLocation().toString().equals("Home")){
 					 result = result+ zelf.getDuration();
 				}
 			}
@@ -206,7 +260,7 @@ public int getDuurBibZelfstudie(){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
 				IndividualStudy zelf= (IndividualStudy) scol;
-				if(zelf.getLocation().toString().equals("Bibliotheek")){
+				if(zelf.getLocation().toString().equals("Library")){
 					 result = result+ zelf.getDuration();
 				}
 			}
