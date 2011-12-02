@@ -92,6 +92,14 @@ public abstract class Activity {
 		if(stop !=null&&start!=null){
 		int i = (int) ((stop.getTime() - start.getTime())/60000);
 		duur =  i;}
+		if(getActivityType().equals("scolair")){
+			if (getType().equals("Les")||getType().equals("Oefenzitting")){
+				if(duur>105 && duur< 135){
+					duur = 120;
+				}
+			}
+			
+		}
 		return duur;
 	}
 	
@@ -123,7 +131,7 @@ public abstract class Activity {
 	 * abstracte methode die ervoor zorgt dat men de toString methode kan oproepen in de subklassen van superklasse Activity.
 	 */
 	public abstract String toString();
-		
+	public abstract String getType(); 
 	
 
 	
