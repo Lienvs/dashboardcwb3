@@ -21,6 +21,12 @@ public enum ExtraFun {
 		public String toString() {
 			return "Nightlife";
 		}
+	},OTHER {
+
+		@Override
+		public String toString() {
+			return "Other";
+		}
 	};
 		public abstract String toString();
 public static ExtraFun getExtraFun(String sl) { //niet echt nuttige methode ? 
