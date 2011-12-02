@@ -47,7 +47,7 @@ public class CurricularActivity extends Activity{
 	 *  @return result (type: String)
 	 */
 	public String toString(){
-		String result = "U studeert momenteel "+course.toString()+".";
+		String result = "U studeert momenteel "+course.toString() + " "+getType() + ".";
 		return result;
 	}
 }
