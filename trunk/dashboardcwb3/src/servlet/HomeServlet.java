@@ -19,6 +19,8 @@ import activity.Practice;
 import activity.TimerController;
 import activity.IndividualStudy;
 import activity.StudyLocation;
+import activity.ExtraFun;
+import activity.ExtraCurricularActivity;
 
 
 
@@ -39,7 +41,6 @@ public class HomeServlet extends HttpServlet{
 				// indien activity gestart:
 				if(req.getParameter("ok")!=null){
 					if(req.getParameter("wat")!=null){
-						String a="a";
 						if(req.getParameter("wat").equals("Scolair")){
 							String vak=req.getParameter("vak");
 							Course course=null;
@@ -65,7 +66,9 @@ public class HomeServlet extends HttpServlet{
 							}
 						}
 						if(req.getParameter("wat").equals("Extrascolair")){
-							
+							ExtraFun extra=ExtraFun.getExtraFun(req.getParameter("watextra")) ;
+							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
+							timerController.startTiming(act);
 						}
 					}
 				}
@@ -89,17 +92,7 @@ public class HomeServlet extends HttpServlet{
 				//indien er een activiteit bezig is
 				if(timerController.isBusy()){
 					req.setAttribute("bezig", "ja");
-					req.setAttribute("curract", timerController.getCurrentActivity());	
-					req.setAttribute("watbezig", timerController.getCurrentActivity().toString());	
-				}
-				//indien er geen activiteit bezig is
-				if(!timerController.isBusy()){
-					req.setAttribute("bezig", "nee");
-				}
-				
-				//indien van courseselectionservlet message terug, message overnemen
-				if(req.getAttribute("message")!=null){
-					req.setAttribute("message", req.getAttribute("message"));
+					req.setAttribute("curract", timerController.getCurrentActivity().getType());
 				}
 				
 				// vakken student, vakken,username, plaatsen
