@@ -57,7 +57,12 @@ public class CourseSelectionServlet extends HttpServlet{
 				if(!possible){
 					req.setAttribute("message", "Please select at least one course");
 					req.setAttribute("course", CourseManager.getInstance().getAllCourses());
-					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);	
+					if(req.getParameter("submit")!=null){
+						getServletContext().getRequestDispatcher("/home").forward(req, resp);
+					}
+					if(req.getParameter("submitcourse")!=null){
+						getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);	
+					}
 				}
 				
 				
