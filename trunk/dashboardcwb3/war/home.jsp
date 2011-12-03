@@ -21,7 +21,7 @@
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.css" />
   
-  <script>
+  <script >
   $(document).ready(function() {
     $("#tabs").tabs();
     $( ".check" ).button();	
@@ -32,7 +32,9 @@
 <body style="font-size:62.5%;">
   
  <% if( request.getAttribute("message")!=null){%>
- 	message
+ 	<script>
+   	$tabs.tabs('select', '6');
+    </script>
 	
  <%}%>
  
@@ -44,7 +46,7 @@
     	
     	
 		<% String bezig=(String)request.getAttribute("bezig");
-		if(bezig.equals("ja")){%>
+		if(bezig!=null){%>
 			<p allign="right"> <%=request.getAttribute("watbezig")%></p>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
 		<%}
@@ -59,12 +61,12 @@
         <li><a href="#fragment-7"><span>Logout</span></a></li>
     </ul>
     
-    	<%if(bezig.equals("ja")){%>
+    	<%if(bezig!=null){%>
 			<div id="fragment-2">
       			<%@ include file="stop.jsp" %>
   			</div>
 		<%}
-		if(!bezig.equals("ja")){%>
+		if(bezig==null){%>
 			<div id="fragment-1">
         		<%@ include file="start.jsp" %>
 				</div>

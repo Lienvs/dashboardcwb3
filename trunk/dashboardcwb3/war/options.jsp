@@ -58,8 +58,18 @@ Be aware, deleting a course once, deletes all your information regarding this co
 				}%></br>
 				<input type="submit" class="check" value="Submit" name="submit"/>
 			</form>	
-</form>	
-
+<script>
+$("form").submit(function() {
+      var n = $("input:checked").length;
+      if(n==0){
+      	alert("Please select at least one course");
+      	return false;
+      }
+      else{
+      return true;
+      }
+    });
+</script>
 
 
 	

@@ -25,18 +25,21 @@
 <body style="font-size:62.5%;">
 
   <form action="/home" method="post">
-  			Study location: 
-					<select name="place" id="place">
-						<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");
- 						for(int i=0 ; i<places.size(); i++){%>
- 							<option value="<%out.print(places.get(i));%>"> <%out.print(places.get(i));%></option>
-    					<%}%>
-					</select><br />
-					Study type: 
-					<select name="stype" id="stype">
-						<option value="Theory"> Theory</option>
- 						<option value="Practice"> Practice</option>
-					</select><br />
+  			<% String act=(String) request.getAttribute("curract");
+  			if(act.equals("Zelfstudie")){%>
+  				Study location: 
+						<select name="place" id="place">
+							<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");
+ 							for(int i=0 ; i<places.size(); i++){%>
+ 								<option value="<%out.print(places.get(i));%>"> <%out.print(places.get(i));%></option>
+    						<%}%>
+						</select><br />
+						Study type: 
+						<select name="stype" id="stype">
+							<option value="Theory"> Theory</option>
+ 							<option value="Practice"> Practice</option>
+						</select><br />
+			<%}%>
 			rating: 
 			<input type="radio" name="rating" value="1" /> 1
 			<input type="radio" name="rating" value="2" /> 2

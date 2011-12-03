@@ -45,19 +45,23 @@
  		$('#four').hide();
  		$('#five').show();
  		$('.type').val("Les");
-
     });
     $('#fourb').click(function() {
  		$('#four').hide();
  		$('#five').show();
  		$('.type').val("Zelfstudie");
- 		
     });
     $('#fourc').click(function() {
  		$('#four').hide();
  		$('#five').show();
  		$('.type').val("Oefenzitting");
-
+    });
+    $('#treea').click(function() {
+ 		$('#tree').hide();
+ 		$('#five').show();
+ 		$('.type').val("Oefenzitting");
+ 		var text=$("#watextra").val();
+ 		$('.watextra').val(text);
     });
     
   });
@@ -92,10 +96,12 @@
 		
 		
 		<div style="display: none" id="tree">
-		Dit is momenteel nog niet beschikbaar,gelieve terug naar de homepage te gaan.
-			<form  	action="/home" method="post">
-				<input type="submit" class="check" value="Home" name="home">
-			</form>
+			<select name="watextra" id="watextra">
+				<option value="Sleep"> Sleep</option>
+ 				<option value="Sport"> Sport</option>
+ 				<option value="Nightlife"> Nightlife</option>
+			</select>
+    		<input type="submit" id="treea" class="check" value="Submit" >	
 		</div>
 		
 		<div style="display: none" id="four">
@@ -112,9 +118,10 @@
 
 			Please confirm your choice </br>
 				<form action="/home" method="post">
-					<input type="hidden" class="wat" name="wat" value="">
-					<input type="hidden" class="vak" name="vak" value="">
-					<input type="hidden" class="type" name="type" value="">
+					<input  class="wat" name="wat" value="">
+					<input  class="vak" name="vak" value="">
+					<input  class="type" name="type" value="">
+					<input  class="watextra" name="watextra" value="">
 					<input type="submit" class="check" value="OK" name="ok">
 				</form>	
 				<form action="/home" method="post">
