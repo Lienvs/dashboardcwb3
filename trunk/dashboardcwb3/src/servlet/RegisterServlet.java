@@ -1,5 +1,4 @@
 package servlet;
-import java.util.*;
 
 import java.io.IOException;
 import javax.servlet.*;
