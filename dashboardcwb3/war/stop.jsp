@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
+<%@ page import="activity.*" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -24,9 +25,9 @@
   </head>
 <body style="font-size:62.5%;">
 
-  <form action="/home" method="post">
-  			<% String act=(String) request.getAttribute("curract");
-  			if(act.equals("Zelfstudie")){%>
+  <form action="/stop" method="post">
+  			<% Activity act=(Activity) request.getAttribute("curract");
+  			if(act.getType().equals("Zelfstudie")){%>
   				Study location: 
 						<select name="place" id="place">
 							<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");
@@ -41,11 +42,11 @@
 						</select><br />
 			<%}%>
 			rating: 
-			<input type="radio" name="rating" value="1" /> 1
-			<input type="radio" name="rating" value="2" /> 2
-			<input type="radio" name="rating" value="3" /> 3
-			<input type="radio" name="rating" value="4" /> 4
-			<input type="radio" name="rating" value="5" /> 5</br>
+				<input type="radio" name="rating" value="1" /> 1
+				<input type="radio" name="rating" value="2" /> 2
+				<input type="radio" name="rating" value="3" /> 3
+				<input type="radio" name="rating" value="4" /> 4
+				<input type="radio" name="rating" value="5" /> 5</br>
 			comment: <textarea name="comment" id="comment">
   				</textarea></br>
 			<input type="submit" class="check" name="stop" value="Stop"/>

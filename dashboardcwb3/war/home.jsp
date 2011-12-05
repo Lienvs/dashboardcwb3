@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
+<%@ page import="activity.*" %>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -28,26 +29,19 @@
     
   });
   </script>
-</head>
-<body style="font-size:62.5%;">
   
- <% if( request.getAttribute("message")!=null){%>
- 	<script>
-   	$tabs.tabs('select', '6');
-    </script>
-	
- <%}%>
+</head>
+
+<body style="font-size:62.5%;">
  
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> Learnkeeper </br></h1>
     	<h2><%=(String)request.getAttribute("username")%> </h2>
-    	
-    	
-    	
+
 		<% String bezig=(String)request.getAttribute("bezig");
 		if(bezig!=null){%>
-			<p allign="right"> <%=request.getAttribute("watbezig")%></p>
+			<p allign="right"> <%=request.getAttribute("curract").toString()%></p>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
 		<%}
 		else{%>
@@ -56,7 +50,7 @@
  
         <li><a href="#fragment-3"><span>Statistics</span></a></li>
         <li><a href="#fragment-4"><span>Goals</span></a></li>
-        <li><a href="#fragment-5"><span>Course information</span></a></li>
+        <li><a href="#fragment-5"><span>My courses</span></a></li>
         <li><a href="#fragment-6"><span>Options</span></a></li>
         <li><a href="#fragment-7"><span>Logout</span></a></li>
     </ul>
@@ -81,7 +75,7 @@
     	</div>
     	
     	<div id="fragment-5">
-        	course
+        	<%@ include file="courses.jsp" %>
     	</div>
     	
     	<div id="fragment-6">
