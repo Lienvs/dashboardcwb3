@@ -117,7 +117,7 @@
 		<div style="display: none" id="five">
 
 			Please confirm your choice </br>
-				<form action="/home" method="post">
+				<form action="/start" method="post">
 					<input  class="wat" name="wat" value="">
 					<input  class="vak" name="vak" value="">
 					<input  class="type" name="type" value="">

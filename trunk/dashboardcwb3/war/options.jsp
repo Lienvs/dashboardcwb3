@@ -45,7 +45,7 @@ Be aware, deleting a course once, deletes all your information regarding this co
 	<%}%>
 
 	<form action="/courses" method="post">
-				<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("courses");
+				<%
 				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
 				for(int i=0 ; i<allcourses.size(); i++){
 					if(courses.contains(allcourses.get(i))){%>
