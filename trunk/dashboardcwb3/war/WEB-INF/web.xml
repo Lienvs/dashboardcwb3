@@ -56,6 +56,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/start</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>stop</servlet-name>
+		<servlet-class>servlet.StopServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>stop</servlet-name>
+		<url-pattern>/stop</url-pattern>
+	</servlet-mapping>
+	
 
 	<servlet>
 		<servlet-name>home</servlet-name>
