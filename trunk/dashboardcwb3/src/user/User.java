@@ -181,11 +181,7 @@ public class User {
 	 * @param course
 	 */
 	public void addCourse(Course course){
-		myCourseNames.add(course.toString());
-		
-		
-		
-		
+		myCourseNames.add(course.toString());		
 	}
 	
 	/**
@@ -206,8 +202,6 @@ public class User {
 		for(String name: myCourseNames){
 			myCourses.add(CourseManager.getInstance().getCourse(name));
 		}
-		
-		
 		return myCourses;
 	}
 	
