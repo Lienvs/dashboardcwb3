@@ -62,27 +62,56 @@ public String getBarAvarageActivityType(Course course){//zelfde als hierboven, m
 	return result;
 
 }
-public String getStudieDay(Date stopDate){
+public String getStudyDay(Date startDate){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
-	stop.setTime(stopDate);
-	start.setTime(stopDate);
+	stop.setTime(startDate);
+	start.setTime(startDate);
 	int i = 0;
 	User currentUser = UserManager.getInstance().getCurrentUser();
 	while(i<8){
 		int getal=0;
-		start.roll(Calendar.DAY_OF_YEAR,false);
+		stop.roll(Calendar.DAY_OF_YEAR,true);
 	for(Activity act:currentUser.getActivities()){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())){
 			getal = getal+act.getDuration();
 			}
 		}
 	result = result + getal;
-	stop.roll(Calendar.DAY_OF_YEAR,false);
+	start.roll(Calendar.DAY_OF_YEAR,true);
 	i++; if(i<8){result = result + ",";
 	}
 }
 result= result+"]";
 return result;}
+
+public String getStudyWeek(){
+	String result ="[";
+	Calendar stop = Calendar.getInstance();
+	Calendar start = Calendar.getInstance();
+	if(start.WEEK_OF_YEAR>20){
+		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	}
+	else{int i = start.WEEK_OF_YEAR-1;
+	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
+	}
+	Calendar mid = start;
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	while(start.before(stop)){
+		int getal=0;
+		mid.roll(Calendar.DAY_OF_YEAR,true);
+	for(Activity act:currentUser.getActivities()){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
+			getal = getal+act.getDuration();
+			}
+		}
+	result = result + getal;
+	start.roll(Calendar.DAY_OF_YEAR,true);
+	if(start.before(stop)){result = result + ",";
+	}
+	
+}result= result+"]";
+return result;}
 }
+
