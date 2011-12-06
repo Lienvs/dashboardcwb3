@@ -14,11 +14,19 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
+<script>
+$('.numbersOnly').keyup(function () { 
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+});
+</script>
+
+Please fill in your goals for this week.</br>
+Attention: if you've already filled in your goals you will overwrite them.</br>
 <form action=\goal  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 	for(int i=0; i<courses.size();i++){%>
 		<%=courses.get(i).toString()%>:
-		<input type="text" name="<%=courses.get(i).toString()%>" >	
+		<input type="text" class="numbersOnly" name="<%=courses.get(i).toString()%>" >	</br>
 	<%}}%>
-	<input type="submit" id="submit" class="check" value="Submit" >	
-	
+<input type="submit" id="submit" class="check" value="Submit">	
+</form>

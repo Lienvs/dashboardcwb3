@@ -17,36 +17,19 @@
 
 <script>
 	 $(document).ready(function() {
-		var stop = false;
-		$( "#accordion h3" ).click(function( event ) {
-			if ( stop ) {
-				event.stopImmediatePropagation();
-				event.preventDefault();
-				stop = false;
-			}
-		});
-		$( "#accordion" )
-			.accordion({
-				header: "> div > h3"
-			})
-			.sortable({
-				axis: "y",
-				handle: "h3",
-				stop: function() {
-					stop = true;
-				}
-			});
+		$("#accordion").accordion({
+    	autoHeight: false,
+		navigation: true
+   		 });
 	});
 	</script>
 
 <div id="accordion">
 <%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 	for(int j=0; j<courses.size(); j++){%>
-	<div>
 		<h3><a href="#"><%=courses.get(j).toString()%></a></h3>
 		<div>
 			This course is taught by <%=courses.get(j).getProf().getName()%> and has <%=courses.get(j).getStudyPoints()%> studypoints.</br>
 		</div>
-	</div>
 	<%}}%>
 </div>
