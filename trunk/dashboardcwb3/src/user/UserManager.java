@@ -82,5 +82,17 @@ public class UserManager {
 		//Kan user zijn gebruikersnaam/passwoord/... nog veranderen?
 		//nog methode updateCourses-> in user??!
 	}
-	
+	public String getAllUsers(){
+		String result = "[";
+		Iterator it = users.iterator();
+		while(it.hasNext()){
+			result = result + it.next().toString();
+			if(it.hasNext()){
+				result= result+",";
+			}
+			
+		}
+		result = result + "]";
+		return result;
+	}
 }
