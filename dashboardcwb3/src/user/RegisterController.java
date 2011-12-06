@@ -65,6 +65,7 @@ public class RegisterController {
 						registered = true;
 						User user = new User(userName,password,firstName,lastName,gender,rNumber);
 						UserManager.getInstance().setCurrentUser(user);
+						UserManager.getInstance().addUser(user);
 					}		
 			
 			
