@@ -22,9 +22,7 @@ import activity.ExtraCurricularActivity;
 @SuppressWarnings("serial")
 
 public class StartServlet extends HttpServlet{
-	private TimerController timerController;
 	public StartServlet() {
-		timerController=new TimerController();
 	}
 	//indien activiteit gestart
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -46,26 +44,26 @@ public class StartServlet extends HttpServlet{
 							if(req.getParameter("type").equals("Les")){
 								Lecture les=new Lecture(course);
 								user.addActivity(les);
-								timerController.startTiming(les);
+								TimerController.getInstance().startTiming(les);
 							}
 							//zs
 							if(req.getParameter("type").equals("Zelfstudie")){
 								IndividualStudy zelfstudie=new IndividualStudy(course);
 								user.addActivity(zelfstudie);
-								timerController.startTiming(zelfstudie);
+								TimerController.getInstance().startTiming(zelfstudie);
 							}
 							//oz
 							if(req.getParameter("type").equals("Oefenzitting")){
 								Practice oefenzitting=new Practice(course);
 								user.addActivity(oefenzitting);
-								timerController.startTiming(oefenzitting);
+								TimerController.getInstance().startTiming(oefenzitting);
 							}
 						}
 				// indien extrascolair gestart:
 						if(req.getParameter("wat").equals("Extrascolair")){
 							ExtraFun extra=ExtraFun.getExtraFun(req.getParameter("watextra"));
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
-							timerController.startTiming(act);
+							TimerController.getInstance().startTiming(act);
 						}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
