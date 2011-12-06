@@ -13,7 +13,16 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
 
+<script>
+	$(function() {
+		var availableTags = <%=request.getAttribute("allusersstring")%>;
+		$( "#tags" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
 
+If you would like to stop the tracking of your current activity, please do fill in this form and click 'stop'.</br>
   <form action="/stop" method="post">
   			<% Activity act=(Activity) request.getAttribute("curract");
   			if(act.getType().equals("Zelfstudie")){%>
@@ -29,6 +38,8 @@
 							<option value="Theory"> Theory</option>
  							<option value="Practice"> Practice</option>
 						</select><br />
+						
+						
 			<%}%>
 			rating: 
 				<input type="radio" name="rating" value="1" /> 1
