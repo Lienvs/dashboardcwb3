@@ -14,73 +14,57 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
-
+ <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
 
   
  
 
  <script>
 	 $(document).ready(function() {
-		var stop = false;
-		$( "#accordion h3" ).click(function( event ) {
-			if ( stop ) {
-				event.stopImmediatePropagation();
-				event.preventDefault();
-				stop = false;
-			}
-		});
-		$( "#accordion" )
-			.accordion({
-				header: "> div > h3"
-			})
-			.sortable({
-				axis: "y",
-				handle: "h3",
-				stop: function() {
-					stop = true;
-				}
-			});
-		var data = <%=request.getAttribute("comparisonCourses")%>;
-  		var plot1 = jQuery.jqplot ('chart1', [data], { 
-      		seriesDefaults: {
-        		// Make this a pie chart.
-        		renderer: jQuery.jqplot.PieRenderer, 
-        		rendererOptions: {
-          			// Put data labels on the pie slices.
-          			// By default, labels show the percentage of the slice.
-          			showDataLabels: true
-        		}
-      		}, 
-     		 legend: { show:true, location: 'e' }
-    	});
+		$("#accordion").accordion({
+		autoHeight: false,
+		navigation: true
+    		});
+			
+			 $('#chart1').bind('accordionchange', function(event, ui) {
+      			var index = $(this).find("h3").index ( ui.newHeader[0] );
+      			if (index === 1) {
+       				 plot1.replot();
+     			 }
+     			 else{ plot1.destroy();}
+   			 });
 	});
 	</script>
 
-
-
-
 <div id="accordion">
-	<div>
+
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
-			<div id="chart1" style="height:300px; width:500px; " ></div>
+			<div id="chart1"></div>
 		</div>
-	</div>
-	<div>
-		<h3><a href="#">Section 2</a></h3>
+
+
+		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
+		<div id="chart2"></div>
 		</div>
-	</div>
-	<div>
+
 		<h3><a href="#">Section 3</a></h3>
 		<div>
+		sec3
 		</div>
-	</div>
-	<div>
+
 		<h3><a href="#">Section 4</a></h3>
 		<div>
+		sec4
 		</div>
-	</div>
+
 </div>
 
 
