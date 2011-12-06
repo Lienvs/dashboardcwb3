@@ -16,7 +16,7 @@ private DataController data;
 public StatisticController(){
 	data = new DataController();
 }
-public String getComparisonCourses(){
+public String myCoursesCheese(){
 	String result = "[";
 	 User currentUser = UserManager.getInstance().getCurrentUser();
 	 ArrayList<Course> courseList = currentUser.getCourses();
@@ -41,7 +41,7 @@ public String getComparisonPlace(){
 	result = result + "]";
 	return result;
 }
-public String getComparisonActivityType(Course course){
+public String myTypeCheese(Course course){
 	String result = "[";
 	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie(course) + "],";
 	result = result +"['" +  "Les" + "'," + data.getDuurLes(course) + "],";
@@ -62,7 +62,7 @@ public String getBarAvarageActivityType(Course course){//zelfde als hierboven, m
 	return result;
 
 }
-public String getStudyDay(Date startDate){
+public String myTimeInTime2(Date startDate){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
@@ -74,7 +74,7 @@ public String getStudyDay(Date startDate){
 		int getal=0;
 		stop.roll(Calendar.DAY_OF_YEAR,true);
 	for(Activity act:currentUser.getActivities()){
-		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
 		}
@@ -86,7 +86,7 @@ public String getStudyDay(Date startDate){
 result= result+"]";
 return result;}
 
-public String getStudyWeek(){
+public String myTimeInTime(){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
@@ -102,7 +102,7 @@ public String getStudyWeek(){
 		int getal=0;
 		mid.roll(Calendar.DAY_OF_YEAR,true);
 	for(Activity act:currentUser.getActivities()){
-		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
 		}
