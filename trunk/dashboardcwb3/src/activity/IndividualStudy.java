@@ -2,6 +2,7 @@ package activity;
 import java.util.*;
 
 import user.User;
+import user.UserManager;
 
 import course.Course;
 
@@ -15,7 +16,7 @@ public class IndividualStudy extends CurricularActivity {
 	
 	private StudyLocation location;
 	private StudyType studyType;
-	private ArrayList<User> studieGenoten;
+	private String studieGenoot;
 	
 	/**
 	 * Constructor
@@ -27,7 +28,7 @@ public class IndividualStudy extends CurricularActivity {
 		super(course,"Zelfstudie");
 		this.location=location;
 		this.studyType=studyType;
-		studieGenoten = new ArrayList<User>();
+		studieGenoot = null;
 	}
 	
 	/**
@@ -61,16 +62,17 @@ public class IndividualStudy extends CurricularActivity {
 	public String getStudyType() {
 		return studyType.toString();
 	}
-	public void submitVragenLijst(String place, String studyType, String comment, int rating){
+	public void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy){
 		location = StudyLocation.getStudyLocation(place);
 		this.studyType = StudyType.getStudyType(studyType);
 		postComment(comment);
 		setRating(rating);
+		studieGenoot = studybuddy;
 	}
-	public void addStudyBuddy(User user){
-		studieGenoten.add(user);
+	public void setStudyBuddy(String studybuddy){
+		studieGenoot = studybuddy;
 	}
-	public ArrayList<User> getStudyBuddys(){
-		return studieGenoten;
+	public String getStudyBuddy(){
+		return studieGenoot;
 	}
 }

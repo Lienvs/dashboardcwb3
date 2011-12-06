@@ -50,5 +50,5 @@ public abstract class CurricularActivity extends Activity{
 		String result = "U studeert momenteel "+course.toString() + " "+getType() + ".";
 		return result;
 	}
-	public abstract void submitVragenLijst(String place, String studyType, String comment, int rating);
+	public abstract void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy);
 }
