@@ -2,7 +2,7 @@ package course;
 //import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-
+import javax.jdo.annotations.PrimaryKey;
 
 
 //import sun.util.resources.CalendarData_da;
@@ -13,13 +13,21 @@ import javax.jdo.annotations.Persistent;
  * @version
  *
  */
-
+@PersistenceCapable
 public class Course {
+	@PrimaryKey
+	private String courseKey;
+	@Persistent
 	private Professor prof;
+	@Persistent
 	private int studyPoints;
+	@Persistent
 	private int totalLecture;  //aantal uur les van dit vak over hele semester
+	@Persistent
 	private int totalPractice; //aantal uur oefenzitting van dit vak over heel semester
+	@Persistent
 	private String name; //naam van het vak vb: analyse
+	
 	
 	/**
 	 * Constructor
@@ -35,6 +43,7 @@ public class Course {
 		this.prof = prof;
 		this.name = name;
 		this.studyPoints = studyPoints;
+		courseKey = name;
 	}	
 	
 	/**
@@ -100,4 +109,5 @@ public class Course {
 	public int getAvarageWork(){//per week (in uur)
 		return studyPoints *30 *60/13; // 30 uren studie per studiepunt , wrm maal 60? 
 	}
+	
 }
