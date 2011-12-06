@@ -22,11 +22,12 @@ public class TimerController {
 	
 	public TimerController(){
 		User currentUser =UserManager.getInstance().getCurrentUser();
-		currentActivity = null;
+		
 		for(Activity act : currentUser.getActivities()){
 			if(act.getStop()==null){
 				currentActivity = act;
 			}
+			else{currentActivity = null;}
 		}
 		
 		
@@ -111,13 +112,16 @@ public class TimerController {
 	 */
 	public boolean isBusy(){
 		boolean isBusy = false;
-		if(currentActivity == null){
-			
-		}
-		else{isBusy = true;}
+		User currentUser =UserManager.getInstance().getCurrentUser();
+		
+		for(Activity act : currentUser.getActivities()){
+			if(act.getStop()==null){
+				isBusy=true;
+			}
+		}	
 		return isBusy;
-	}
 	
+	}
 	/**
 	 * geeft de activiteit die op dat moment bezig is weer. 
 	 * @return currentActivity (type: Activity)
