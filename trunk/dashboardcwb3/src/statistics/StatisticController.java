@@ -50,13 +50,13 @@ public String myTypeCheese(Course course){
 	return result;
 	
 }
-public String getBarActivityType(Course course){//geeft 3 getallen in een string voor bar-stat: Les/oef/zs
+public String myTypeBar(Course course){//geeft 3 getallen in een string voor bar-stat: Les/oef/zs
 	String result = "[";
 	result= result+ data.getDuurLes(course)+","+data.getDuurOefenzitting(course)+","+data.getDuurZelfstudie(course)+"]";
 	return result;
 	
 }
-public String getBarAvarageActivityType(Course course){//zelfde als hierboven, ma dan voor het gemiddelde
+public String overallMeanTypeBar(Course course){//zelfde als hierboven, ma dan voor het gemiddelde
 	String result = "[";
 	result= result+ data.getGemiddeldeLes(course)+","+data.getGemiddeldeOefenzitting(course)+","+data.getGemiddeldeStudie(course)+"]";
 	return result;
