@@ -161,5 +161,32 @@ return myInTime("Nightlife","Nightlife");
 public String myFunInTime(){
 return myInTime("Sport","Nightlife");
 }
+public int myTime(){
+	int result=0;
+
+	 User currentUser = UserManager.getInstance().getCurrentUser();
+	 ArrayList<Course> courseList = currentUser.getCourses();
+	 Iterator<Course> it = courseList.iterator();
+	 while(it.hasNext()){
+		 Course course = it.next();
+		result=result+ data.getTotalScolair(course);
+}
+	 return result;
+}
+public int overallTime(){
+	int result=0;
+
+	 ArrayList<User> users = UserManager.getInstance().getUsers();
+	 for(User user: users){
+	 ArrayList<Activity> actList = user.getActivities();
+	 for(Activity act:actList){
+		 if(act.getActivityType().equals("scolair")){
+			 result = result + act.getDuration();
+		 }
+	 }
+}
+	 return result;
+}
+
 }
 
