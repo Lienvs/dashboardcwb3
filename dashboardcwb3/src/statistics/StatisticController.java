@@ -2,6 +2,7 @@ package statistics;
 import java.util.*;
 
 import activity.Activity;
+import activity.ExtraCurricularActivity;
 
 import course.Course;
 
@@ -84,7 +85,9 @@ public String myTimeInTime2(Date startDate){
 	}
 }
 result= result+"]";
-return result;}
+return result;
+}
+
 
 public String myTimeInTime(){
 	String result ="[";
@@ -112,6 +115,51 @@ public String myTimeInTime(){
 	}
 	
 }result= result+"]";
-return result;}
+return result;
+}
+
+
+private String myInTime(String type,String type2){
+	String result ="[";
+	Calendar stop = Calendar.getInstance();
+	Calendar start = Calendar.getInstance();
+	if(start.WEEK_OF_YEAR>20){
+		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	}
+	else{int i = start.WEEK_OF_YEAR-1;
+	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
+	}
+	Calendar mid = start;
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	while(start.before(stop)){
+		int getal=0;
+		mid.roll(Calendar.DAY_OF_YEAR,true);
+	for(Activity act:currentUser.getActivities()){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
+			
+			if(act.getType().equals(type)||act.getType().equals(type2)){
+			getal = getal+act.getDuration();
+			}}
+		}
+	result = result + getal;
+	start.roll(Calendar.DAY_OF_YEAR,true);
+	if(start.before(stop)){result = result + ",";
+	}
+	
+}result= result+"]";
+return result;
+}
+public String mySleepInTime(){
+return myInTime("Sleep","Sleep");
+}
+public String mySportInTime(){
+return myInTime("Sport","Sport");
+}
+public String myNightlifeInTime(){
+return myInTime("Nightlife","Nightlife");
+}
+public String myFunInTime(){
+return myInTime("Sport","Nightlife");
+}
 }
 
