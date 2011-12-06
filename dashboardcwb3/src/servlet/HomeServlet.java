@@ -22,10 +22,8 @@ import activity.StudyLocation;
 @SuppressWarnings("serial")
 
 public class HomeServlet extends HttpServlet{
-	private TimerController timerController;
 	private StatisticController statController;
 	public HomeServlet() {
-		timerController=new TimerController();
 		statController=new StatisticController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -35,9 +33,10 @@ public class HomeServlet extends HttpServlet{
 				User user =UserManager.getInstance().getCurrentUser();
 				
 				//indien er een activiteit bezig is
-				if(timerController.isBusy()){
+				if(TimerController.getInstance().isBusy()){
 					req.setAttribute("bezig", "ja");
-					req.setAttribute("curract", timerController.getCurrentActivity().getType());
+					req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
+					req.setAttribute("curract", TimerController.getInstance().getCurrentActivity());
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();

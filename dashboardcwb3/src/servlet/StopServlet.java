@@ -12,9 +12,7 @@ import activity.TimerController;
 @SuppressWarnings("serial")
 
 public class StopServlet extends HttpServlet{
-	private TimerController timerController;
 	public StopServlet() {
-		timerController=new TimerController();
 	}
 	//indien activity gestopt
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -30,8 +28,8 @@ public class StopServlet extends HttpServlet{
 					}
 					String comment=(String) req.getParameter("comment");
 
-					timerController.getCurrentActivity().submitVragenLijst(place, stype, comment, rating);
-					timerController.stopTiming();
+					TimerController.getInstance().getCurrentActivity().submitVragenLijst(place, stype, comment, rating);
+					TimerController.getInstance().stopTiming();
 				
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
