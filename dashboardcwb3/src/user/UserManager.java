@@ -78,4 +78,9 @@ public class UserManager {
 		}
 	}
 	
+	public void updateUser(){
+		//Kan user zijn gebruikersnaam/passwoord/... nog veranderen?
+		//nog methode updateCourses-> hier?
+	}
+	
 }
