@@ -1,4 +1,6 @@
 package servlet;
+import goals.GoalController;
+
 import java.util.*;
 
 import java.io.IOException;
@@ -17,9 +19,9 @@ import course.CourseManager;
 @SuppressWarnings("serial")
 
 public class GoalServlet extends HttpServlet{
-
+	private GoalController goalController;
 	public GoalServlet() {
-
+		goalController=new GoalController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
@@ -29,15 +31,12 @@ public class GoalServlet extends HttpServlet{
 				ArrayList<Course> courses=user.getCourses();
 				for(int i=0; i<courses.size();i++){
 					if(req.getParameter(courses.get(i).toString())!=null){
-						
+						double aDouble = Double.parseDouble(req.getParameter(courses.get(i).toString()));
+						goalController.setGoal(courses.get(i), aDouble);
 					}
 				}
 				
-				
-				
-				
-				
-				
+				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
 			}
 	

@@ -51,7 +51,7 @@ public class HomeServlet extends HttpServlet{
 				//einde attributen
 				
 				//statistieken doorgeven
-				req.setAttribute("myCoursesCheese", statController.getComparisonCourses()); 
+				req.setAttribute("myCoursesCheese", statController.myCoursesCheese()); 
 				req.setAttribute("myPlacesCheese", statController.getComparisonPlace());
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
