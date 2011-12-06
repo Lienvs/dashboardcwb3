@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="activity.*" %>
-
+<%@ page import="statistics.*"%>
 <%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
@@ -22,21 +22,50 @@
   
   <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.css" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
   
   <script >
   $(document).ready(function() {
     $("#tabs").tabs();
     $( ".check" ).button();	
     
-  });
+    var data1 = <%=request.getAttribute("myCourseCheese")%>;
+  		var plot1 = jQuery.jqplot ('chart1', [data1], { 
+      		height: 300,
+      		width: 500,
+      		showDataLabels: true,
+      		series:[{renderer:$.jqplot.PieRenderer}],
+      		legend:{show:true}
+    	});
+    var data2 = <%=request.getAttribute("myPlaceCheese")%>;
+  		var plot2 = jQuery.jqplot ('chart2', [data2], { 
+      		height: 300,
+      		width: 500,
+      		showDataLabels: true,
+      		series:[{renderer:$.jqplot.PieRenderer}],
+      		legend:{show:true}
+    	});
+    	
+    
+    
+    	
+    
+    	
+    	$('#tabs').bind('tabsshow', function(event, ui) {
+  			if (ui.index == 1 && plot1._drawCount == 0) {
+   			 plot1.replot();
+ 			 }
+		});
+    	
+    	
+    });
+    	
+
   </script>
   
 </head>
 
 <body style="font-size:62.5%;">
-
-
 
  
 <div class="tabs" id="tabs">
@@ -76,7 +105,7 @@
     	</div>
     	
     	<div id="fragment-4">
-        	goals
+        	<%@ include file="goals.jsp" %>
     	</div>
     	
     	<div id="fragment-5">

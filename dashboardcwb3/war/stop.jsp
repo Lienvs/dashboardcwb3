@@ -38,7 +38,10 @@ If you would like to stop the tracking of your current activity, please do fill 
 							<option value="Theory"> Theory</option>
  							<option value="Practice"> Practice</option>
 						</select><br />
-						
+				<div class="ui-widget">
+					<label for="tags">Studybuddy: </label>
+					<input name="studybuddy" id="tags">	
+				</div>		
 						
 			<%}%>
 			rating: 
