@@ -3,6 +3,7 @@ package course;
 import java.util.*;
 
 import javax.jdo.JDOObjectNotFoundException;
+import javax.jdo.JDOFatalUserException;
 import javax.jdo.PersistenceManager;
 
 import user.User;
@@ -59,10 +60,9 @@ public class CourseManager {
 			Course num = new Course(5*30,15,prof6,"Numerieke wiskunde",5);
 			Course eco = new Course(5*30,15,prof7,"Economie",5);
 			Course pno = new Course(5*30,15,prof8,"Probleemoplossen en -ontwerpen, deel 3",5);
-			//courses.add(anal);courses.add(mech);courses.add(org);courses.add(kan);courses.add(iov);
-			//courses.add(num);courses.add(eco);courses.add(pno);
-			makeCoursePers(anal); makeCoursePers(mech); makeCoursePers(org); makeCoursePers(kan); makeCoursePers(iov);
-			makeCoursePers(num); makeCoursePers(eco); makeCoursePers(pno);
+			courses.add(anal);courses.add(mech);courses.add(org);courses.add(kan);courses.add(iov);
+			courses.add(num);courses.add(eco);courses.add(pno);
+			
 			
 		}
 		
@@ -89,24 +89,7 @@ public class CourseManager {
 			return coursje;
 		}
 		
-		public void makeCoursePers(Course course){
-			Boolean vakBestaatAl = false;
-			try{
-				pm.getObjectById(Course.class, course);
-				vakBestaatAl = true;
-			}
-			catch (JDOObjectNotFoundException e){
-				vakBestaatAl = false;
-			}
-			if(!vakBestaatAl){
-				try {
-					pm.makePersistent(course);
-				}
-				finally {
-					pm.flush();
-				}
-			}
-		}
+		
 		
 	
 }

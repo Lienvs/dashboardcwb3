@@ -1,13 +1,16 @@
 package course;
-import java.util.ArrayList;
+
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 
 /**
  * klasse die de professor van een vak voorstelt.
  * @author 
  *
  */
-
+@PersistenceCapable
 public class Professor {
+@Persistent
 private String profName;
 	
 /**
