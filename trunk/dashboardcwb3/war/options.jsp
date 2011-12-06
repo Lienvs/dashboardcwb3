@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
+<%@ page import="activity.*" %>
+
+<%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -11,26 +14,15 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
+ 
 
 
 
-
-<html>
-<head>
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  
-  <script>
+ <script>
 	$(function() {
 		$( ".check" ).button();		
 	});
 	</script>
-
-</head>
-
-<body style="font-size:62.5%;">
 
 Courses you are currently subscribed to are in orange.</br>
 Courses you can still subscribe to are in blue.</br>
@@ -44,9 +36,12 @@ Be aware, deleting a course once, deletes all your information regarding this co
 	</div>
 	<%}%>
 
+
 	<form action="/courses" method="post">
 				<%
 				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
+				{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
+				
 				for(int i=0 ; i<allcourses.size(); i++){
 					if(courses.contains(allcourses.get(i))){%>
 						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
@@ -55,7 +50,7 @@ Be aware, deleting a course once, deletes all your information regarding this co
 						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
 					<%}
 		
-				}%></br>
+				}}%></br>
 				<input type="submit" class="check" value="Submit" name="submit"/>
 			</form>	
 <script>
@@ -73,7 +68,3 @@ $("form").submit(function() {
 
 
 	
-    		
-   	 	
-   	 	</body>
-</html>
