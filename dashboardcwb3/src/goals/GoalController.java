@@ -19,11 +19,16 @@ public class GoalController {
 		while(cal.DAY_OF_WEEK!=Calendar.SUNDAY){
 			cal.roll(Calendar.DAY_OF_WEEK,true);
 		}
+		cal.set(Calendar.HOUR_OF_DAY,23);
+		cal.set(Calendar.MINUTE,55);
+		
 		stopDate=cal.getTime();
 		cal.roll(Calendar.DAY_OF_WEEK,false);
 		while(cal.DAY_OF_WEEK!=Calendar.SUNDAY){
 			cal.roll(Calendar.DAY_OF_WEEK,false);
 		}
+		cal.set(Calendar.HOUR_OF_DAY,23);
+		cal.set(Calendar.MINUTE,55);
 		startDate= cal.getTime();
 		goals = new HashMap<Course,Integer>();
 	}
