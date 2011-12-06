@@ -1,6 +1,8 @@
 package activity;
 import java.util.*;
 
+import user.User;
+
 import course.Course;
 
 /**
@@ -13,6 +15,7 @@ public class IndividualStudy extends CurricularActivity {
 	
 	private StudyLocation location;
 	private StudyType studyType;
+	private ArrayList<User> studieGenoten;
 	
 	/**
 	 * Constructor
@@ -24,6 +27,7 @@ public class IndividualStudy extends CurricularActivity {
 		super(course,"Zelfstudie");
 		this.location=location;
 		this.studyType=studyType;
+		studieGenoten = new ArrayList<User>();
 	}
 	
 	/**
@@ -62,5 +66,11 @@ public class IndividualStudy extends CurricularActivity {
 		this.studyType = StudyType.getStudyType(studyType);
 		postComment(comment);
 		setRating(rating);
+	}
+	public void addStudyBuddy(User user){
+		studieGenoten.add(user);
+	}
+	public ArrayList<User> getStudyBuddys(){
+		return studieGenoten;
 	}
 }
