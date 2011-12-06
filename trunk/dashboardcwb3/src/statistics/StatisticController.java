@@ -63,7 +63,7 @@ public String overallMeanTypeBar(Course course){//zelfde als hierboven, ma dan v
 	return result;
 
 }
-public String myTimeInTime2(Date startDate){
+public String myTimeInTime2(Date startDate){//dit is voor een week per dag bekeken
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
@@ -89,7 +89,7 @@ return result;
 }
 
 
-public String myTimeInTime(){
+public String myTimeInTime(){//dit is voor 20 weken (in januari minder) week per week bekeken.
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
