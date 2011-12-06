@@ -11,7 +11,7 @@ public class Practice extends CurricularActivity{
 		
 //		UserManager.getInstance().sdjfg();
 	}
-	public void submitVragenLijst(String place, String studyType, String comment, int rating){
+	public void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy){
 		if(comment!=null){
 			postComment(comment);
 		}
