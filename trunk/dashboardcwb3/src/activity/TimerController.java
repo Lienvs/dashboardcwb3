@@ -2,6 +2,7 @@ package activity;
 import java.util.*;
 import java.text.*;
 
+import user.User;
 import user.UserManager;
 
 /**
@@ -13,20 +14,21 @@ import user.UserManager;
 public class TimerController {
 	private Activity currentActivity;
 	private String dateFormat;
-	private static TimerController instance = null;
+	
 	/**
 	 * Constructor
 	 */
-	public static TimerController getInstance() {
-		if( instance == null ) {
-		
-			instance = new TimerController();
-		}
-		return instance;
-	}
+	
 	
 	public TimerController(){
+		User currentUser =UserManager.getInstance().getCurrentUser();
 		currentActivity = null;
+		for(Activity act : currentUser.getActivities()){
+			if(act.getStop()==null){
+				currentActivity = act;
+			}
+		}
+		
 		
 	}
 	
