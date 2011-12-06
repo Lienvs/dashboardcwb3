@@ -23,8 +23,10 @@ import activity.StudyLocation;
 
 public class HomeServlet extends HttpServlet{
 	private StatisticController statController;
+	private TimerController timerControler;
 	public HomeServlet() {
 		statController=new StatisticController();
+		timerControler=new TimerController();
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
@@ -33,10 +35,10 @@ public class HomeServlet extends HttpServlet{
 				User user =UserManager.getInstance().getCurrentUser();
 				
 				//indien er een activiteit bezig is
-				if(TimerController.getInstance().isBusy()){
+				if(timerControler.isBusy()){
 					req.setAttribute("bezig", "ja");
 					req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
-					req.setAttribute("curract", TimerController.getInstance().getCurrentActivity());
+					req.setAttribute("curract", timerControler.getCurrentActivity());
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
@@ -49,7 +51,7 @@ public class HomeServlet extends HttpServlet{
 				//einde attributen
 				
 				//statistieken doorgeven
-				req.setAttribute("comparisonCourses", statController.getComparisonCourses());
+				req.setAttribute("comparisonCourses", "[['a',4],['b',6]]");    //statController.getComparisonCourses()
 				//einde stats
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	

@@ -12,7 +12,9 @@ import activity.TimerController;
 @SuppressWarnings("serial")
 
 public class StopServlet extends HttpServlet{
+	private TimerController timerControler;
 	public StopServlet() {
+		timerControler=new TimerController();
 	}
 	//indien activity gestopt
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -22,14 +24,15 @@ public class StopServlet extends HttpServlet{
 				
 					String place=(String) req.getParameter("place");
 					String stype=(String) req.getParameter("stype");
+					String studyBuddy = (String) req.getParameter("studybuddy");
 					int rating=-1; 
 					if(req.getParameter("rating")!=null){
 						rating=new Integer(req.getParameter("rating"));
 					}
 					String comment=(String) req.getParameter("comment");
 
-					TimerController.getInstance().getCurrentActivity().submitVragenLijst(place, stype, comment, rating);
-					TimerController.getInstance().stopTiming();
+					timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
+					timerControler.stopTiming();
 				
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
