@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="activity.*" %>
+
+<%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -33,6 +35,9 @@
 </head>
 
 <body style="font-size:62.5%;">
+
+
+
  
 <div class="tabs" id="tabs">
 	<ul>

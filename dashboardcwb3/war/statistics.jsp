@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
+<%@ page import="activity.*" %>
+
+<%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -11,22 +14,12 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 
-<html>
-<head>
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
   
+ 
 
-
-	<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
-
-	<script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.css" />
-  
-  
-  <script>
+ <script>
 	 $(document).ready(function() {
 		var stop = false;
 		$( "#accordion h3" ).click(function( event ) {
@@ -63,14 +56,6 @@
 	});
 	</script>
 
-</head>
-
-<body style="font-size:62.5%;">
-
-
-
-
-
 
 
 
@@ -99,13 +84,3 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-</body>
-</html>
