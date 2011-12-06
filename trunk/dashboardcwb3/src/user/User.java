@@ -180,7 +180,13 @@ public class User {
 	 * @param course
 	 */
 	public void addCourse(Course course){
-		myCourseNames.add(course.toString());		
+		//try{
+		//	pm.currentTransaction().begin();
+			myCourseNames.add(course.toString());	
+		//}
+		//finally{
+					
+		//}
 	}
 	
 	/**
@@ -199,9 +205,10 @@ public class User {
 	
 	public ArrayList<Course> getCourses(){
 		myCourses = new ArrayList<Course>();
+		
 		for(String name: myCourseNames){
 			myCourses.add(CourseManager.getInstance().getCourse(name));
-		}
+		}	
 		return myCourses;
 	}
 	
