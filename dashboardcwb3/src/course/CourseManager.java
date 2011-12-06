@@ -2,8 +2,15 @@ package course;
 
 import java.util.*;
 
+import javax.jdo.JDOObjectNotFoundException;
+import javax.jdo.PersistenceManager;
+
+import user.User;
+
+import database.PMF;
+
 /**
- * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar ŽŽn object wil dat de vakken beheert
+ * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar één object wil dat de vakken beheert
  * @author
  * @version
  *
@@ -12,7 +19,9 @@ public class CourseManager {
 
 	private static CourseManager instance = null;
 	
+	public PersistenceManager pm;
 	private ArrayList<Course> courses;
+	
 	public static CourseManager getInstance() {
 		if( instance == null ) {
 		
@@ -25,7 +34,7 @@ public class CourseManager {
 	 * Controller
 	 */
 	public CourseManager(){
-		
+		pm = PMF.get().getPersistenceManager();
 		courses = new ArrayList<Course>();
 		makeCourses();
 	}
@@ -50,8 +59,10 @@ public class CourseManager {
 			Course num = new Course(5*30,15,prof6,"Numerieke wiskunde",5);
 			Course eco = new Course(5*30,15,prof7,"Economie",5);
 			Course pno = new Course(5*30,15,prof8,"Probleemoplossen en -ontwerpen, deel 3",5);
-			courses.add(anal);courses.add(mech);courses.add(org);courses.add(kan);courses.add(iov);
-			courses.add(num);courses.add(eco);courses.add(pno);	
+			//courses.add(anal);courses.add(mech);courses.add(org);courses.add(kan);courses.add(iov);
+			//courses.add(num);courses.add(eco);courses.add(pno);
+			makeCoursePers(anal); makeCoursePers(mech); makeCoursePers(org); makeCoursePers(kan); makeCoursePers(iov);
+			makeCoursePers(num); makeCoursePers(eco); makeCoursePers(pno);
 			
 		}
 		
@@ -76,6 +87,25 @@ public class CourseManager {
 				}
 			}
 			return coursje;
+		}
+		
+		public void makeCoursePers(Course course){
+			Boolean vakBestaatAl = false;
+			try{
+				pm.getObjectById(Course.class, course);
+				vakBestaatAl = true;
+			}
+			catch (JDOObjectNotFoundException e){
+				vakBestaatAl = false;
+			}
+			if(!vakBestaatAl){
+				try {
+					pm.makePersistent(course);
+				}
+				finally {
+					pm.flush();
+				}
+			}
 		}
 		
 	
