@@ -2,7 +2,6 @@ package course;
 //import java.util.*;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
 
 
 //import sun.util.resources.CalendarData_da;
@@ -15,8 +14,8 @@ import javax.jdo.annotations.PrimaryKey;
  */
 @PersistenceCapable
 public class Course {
-	@PrimaryKey
-	private String courseKey;
+	//@Persistent
+	//private String key;
 	@Persistent
 	private Professor prof;
 	@Persistent
@@ -43,7 +42,8 @@ public class Course {
 		this.prof = prof;
 		this.name = name;
 		this.studyPoints = studyPoints;
-		courseKey = name;
+//		String nm = name.substring(4);
+		//this.key = name;
 	}	
 	
 	/**
