@@ -51,7 +51,8 @@ public class CourseSelectionServlet extends HttpServlet{
 							}
 						}
 					}
-					//UserManager.getInstance().addUser(user);// add currentuser?
+					//updateUserCourses()
+				
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){
