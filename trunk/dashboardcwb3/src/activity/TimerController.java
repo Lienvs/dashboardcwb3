@@ -2,6 +2,8 @@ package activity;
 import java.util.*;
 import java.text.*;
 
+import user.UserManager;
+
 /**
  * Klasse met timer functies
  * @author 
@@ -11,10 +13,18 @@ import java.text.*;
 public class TimerController {
 	private Activity currentActivity;
 	private String dateFormat;
-	
+	private static TimerController instance = null;
 	/**
 	 * Constructor
 	 */
+	public static TimerController getInstance() {
+		if( instance == null ) {
+		
+			instance = new TimerController();
+		}
+		return instance;
+	}
+	
 	public TimerController(){
 		currentActivity = null;
 		
@@ -34,7 +44,7 @@ public class TimerController {
 	}
 	
 	/**
-	 * be‘indigt het timen van de huidige activiteit (=currentActivity).Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
+	 * beï¿½indigt het timen van de huidige activiteit (=currentActivity).Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
 	 * die tijd slaan we op in de stopdatum van de activiteit (elke activiteit heeft een start- en stop datum). In deze methode wordt de huidige activiteit ook op nul gezet.
 	 * 
 	 */
