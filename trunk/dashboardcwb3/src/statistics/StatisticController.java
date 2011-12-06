@@ -1,6 +1,8 @@
 package statistics;
 import java.util.*;
 
+import activity.Activity;
+
 import course.Course;
 
 
@@ -60,4 +62,27 @@ public String getBarAvarageActivityType(Course course){//zelfde als hierboven, m
 	return result;
 
 }
+public String getStudieDay(Date stopDate){
+	String result ="[";
+	Calendar stop = Calendar.getInstance();
+	Calendar start = Calendar.getInstance();
+	stop.setTime(stopDate);
+	start.setTime(stopDate);
+	int i = 0;
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	while(i<8){
+		int getal=0;
+		start.roll(Calendar.DAY_OF_YEAR,false);
+	for(Activity act:currentUser.getActivities()){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())){
+			getal = getal+act.getDuration();
+			}
+		}
+	result = result + getal;
+	stop.roll(Calendar.DAY_OF_YEAR,false);
+	i++; if(i<8){result = result + ",";
+	}
+}
+result= result+"]";
+return result;}
 }
