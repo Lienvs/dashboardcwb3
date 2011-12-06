@@ -73,7 +73,6 @@ public class User {
 		this.gender = gender;
 		this.rNumber = rNumber;
 		myActivities = new ArrayList<Activity>(); 
-		myCourses = new ArrayList<Course>();
 		myCourseNames = new ArrayList<String>();
 		
 	}
@@ -199,6 +198,7 @@ public class User {
 	
 	
 	public ArrayList<Course> getCourses(){
+		myCourses = new ArrayList<Course>();
 		for(String name: myCourseNames){
 			myCourses.add(CourseManager.getInstance().getCourse(name));
 		}
