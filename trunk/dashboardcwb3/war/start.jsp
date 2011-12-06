@@ -16,52 +16,6 @@
 
 
 
-<script>
-  $(document).ready(function() {
-    $( ".check" ).button();	
-    $('#onea').click(function() {
- 		$('#one').hide();
- 		$('#two').show();
- 		$('.wat').val("Scolair");
- 		
-    });
-    $('#oneb').click(function() {
- 		$('#one').hide();
- 		$('#tree').show();
- 		$('.wat').val("Extrascolair");
-    });
-    $('#twoa').click(function() {
- 		$('#two').hide();
- 		$('#four').show();
- 		var text=$("#welkvak").val();
- 		$('.vak').val(text);
-    });
-    $('#foura').click(function() {
- 		$('#four').hide();
- 		$('#five').show();
- 		$('.type').val("Les");
-    });
-    $('#fourb').click(function() {
- 		$('#four').hide();
- 		$('#five').show();
- 		$('.type').val("Zelfstudie");
-    });
-    $('#fourc').click(function() {
- 		$('#four').hide();
- 		$('#five').show();
- 		$('.type').val("Oefenzitting");
-    });
-    $('#treea').click(function() {
- 		$('#tree').hide();
- 		$('#five').show();
- 		$('.type').val("Oefenzitting");
- 		var text=$("#watextra").val();
- 		$('.watextra').val(text);
-    });
-    
-  });
-  </script>
-  
 
 
 	<div id="one">
