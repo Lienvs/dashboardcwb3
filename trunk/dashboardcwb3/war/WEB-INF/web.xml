@@ -74,6 +74,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>home</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>goal</servlet-name>
+		<servlet-class>servlet.GoalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>goal</servlet-name>
+		<url-pattern>/goal</url-pattern>
+	</servlet-mapping>
 
 	
 	
