@@ -33,7 +33,7 @@ public String myCoursesCheese(){
 	 return result;
 }
 
-public String myPlaceCheese(){
+public String myPlacesCheese(){
 	String result = "[";
 	result = result +"['" +  "Library" + "'," + data.getDuurBibZelfstudie() + "],";
 	result = result +"['" +  "Home" + "'," + data.getDuurThuisZelfstudie() + "],";
