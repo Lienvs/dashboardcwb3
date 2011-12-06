@@ -52,8 +52,12 @@ public class IndividualStudy extends CurricularActivity {
 	 * het is onnodig om een methode te maken die het hele object van het type StudyLocation weergeeft want de enigste methode van zo'n object is de toString() methode.
 	 * @return location.toString() : een string met de naam van de locatie (type: String)
 	 */
-	public String getLocation() {		
-		return location.toString();
+	public String getLocation() {	
+		String result = "";
+		if(location!=null){
+			result=location.toString();
+		}
+		return result;
 	}
 /**
  * geeft een Stringweergave van het studietype weer
