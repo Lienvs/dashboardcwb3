@@ -46,12 +46,11 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
 				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());//plaatsen waar men kan studeren
-					// nodig?  req.setAttribute("activities", user.getActivities());
 				req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());//username
 				//einde attributen
 				
 				//statistieken doorgeven
-				req.setAttribute("myCoursesCheese", statController.myCoursesCheese()); 
+				req.setAttribute("myCoursesCheese", "[['analyse 1',10],['mech',5]]"); //statController.myCoursesCheese()
 				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
