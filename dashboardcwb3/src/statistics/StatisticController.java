@@ -63,6 +63,34 @@ public String overallMeanTypeBar(Course course){//zelfde als hierboven, ma dan v
 	return result;
 
 }
+public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-waarden (zoals nodig voor grafiek) de 2de de O-waarden en  de 3de zijn de bijhorende vaknamen(zoals nodig voor assen van grafiek)
+	String result1 = "[";
+	String result2 = "[";
+	String result3= "['";
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	Iterator<Course> it = currentUser.getCourses().iterator();
+	while(it.hasNext()){
+		Course course = it.next();
+		result1 = result1 + data.getTotalScolair(course);
+		result2 = result2 + data.getGemiddeldeScolair(course);
+		result3 = result3 + course.toString()+"'";
+		
+	if(it.hasNext()){
+		result1 = result1 + ",";
+		result2 = result2 + ",";
+		result3 = result3 + ",'";
+	}
+	}
+	result1 = result1 + "]";
+	result2 = result2 + "]";
+	result3 = result3 + "]";
+	ArrayList<String> list = new ArrayList<String>();
+	list.add(1,result1);
+	list.add(2,result2);
+	list.add(3,result3);
+	return list;
+}
+
 public String myTimeInTime2(Date startDate){//dit is voor een week per dag bekeken
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
