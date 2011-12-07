@@ -63,7 +63,7 @@
  		var text=$("#watextra").val();
  		$('.watextra').val(text);
     });	    
-    var data1 = <%=request.getAttribute("myCourseCheese")%>;
+    var data1 = <%=request.getAttribute("myCoursesCheese")%>;
   		var plot1 = jQuery.jqplot ('chart1', [data1], { 
       		height: 300,
       		width: 500,
