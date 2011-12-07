@@ -322,6 +322,11 @@ public int getTotalScolair(Course course){
 	return result;
 
 }
+public int getGemiddeldeScolair(Course course){
+	int result = 0;
+	result = getGemiddeldeStudie(course) + getGemiddeldeLes(course) + getGemiddeldeOefenzitting(course);
+	return result;
+}
 public int getDuurZelfstudie(Course course){
 	ArrayList<Activity> actList = currentUser.getActivities();
 	int result = 0;
