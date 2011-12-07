@@ -67,7 +67,10 @@ for(User user:UserManager.getInstance().getUsers()){
 	}
 	}
 }
-	result = result/users;
+if(users==0){
+	result = 0;
+}
+else{result = result/users;}
 	return result;
 }
 public int getGemiddeldeLes(){
@@ -123,7 +126,10 @@ public int getGemiddeldeLes(Course course){
 		}
 		}
 	}
-		result = result/users;
+	if(users==0){
+		result = 0;
+	}
+	else{result = result/users;}
 	return result;
 }
 
@@ -179,7 +185,10 @@ public int getGemiddeldeOefenzitting(Course course){
 		}
 		}
 	}
-		result = result/users;
+	if(users==0){
+		result = 0;
+	}
+	else{result = result/users;}
 	return result;
 }
 public int getDuurZelfstudie(){
