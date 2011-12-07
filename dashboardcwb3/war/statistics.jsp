@@ -17,6 +17,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
  <script>
 	 $(document).ready(function() {
@@ -32,27 +33,24 @@
       			var index = $(this).find("h3").index ( ui.newHeader[0] );
       			if (index === 1) {
        				 plot1.replot();
-     			 }
-     			 else{ plot1.destroy();}
-   			 });
-   			 $('#chart2').bind('accordionchange', function(event, ui) {
-      			var index = $(this).find("h3").index ( ui.newHeader[0] );
-      			if (index === 2) {
        				 plot2.replot();
+       				 plot3.replot();
      			 }
-     			 else{ plot2.destroy();}
+     			 else{ plot1.destroy();plot2.destroy();plot3.destroy();}
    			 });
+   			
 	});
 	</script>
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
 			<div id="chart1"></div>
-
+			<div id="chart2"></div>
+			<div id="chart3"></div>
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
-						<div id="chart2"></div>
+						
 		</div>
 		<h3><a href="#">Your courses</a></h3>
 		<div>
