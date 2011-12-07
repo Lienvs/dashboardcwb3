@@ -31,10 +31,9 @@
 	for(int j=0; j<courses.size(); j++){%>
 		<h3><a href="#"><%=courses.get(j).toString()%></a></h3>
 		<div>
-			This course is taught by <%=courses.get(j).getProf().getName()%> . </br> 
-			and has <%=courses.get(j).getStudyPoints()%> study credits.</br>
+			This course is taught by <%=courses.get(j).getProf().getName()%> and has <%=courses.get(j).getStudyPoints()%> study credits.</br>
 			This means the ideal student is expected by the University to spend <%=30*courses.get(j).getStudyPoints()%> hours to the study of this course. </br>
-			There are <%=courses.get(j).getTotalLecture()%> classes and <%=courses.get(j).getTotalPractice()%> exercising sessions scheduled for this course.
+			There are <%=courses.get(j).getTotalLecture()%> class hours and <%=courses.get(j).getTotalPractice()%> hours of exercise sessions scheduled for this course.
 		</div>
 	<%}}%>
 </div>
