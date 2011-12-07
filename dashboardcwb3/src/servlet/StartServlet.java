@@ -63,8 +63,10 @@ public class StartServlet extends HttpServlet{
 						}
 				// indien extrascolair gestart:
 						if(req.getParameter("wat").equals("Extrascolair")){
-							ExtraFun extra=ExtraFun.getExtraFun(req.getParameter("watextra"));
+							String wa=(String) req.getParameter("watextra");
+							ExtraFun extra=ExtraFun.getExtraFun(wa);
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
+							user.addActivity(act);
 							timerControler.startTiming(act);
 						}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
