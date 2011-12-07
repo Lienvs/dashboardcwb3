@@ -118,6 +118,37 @@ result= result+"]";
 return result;
 }
 
+public String overallMeanTimeInTime(){
+	String result ="[";
+	Calendar stop = Calendar.getInstance();
+	Calendar start = Calendar.getInstance();
+	if(start.WEEK_OF_YEAR>20){
+		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	}
+	else{int i = start.WEEK_OF_YEAR-1;
+	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
+	}
+	Calendar mid = start;
+
+	while(start.before(stop)){
+		int getal=0;
+		int total=0;
+		mid.roll(Calendar.DAY_OF_YEAR,true);
+		for(User user:UserManager.getInstance().getUsers()){
+	for(Activity act:user.getActivities()){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())&&act.getActivityType().equals("scolair")){
+			getal = getal+act.getDuration();
+			}
+		}}
+		total = getal/UserManager.getInstance().getUsers().size();
+	result = result + total;
+	start.roll(Calendar.DAY_OF_YEAR,true);
+	if(start.before(stop)){result = result + ",";
+	}
+	
+}result= result+"]";
+return result;
+}
 
 public String myTimeInTime(){//dit is voor 20 weken (in januari minder) week per week bekeken.
 	String result ="[";
