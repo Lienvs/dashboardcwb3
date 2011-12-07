@@ -1,6 +1,7 @@
 package user;
 
 import java.util.*;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.NotPersistent;
@@ -47,7 +48,8 @@ public class User {
 	private String rNumber;
 	@Persistent
 	private ArrayList<Activity> myActivities;
-	
+	private HashMap<Course,Integer> goal;
+	private HashMap<Date,HashMap<Course,Integer>>goals;
     
     
     @Persistent
@@ -74,9 +76,29 @@ public class User {
 		this.rNumber = rNumber;
 		myActivities = new ArrayList<Activity>(); 
 		myCourseNames = new ArrayList<String>();
+		goal = new HashMap<Course, Integer>();//Integer is aantall MINUTEN!
+		goals = new HashMap<Date,HashMap<Course,Integer>>();//date is starttijd van die week
 		
 	}
-	
+	public void setGoal(Date date, Course course, int min){
+		if(goal.containsKey(course)){
+			goal.remove(course);
+		}
+		goal.put(course,min);
+		updateGoals(date,goal);
+	}
+	private void updateGoals(Date date, HashMap<Course,Integer> map){
+		if(goals.containsKey(date)){
+			goals.remove(date);
+		}
+		goals.put(date,map);
+	}
+	public HashMap<Date,HashMap<Course,Integer>> getGoals(){
+		return goals;
+	}
+	public HashMap<Course,Integer> getGoal(Date date){
+		return goals.get(date);
+	}
 	public String getUserName() {
 		return userName;
 	}
