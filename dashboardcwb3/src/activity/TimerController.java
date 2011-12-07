@@ -127,6 +127,13 @@ public class TimerController {
 	 * @return currentActivity (type: Activity)
 	 */
 	public Activity getCurrentActivity(){
+		currentActivity = null;
+		User user = UserManager.getInstance().getCurrentUser();
+		for (Activity act: user.getActivities()){
+			if(act.getStop() == null){
+				currentActivity = act;
+			}
+		}
 		return currentActivity;
 	}
 	
