@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="activity.*" %>
-
 <%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
@@ -13,17 +12,14 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
-
 <script>
-	 $(document).ready(function() {
-		$("#accordion").accordion({
-    	autoHeight: false,
-		navigation: true
-   		 });
+	 $(function() {
+		$('.accordion .head').click(function() {
+		$(this).next().toggle();
+		return false;
+	}).next().hide();
 	});
-	</script>
-
+</script>
 <div id="accordion">
 <%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 	for(int j=0; j<courses.size(); j++){%>

@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="activity.*" %>
-
 <%@ page import="course.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
@@ -13,13 +12,11 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
 <script>
 $('.numbersOnly').keyup(function () { 
     this.value = this.value.replace(/[^0-9\.]/g,'');
 });
 </script>
-
 Please fill in your goals for this week.</br>
 Attention: if you've already filled in your goals you will overwrite them.</br>
 <form action=\goal  method="post">
