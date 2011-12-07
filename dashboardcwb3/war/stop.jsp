@@ -21,6 +21,8 @@
 	</script>
 If you would like to stop the tracking of your current activity, please do fill in this form and click 'stop'.</br>
   <form action="/stop" method="post">
+  			<%{ Activity act=(Activity) request.getAttribute("curract");
+  			if(act.getType().equals("Zelfstudie")){%>
   				Study location: 
 						<select name="place" id="place">
 							<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");
@@ -37,6 +39,7 @@ If you would like to stop the tracking of your current activity, please do fill 
 					<label for="tags">Studybuddy: </label>
 					<input name="studybuddy" id="tags">	
 				</div>								
+			<%}}%>
 			rating: 
 				<input type="radio" name="rating" value="1" /> 1
 				<input type="radio" name="rating" value="2" /> 2
