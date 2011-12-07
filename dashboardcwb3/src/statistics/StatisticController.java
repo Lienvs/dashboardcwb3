@@ -188,5 +188,22 @@ public int overallTime(){
 	 return result;
 }
 
+public String getMaximumStudie(){
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	String result = "You didn't study at all";
+	int maxDuur =0;
+	ArrayList<Course> courseList= currentUser.getCourses();
+	if(courseList.size()>0){
+	Course maxCourse= courseList.get(0);
+	for(Course course:courseList){
+		if(data.getDuurZelfstudie(course) > maxDuur){
+			maxDuur = data.getDuurZelfstudie(course);
+			maxCourse = course;
+		}
+	}
+	result = "You studied " + maxDuur + " for " + maxCourse.toString();
+	}
+	return result;
+}
 }
 
