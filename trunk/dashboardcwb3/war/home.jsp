@@ -20,6 +20,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" /> 
   <script >
   $(document).ready(function() {
@@ -64,6 +65,9 @@
     });	    
     var l1 = <%=request.getAttribute("myCoursesCheese")%>;
     var l2=<%=request.getAttribute("myPlacesCheese")%>;
+    var l3=<%=request.getAttribute("myCourseBar1")%>;
+    var l4=<%=request.getAttribute("myCourseBar2")%>;
+    var l5=<%=request.getAttribute("myCourseBar3")%>;
   		var plot1 = jQuery.jqplot ('chart1', [l1], { 
       		height: 300,
       		width: 500,
@@ -78,11 +82,20 @@
       		series:[{renderer:$.jqplot.PieRenderer}],
       		legend:{show:true}
     	});
+    	var plot3 = jQuery.jqplot ('chart3', [l3,l4], { 
+      		height: 300,
+      		width: 500,
+      		showDataLabels: true,
+      		series:[{renderer:$.jqplot.BarRenderer}],
+      		legend:{show:true}
+    	});
+    	
     	
     	$('#tabs').bind('tabsshow', function(event, ui) {
   			if (ui.index == 1 && plot1._drawCount == 0 && plot2._drawCount === 0) {
    			 plot1.replot();
    			 plot2.replot();
+   			 plot3.replot();
  			 }
 		});    	   	
     });  	
