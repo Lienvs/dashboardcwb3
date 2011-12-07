@@ -49,8 +49,8 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());//username
 				//einde attributen
 				
-				//statistieken doorgeven
-				req.setAttribute("myCoursesCheese", "[['analyse 1',10],['mech',5]]"); //statController.myCoursesCheese()
+				//stats
+				req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
 				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
 				//req.setAttribute("myFunInTime", statController.myFunInTime());
 				//req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
