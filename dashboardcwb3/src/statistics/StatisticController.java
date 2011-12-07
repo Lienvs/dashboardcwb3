@@ -193,33 +193,48 @@ return myInTime("Sport","Nightlife");
 }
 
 public ArrayList<String> myStudyVSGoal(){//1wat al gedaan, 2 wat totaal te doen, 3 vakken
+
+ArrayList<String> l = meVSModel();
+ArrayList<String> list = new ArrayList<String>();
+list.add(0,l.get(0));
+list.add(1,l.get(1));
+list.add(2,l.get(3));
+return list;
+}
+public ArrayList<String> meVSModel(){//1wat al gedaan, 2 wat totaal te doen, 3 modeltraject,4 vakken
 	String r1="[";
 	String r2 = "[";
-	String r3 = "['";
+	String r3 = "[";
+	String r4 = "['";
 	User currentUser = UserManager.getInstance().getCurrentUser();
 	Iterator<Course> it = currentUser.getCourses().iterator();
 	GoalController go = new GoalController();
 	while(it.hasNext()){
 		Course c = it.next();
 		r2= r2+ go.getGoal(c);
-		r3 = r3 + c.toString()+"'";
+		r3= r3+c.getAvarageWork();
+		r4 = r4 + c.toString()+"'";
 		int g = go.getGoal(c)-go.compareGoals().get(c);
 		r1 = r1 + g;
 		if(it.hasNext()){
 			r1 = r1 +",";
 			r2 = r2 +",";
-			r3 = r3 + ",'";
+			r3 = r3 +",";
+			r4 = r4 + ",'";
 		}
 	}
 	r1 = r1 +"]";
 	r2 = r2 +"]";
 	r3 = r3 +"]";
+	r4 = r4 +"]";
 	ArrayList<String> list = new ArrayList<String>();
 	list.add(0,r1);
 	list.add(1,r2);
 	list.add(2,r3);
+	list.add(3,r4);
 	return list;
 }
+
 public int myTime(){
 	int result=0;
 
