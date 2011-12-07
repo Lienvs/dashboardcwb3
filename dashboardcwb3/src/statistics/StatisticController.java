@@ -201,6 +201,24 @@ list.add(1,l.get(1));
 list.add(2,l.get(3));
 return list;
 }
+public int meVSGoal2(Course course){
+	int result = 0;
+	GoalController go = new GoalController();
+	int a = go.getGoal(course);
+	int b = data.getTotalScolair(course);
+	if(a==0||b==0){
+		result = 0;
+	}
+	else{
+		a =a*100;
+		b= b*100;
+		result = b/a;
+	}
+	if(result>100){
+		result = 100;
+	}
+	return result;
+}
 public ArrayList<String> meVSModel(){//1wat al gedaan, 2 wat totaal te doen, 3 modeltraject,4 vakken
 	String r1="[";
 	String r2 = "[";
@@ -234,7 +252,23 @@ public ArrayList<String> meVSModel(){//1wat al gedaan, 2 wat totaal te doen, 3 m
 	list.add(3,r4);
 	return list;
 }
-
+public int meVSModel2(Course course){
+	int result = 0;
+	int a = course.getAvarageWork()*13;
+	int b = data.getTotalScolair(course);
+	if(a==0||b==0){
+		result = 0;
+	}
+	else{
+		a =a*100;
+		b= b*100;
+		result = b/a;
+	}
+	if(result>100){
+		result = 100;
+	}
+	return result;
+}
 public int myTime(){
 	int result=0;
 
