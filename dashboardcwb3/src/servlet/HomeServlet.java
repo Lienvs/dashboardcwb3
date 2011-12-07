@@ -52,6 +52,9 @@ public class HomeServlet extends HttpServlet{
 				//stats
 				req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
 				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
+				req.setAttribute("myCourseBar1", statController.myCourseBar().get(0));
+				req.setAttribute("myCourseBar2", statController.myCourseBar().get(1));
+				req.setAttribute("myCourseBar3", statController.myCourseBar().get(2));
 				//req.setAttribute("myFunInTime", statController.myFunInTime());
 				//req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
 				//req.setAttribute("mySleepInTime", statController.mySleepInTime());
