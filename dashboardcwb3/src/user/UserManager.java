@@ -1,14 +1,13 @@
 package user;
 
-import java.util.*;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.JDOHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-import database.PMF;
-
-import javax.jdo.Query;
 import javax.jdo.Extent;
+import javax.jdo.PersistenceManager;
+
+import course.Course;
+import database.PMF;
 
 /**
  * Singleton klasse die de gebruikers beheert.
@@ -19,7 +18,6 @@ import javax.jdo.Extent;
 public class UserManager {
 
 	private static UserManager instance = null;
-	
 	
 	private ArrayList<User> users;
 	private User currentUser;
@@ -78,10 +76,40 @@ public class UserManager {
 		}
 	}
 	
-	public void updateUser(){
-		//Kan user zijn gebruikersnaam/passwoord/... nog veranderen?
-		//nog methode updateCourses-> in user??!
+	public void updateUserCourses(){
+		try{
+			pm.currentTransaction().begin();
+			currentUser.setHulpBoolean();
+			pm.currentTransaction().commit();
+		}
+		finally{
+			pm.flush();
+		}
 	}
+		
+		
+	/*public void updateUser(){
+		if(newPassword!=0 && newConfirmedPassword!=null){
+			try{
+				pm.currentTransaction().begin();
+				currentUser.setPassword(newPassword, newConfirmedPassword);
+				pm.currentTransaction().commit();
+			}
+			finally{
+				pm.flush();
+			}
+		}
+		if(newUserName!=null){
+			try{
+				pm.currentTransaction().begin();
+				currentUser.setUserName(newUserName);
+				pm.currentTransaction().commit();
+			}
+			finally{
+				pm.flush();
+			}
+		}
+	}*/
 	public String getAllUsers(){
 		String result = "[";
 		Iterator it = users.iterator();
@@ -96,3 +124,5 @@ public class UserManager {
 		return result;
 	}
 }
+
+
