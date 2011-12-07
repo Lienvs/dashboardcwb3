@@ -88,8 +88,5 @@ public class CourseManager {
 			}
 			return coursje;
 		}
-		
-		
-		
 	
 }
