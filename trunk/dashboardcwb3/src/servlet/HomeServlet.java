@@ -52,6 +52,20 @@ public class HomeServlet extends HttpServlet{
 				//statistieken doorgeven
 				req.setAttribute("myCoursesCheese", "[['analyse 1',10],['mech',5]]"); //statController.myCoursesCheese()
 				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
+				//req.setAttribute("myFunInTime", statController.myFunInTime());
+				//req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
+				//req.setAttribute("mySleepInTime", statController.mySleepInTime());
+				//req.setAttribute("mySportInTime", statController.mySportInTime());
+				//req.setAttribute("myTime", statController.myTime());
+				//req.setAttribute("myTimeInTime", statController.myTimeInTime());
+				//req.setAttribute("overallTime", statController.overallTime());
+				//HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
+				//ArrayList<String> statscourse=new ArrayList<String>();
+				for(int i=0;i<courses.size();i++){
+					//statscourse.add(statController.myTypeCheese(courses.get(i)));
+					//statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
+					//hashmap.put(courses.get(i), statscourse);
+				}
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
