@@ -33,7 +33,11 @@ public class GoalController {
 		
 		
 	}
-	
+	public int getGoal(Course course){
+		User currentUser = UserManager.getInstance().getCurrentUser();
+		int result = currentUser.getGoal(startDate).get(course);
+		return result;
+	}
 	public void setGoal(Course course,double time){//tijd in uren(kan ook naar minuten aangepast worden)
 	double tijd = time*60;
 	int t = (int) tijd;

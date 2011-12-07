@@ -1,4 +1,6 @@
 package statistics;
+import goals.GoalController;
+
 import java.util.*;
 
 import activity.Activity;
@@ -85,9 +87,9 @@ public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-w
 	result2 = result2 + "]";
 	result3 = result3 + "]";
 	ArrayList<String> list = new ArrayList<String>();
-	list.add(1,result1);
-	list.add(2,result2);
-	list.add(3,result3);
+	list.add(0,result1);
+	list.add(1,result2);
+	list.add(2,result3);
 	return list;
 }
 
@@ -189,6 +191,35 @@ return myInTime("Nightlife","Nightlife");
 public String myFunInTime(){
 return myInTime("Sport","Nightlife");
 }
+
+public ArrayList<String> myStudyVSGoal(){//1wat al gedaan, 2 wat totaal te doen, 3 vakken
+	String r1="[";
+	String r2 = "[";
+	String r3 = "['";
+	User currentUser = UserManager.getInstance().getCurrentUser();
+	Iterator<Course> it = currentUser.getCourses().iterator();
+	GoalController go = new GoalController();
+	while(it.hasNext()){
+		Course c = it.next();
+		r2= r2+ go.getGoal(c);
+		r3 = r3 + c.toString()+"'";
+		int g = go.getGoal(c)-go.compareGoals().get(c);
+		r1 = r1 + g;
+		if(it.hasNext()){
+			r1 = r1 +",";
+			r2 = r2 +",";
+			r3 = r3 + ",'";
+		}
+	}
+	r1 = r1 +"]";
+	r2 = r2 +"]";
+	r3 = r3 +"]";
+	ArrayList<String> list = new ArrayList<String>();
+	list.add(0,r1);
+	list.add(1,r2);
+	list.add(2,r3);
+	return list;
+}
 public int myTime(){
 	int result=0;
 
@@ -233,5 +264,6 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
+
 }
 
