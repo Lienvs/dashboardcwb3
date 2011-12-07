@@ -48,7 +48,9 @@ public class User {
 	private String rNumber;
 	@Persistent
 	private ArrayList<Activity> myActivities;
+	@NotPersistent
 	private HashMap<Course,Integer> goal;
+	@NotPersistent
 	private HashMap<Date,HashMap<Course,Integer>>goals;
     
     
