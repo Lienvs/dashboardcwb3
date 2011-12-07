@@ -204,13 +204,8 @@ public class User {
 	 * @param course
 	 */
 	public void addCourse(Course course){
-		//try{
-		//	pm.currentTransaction().begin();
 			myCourseNames.add(course.toString());	
-		//}
-		//finally{
-					
-		//}
+		
 	}
 	
 	/**
@@ -219,6 +214,7 @@ public class User {
 	 */
 	public void removeCourse(Course course){
 		myCourses.remove(course);
+		myCourseNames.remove(course.toString());
 		for(Activity act: myActivities){
 			if(act.toString().contains(course.toString())){
 				myActivities.remove(act);
