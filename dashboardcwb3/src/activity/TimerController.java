@@ -54,7 +54,7 @@ public class TimerController {
 	public void stopTiming(){
 		
 		Calendar cal = Calendar.getInstance();
-		currentActivity.setStop(cal.getTime());
+		getCurrentActivity().setStop(cal.getTime());
 		currentActivity = null;
 	}
 	
