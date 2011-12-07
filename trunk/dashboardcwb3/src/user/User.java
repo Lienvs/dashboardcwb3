@@ -52,7 +52,7 @@ public class User {
 	private HashMap<Course,Integer> goal;
 	@NotPersistent
 	private HashMap<Date,HashMap<Course,Integer>>goals;
-    
+    private Boolean hulpBoolean;
     
     @Persistent
     private ArrayList<String> myCourseNames;
@@ -80,7 +80,7 @@ public class User {
 		myCourseNames = new ArrayList<String>();
 		goal = new HashMap<Course, Integer>();//Integer is aantall MINUTEN!
 		goals = new HashMap<Date,HashMap<Course,Integer>>();//date is starttijd van die week
-		
+		hulpBoolean = false;
 	}
 	public void setGoal(Date date, Course course, int min){
 		if(goal.containsKey(course)){
@@ -241,4 +241,12 @@ public class User {
 		return myCourseNames;
 	}
 	
+	public void setHulpBoolean(){
+		if(hulpBoolean==true){
+			hulpBoolean = false;
+		}
+		else if(hulpBoolean==false){
+			hulpBoolean = true;
+		}
+	}
 }
