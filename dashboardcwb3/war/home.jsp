@@ -62,22 +62,15 @@
  		var text=$("#watextra").val();
  		$('.watextra').val(text);
     });	    
-    var data1 = [['analyse 1',10],['mech',5]];
-  		var plot1 = $.jqplot ('chart1', [data1], { 
-      		height: 300,
-      		width: 500,
-      		showDataLabels: true,
-      		series:[{renderer:$.jqplot.PieRenderer}],
-      		legend:{show:true, location:'e'}
-    	});
-    var data2 = <%=request.getAttribute("myPlaceCheese")%>;
-  		var plot2 = $.jqplot ('chart2', [data2], { 
+    var l4 = <%=request.getAttribute("myCoursesCheese")%>;
+  		var plot1 = jQuery.jqplot ('chart1', [l4], { 
       		height: 300,
       		width: 500,
       		showDataLabels: true,
       		series:[{renderer:$.jqplot.PieRenderer}],
       		legend:{show:true}
-    	});   	
+    	});
+    	
     	$('#tabs').bind('tabsshow', function(event, ui) {
   			if (ui.index == 1 && plot1._drawCount == 0) {
    			 plot1.replot();
@@ -87,6 +80,7 @@
   </script> 
 </head>
 <body style="font-size:62.5%;"> 
+
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> Learnkeeper </br></h1>
