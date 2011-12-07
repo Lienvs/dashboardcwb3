@@ -59,20 +59,19 @@
     $('#treea').click(function() {
  		$('#tree').hide();
  		$('#five').show();
- 		$('.type').val("Oefenzitting");
  		var text=$("#watextra").val();
  		$('.watextra').val(text);
     });	    
-    var data1 = <%=request.getAttribute("myCoursesCheese")%>;
-  		var plot1 = jQuery.jqplot ('chart1', [data1], { 
+    var data1 = [['analyse 1',10],['mech',5]];
+  		var plot1 = $.jqplot ('chart1', [data1], { 
       		height: 300,
       		width: 500,
       		showDataLabels: true,
       		series:[{renderer:$.jqplot.PieRenderer}],
-      		legend:{show:true}
+      		legend:{show:true, location:'e'}
     	});
     var data2 = <%=request.getAttribute("myPlaceCheese")%>;
-  		var plot2 = jQuery.jqplot ('chart2', [data2], { 
+  		var plot2 = $.jqplot ('chart2', [data2], { 
       		height: 300,
       		width: 500,
       		showDataLabels: true,
