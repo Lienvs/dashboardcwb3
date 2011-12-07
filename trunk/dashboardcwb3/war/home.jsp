@@ -62,8 +62,16 @@
  		var text=$("#watextra").val();
  		$('.watextra').val(text);
     });	    
-    var l4 = <%=request.getAttribute("myCoursesCheese")%>;
-  		var plot1 = jQuery.jqplot ('chart1', [l4], { 
+    var l1 = <%=request.getAttribute("myCoursesCheese")%>;
+    var l2=<%=request.getAttribute("myPlacesCheese")%>;
+  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
+      		height: 300,
+      		width: 500,
+      		showDataLabels: true,
+      		series:[{renderer:$.jqplot.PieRenderer}],
+      		legend:{show:true}
+    	});
+    	var plot2 = jQuery.jqplot ('chart2', [l2], { 
       		height: 300,
       		width: 500,
       		showDataLabels: true,
@@ -72,8 +80,9 @@
     	});
     	
     	$('#tabs').bind('tabsshow', function(event, ui) {
-  			if (ui.index == 1 && plot1._drawCount == 0) {
+  			if (ui.index == 1 && plot1._drawCount == 0 && plot2._drawCount === 0) {
    			 plot1.replot();
+   			 plot2.replot();
  			 }
 		});    	   	
     });  	

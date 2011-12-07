@@ -23,6 +23,10 @@
 		$("#accordion").accordion({
 		autoHeight: false,
 		navigation: true
+    		});	
+    	$("#accordioncourses").accordion({
+		autoHeight: false,
+		navigation: true
     		});			
 			 $('#chart1').bind('accordionchange', function(event, ui) {
       			var index = $(this).find("h3").index ( ui.newHeader[0] );
@@ -31,20 +35,36 @@
      			 }
      			 else{ plot1.destroy();}
    			 });
+   			 $('#chart2').bind('accordionchange', function(event, ui) {
+      			var index = $(this).find("h3").index ( ui.newHeader[0] );
+      			if (index === 2) {
+       				 plot2.replot();
+     			 }
+     			 else{ plot2.destroy();}
+   			 });
 	});
 	</script>
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
 			<div id="chart1"></div>
+
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
-		<div id="chart2"></div>
+						<div id="chart2"></div>
 		</div>
-		<h3><a href="#">Section 3</a></h3>
+		<h3><a href="#">Your courses</a></h3>
 		<div>
-		sec3
+			<div id="accordioncourses">
+				<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
+				for(int j=0; j<courses.size(); j++){%>
+					<h3><a href="#"><%=courses.get(j).toString()%></a></h3>
+					<div>
+						
+					</div>
+				<%}}%>
+			</div>
 		</div>
 		<h3><a href="#">Section 4</a></h3>
 		<div>
