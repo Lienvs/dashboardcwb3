@@ -10,32 +10,19 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
-
-
-
-
 <html>
 <head>
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
-  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
   <script>
 	$(function() {
 		$( ".check" ).button();	
 		$( "#dialog" ).dialog();	
 	});
 	</script>
-	
-
-
-
 </head>
-
 <body style="font-size:62.5%;">
-
 <%String message=(String) request.getAttribute("message");
   if(message==null){}
   else{%>
@@ -43,7 +30,6 @@
 		<p><%=message%></p>
 	</div>
 	<%}%>
-
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
 	for(int i=0 ; i<courses.size(); i++){%>
@@ -51,16 +37,5 @@
 	<%}%></br>
 	<input type="submit" class="check" value="Submit" name="submitcourse"/>
 </form>	
-
-
-
-
-
-
-
-		
-	
-    		
-   	 	
-   	 	</body>
+</body>
 </html>

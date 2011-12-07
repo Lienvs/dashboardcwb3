@@ -10,17 +10,11 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
-
-
-
-
 <html>
 <head>
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
   <script>
   $(document).ready(function() {
     $("#accordion").accordion({
@@ -33,8 +27,6 @@
   </script>
 </head>
 <body style="font-size:62.5%;">
-
-
 <%String message1=(String) request.getAttribute("message1");
   String message2=(String) request.getAttribute("message2");
   if(message1==null){}
@@ -42,10 +34,7 @@
 	<div id="dialog" title="<%=message1%>">
 		<p><%=message2%></p>
 	</div>
-	<%}%>
-
-
-  
+	<%}%> 
 <div id="accordion">
 	<h3><a href="#">Login</a></h3>
 	<div>
@@ -68,9 +57,7 @@
 			r-number: <input type="text" name="rnumber"> <br />
 			<input type="submit" class="check" name="signup" value="Sign up"/>
 		</form>
-	</div>
-	
+	</div>	
 </div>
-
 </body>
 </html>
