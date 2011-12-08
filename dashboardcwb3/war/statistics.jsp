@@ -28,29 +28,34 @@
     	$("#accordioncourses").accordion({
 		autoHeight: false,
 		navigation: true
-    		});			
-			 $('#chart1').bind('accordionchange', function(event, ui) {
-      			var index = $(this).find("h3").index ( ui.newHeader[0] );
-      			if (index === 1) {
-       				 plot1.replot();
-       				 plot2.replot();
-       				 plot3.replot();
-     			 }
-     			 else{ plot1.destroy();plot2.destroy();plot3.destroy();}
-   			 });
+    		});		
+    		$('#accordion').bind('accordionchange', function(event, ui) {
+     			 var index = $(this).find("h3").index ( ui.newHeader[0] );
+      				if (index === 1) {
+        			plot1.replot();
+        			plot3.replot();
+        			plot2.replot();
+      				}
+      				else{
+      					plot1.destroy();
+        				plot3.destroy();
+        				plot2.destroy();
+      				}
+    		});	
    			
 	});
 	</script>
+		
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
 			<div id="chart1"></div>
-			<div id="chart2"></div>
+			
 			<div id="chart3"></div>
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
-						
+				<div id="chart2"></div>	
 		</div>
 		<h3><a href="#">Your courses</a></h3>
 		<div>
