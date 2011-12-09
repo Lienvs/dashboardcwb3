@@ -211,6 +211,40 @@ private String myInTime(String type,String type2){
 }result= result+"]";
 return result;
 }
+private String overallMeanFunInTime(){
+	String result ="[";
+	Calendar stop = Calendar.getInstance();
+	Calendar start = Calendar.getInstance();
+	if(start.WEEK_OF_YEAR>20){
+		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	}
+	else{int i = start.WEEK_OF_YEAR-1;
+	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
+	}
+	Calendar mid = start;
+	for(String userName:UserManager.getInstance().getUserNames()){
+	
+	while(start.before(stop)){
+		int getal=0;
+		mid.roll(Calendar.DAY_OF_YEAR,true);
+	for(Activity act:ActivityManager.getInstance().getActivities(userName)){
+		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
+			
+			if(act.getType().equals("Sport")||act.getType().equals("Nightlife")){
+			getal = getal+act.getDuration();
+			}}
+		}
+	getal = getal/UserManager.getInstance().getUserNames().size();
+	result = result + getal;
+	start.roll(Calendar.DAY_OF_YEAR,true);
+	if(start.before(stop)){result = result + ",";
+	}
+	
+}}
+	result= result+"]";
+return result;
+
+}
 public String mySleepInTime(){
 return myInTime("Sleep","Sleep");
 }
