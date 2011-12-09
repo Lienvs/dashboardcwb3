@@ -28,7 +28,7 @@ public class CourseSelectionServlet extends HttpServlet{
 				String userName = UserManager.getInstance().getCurrentUserName();
 				
 				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(userName);
-				//ArrayList<Course> courses = CourseManager.getInstance().getAllCourses();
+				ArrayList<Course> courses = CourseManager.getInstance().getAllCourses();//welke van de 2?
 				Boolean possible=false;
 				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() && !possible; i++){
 					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())!=null){
@@ -55,7 +55,7 @@ public class CourseSelectionServlet extends HttpServlet{
 						}
 					}
 					UserManager.getInstance().updateCourses(userName,courses);
-					//UserManager.getInstance().updateUser(userName);
+					UserManager.getInstance().updateUser(userName);//wa is dees?
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){
