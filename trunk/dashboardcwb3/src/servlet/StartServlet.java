@@ -11,6 +11,7 @@ import user.UserManager;
 import course.Course;
 import course.CourseManager;
 
+import activity.ActivityManager;
 import activity.Lecture;
 import activity.Practice;
 import activity.TimerController;
@@ -24,23 +25,27 @@ import activity.ExtraCurricularActivity;
 
 public class StartServlet extends HttpServlet{
 	private TimerController timerControler;
+	private Course course;
+	
 	public StartServlet() {
 		timerControler=new TimerController();
+		course = new Course(0,0,null,null,0);
 	}
 	//indien activiteit gestart
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				String userName =UserManager.getInstance().getCurrentUserName();
+				//User user =UserManager.getInstance().getCurrentUser();
 				// indien scolair gestart:
 						if(req.getParameter("wat").equals("Scolair")){
 							//course 
 							String vak=req.getParameter("vak");
-							Course course=null;
+							
 							for(int i=0; i<CourseManager.getInstance().getAllCourses().size(); i++){
 								if(CourseManager.getInstance().getAllCourses().get(i).toString().equals(vak)){
 									course=CourseManager.getInstance().getAllCourses().get(i);
+									CourseManager.getInstance().setCurrentCourse(course);
 								}
 							}
 							//les
@@ -73,6 +78,9 @@ public class StartServlet extends HttpServlet{
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
 			}
+	public Course getCurrentCourse(){
+		return course;
+	}
 	
 
 }
