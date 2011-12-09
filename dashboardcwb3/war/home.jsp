@@ -307,7 +307,7 @@
   
 </head>
 
-<body style="font-size:62.5%;">
+<body>
 
  
 <div class="tabs" id="tabs">
