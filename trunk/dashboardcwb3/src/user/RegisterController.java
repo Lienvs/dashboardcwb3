@@ -34,65 +34,35 @@ public class RegisterController {
 	public boolean register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
 		boolean registered = false;
 		boolean freeUserName = true;
-		boolean freeRNumber = true;
 		boolean passwordConfirmed=false;
 		boolean allFieldsFilledIn = false;
 		
 		 //Controle of username en rNummer nog niet bestaan
-		 if(!UserManager.getInstance().getUsers().isEmpty()){
-			for(User user : UserManager.getInstance().getUsers()){
-				if(user.getUserName()!=null&&user.getRNumber()!=null){
-					if(user.getUserName().equals(userName)&& freeUserName){
-					freeUserName=false;
-					}
-					if(user.getRNumber().equals(rNumber)&&freeRNumber&&freeUserName){
-					freeRNumber=false;					
-					}
-				}
-			}
-					//Paswoord en confirmed paswoord moeten gelijk zijn
-					if(password.equals(confirmedPassword)){
-						passwordConfirmed=true;
-					}
-			
-					//Controleer of alle velden ingevuld zijn
-					if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
-						allFieldsFilledIn = true;
-					}
-			
-					//Als alle controles positief blijken, maak nieuwe user aan
-					if(freeUserName&&freeRNumber&&passwordConfirmed&&allFieldsFilledIn){
-						registered = true;
-						User user = new User(userName,password,firstName,lastName,gender,rNumber);
-						UserManager.getInstance().setCurrentUser(user);
-						UserManager.getInstance().addUser(user);
-					}		
-			
-			
+		
+		if (UserManager.getInstance().exist(userName) | UserManager.getInstance().getRNumbers().contains(rNumber)){
+			freeUserName = false;
 		}
-		else{ 
 		
-			//Paswoord en confirmed paswoord moeten gelijk zijn
-			if(password.equals(confirmedPassword)){
-				passwordConfirmed=true;
-			}
-			
-			//Controleer of alle velden ingevuld zijn
-			if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
-				allFieldsFilledIn = true;
-			}
-			
-			//Als alle controles positief blijken, maak nieuwe user aan
-			if(passwordConfirmed&&allFieldsFilledIn){
-				registered = true;
-				User user = new User(userName,password,firstName,lastName,gender,rNumber);
-				
-				UserManager.getInstance().setCurrentUser(user);
-			}
-			
 		
-			
-		 } 
+		//Paswoord en confirmed paswoord moeten gelijk zijn
+		if (password.equals(confirmedPassword)){
+			passwordConfirmed=true;
+		}
+		
+		
+		//Controleer of alle velden ingevuld zijn
+		if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
+			allFieldsFilledIn = true;
+		}
+		
+		
+		//Als alle controles positief blijken, maak nieuwe user aan
+		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn){
+			registered = true;
+			User user = new User(userName,password,firstName,lastName,gender,rNumber);
+			UserManager.getInstance().setCurrentUserName(user.getUserName());
+			UserManager.getInstance().addUser(user);
+		}	
 		return registered;
 	}
 

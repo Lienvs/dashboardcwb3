@@ -1,7 +1,5 @@
 package course;
 //import java.util.*;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 
 
 //import sun.util.resources.CalendarData_da;
@@ -12,19 +10,17 @@ import javax.jdo.annotations.Persistent;
  * @version
  *
  */
-@PersistenceCapable
+
 public class Course {
-	//@Persistent
-	//private String key;
-	@Persistent
-	private Professor prof;
-	@Persistent
+	
+	private String prof;
+	
 	private int studyPoints;
-	@Persistent
+	
 	private int totalLecture;  //aantal uur les van dit vak over hele semester
-	@Persistent
+	
 	private int totalPractice; //aantal uur oefenzitting van dit vak over heel semester
-	@Persistent
+	
 	private String name; //naam van het vak vb: analyse
 	
 	
@@ -36,21 +32,19 @@ public class Course {
 	 * @param name (type: String)
 	 * @param studyPoints (type: int)
 	 */
-	public Course(int totalLecture, int totalPractice, Professor prof, String name, int studyPoints) {
+	public Course(int totalLecture, int totalPractice, String prof, String name, int studyPoints) {
 		this.totalLecture = totalLecture;
-		this.totalPractice = totalPractice;
 		this.prof = prof;
+		this.totalPractice = totalPractice;
 		this.name = name;
 		this.studyPoints = studyPoints;
 //		String nm = name.substring(4);
 		//this.key = name;
 	}	
 	
-	/**
-	 * geeft de prof van het vak weer (als een object)
-	 * @return prof (type: Professor)
-	 */
-	public Professor getProf(){
+		
+	public String getProf()
+	{
 		return prof;
 	}
 	

@@ -19,6 +19,7 @@ private DataController data;
 public StatisticController(){
 	data = new DataController();
 }
+/*
 public String myCoursesCheese(){
 	String result = "[";
 	 User currentUser = UserManager.getInstance().getCurrentUser();
@@ -344,6 +345,6 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
-
+*/
 }
 
