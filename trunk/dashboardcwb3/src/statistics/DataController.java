@@ -5,7 +5,7 @@ import user.User;
 import user.UserManager;
 
 import course.Course;
-
+import activity.ActivityManager;
 import activity.Activity;
 import activity.CurricularActivity;
 import activity.IndividualStudy;
@@ -92,7 +92,7 @@ public int getGemiddeldeLes(){
 public int getGemiddeldeLes(Course course){
 	int result = 0;
 	
-		ArrayList<Activity> actList = ActivityManager;
+		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -109,7 +109,7 @@ public int getGemiddeldeLes(Course course){
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:ActivitieManager().getInstance().getActivities(userName)){
+		for(Activity act:ActivityManager.getInstance().getActivities(userName)){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
