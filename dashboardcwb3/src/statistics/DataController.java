@@ -13,9 +13,9 @@ import activity.IndividualStudy;
 public class DataController {
 	private User currentUser;
 		public  DataController(){
-			currentUser = UserManager.getInstance().getCurrentUser();
+			//currentUser = UserManager.getInstance().getCurrentUser();
 }
-		
+/*		
 public int getGemiddeldeStudie(){
 	int result = 0;
 	for(User usertje:UserManager.getInstance().getUsers()){
@@ -396,5 +396,6 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
+*/
 }
 

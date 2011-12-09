@@ -9,6 +9,7 @@ import user.UserManager;
 
 
 import course.Course;
+import course.CourseManager;
 
 import activity.Lecture;
 import activity.Practice;
@@ -31,33 +32,33 @@ public class StartServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				User user =UserManager.getInstance().getCurrentUser();
+				//User user =UserManager.getInstance().getCurrentUser();
 				// indien scolair gestart:
 						if(req.getParameter("wat").equals("Scolair")){
 							//course 
 							String vak=req.getParameter("vak");
 							Course course=null;
-							for(int i=0; i<user.getCourses().size(); i++){
-								if(user.getCourses().get(i).toString().equals(vak)){
-									course=user.getCourses().get(i);
+							for(int i=0; i<CourseManager.getInstance().getAllCourses().size(); i++){
+								if(CourseManager.getInstance().getAllCourses().get(i).toString().equals(vak)){
+									course=CourseManager.getInstance().getAllCourses().get(i);
 								}
 							}
 							//les
 							if(req.getParameter("type").equals("Les")){
 								Lecture les=new Lecture(course);
-								user.addActivity(les);
+								//user.addActivity(les);
 								timerControler.startTiming(les);
 							}
 							//zs
 							if(req.getParameter("type").equals("Zelfstudie")){
 								IndividualStudy zelfstudie=new IndividualStudy(course);
-								user.addActivity(zelfstudie);
+								//user.addActivity(zelfstudie);
 								timerControler.startTiming(zelfstudie);
 							}
 							//oz
 							if(req.getParameter("type").equals("Oefenzitting")){
 								Practice oefenzitting=new Practice(course);
-								user.addActivity(oefenzitting);
+								//user.addActivity(oefenzitting);
 								timerControler.startTiming(oefenzitting);
 							}
 						}
@@ -66,7 +67,7 @@ public class StartServlet extends HttpServlet{
 							String wa=(String) req.getParameter("watextra");
 							ExtraFun extra=ExtraFun.getExtraFun(wa);
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
-							user.addActivity(act);
+							//user.addActivity(act);
 							timerControler.startTiming(act);
 						}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	

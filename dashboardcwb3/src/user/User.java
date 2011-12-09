@@ -2,23 +2,17 @@ package user;
 
 import java.util.*;
 
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.NotPersistent;
-import javax.jdo.annotations.Inheritance;
-import javax.jdo.annotations.InheritanceStrategy;
-import javax.jdo.annotations.PrimaryKey;
-import javax.jdo.annotations.IdGeneratorStrategy;
+
 
 import activity.Activity;
 import activity.CurricularActivity;
 
-import com.google.appengine.api.datastore.Key;
+
 
 import course.Course;
 import course.CourseManager;
 
-import javax.jdo.annotations.Extension;
+
 
 /**
  * klasse die de gebruiker definieert
@@ -27,34 +21,32 @@ import javax.jdo.annotations.Extension;
  *
  */
 
-@PersistenceCapable(detachable="true")
+
 
 public class User {
-	@NotPersistent
+	
 	private ArrayList<Course> myCourses;
-	@PrimaryKey
-	private String key;
-	@Persistent
+	
     private String userName;
-	@Persistent
+	
 	private String password;
-	@Persistent
+	
 	private String firstName;
-	@Persistent
+	
 	private String lastName;
-	@Persistent
+	
 	private String gender;
-	@Persistent
+	
 	private String rNumber;
-	@Persistent
+	
 	private ArrayList<Activity> myActivities;
-	@NotPersistent
+	
 	private HashMap<Course,Integer> goal;
-	@NotPersistent
+	
 	private HashMap<Date,HashMap<Course,Integer>>goals;
     private Boolean hulpBoolean;
     
-    @Persistent
+    
     private ArrayList<String> myCourseNames;
 	
     
@@ -70,7 +62,7 @@ public class User {
 	 */
 	public User(String userName, String password, String firstName,String lastName, String gender, String rNumber){
 		this.userName = userName;
-		this.key = userName;
+		
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -227,7 +219,7 @@ public class User {
 		myCourses = new ArrayList<Course>();
 		
 		for(String name: myCourseNames){
-			myCourses.add(CourseManager.getInstance().getCourse(name));
+			//myCourses.add(CourseManager.getInstance().getCourse(name));
 		}	
 		return myCourses;
 	}
@@ -237,12 +229,5 @@ public class User {
 		return myCourseNames;
 	}
 	
-	public void setHulpBoolean(){
-		if(hulpBoolean==true){
-			hulpBoolean = false;
-		}
-		else if(hulpBoolean==false){
-			hulpBoolean = true;
-		}
-	}
+	
 }

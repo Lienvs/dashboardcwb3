@@ -27,8 +27,9 @@ public class GoalServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				User user =UserManager.getInstance().getCurrentUser();
-				ArrayList<Course> courses=user.getCourses();
+				//User user =UserManager.getInstance().getCurrentUser();
+				//
+				ArrayList<Course> courses=CourseManager.getInstance().getAllCourses();
 				for(int i=0; i<courses.size();i++){
 					if(req.getParameter(courses.get(i).toString())!=null){
 						double aDouble = Double.parseDouble(req.getParameter(courses.get(i).toString()));

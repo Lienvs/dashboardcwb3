@@ -25,10 +25,10 @@ public class CourseSelectionServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				User user = UserManager.getInstance().getCurrentUser();
+				String userName = UserManager.getInstance().getCurrentUserName();
 				
-				ArrayList<Course> courses = user.getCourses();
-				
+				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(userName);
+				//ArrayList<Course> courses = CourseManager.getInstance().getAllCourses();
 				Boolean possible=false;
 				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() && !possible; i++){
 					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())!=null){
@@ -40,17 +40,20 @@ public class CourseSelectionServlet extends HttpServlet{
 					for(int i=0; i<CourseManager.getInstance().getAllCourses().size() ;i++){
 						if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){
 							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){
-								user.removeCourse(CourseManager.getInstance().getAllCourses().get(i));
+								//UserManager.getInstance().removeCourse(userName,CourseManager.getInstance().getAllCourses().get(i));
+								courses.remove(CourseManager.getInstance().getAllCourses().get(i));
 							}
 						}
 						else{
 							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){}
 							else{
-								user.addCourse(CourseManager.getInstance().getAllCourses().get(i));
+								//UserManager.getInstance().addCourse(userName,CourseManager.getInstance().getAllCourses().get(i));
+								courses.add(CourseManager.getInstance().getAllCourses().get(i));
 							}
 						}
 					}
-					UserManager.getInstance().updateUserCourses();
+					UserManager.getInstance().updateCourses(userName,courses);
+					//UserManager.getInstance().updateUser(userName);
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){

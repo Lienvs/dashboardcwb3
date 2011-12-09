@@ -21,14 +21,14 @@ public class TimerController {
 	
 	
 	public TimerController(){
-		User currentUser =UserManager.getInstance().getCurrentUser();
+		//User currentUser =UserManager.getInstance().getCurrentUser();
 		
-		for(Activity act : currentUser.getActivities()){
-			if(act.getStop()==null){
-				currentActivity = act;
-			}
-			else{currentActivity = null;}
-		}
+		//for(Activity act : currentUser.getActivities()){
+			//if(act.getStop()==null){
+				//currentActivity = act;
+			//}
+			//else{currentActivity = null;}
+		//}
 		
 		
 	}
@@ -112,13 +112,13 @@ public class TimerController {
 	 */
 	public boolean isBusy(){
 		boolean isBusy = false;
-		User currentUser =UserManager.getInstance().getCurrentUser();
+		//User currentUser =UserManager.getInstance().getCurrentUser();
 		
-		for(Activity act : currentUser.getActivities()){
-			if(act.getStop()==null){
-				isBusy=true;
-			}
-		}	
+		//for(Activity act : currentUser.getActivities()){
+			//if(act.getStop()==null){
+			//	isBusy=true;
+			//}
+		//}	
 		return isBusy;
 	
 	}
@@ -128,12 +128,12 @@ public class TimerController {
 	 */
 	public Activity getCurrentActivity(){
 		currentActivity = null;
-		User user = UserManager.getInstance().getCurrentUser();
-		for (Activity act: user.getActivities()){
-			if(act.getStop() == null){
-				currentActivity = act;
-			}
-		}
+		//User user = UserManager.getInstance().getCurrentUser();
+		//for (Activity act: user.getActivities()){
+			//if(act.getStop() == null){
+			//	currentActivity = act;
+			//}
+		//}
 		return currentActivity;
 	}
 	

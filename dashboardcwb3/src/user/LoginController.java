@@ -26,32 +26,17 @@ public LoginController(){
  * @return result (type: boolean)
  */
 	public boolean login(String userName,String password) {
-		boolean id = false;
-		boolean pass = false;
 		boolean result = false;
-		User selected = null;
-		
-		if(userName!=null&&password!=null){
-			try{
-				selected = 	UserManager.getInstance().getUser(userName);
-				id=true;
-				if (id){		
-					if(selected.getPassword().equals(password)) {
-						pass = true;
-					}
-					if(pass) {
-						result = true;
-						UserManager.getInstance().setCurrentUser(selected);
-					}		
-				}
-				
+		if(UserManager.getInstance().exist(userName)){
+			if (UserManager.getInstance().getPassword(userName).equals(password)){
+				result = true;
+				UserManager.getInstance().setCurrentUserName(userName);
 			}
-			catch (JDOObjectNotFoundException e){
-				result = false;
-			}
-			
 			
 		}
+		else{
+			result = false;
+		}		
 		return result;
 		}
 		
@@ -59,7 +44,7 @@ public LoginController(){
 	 * Logt de gebruiker uit: stelt de huidige gebruiker in als nul.
 	 */
 	public void logout() {
-		UserManager.getInstance().setCurrentUser(null);	
+		UserManager.getInstance().setCurrentUserName(null);	
 	}
 	
 	

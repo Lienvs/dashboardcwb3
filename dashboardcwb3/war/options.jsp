@@ -29,14 +29,14 @@ Be aware, deleting a course once, deletes all your information regarding this co
 	<%}%>
 	<form action="/courses" method="post">
 				<%
-				ArrayList allcourses = null; allcourses=(ArrayList)request.getAttribute("allcourses");
+				ArrayList<Course> allcourses = null; allcourses=(ArrayList<Course>)request.getAttribute("allcourses");
 				{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");				
 				for(int i=0 ; i<allcourses.size(); i++){
 					if(courses.contains(allcourses.get(i))){%>
 						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
 					<%}
 					else{%>
-						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+						<input type="checkbox" checked="no" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
 					<%}		
 				}}%></br>
 				<input type="submit" class="check" value="Submit" name="submit"/>

@@ -32,29 +32,30 @@ public class HomeServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				User user =UserManager.getInstance().getCurrentUser();
+				//User user =UserManager.getInstance().getCurrentUser();
 				
 				//indien er een activiteit bezig is
 				if(timerControler.isBusy()){
 					req.setAttribute("bezig", "ja");
-					req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
+					//req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
 					req.setAttribute("curract", timerControler.getCurrentActivity());
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
-				ArrayList<Course> courses = user.getCourses();
+				//
+				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(UserManager.getInstance().getCurrentUserName());
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
 				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());//plaatsen waar men kan studeren
-				req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());//username
+				//req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());//username
 				//einde attributen
 				
 				//stats
-				req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
-				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
-				req.setAttribute("myCourseBar1", statController.myCourseBar().get(0));
-				req.setAttribute("myCourseBar2", statController.myCourseBar().get(1));
-				req.setAttribute("myCourseBar3", statController.myCourseBar().get(2));
+				//req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
+				//req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
+				//req.setAttribute("myCourseBar1", statController.myCourseBar().get(0));
+				//req.setAttribute("myCourseBar2", statController.myCourseBar().get(1));
+				//req.setAttribute("myCourseBar3", statController.myCourseBar().get(2));
 				//req.setAttribute("myFunInTime", statController.myFunInTime());
 				//req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
 				//req.setAttribute("mySleepInTime", statController.mySleepInTime());
