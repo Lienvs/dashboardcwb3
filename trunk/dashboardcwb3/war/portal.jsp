@@ -12,9 +12,13 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <html>
 <head>
-  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>  
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
+	<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
   <script>
   $(document).ready(function() {
     $("#accordion").accordion({
@@ -23,10 +27,21 @@
     });
     $( ".check" ).button();	
     $( "#dialog" ).dialog();
+    $("#tabs").tabs();
   });
   </script>
 </head>
 <body style="font-size:62.5%;">
+<div class="tabs" id="tabs">
+	<ul>
+    	<h1> <font size="10"> Learnkeeper </font> </br></h1>
+    	<h2> This Application will allow you to track your study behavior at the KUL and model it in a very useful series of charts </br>
+    		 Register and start tracking !</h2>
+    	
+ 
+       
+    </ul>
+</div>
 <%String message1=(String) request.getAttribute("message1");
   String message2=(String) request.getAttribute("message2");
   if(message1==null){}

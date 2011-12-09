@@ -312,7 +312,7 @@
  
 <div class="tabs" id="tabs">
 	<ul>
-    	<h1> Learnkeeper </br></h1>
+    	<h1> <font size="10"> Learnkeeper </font> </br></h1>
     	<h2><%=(String)request.getAttribute("username")%></h2>
     	<div id="fancyClock"></div>
 		<% String bezig=(String)request.getAttribute("bezig");
