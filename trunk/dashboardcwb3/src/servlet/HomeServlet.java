@@ -32,12 +32,12 @@ public class HomeServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				//User user =UserManager.getInstance().getCurrentUser();
+				String userName =UserManager.getInstance().getCurrentUserName();
 				
 				//indien er een activiteit bezig is
 				if(timerControler.isBusy()){
 					req.setAttribute("bezig", "ja");
-					//req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
+					req.setAttribute("allusersstring", UserManager.getInstance().getUserNames());
 					req.setAttribute("curract", timerControler.getCurrentActivity());
 				}
 				
@@ -46,7 +46,7 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
 				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());//plaatsen waar men kan studeren
-				//req.setAttribute("username", UserManager.getInstance().getCurrentUser().getUserName());//username
+				req.setAttribute("username", UserManager.getInstance().getCurrentUserName());//username
 				//einde attributen
 				
 				//stats
