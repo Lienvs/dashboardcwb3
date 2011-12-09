@@ -54,7 +54,7 @@ public class CourseSelectionServlet extends HttpServlet{
 						}
 					}
 					UserManager.getInstance().updateCourses(userName,courses);
-					UserManager.getInstance().updateUser(userName);//wa is dees?
+					
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){
