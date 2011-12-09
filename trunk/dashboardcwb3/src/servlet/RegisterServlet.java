@@ -31,11 +31,7 @@ public class RegisterServlet extends HttpServlet{
 				String rNumber = req.getParameter("rnumber");
 				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
 					CourseManager.getInstance().makeCourses();
-					req.setAttribute("course", CourseManager.getInstance().getAllCourses());
-					
-					String str="[['Heavy Industry', 12],['Retail', 9], ['Light Industry', 14],['Out of home', 16],['Commuting', 7], ['Orientation', 9]]";
-					req.setAttribute("stri", str);
-					
+					req.setAttribute("course", CourseManager.getInstance().getAllCourses());					
 					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);   //courseselection.jsp
 				}
 				else{
