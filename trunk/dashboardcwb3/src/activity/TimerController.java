@@ -12,7 +12,7 @@ import user.UserManager;
  *
  */
 public class TimerController {
-	private Activity currentActivity;
+	//private Activity currentActivity;
 	private String dateFormat;
 	
 	/**
@@ -21,14 +21,6 @@ public class TimerController {
 	
 	
 	public TimerController(){
-		//User currentUser =UserManager.getInstance().getCurrentUser();
-		
-		//for(Activity act : currentUser.getActivities()){
-			//if(act.getStop()==null){
-				//currentActivity = act;
-			//}
-			//else{currentActivity = null;}
-		//}
 		
 		
 	}
@@ -39,9 +31,9 @@ public class TimerController {
 	 * @param act : de activiteit die we willen timen. (type: Activity)
 	 */
 	public void startTiming(Activity act){
-		currentActivity = act;
+		
 		Calendar cal = Calendar.getInstance();
-		currentActivity.setStart(cal.getTime());
+		act.setStart(cal.getTime());
 		
 		
 	}
@@ -55,7 +47,7 @@ public class TimerController {
 		
 		Calendar cal = Calendar.getInstance();
 		getCurrentActivity().setStop(cal.getTime());
-		currentActivity = null;
+		
 	}
 	
 	/**
@@ -111,14 +103,17 @@ public class TimerController {
 	 * @return isBusy (type: boolean)
 	 */
 	public boolean isBusy(){
-		boolean isBusy = false;
-		//User currentUser =UserManager.getInstance().getCurrentUser();
 		
-		//for(Activity act : currentUser.getActivities()){
-			//if(act.getStop()==null){
-			//	isBusy=true;
-			//}
-		//}	
+		String currentUserName =UserManager.getInstance().getCurrentUserName();
+		boolean isBusy=false;
+		Activity cur = null;
+		for(Activity act : ActivityManager.getActivities(currentUserName)){
+			if(act.getStop()==null){
+				isBusy = true;
+				cur = act;
+			}
+			else{}
+		}
 		return isBusy;
 	
 	}
@@ -127,14 +122,19 @@ public class TimerController {
 	 * @return currentActivity (type: Activity)
 	 */
 	public Activity getCurrentActivity(){
-		currentActivity = null;
-		//User user = UserManager.getInstance().getCurrentUser();
-		//for (Activity act: user.getActivities()){
-			//if(act.getStop() == null){
-			//	currentActivity = act;
-			//}
-		//}
-		return currentActivity;
+		String currentUserName =UserManager.getInstance().getCurrentUserName();
+		boolean ca=false;
+		Activity cur = null;
+		for(Activity act : ActivityManager.getActivities(currentUserName)){
+			if(act.getStop()==null){
+				ca = true;
+				cur = act;
+			}
+			else{}
+		}
+		if(ca){}
+		else{cur=null;}
+		return cur;
 	}
 	
 	/**
