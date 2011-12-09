@@ -8,7 +8,7 @@ import activity.ExtraCurricularActivity;
 
 import course.Course;
 
-
+import activity.ActivityManager;
 
 import user.User;
 import user.UserManager;
@@ -105,7 +105,7 @@ public String myTimeInTime2(Date startDate){//dit is voor een week per dag bekek
 	while(i<8){
 		int getal=0;
 		stop.roll(Calendar.DAY_OF_YEAR,true);
-	for(Activity act:ActivityManager.getInstance().getActivities(currentUser)){
+	for(Activity act:ActivityManager.getInstance().getActivities(currentUserName)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
