@@ -34,35 +34,35 @@ public class GoalController {
 		
 	}
 	public int getGoal(Course course){
-		//User currentUser = UserManager.getInstance().getCurrentUser();
-		//int result = currentUser.getGoal(startDate).get(course);
+		String currentUserName = UserManager.getInstance().getCurrentUserName();
+		int result = UserManager.getInstance().getGoal(currentUserName,startDate).get(course);
 		return 0;
 	}
 	public void setGoal(Course course,double time){//tijd in uren(kan ook naar minuten aangepast worden)
 	double tijd = time*60;
 	int t = (int) tijd;
 	
-	//User currentUser = UserManager.getInstance().getCurrentUser();
-	//currentUser.setGoal(startDate,course,t);
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
+	UserManager.getInstance().setGoal(currentUserName,startDate,course,t);
 	}
-	
+
 	public HashMap<Course,Integer> compareGoals(){
 		HashMap<Course,Integer> map = new HashMap<Course,Integer>();
-		//User currentUser = UserManager.getInstance().getCurrentUser();
-		//for(Course course:currentUser.getCourses()){
-			//int getal = currentUser.getGoal(startDate).get(course);
-		//for(Activity act:currentUser.getActivities()){
-			//if(act.getStop().after(startDate)&&act.getStop().before(stopDate)){
-			//if(act.getActivityType().equals("scolair")){
-				//CurricularActivity scol =(CurricularActivity) act;
-				//if(scol.getCourse().equals(course)){
-					//getal = getal - scol.getDuration();
-				//}
-			//}
-			//}
-		//}
-		//map.put(course,getal);
-		//}
+		String currentUserName = UserManager.getInstance().getCurrentUserName();
+		for(Course course:UserManager.getInstance().getAllCourses(currentUserName)){
+			int getal = UserManager.getInstance().getGoal(currentUserName,startDate).get(course);
+		for(Activity act:ActivityManager.getInstance.getActivities(currentUserName)){
+			if(act.getStop().after(startDate)&&act.getStop().before(stopDate)){
+			if(act.getActivityType().equals("scolair")){
+				CurricularActivity scol =(CurricularActivity) act;
+				if(scol.getCourse().equals(course)){
+					getal = getal - scol.getDuration();
+				}
+			}
+			}
+		}
+		map.put(course,getal);
+		}
 		return map;
 	}
 }
