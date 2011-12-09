@@ -28,16 +28,15 @@ public class CourseSelectionServlet extends HttpServlet{
 				String userName = UserManager.getInstance().getCurrentUserName();
 				
 				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(userName);
-				ArrayList<Course> courses = CourseManager.getInstance().getAllCourses();//welke van de 2?
+				ArrayList<Course> allcourses = CourseManager.getInstance().getAllCourses();//welke van de 2?
 				Boolean possible=false;
-				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() && !possible; i++){
-					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())!=null){
+				for(int i=0; i<allcourses.size() && !possible; i++){
+					if(req.getParameter(allcourses.get(i).toString())!=null){
 						possible=true;
 					}
 				}
 				
 				if(possible){
-					ArrayList<Course>allcourses=CourseManager.getInstance().getAllCourses();
 					for(int i=0; i<allcourses.size() ;i++){
 						if(req.getParameter(allcourses.get(i).toString())==null){
 							for(int j=0; j<courses.size();j++){
