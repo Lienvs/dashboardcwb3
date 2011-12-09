@@ -19,11 +19,11 @@ private DataController data;
 public StatisticController(){
 	data = new DataController();
 }
-/*
+
 public String myCoursesCheese(){
 	String result = "[";
-	 User currentUser = UserManager.getInstance().getCurrentUser();
-	 ArrayList<Course> courseList = currentUser.getCourses();
+	 String currentUserName = UserManager.getInstance().getCurrentUserName();
+	 ArrayList<Course> courseList = UserManager.getInstance().getAllCourses(currentUserName);
 	 Iterator<Course> it = courseList.iterator();
 	 while(it.hasNext()){
 		 Course course = it.next();
@@ -70,8 +70,8 @@ public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-w
 	String result1 = "[";
 	String result2 = "[";
 	String result3= "['";
-	User currentUser = UserManager.getInstance().getCurrentUser();
-	Iterator<Course> it = currentUser.getCourses().iterator();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
+	Iterator<Course> it = UserManager.getInstance().getAllCourses(currentUserName).iterator();
 	while(it.hasNext()){
 		Course course = it.next();
 		result1 = result1 + data.getTotalScolair(course);
@@ -101,11 +101,11 @@ public String myTimeInTime2(Date startDate){//dit is voor een week per dag bekek
 	stop.setTime(startDate);
 	start.setTime(startDate);
 	int i = 0;
-	User currentUser = UserManager.getInstance().getCurrentUser();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
 	while(i<8){
 		int getal=0;
 		stop.roll(Calendar.DAY_OF_YEAR,true);
-	for(Activity act:currentUser.getActivities()){
+	for(Activity act:ActivityManager.getInstance().getActivities(currentUser)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(stop.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
@@ -135,13 +135,13 @@ public String overallMeanTimeInTime(){
 		int getal=0;
 		int total=0;
 		mid.roll(Calendar.DAY_OF_YEAR,true);
-		for(User user:UserManager.getInstance().getUsers()){
-	for(Activity act:user.getActivities()){
+		for(String userName:UserManager.getInstance().getUserNames()){
+	for(Activity act:ActivityManager.getInstance().getActivities(userName)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
 		}}
-		total = getal/UserManager.getInstance().getUsers().size();
+		total = getal/UserManager.getInstance().getUserNames().size();
 	result = result + total;
 	start.roll(Calendar.DAY_OF_YEAR,true);
 	if(start.before(stop)){result = result + ",";
@@ -162,11 +162,11 @@ public String myTimeInTime(){//dit is voor 20 weken (in januari minder) week per
 	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
 	}
 	Calendar mid = start;
-	User currentUser = UserManager.getInstance().getCurrentUser();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
 	while(start.before(stop)){
 		int getal=0;
 		mid.roll(Calendar.DAY_OF_YEAR,true);
-	for(Activity act:currentUser.getActivities()){
+	for(Activity act:ActivityManager.getInstance().getActivities(currentUserName)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
 			}
@@ -192,11 +192,11 @@ private String myInTime(String type,String type2){
 	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
 	}
 	Calendar mid = start;
-	User currentUser = UserManager.getInstance().getCurrentUser();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
 	while(start.before(stop)){
 		int getal=0;
 		mid.roll(Calendar.DAY_OF_YEAR,true);
-	for(Activity act:currentUser.getActivities()){
+	for(Activity act:ActivityManager.getInstance().getActivities(currentUserName)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
 			
 			if(act.getType().equals(type)||act.getType().equals(type2)){
@@ -256,8 +256,8 @@ public ArrayList<String> meVSModel(){//1wat al gedaan, 2 wat totaal te doen, 3 m
 	String r2 = "[";
 	String r3 = "[";
 	String r4 = "['";
-	User currentUser = UserManager.getInstance().getCurrentUser();
-	Iterator<Course> it = currentUser.getCourses().iterator();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
+	Iterator<Course> it = UserManager.getInstance().getAllCourses(currentUserName).iterator();
 	GoalController go = new GoalController();
 	while(it.hasNext()){
 		Course c = it.next();
@@ -304,8 +304,8 @@ public int meVSModel2(Course course){
 public int myTime(){
 	int result=0;
 
-	 User currentUser = UserManager.getInstance().getCurrentUser();
-	 ArrayList<Course> courseList = currentUser.getCourses();
+	 String currentUserName = UserManager.getInstance().getCurrentUserName();
+	 ArrayList<Course> courseList = UserManager.getInstance().getAllCourses(currentUserName);
 	 Iterator<Course> it = courseList.iterator();
 	 while(it.hasNext()){
 		 Course course = it.next();
@@ -316,23 +316,22 @@ public int myTime(){
 public int overallTime(){
 	int result=0;
 
-	 ArrayList<User> users = UserManager.getInstance().getUsers();
-	 for(User user: users){
-	 ArrayList<Activity> actList = user.getActivities();
+	 
+	 ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	 for(Activity act:actList){
 		 if(act.getActivityType().equals("scolair")){
 			 result = result + act.getDuration();
 		 }
 	 }
-}
+
 	 return result;
 }
 
 public String getMaximumStudie(){
-	User currentUser = UserManager.getInstance().getCurrentUser();
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
 	String result = "You didn't study at all";
 	int maxDuur =0;
-	ArrayList<Course> courseList= currentUser.getCourses();
+	ArrayList<Course> courseList= UserManager.getInstance().getAllCourses(currentUserName);
 	if(courseList.size()>0){
 	Course maxCourse= courseList.get(0);
 	for(Course course:courseList){
@@ -345,6 +344,6 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
-*/
+
 }
 
