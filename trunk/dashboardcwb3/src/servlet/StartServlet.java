@@ -32,7 +32,7 @@ public class StartServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				//User user =UserManager.getInstance().getCurrentUser();
+				String userName =UserManager.getInstance().getCurrentUserName();
 				// indien scolair gestart:
 						if(req.getParameter("wat").equals("Scolair")){
 							//course 
@@ -46,19 +46,19 @@ public class StartServlet extends HttpServlet{
 							//les
 							if(req.getParameter("type").equals("Les")){
 								Lecture les=new Lecture(course);
-								//user.addActivity(les);
+								ActivityManager.getInstance().addActivity(les);
 								timerControler.startTiming(les);
 							}
 							//zs
 							if(req.getParameter("type").equals("Zelfstudie")){
 								IndividualStudy zelfstudie=new IndividualStudy(course);
-								//user.addActivity(zelfstudie);
+								ActivityManager.getInstance().addActivity(zelfstudie);
 								timerControler.startTiming(zelfstudie);
 							}
 							//oz
 							if(req.getParameter("type").equals("Oefenzitting")){
 								Practice oefenzitting=new Practice(course);
-								//user.addActivity(oefenzitting);
+								ActivityManager.getInstance().addActivity(oefenzitting);
 								timerControler.startTiming(oefenzitting);
 							}
 						}
@@ -67,7 +67,7 @@ public class StartServlet extends HttpServlet{
 							String wa=(String) req.getParameter("watextra");
 							ExtraFun extra=ExtraFun.getExtraFun(wa);
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
-							//user.addActivity(act);
+							ActivityManager.getInstance().addActivity(act);
 							timerControler.startTiming(act);
 						}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
