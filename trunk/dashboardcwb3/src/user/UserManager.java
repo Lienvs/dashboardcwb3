@@ -265,10 +265,10 @@ public class UserManager {
 		    }
 	}
 	
-	public String getGoal(){
-		String goal = "goal";
-		return goal;
-	}
+	//public HashMap<Course,Integer> getGoal(int ){
+	//	String goal = "goal";
+	//	return goal;
+	//}
 	
 	
 
