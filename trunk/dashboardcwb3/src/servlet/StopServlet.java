@@ -31,7 +31,7 @@ public class StopServlet extends HttpServlet{
 					}
 					String comment=(String) req.getParameter("comment");
 
-					//timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
+					timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
 					timerControler.stopTiming();
 				
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
