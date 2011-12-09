@@ -1,5 +1,6 @@
 package activity;
 
+import java.util.Calendar;
 import java.util.Date;
 /**
  * Superklasse die de activiteit van een student voorstelt.
@@ -20,7 +21,9 @@ public abstract class Activity {
 	 * @param activityType : type van de activiteit, dit kan zijn: "scholair" of "fun". die variabelen heb ik niet naar het engels veranderd omdat ik niet weet hoe dat in de servlets wordt aangeroepen. 
 	 */
 	public Activity(String activityType) {
-		this.start = null;
+		Calendar cal = Calendar.getInstance();
+		
+		this.start = cal.getTime();
 		this.stop = null;
 		
 		comment = null;
