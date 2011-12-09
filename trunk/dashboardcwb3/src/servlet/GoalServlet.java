@@ -27,8 +27,8 @@ public class GoalServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				//User user =UserManager.getInstance().getCurrentUser();
-				//
+				String userName =UserManager.getInstance().getCurrentUserName();
+				
 				ArrayList<Course> courses=CourseManager.getInstance().getAllCourses();
 				for(int i=0; i<courses.size();i++){
 					if(req.getParameter(courses.get(i).toString())!=null){
