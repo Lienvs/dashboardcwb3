@@ -13,7 +13,7 @@ import activity.IndividualStudy;
 public class DataController {
 	private String currentUserName;
 		public  DataController(){
-			String currentUserName = UserManager.getInstance().getCurrentUserName();
+			
 }
 	
 public int getGemiddeldeStudie(){
