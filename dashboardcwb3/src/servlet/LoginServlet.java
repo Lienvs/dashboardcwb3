@@ -7,7 +7,10 @@ import java.io.IOException;
 
 import javax.servlet.*;
 
+import course.CourseManager;
+
 import user.LoginController;
+import user.UserManager;
 
 
 
@@ -30,8 +33,8 @@ public class LoginServlet extends HttpServlet {
 			String userName=req.getParameter("username");    //login afhandelen
 			String password=req.getParameter("password");
 				if(network.login(userName,password)) {    
-					//req.setAttribute("currentUser", UserManager.getInstance().getCurrentUser().getUserName());
-					//req.setAttribute("course", CourseManager.getInstance().getAllCourses());
+					req.setAttribute("currentUser", UserManager.getInstance().getCurrentUserName());
+					req.setAttribute("course", CourseManager.getInstance().getAllCourses());
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);
 				}
 				else {
