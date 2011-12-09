@@ -42,7 +42,6 @@ public class HomeServlet extends HttpServlet{
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
-				//
 				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(UserManager.getInstance().getCurrentUserName());
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
