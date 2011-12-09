@@ -1,8 +1,9 @@
 
 #fancyClock{
-	margin:40px auto;
-	height:200px;
+	margin-top:10px;
+	margin-left:800px;
+	height:100px;
 	border:1px solid #111111;
-	width:600px;
+	width:300px;
 }
 
