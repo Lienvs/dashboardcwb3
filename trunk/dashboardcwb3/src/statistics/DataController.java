@@ -13,13 +13,13 @@ import activity.IndividualStudy;
 public class DataController {
 	private User currentUser;
 		public  DataController(){
-			//currentUser = UserManager.getInstance().getCurrentUser();
+			String currentUserName = UserManager.getInstance().getCurrentUserName();
 }
-/*		
+	
 public int getGemiddeldeStudie(){
 	int result = 0;
-	for(User usertje:UserManager.getInstance().getUsers()){
-		ArrayList<Activity> actList = usertje.getActivities();
+	
+		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -30,15 +30,14 @@ public int getGemiddeldeStudie(){
 		}
 	}
 	
-}
-	result = result/UserManager.getInstance().getUsers().size();
+
+	result = result/UserManager.getInstance().getUserNames().size();
 	return result;
 }
 public int getGemiddeldeStudie(Course course){
 	int result = 0;
-	for(User usertje:UserManager.getInstance().getUsers()){
-		ArrayList<Activity> actList = usertje.getActivities();
 	
+	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -47,13 +46,13 @@ public int getGemiddeldeStudie(Course course){
 				result = result + scol.getDuration(); 
 			}}
 		}
-	}
+	
 	
 }	int users =0;
-for(User user:UserManager.getInstance().getUsers()){
+for(String userName:UserManager.getInstance().getUserNames()){
 	boolean vak = false;
 	
-	for(Activity act:user.getActivities()){
+	for(Activity act:ActivityManager.getInstance().getActivities(userName)){
 	while(!vak){
 		if (act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity) act;
@@ -75,9 +74,7 @@ else{result = result/users;}
 }
 public int getGemiddeldeLes(){
 	int result = 0;
-	for(User usertje:UserManager.getInstance().getUsers()){
-		ArrayList<Activity> actList = usertje.getActivities();
-	
+	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -87,15 +84,15 @@ public int getGemiddeldeLes(){
 		}
 	}
 	
-}
+
 	
-	result= result/UserManager.getInstance().getUsers().size();
+	result= result/UserManager.getInstance().getUserNames().size();
 	return result;
 }
 public int getGemiddeldeLes(Course course){
 	int result = 0;
-	for(User usertje:UserManager.getInstance().getUsers()){
-		ArrayList<Activity> actList = usertje.getActivities();
+	
+		ArrayList<Activity> actList = ActivityManager;
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -107,12 +104,12 @@ public int getGemiddeldeLes(Course course){
 		}
 	}
 	
-}
+
 	int users =0;
-	for(User user:UserManager.getInstance().getUsers()){
+	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:user.getActivities()){
+		for(Activity act:ActivitieManager().getInstance().getActivities(userName)){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -148,13 +145,13 @@ public int getGemiddeldeOefenzitting(){
 	}
 	
 }
-	result = result/UserManager.getInstance().getUsers().size();
+	result = result/UserManager.getInstance().getUserNames().size();
 	return result;
 }
 public int getGemiddeldeOefenzitting(Course course){
 	int result = 0;
-	for(User usertje:UserManager.getInstance().getUsers()){
-		ArrayList<Activity> actList = usertje.getActivities();
+	
+		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -163,15 +160,15 @@ public int getGemiddeldeOefenzitting(Course course){
 				if(scol.getCourse().equals(course)){
 				result = result + scol.getDuration(); 
 			}}
-		}
+		
 	}
 	
 }
 	int users =0;
-	for(User user:UserManager.getInstance().getUsers()){
+	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:user.getActivities()){
+		for(Activity act:ActivityManager.getInstance().getActivities(userName)){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -396,6 +393,6 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
-*/
+
 }
 
