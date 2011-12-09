@@ -129,7 +129,7 @@ public class ActivityManager {
 		}
 		try{
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Key k = KeyFactory.createKey("User", userName);
+		Key k = KeyFactory.createKey("User", UserManager.getInstance().getCurrentUserName());
 		Entity User = datastore.get(k);
 		for(String activiteit: alleActiviteiten){
 			try{ 
