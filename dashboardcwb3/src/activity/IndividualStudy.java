@@ -79,4 +79,7 @@ public class IndividualStudy extends CurricularActivity {
 	public String getStudyBuddy(){
 		return studieGenoot;
 	}
+	public String getType(){
+		return "Zelfstudie";
+	}
 }
