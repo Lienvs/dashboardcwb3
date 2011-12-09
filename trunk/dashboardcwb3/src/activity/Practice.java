@@ -19,5 +19,7 @@ public class Practice extends CurricularActivity{
 		setRating(rating);}
 		
 	}
-	
+	public String getType(){
+		return "Oefenzitting";
+	}
 }
