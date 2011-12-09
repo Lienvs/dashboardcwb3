@@ -265,6 +265,10 @@ public class UserManager {
 		    }
 	}
 	
+	public String getGoal(){
+		String goal = "goal";
+		return goal;
+	}
 	
 	
 
