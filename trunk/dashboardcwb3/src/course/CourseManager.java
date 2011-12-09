@@ -14,7 +14,7 @@ import course.Course;
 
 
 /**
- * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar ï¿½ï¿½n object wil dat de vakken beheert
+ * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar één object wil dat de vakken beheert
  * @author
  * @version
  *
@@ -22,6 +22,7 @@ import course.Course;
 public class CourseManager {
 
 	private static CourseManager instance = null;
+	private Course currentCourse;
 		
 	public static CourseManager getInstance() {
 		if( instance == null ) {
@@ -35,6 +36,7 @@ public class CourseManager {
 	 * Controller
 	 */
 	public CourseManager(){
+		currentCourse = null;
 		
 		
 	}
@@ -140,6 +142,13 @@ public class CourseManager {
 				courses.add(course);
 			}
 			return courses;
+		}
+		
+		public Course getCurrentCourse(){
+			return currentCourse;
+		}
+		public void setCurrentCourse(Course course){
+			currentCourse=course;
 		}
 		
 		/**
