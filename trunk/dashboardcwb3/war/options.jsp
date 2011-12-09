@@ -33,7 +33,6 @@ Be aware, deleting a course once, deletes all your information regarding this co
 				ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");	%>
 				<%=allcourses.size()%>		
 				<%=courses.size()%>	
-				<%=courses.get(0).toString()%>
 				<%for(int i=0 ; i<allcourses.size(); i++){
 					boolean checked=false;
 					for(int j=0; j<courses.size();j++){
