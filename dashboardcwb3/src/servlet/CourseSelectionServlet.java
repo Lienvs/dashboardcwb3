@@ -37,18 +37,20 @@ public class CourseSelectionServlet extends HttpServlet{
 				}
 				
 				if(possible){
-					for(int i=0; i<CourseManager.getInstance().getAllCourses().size() ;i++){
-						if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){
-							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){
-								//UserManager.getInstance().removeCourse(userName,CourseManager.getInstance().getAllCourses().get(i));
-								courses.remove(CourseManager.getInstance().getAllCourses().get(i));
+					ArrayList<Course>allcourses=CourseManager.getInstance().getAllCourses();
+					for(int i=0; i<allcourses.size() ;i++){
+						if(req.getParameter(allcourses.get(i).toString())==null){
+							for(int j=0; j<courses.size();j++){
+								if(courses.get(j).toString().equals(allcourses.get(i).toString())){
+									courses.remove(allcourses.get(i));
+								}
 							}
 						}
 						else{
-							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){}
-							else{
-								//UserManager.getInstance().addCourse(userName,CourseManager.getInstance().getAllCourses().get(i));
-								courses.add(CourseManager.getInstance().getAllCourses().get(i));
+							for(int j=0; j<courses.size();j++){
+								if(!courses.get(j).toString().equals(allcourses.get(i).toString())){
+									courses.add(CourseManager.getInstance().getAllCourses().get(i));
+								}
 							}
 						}
 					}
