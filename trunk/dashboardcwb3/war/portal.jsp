@@ -31,7 +31,7 @@
   });
   </script>
 </head>
-<body style="font-size:62.5%;">
+<body>
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> <font size="10"> Learnkeeper </font> </br></h1>
