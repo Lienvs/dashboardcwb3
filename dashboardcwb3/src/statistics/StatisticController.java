@@ -211,7 +211,7 @@ private String myInTime(String type,String type2){
 }result= result+"]";
 return result;
 }
-private String overallMeanFunInTime(){
+public String overallMeanFunInTime(){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
