@@ -51,9 +51,9 @@ public class GoalController {
 	public HashMap<Course,Integer> compareGoals(){
 		HashMap<Course,Integer> map = new HashMap<Course,Integer>();
 		String currentUserName = UserManager.getInstance().getCurrentUserName();
-		for(Course course:UserManager.getInstance().getAllCourses(currentUserName)){
+		for(Course course:UserManager.getInstance().getCourses()){
 //			int getal = UserManager.getInstance().getGoal(currentUserName,startDate).get(course);
-		for(Activity act:ActivityManager.getInstance().getActivities(currentUserName)){
+		for(Activity act:UserManager.getInstance().getActivities()){
 			if(act.getStop().after(startDate)&&act.getStop().before(stopDate)){
 			if(act.getActivityType().equals("scolair")){
 				CurricularActivity scol =(CurricularActivity) act;

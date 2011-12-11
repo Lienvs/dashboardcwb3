@@ -2,6 +2,8 @@ package activity;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import course.Course;
 /**
  * Superklasse die de activiteit van een student voorstelt.
  * @author 
@@ -136,6 +138,7 @@ public abstract class Activity {
 	 */
 	public abstract String toString();
 	public abstract String getType(); 
+	public abstract Course getCourse();
 	
 
 	

@@ -35,31 +35,43 @@ public class ActivityManager {
 	/**
 	 * Constructor
 	 */
-	public ActivityManager() {		
-		
-	}
-	
+	public ActivityManager() {			
+	}	
 	
 	public void addActivity(Activity activity){
-		Calendar cal = Calendar.getInstance();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Entity Activity = new Entity("Activity",activity.getStart().getTime());
-		Date startDatum = new Date();
-		startDatum = activity.getStart();
-		Activity.setProperty("startdatum",startDatum);
-		String activitytype = activity.getActivityType();
-		Activity.setProperty("activitytype", activitytype);
-		String type = activity.getType();
-		Activity.setProperty("type", type);
-		datastore.put(Activity);	
-		
+		Entity Activity = new Entity("Activity",activity.getStart().toString());		
+		Activity.setProperty("startdatum",activity.getStart());
+		Activity.setProperty("activitytype", activity.getActivityType());
+		Activity.setProperty("type", activity.getType());
+		if (activity.getActivityType().equals("scolair")){
+			Activity.setProperty("course", CourseManager.getInstance().getKey(activity.getCourse().toString()));
+		}
+		datastore.put(Activity);
+	}
+	
+	public void updateActivity(int rating, String comment, String place, String stype){
+		Calendar cal = Calendar.getInstance();
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();		
+		ArrayList<Key> keys = new ArrayList<Key>();
+		keys = UserManager.getInstance().getActivityKeys();		
 		Transaction txn = datastore.beginTransaction();
-		try {
-		    Key k = KeyFactory.createKey("Activity", activity.getStart().getTime());
-		    Key l = KeyFactory.createKey("User", UserManager.getInstance().getCurrentUserName());
-		    Entity User = datastore.get(l);
-		    User.setProperty(activity.getStart().toString(),k);		    
-		    datastore.put(User);
+		try {			
+			for(Key l : keys){
+				Entity Activity = datastore.get(l);
+				if (Activity.hasProperty("stopdatum")){					
+				}
+				else {
+					Activity.setProperty("stopdatum", cal.getTime());
+					Activity.setProperty("rating", rating);
+					Activity.setProperty("comment", comment);
+					if (((String)Activity.getProperty("type")).equals("Zelfstudie")){
+						Activity.setProperty("studielocatie", place);
+						Activity.setProperty("studietype", stype);
+					}
+					datastore.put(Activity);
+				}
+			}		    
 		    txn.commit();
 		} 
 		catch (EntityNotFoundException e){
@@ -70,29 +82,7 @@ public class ActivityManager {
 		    }
 		}
 	
-	
-	public void setStop(Activity activity){
-		Calendar cal = Calendar.getInstance();
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
-		try {
-		    Key k = KeyFactory.createKey("Activity", activity.getStart().getTime());
-		    Entity Activity = datastore.get(k);
-		    Date stopDatum = new Date();
-			stopDatum = cal.getTime(); 
-			Activity.setProperty("stopdatum",stopDatum);		    
-		    datastore.put(Activity);
-		    txn.commit();
-		} 
-		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
-		    
-		    }
-		}
-	
-	public ArrayList<Activity> getActivities(){
+	public ArrayList<Activity> getAllActivities(){
 		ArrayList<Activity> activities = new ArrayList<Activity>();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query q = new Query("Activity");
@@ -101,15 +91,15 @@ public class ActivityManager {
 			String type = (String) result.getProperty("type");
 			String activityType = (String) result.getProperty("activitytype");
 			if(type.equals("les")){
-				Lecture les = new Lecture(CourseManager.getInstance().getCurrentCourse());
+				Lecture les = new Lecture(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
 				activities.add(les);
 			}
 			else if(type.equals("Oefenzitting")){
-				Practice oefenzitting = new Practice(CourseManager.getInstance().getCurrentCourse());
+				Practice oefenzitting = new Practice(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
 				activities.add(oefenzitting);
 			}
 			else if(type.equals("Zelfstudie")){
-				IndividualStudy zelfstudie = new IndividualStudy(CourseManager.getInstance().getCurrentCourse());
+				IndividualStudy zelfstudie = new IndividualStudy(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
 				activities.add(zelfstudie);
 			}
 			else if(activityType.equals("fun")){
@@ -119,42 +109,40 @@ public class ActivityManager {
 			}			
 		}
 		return activities;
-	}
+	}	
 	
-	public ArrayList<Activity> getActivities(String userName){
-		ArrayList<String> alleActiviteiten = new ArrayList<String>();
-		ArrayList<Activity> activiteiten = new ArrayList<Activity>();
-		for (Activity activity : getActivities()){
-			alleActiviteiten.add(activity.getStart().toString());
-		}
-		try{
+	public Activity getActivity(Key k){
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Key k = KeyFactory.createKey("User", UserManager.getInstance().getCurrentUserName());
-		Entity User = datastore.get(k);
-		for(String activiteit: alleActiviteiten){
-			try{ 
-				Key l = (Key) User.getProperty(activiteit);
-				if((l.equals(null))){
-				}
-				else{
-					Entity Activiteit = datastore.get(l);
-					for(Activity activiteitje : getActivities()){
-						if(activiteitje.getStart().equals((Date)Activiteit.getProperty("startdatum"))){
-							activiteiten.add(activiteitje);
-						}
-					}
-				}
+		Transaction txn = datastore.beginTransaction();
+		Activity act = null;
+		try{
+			Entity Activity = datastore.get(k);
+			String type = (String) Activity.getProperty("type");
+			String activityType = (String) Activity.getProperty("activitytype");
+			if(type.equals("les")){
+				Lecture les = new Lecture(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
+				act = les;
 			}
-			catch(NullPointerException e){
+			else if(type.equals("Oefenzitting")){
+				Practice oefenzitting = new Practice(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
+				act = oefenzitting;
+			}
+			else if(type.equals("Zelfstudie")){
+				IndividualStudy zelfstudie = new IndividualStudy(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
+				act = zelfstudie;
+			}
+			else if(activityType.equals("fun")){
+				ExtraFun ex = ExtraFun.getExtraFun((String) Activity.getProperty("type"));
+				ExtraCurricularActivity activ = new ExtraCurricularActivity(ex);
+				act = activ;				
+			}						
 		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
+		    }
 		}
-		}
-		catch(EntityNotFoundException e){
-			
-			
-		}
-		
-		return activiteiten;
+		return act;
 	}
 	
 	

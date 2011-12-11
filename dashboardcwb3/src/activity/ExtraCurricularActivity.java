@@ -1,7 +1,5 @@
 package activity;
-import java.text.ParsePosition;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import course.Course;
 
 /**
  * Subklasse van de superklasse Activity. Stelt de buitenschoolse activiteiten van de gebruiker voor.
@@ -53,5 +51,8 @@ public void submitVragenLijst(String place, String studyType, String comment, in
 	setRating(rating);
 	postComment(comment);
 	
+}
+public Course getCourse(){
+return null;
 }
 }

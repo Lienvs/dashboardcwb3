@@ -37,24 +37,20 @@ public class RegisterController {
 		boolean passwordConfirmed=false;
 		boolean allFieldsFilledIn = false;
 		
-		 //Controle of username en rNummer nog niet bestaan
-		
-		if (UserManager.getInstance().exist(userName) | UserManager.getInstance().getRNumbers().contains(rNumber)){
+		 //Controle of username en rNummer nog niet bestaan		
+		if (UserManager.getInstance().exist(userName) | UserManager.getInstance().getRnumbers().contains(rNumber)){
 			freeUserName = false;
-		}
-		
+		}		
 		
 		//Paswoord en confirmed paswoord moeten gelijk zijn
 		if (password.equals(confirmedPassword)){
 			passwordConfirmed=true;
-		}
-		
+		}		
 		
 		//Controleer of alle velden ingevuld zijn
-		if(userName!=null&&password!=null&&firstName!=null&&lastName!=null&&gender!=null&&rNumber!=null){
+		if(userName!=""&password!=""&firstName!=""&lastName!=""&gender!=""&rNumber!=""){
 			allFieldsFilledIn = true;
-		}
-		
+		}		
 		
 		//Als alle controles positief blijken, maak nieuwe user aan
 		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn){

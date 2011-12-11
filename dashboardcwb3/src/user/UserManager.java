@@ -2,6 +2,9 @@ package user;
 
 import java.util.ArrayList;
 
+import activity.Activity;
+import activity.ActivityManager;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -12,6 +15,7 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
 import java.lang.NullPointerException;
+
 import course.Course;
 import course.CourseManager;
 
@@ -23,8 +27,7 @@ import course.CourseManager;
  */
 public class UserManager {
 
-	private static UserManager instance = null;
-	
+	private static UserManager instance = null;	
 	
 	private String currentUserName;
 	
@@ -36,38 +39,23 @@ public class UserManager {
 		}
 		return instance;
 	}
+	
 	/**
 	 * Constructor
 	 */
-	public UserManager() {
-		
-		
-		
-	}
-	
+	public UserManager() {		
+	}	
 	
 	public void addUser(User user){
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		String userName = user.getUserName();
-		ArrayList<String> courses = new ArrayList<String>();
-		Key k = KeyFactory.createKey(Course.class.getSimpleName(), "Analyse, deel3");
-		Entity User = new Entity("User",userName);
-		User.setProperty("gebruikersNaam", user.getUserName());
-		User.setProperty("paswoord", user.getPassword());
-		User.setProperty("voornaam", user.getFirstName());
-		User.setProperty("achternaam", user.getLastName());
-		User.setProperty("geslacht", user.getGender());
-		User.setProperty("nummer", user.getRNumber());
-		User.setProperty("Analyse, deel 3",k);
-		User.setProperty("Mechanica, deel 2",k);
-		User.setProperty("Organische scheikunde",k);
-		User.setProperty("Kansrekenen en statistiek",k);
-		User.setProperty("Informatieoverdracht en -verwerking",k);
-		User.setProperty("Numerieke wiskunde",k);
-		User.setProperty("Economie",k);
-		User.setProperty("Probleemoplossen en -ontwerpen, deel 3",k);
-		datastore.put(User);
-				
+		Entity User = new Entity("User",user.getUserName());
+		User.setProperty("Gebruikersnaam", user.getUserName());
+		User.setProperty("Paswoord", user.getPassword());
+		User.setProperty("Voornaam", user.getFirstName());
+		User.setProperty("Achternaam", user.getLastName());
+		User.setProperty("Geslacht", user.getGender());
+		User.setProperty("Rnummer", user.getRNumber());
+		datastore.put(User);			
 	}
 	
 	public void deleteUser(String userName){
@@ -87,19 +75,22 @@ public class UserManager {
 		catch(EntityNotFoundException e){
 			exist = false;
 		}
-		return exist;			
+		catch(IllegalArgumentException f){
+			exist = false;
 		}
+		return exist;			
+	}
 	
-	public ArrayList<String> getRNumbers(){
-		ArrayList<String> RNumbers = new ArrayList<String>();
+	public ArrayList<String> getRnumbers(){
+		ArrayList<String> Rnumbers = new ArrayList<String>();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query q = new Query("User");
 		PreparedQuery pq = datastore.prepare(q);
 		for (Entity result : pq.asIterable()) {
-			String RNumber = (String) result.getProperty("nummer");
-			RNumbers.add(RNumber);			
+			String RNumber = (String) result.getProperty("Rnummer");
+			Rnumbers.add(RNumber);			
 		}
-		return RNumbers;
+		return Rnumbers;
 	}
 	
 	public ArrayList<String> getUserNames(){
@@ -108,7 +99,7 @@ public class UserManager {
 		Query q = new Query("User");
 		PreparedQuery pq = datastore.prepare(q);
 		for (Entity result : pq.asIterable()) {
-			String userName = (String) result.getProperty("gebruikersNaam");
+			String userName = (String) result.getProperty("Gebruikersnaam");
 			userNames.add(userName);
 		}
 		return userNames;
@@ -120,14 +111,12 @@ public class UserManager {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Key k = KeyFactory.createKey(User.class.getSimpleName(), userName);
 			Entity user = datastore.get(k);
-			password = user.getProperty("paswoord").toString();			
+			password = (String) user.getProperty("Paswoord");			
 		}
 		catch(EntityNotFoundException e){
 			password = "";
-		}
-		
-		return password;
-		
+		}		
+		return password;		
 	}	
 	
 	public void setCurrentUserName(String userName){
@@ -138,137 +127,183 @@ public class UserManager {
 		return currentUserName;
 	}
 	
-	public ArrayList<Course> getAllCourses(String userName){
+	@SuppressWarnings("unchecked")
+	public ArrayList<Course> getCourses(){
 		ArrayList<Course> courses = new ArrayList<Course>();
-		ArrayList<String> alleVakken = new ArrayList<String>();
-		ArrayList<Course> alleCourses = new ArrayList<Course>();
-		ArrayList<String> vakken = new ArrayList<String>();
-		alleCourses = CourseManager.getInstance().getAllCourses();
-		for (Course course : alleCourses){
-			alleVakken.add(course.toString());
-		}
+		Object object = new Object();
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Transaction txn = datastore.beginTransaction();
 		try{
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Key k = KeyFactory.createKey("User", userName);
-		Entity User = datastore.get(k);
-		for(String vak: alleVakken){
-			Key l = (Key) User.getProperty(vak);
-			try{ 
-				if(!(l.equals(null))){
-				Entity Vak = datastore.get(l);
-				Course course = new Course(Integer.parseInt(Vak.getProperty("totalLecture").toString()),Integer.parseInt(Vak.getProperty("totalPractice").toString()),(String)Vak.getProperty("prof"),(String)Vak.getProperty("name"),Integer.parseInt(Vak.getProperty("studypoints").toString()));
-				courses.add(course);
-				}
-			}
-			catch(NullPointerException e){
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			object = User.getProperty("courses");			
+		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
+		    }
+		}	
+		ArrayList <Key> keys = new ArrayList<Key>();
+		keys = (ArrayList<Key>) object;
+		try{
+		for (Key l : keys){
+			courses.add(CourseManager.getInstance().getCourse(l));
 		}
 		}
+		catch(NullPointerException f){			
 		}
-		catch(EntityNotFoundException e){
-			
-			
-		}
-		
 		return courses;
-	}
+	}	
 	
-	public void addCourse(String userName, Course course){
+	public void updateCourses (ArrayList<Course> courses){
+		ArrayList<String> courseNames = CourseManager.getInstance().getCourseNames(courses);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		try {
-		    Key k = KeyFactory.createKey("User", userName);
-		    Key l = KeyFactory.createKey("Course", course.toString());
-		    Entity User = datastore.get(k);
-		    Entity Course = datastore.get(l);
-		    User.setProperty(course.toString(),Course.getKey());		    
-		    datastore.put(User);
-		    txn.commit();
-		} 
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			ArrayList<Key> keys = new ArrayList<Key>();
+			for (String naam : courseNames){
+				Key l = KeyFactory.createKey("Course", naam);
+				keys.add(l);
+			}
+			User.setProperty("courses",keys);			
+			datastore.put(User);
+			txn.commit();
+		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
 		        txn.rollback();
-		    }
-		    
 		    }
 		}
-	
-	public void removeCourse(String userName, Course course){
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
-		try {
-		    Key k = KeyFactory.createKey("User", userName);
-		    Entity User = datastore.get(k);
-		    User.setProperty(course.toString(),null);		    
-		    datastore.put(User);
-		    txn.commit();
-		} 
-		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
-		    
-		    }
 	}
 	
-	public void updateCourses (String userName, ArrayList<Course> courses){
+	@SuppressWarnings("unchecked")
+	public ArrayList<Activity> getActivities(){
+		ArrayList<Activity> activities = new ArrayList<Activity>();
+		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		ArrayList<String> alleVakken = new ArrayList<String>();
-		ArrayList<Course> alleCourses = new ArrayList<Course>();
-		alleCourses = CourseManager.getInstance().getAllCourses();
-		ArrayList<String> vakken = new ArrayList<String>();
-		for (Course course : alleCourses){
-			alleVakken.add(course.toString());
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			object = User.getProperty("activities");			
 		}
-		for (Course course : courses){
-			vakken.add(course.toString());
-		}
-		try {
-		    Key k = KeyFactory.createKey("User", userName);
-		    Entity User = datastore.get(k);
-		    for (String vak : alleVakken){
-		    	User.setProperty(vak, null);
-		    }
-		    for (String vak : vakken){
-		    	Key l = KeyFactory.createKey("Course", vak);
-		    	//Entity Course = datastore.get(l);
-		    	User.setProperty(vak, l);
-		    }
-		    
-		    datastore.put(User);
-		    txn.commit();
-		} 
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
 		        txn.rollback();
 		    }
-		    
-		    }
-	}
+		}	
+		ArrayList <Key> keys = new ArrayList<Key>();
+		keys = (ArrayList<Key>) object;
+		try{
+		for (Key l : keys){
+			activities.add(ActivityManager.getInstance().getActivity(l));
+		}
+		}
+		catch(NullPointerException f){			
+		}
+		return activities;
+	}	
 	
-	public void updateUser(String userName){
-		
+	@SuppressWarnings("unchecked")
+	public ArrayList<Key> getActivityKeys(){
+		ArrayList<Key> keys = new ArrayList<Key>();
+		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
-		try {
-		    Key k = KeyFactory.createKey("User", userName);
-		    Entity User = datastore.get(k);
-		    User.setProperty("blablabla", "bla");
-		    datastore.put(User);
-		    txn.commit();
-		} 
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			object = User.getProperty("activities");			
+		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
 		        txn.rollback();
 		    }
-		    
+		}	
+		keys = (ArrayList<Key>) object;		
+		return keys;
+	}	
+	
+	public void updateActivities (Activity activity){		
+		try{
+			ArrayList<Key> keys = new ArrayList<Key>();
+			keys = getActivityKeys();
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Transaction txn = datastore.beginTransaction();
+			try{
+				Key k = KeyFactory.createKey("User", currentUserName);
+				Entity User = datastore.get(k);
+				Key l = KeyFactory.createKey("Activity",activity.getStart().toString());
+				keys.add(l);
+				User.setProperty("activities",keys);			
+				datastore.put(User);
+				txn.commit();
+			}
+			catch (EntityNotFoundException e){
+				if (txn.isActive()) {
+					txn.rollback();
+				}
+			}	
+		}
+		catch(NullPointerException f){
+			ArrayList<Key> keyss = new ArrayList<Key>();
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Transaction txn = datastore.beginTransaction();
+			try{
+				Key k = KeyFactory.createKey("User", currentUserName);
+				Entity User = datastore.get(k);
+				Key l = KeyFactory.createKey("Activity",activity.getStart().toString());
+				keyss.add(l);
+				User.setProperty("activities",keyss);			
+				datastore.put(User);
+				txn.commit();
+			}
+			catch (EntityNotFoundException e){
+				if (txn.isActive()) {
+					txn.rollback();
+				}
+			}			
+		}		
+	}	
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Integer> getGoals(){
+		ArrayList<Integer> goals = new ArrayList<Integer>();
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Transaction txn = datastore.beginTransaction();
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			goals = (ArrayList<Integer>) User.getProperty("goals");
+		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
 		    }
+		}
+		return goals;
 	}
 	
-	//public HashMap<Course,Integer> getGoal(int ){
-	//	String goal = "goal";
-	//	return goal;
-	//}
+	public void setGoals(ArrayList<Integer> goals){
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Transaction txn = datastore.beginTransaction();
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			User.setProperty("goals", goals);
+		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
+		    }
+		}
+	}
+	
+	
+	
+	
 	
 	
 
@@ -278,5 +313,3 @@ public class UserManager {
 	
 	
 }
-
-
