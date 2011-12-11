@@ -1,6 +1,7 @@
 package goals;
 import java.util.Calendar;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -18,15 +19,15 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		while(cal.DAY_OF_WEEK!=cal.SUNDAY){
-			cal.roll(Calendar.DAY_OF_WEEK,true);
+		while(cal.DAY_OF_WEEK!=7){
+			cal.roll(Calendar.DAY_OF_WEEK,1);
 		}
 		cal.set(Calendar.HOUR_OF_DAY,23);
 		cal.set(Calendar.MINUTE,55);
 		
 		stopDate=cal.getTime();
 		cal.roll(Calendar.DAY_OF_WEEK,false);
-		while(cal.DAY_OF_WEEK!=cal.SUNDAY){
+		while(cal.DAY_OF_WEEK!=7){
 			cal.roll(Calendar.DAY_OF_WEEK,false);
 		}
 		cal.set(Calendar.HOUR_OF_DAY,23);
@@ -36,35 +37,41 @@ public class GoalController {
 		
 	}
 	public int getGoal(Course course){
-		String currentUserName = UserManager.getInstance().getCurrentUserName();
-	//	int result = UserManager.getInstance().getGoal(currentUserName,startDate).get(course);
-		return 0;
+		int result = 0;
+	
+		int i =0; boolean ja = true;
+		while(i<UserManager.getInstance().getCourses().size()&&ja){
+			Course c = UserManager.getInstance().getCourses().get(i);
+			if(c.toString().equals(course.toString())){
+				ja = false;
+			}
+		i++;}
+		ArrayList<Integer> list = UserManager.getInstance().getGoals();
+		if(!ja){result = list.get(i-1);
+		}
+		return result;
 	}
+	
 	public void setGoal(Course course,double time){//tijd in uren(kan ook naar minuten aangepast worden)
 	double tijd = time*60;
 	int t = (int) tijd;
+	int i =0; boolean ja = true;
+	while(i<UserManager.getInstance().getCourses().size()&&ja){
+		Course c = UserManager.getInstance().getCourses().get(i);
+		if(c.toString().equals(course.toString())){
+			ja = false;
+		}
+	i++;}
+	ArrayList<Integer> list = UserManager.getInstance().getGoals();
 	
-	String currentUserName = UserManager.getInstance().getCurrentUserName();
-	//UserManager.getInstance().setGoal(currentUserName,startDate,course,t);
+	if(!ja&&UserManager.getInstance().getCourses().size()!=0){list.set(i-1,t);
+	}
+	
+	UserManager.getInstance().setGoals(list);
 	}
 
-	public HashMap<Course,Integer> compareGoals(){
-		HashMap<Course,Integer> map = new HashMap<Course,Integer>();
-		String currentUserName = UserManager.getInstance().getCurrentUserName();
-		for(Course course:UserManager.getInstance().getCourses()){
-//			int getal = UserManager.getInstance().getGoal(currentUserName,startDate).get(course);
-		for(Activity act:UserManager.getInstance().getActivities()){
-			if(act.getStop().after(startDate)&&act.getStop().before(stopDate)){
-			if(act.getActivityType().equals("scolair")){
-				CurricularActivity scol =(CurricularActivity) act;
-				if(scol.getCourse().equals(course)){
-	//				getal = getal - scol.getDuration();
-				}
-			}
-			}
-		}
-	//	map.put(course,getal);
-		}
-		return map;
-	}
+	
+			
+		
+	
 }
