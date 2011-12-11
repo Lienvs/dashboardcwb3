@@ -120,6 +120,7 @@
 	 * Version : 1.0
 	 * Released: Monday 28th December, 2009 - 00:00
 	 */
+
 	(function($){
 
 		// A global array used by the functions of the plug-in:
@@ -162,93 +163,18 @@
 			function setUp()
 			{
 				var currentTime = new Date();
-				var bezig =<%=(String)request.getAttribute("bezig")%>;
-			if(bezig!="ja"){
-				var timerTime = currentTime;	
-				var startdate = new Date();//<%=request.getAttribute("startDate")%>;
-				var timerTime = new Date();
-				var i = currentTime.getTime()-startdate.getTime();
-				timerTime.setTime(i);
+			    var startdate = <%=(Date)request.getAttribute("startDate")%>;
+			if(startdate!=null){
 
-				setInterval(function(){
-				var secs = timerTime.getSeconds()+1;
-				timerTime.setSeconds(secs);
-
-				var h = timerTime.getHours()-1;
-				var m = timerTime.getMinutes();
-				var s = timerTime.getSeconds();
-
-				animation(gVars.green, s, 60);
-				animation(gVars.blue, m, 60);
-				animation(gVars.orange, h, 24);
-
-				},1000);
-			}
-			else {
-					var someDate = new Date(2011,12,9,0,0,0);
-
-					setInterval(function(){
-
-
-
-					var h = someDate.getHours();
-					var m = someDate.getMinutes();
-					var s = someDate.getSeconds();
-
-					animation(gVars.green, s, 60);
-					animation(gVars.blue, m, 60);
-					animation(gVars.orange, h, 12);
-
-				},1000);
-
-			}
-
-			   // Setting up a interval, executed every 1000 milliseconds
-		     /* var bezig=<%=request.getAttribute("bezig")%>;
-				if(bezig!=null){
-						var startdate = <%=request.getAttribute("startDate")%>;
-						var startdate = new date();
-						var timerTime = new Date();
-						var i = currentTime.getTime()-startdate.getTime();
-						timerTime.setTime(i);
-
-						setInterval(function(){
-						var secs = timerTime.getSeconds()+1;
-						timerTime.setSeconds(secs);
-
-						var h = timerTime.getHours()-1;
-						var m = timerTime.getMinutes();
-						var s = timerTime.getSeconds();
-
-						animation(gVars.green, s, 60);
-						animation(gVars.blue, m, 60);
-						animation(gVars.orange, h, 24);
-
-					},1000);
-									}
-
+					var someDate = startdate;
 			}
 			else{
 
 				var someDate = new Date(2011,12,9,0,0,0);
-
-				setInterval(function(){
-
-
-
-				var h = someDate.getHours();
-				var m = someDate.getMinutes();
-				var s = someDate.getSeconds();
-
-				animation(gVars.green, s, 60);
-				animation(gVars.blue, m, 60);
-				animation(gVars.orange, h, 12);
-
-			},1000);
-
-
-			}*/	
-
+			}	
+				var timerTime = new Date(someDate.getTime());
+				var timerStart = currentTime.getTime()-someDate.getTime();
+				timerTime.setTime(timerStart);
 				// The colors of the dials:
 				var colors = ['orange','blue','green'];
 
@@ -284,75 +210,108 @@
 					gVars[colors[i]] = tmp;
 				}
 
+				// Setting up a interval, executed every 1000 milliseconds
+
+				if(someDate.getTime()<=currentTime.getTime()){
+					setInterval(function(){
+					var secs = timerTime.getSeconds()+1;
+					timerTime.setSeconds(secs);
+
+					var h = timerTime.getHours()-1;
+					var m = timerTime.getMinutes();
+					var s = timerTime.getSeconds();
+
+					animation(gVars.green, s, 60);
+					animation(gVars.blue, m, 60);
+					animation(gVars.orange, h, 24);
+
+				},1000);
+			}
+			else{
+				timerTime.setHours(0);
+				timerTime.setMinutes(0);
+				timerTime.setSeconds(0);
+				setInterval(function(){
+				var secs = timerTime.getSeconds()+1;
+				timerTime.setSeconds(secs);
 
 
+				var h = timerTime.getHours();
+				var m = timerTime.getMinutes();
+				var s = timerTime.getSeconds();
+
+				animation(gVars.green, s, 60);
+				animation(gVars.blue, m, 60);
+				animation(gVars.orange, h, 12);
+
+			},1000);
+			}
 			}
 
 			function animation(clock, current, total)
 			{
 				// Calculating the current angle:
-						var angle = (360/total)*(current);
+				var angle = (360/total)*(current+1);
 
-						var element;
+				var element;
 
-						if(current==0)
-						{
-							// Hiding the right half of the background:
-							clock.rotateRight.hide();
+				if(current==0)
+				{
+					// Hiding the right half of the background:
+					clock.rotateRight.hide();
 
-							// Resetting the rotation of the left part:
-							rotateElement(clock.rotateLeft,0);
-						}
+					// Resetting the rotation of the left part:
+					rotateElement(clock.rotateLeft,0);
+				}
 
-						if(angle<=180)
-						{
-							// The left part is rotated, and the right is currently hidden:
-							element = clock.rotateLeft;
-						}
-						else
-						{
-							// The first part of the rotation has completed, so we start rotating the right part:
-							clock.rotateRight.show();
-							clock.rotateLeft.show();
+				if(angle<=180)
+				{
+					// The left part is rotated, and the right is currently hidden:
+					element = clock.rotateLeft;
+				}
+				else
+				{
+					// The first part of the rotation has completed, so we start rotating the right part:
+					clock.rotateRight.show();
+					clock.rotateLeft.show();
 
-							rotateElement(clock.rotateLeft,180);
+					rotateElement(clock.rotateLeft,180);
 
-							element = clock.rotateRight;
-							angle = angle-180;
-						}
+					element = clock.rotateRight;
+					angle = angle-180;
+				}
 
-						rotateElement(element,angle);
+				rotateElement(element,angle);
 
-						// Setting the text inside of the display element, inserting a leading zero if needed:
-						clock.display.html(current<10?'0'+current:current);
-					}
+				// Setting the text inside of the display element, inserting a leading zero if needed:
+				clock.display.html(current<10?'0'+current:current);
+			}
+		function rotateElement(element,angle)
+		{
+			// Rotating the element, depending on the browser:
+			var rotate = 'rotate('+angle+'deg)';
 
-					function rotateElement(element,angle)
-					{
-						// Rotating the element, depending on the browser:
-						var rotate = 'rotate('+angle+'deg)';
+			if(element.css('MozTransform')!=undefined)
+				element.css('MozTransform',rotate);
 
-						if(element.css('MozTransform')!=undefined)
-							element.css('MozTransform',rotate);
+			else if(element.css('WebkitTransform')!=undefined)
+				element.css('WebkitTransform',rotate);
 
-						else if(element.css('WebkitTransform')!=undefined)
-							element.css('WebkitTransform',rotate);
+			// A version for internet explorer using filters, works but is a bit buggy (no surprise here):
+			else if(element.css("filter")!=undefined)
+			{
+				var cos = Math.cos(Math.PI * 2 / 360 * angle);
+				var sin = Math.sin(Math.PI * 2 / 360 * angle);
 
-						// A version for internet explorer using filters, works but is a bit buggy (no surprise here):
-						else if(element.css("filter")!=undefined)
-						{
-							var cos = Math.cos(Math.PI * 2 / 360 * angle);
-							var sin = Math.sin(Math.PI * 2 / 360 * angle);
+				element.css("filter","progid:DXImageTransform.Microsoft.Matrix(M11="+cos+",M12=-"+sin+",M21="+sin+",M22="+cos+",SizingMethod='auto expand',FilterType='nearest neighbor')");
 
-							element.css("filter","progid:DXImageTransform.Microsoft.Matrix(M11="+cos+",M12=-"+sin+",M21="+sin+",M22="+cos+",SizingMethod='auto expand',FilterType='nearest neighbor')");
+				element.css("left",-Math.floor((element.width()-200)/2));
+				element.css("top",-Math.floor((element.height()-200)/2));
+			}
 
-							element.css("left",-Math.floor((element.width()-200)/2));
-							element.css("top",-Math.floor((element.height()-200)/2));
-						}
+		}
 
-					}
-
-				})(jQuery)
+	})(jQuery)
 	$('#fancyClock').tzineClock();
 
  $("#tabs").tabs();
@@ -418,7 +377,7 @@
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> <font size="10"> Learnkeeper </font> </br></h1>
-    	<h4>Welkom <%=(String)request.getAttribute("username")%> ! </h4>
+    	<h2><%=(String)request.getAttribute("username")%></h2>
     	<div id="fancyClock"></div>
 		<% String bezig=(String)request.getAttribute("bezig");
 		if(bezig!=null){%>
