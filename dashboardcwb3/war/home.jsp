@@ -16,6 +16,8 @@
 
 <html>
 <head>	
+<link rel="stylesheet" type="text/css" href="clock/styles.css" />
+<link rel="stylesheet" type="text/css" href="clock/jquery.tzineClock.css" />
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
