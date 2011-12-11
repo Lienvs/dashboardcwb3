@@ -23,9 +23,9 @@ public abstract class Activity {
 	 * @param activityType : type van de activiteit, dit kan zijn: "scholair" of "fun". die variabelen heb ik niet naar het engels veranderd omdat ik niet weet hoe dat in de servlets wordt aangeroepen. 
 	 */
 	public Activity(String activityType) {
-		Calendar cal = Calendar.getInstance();
 		
-		this.start = cal.getTime();
+		
+		this.start = null;
 		this.stop = null;
 		
 		comment = null;
