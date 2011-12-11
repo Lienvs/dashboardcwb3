@@ -224,6 +224,34 @@ public class UserManager {
 	}	
 	
 	@SuppressWarnings("unchecked")
+	public ArrayList<Activity> getActivities(String name){
+		ArrayList<Activity> activities = new ArrayList<Activity>();
+		Object object = new Object();
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Transaction txn = datastore.beginTransaction();
+		try{
+			Key k = KeyFactory.createKey("User", name);
+			Entity User = datastore.get(k);
+			object = User.getProperty("activities");			
+		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
+		    }
+		}	
+		ArrayList <Key> keys = new ArrayList<Key>();
+		keys = (ArrayList<Key>) object;
+		try{
+		for (Key l : keys){
+			activities.add(ActivityManager.getInstance().getActivity(l));
+		}
+		}
+		catch(NullPointerException f){			
+		}
+		return activities;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public ArrayList<Key> getActivityKeys(){
 		ArrayList<Key> keys = new ArrayList<Key>();
 		Object object = new Object();
