@@ -108,6 +108,7 @@ public class UserManager {
 	
 	public String getUsersString(){
 		ArrayList<String> userNames = getUserNames();
+		userNames.remove(getCurrentUserName());
 		Iterator<String> it = userNames.iterator();
 		String result = "[";
 		while(it.hasNext()){
