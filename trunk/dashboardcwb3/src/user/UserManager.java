@@ -321,7 +321,9 @@ public class UserManager {
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
-			goals = (ArrayList<Integer>) User.getProperty("goals");
+			if (User.hasProperty("goals")){
+				goals = (ArrayList<Integer>) User.getProperty("goals");
+			}			
 		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
@@ -329,6 +331,23 @@ public class UserManager {
 		    }
 		}
 		return goals;
+	}
+	
+	public void removeGoals(){		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Transaction txn = datastore.beginTransaction();
+		try{
+			Key k = KeyFactory.createKey("User", currentUserName);
+			Entity User = datastore.get(k);
+			if (User.hasProperty("goals")){
+				User.removeProperty("goals");
+			}			
+		}
+		catch (EntityNotFoundException e){
+			if (txn.isActive()) {
+		        txn.rollback();
+		    }
+		}
 	}
 	
 	public void setGoals(ArrayList<Integer> goals){
