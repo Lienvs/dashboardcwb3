@@ -36,8 +36,6 @@ public class StopServlet extends HttpServlet{
 						rating=new Integer(req.getParameter("rating"));
 					}
 					String comment=(String) req.getParameter("comment");
-
-					//timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
 					timerControler.stopTiming();
 					ActivityManager.getInstance().updateActivity(rating,comment,place,stype, studyBuddy);
 					
