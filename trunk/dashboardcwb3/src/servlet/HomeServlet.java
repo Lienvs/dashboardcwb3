@@ -33,18 +33,18 @@ public class HomeServlet extends HttpServlet{
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
 				//User user =UserManager.getInstance().getCurrentUser();
-				
+
 				//indien er een activiteit bezig is
 				if(timerController.isBusy()){
 					req.setAttribute("bezig", "ja");
 					req.setAttribute("allusersstring", UserManager.getInstance().getUsersString());
 					req.setAttribute("curract", timerController.getCurrentActivity());
-					req.setAttribute("startDate",timerController.getCurrentActivity().getStart());
+					req.setAttribute("startDate",timerController.getCurrentActivity().getStart());//start datum van current activity
+
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
 				ArrayList<Course> courses = UserManager.getInstance().getCourses();
-				
 				
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
