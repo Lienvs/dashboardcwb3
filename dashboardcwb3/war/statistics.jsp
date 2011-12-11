@@ -40,10 +40,6 @@
    			
 	});
 	</script>
-	
-	<%=request.getAttribute("myCoursesCheese")%>
-	
-		<%=request.getAttribute("myPlacesCheese")%>
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
