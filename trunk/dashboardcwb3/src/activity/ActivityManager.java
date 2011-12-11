@@ -63,9 +63,9 @@ public class ActivityManager {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();		
 		ArrayList<Key> keys = new ArrayList<Key>();
 		keys = UserManager.getInstance().getActivityKeys();		
+		for(Key l : keys){
 		Transaction txn = datastore.beginTransaction();
 		try {			
-			for(Key l : keys){
 				Entity Activity = datastore.get(l);
 				if (Activity.hasProperty("stopdatum")){					
 				}
@@ -80,8 +80,9 @@ public class ActivityManager {
 					}
 					datastore.put(Activity);
 				}
-			}		    
+					    
 		    txn.commit();
+		
 		} 
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
@@ -89,6 +90,7 @@ public class ActivityManager {
 		    }
 		    
 		    }
+	}
 		}
 	
 	public ArrayList<Activity> getAllActivities(){
