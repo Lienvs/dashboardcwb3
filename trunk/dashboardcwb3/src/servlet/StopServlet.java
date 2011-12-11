@@ -4,8 +4,11 @@ import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import user.UserManager;
+
 import course.CourseManager;
 
+import activity.ActivityManager;
 import activity.TimerController;
 
 
@@ -23,9 +26,10 @@ public class StopServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				
-					String place=(String) req.getParameter("place");
-					String stype=(String) req.getParameter("stype");
+					String place ="";
+					place=(String) req.getParameter("place");
+					String stype ="";
+					stype=(String) req.getParameter("stype");
 					String studyBuddy = (String) req.getParameter("studybuddy");
 					int rating=-1; 
 					if(req.getParameter("rating")!=null){
@@ -35,7 +39,8 @@ public class StopServlet extends HttpServlet{
 
 					//timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
 					timerControler.stopTiming();
-					CourseManager.getInstance().setCurrentCourse(null);
+					ActivityManager.getInstance().updateActivity(rating,comment,place,stype);
+					
 				
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
@@ -43,5 +48,3 @@ public class StopServlet extends HttpServlet{
 	
 
 }
-
-

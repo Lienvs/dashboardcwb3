@@ -5,16 +5,18 @@ import java.util.*;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Transaction;
 
 import course.Course;
 
 
 /**
- * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar één object wil dat de vakken beheert
+ * Singleton klasse die de vakken beheert. Het is een singletonklasse omdat men maar ï¿½ï¿½n object wil dat de vakken beheert
  * @author
  * @version
  *
@@ -22,7 +24,7 @@ import course.Course;
 public class CourseManager {
 
 	private static CourseManager instance = null;
-	private Course currentCourse;
+	
 		
 	public static CourseManager getInstance() {
 		if( instance == null ) {
@@ -35,15 +37,13 @@ public class CourseManager {
 	/**
 	 * Controller
 	 */
-	public CourseManager(){
-		currentCourse = null;
-		
-		
+	public CourseManager(){				
 	}
 	
 	/**
 	 * Slaat de vakken op in een lijst met vakken
-	 */
+	 */		
+		
 		public void makeCourses(){
 			Professor prof1 = new Professor("Dierckx");
 			Professor prof2 = new Professor("Vander Sloten");
@@ -53,15 +53,15 @@ public class CourseManager {
 			Professor prof6 = new Professor("Meerbergen");
 			Professor prof7 = new Professor("D'haene");
 			Professor prof8 = new Professor("Duval");
-						
-			Course anal = new Course(26,6,"Dierckx","Analyse, deel 3",5);
-			Course mech = new Course(26,8,"Vander Sloten","Mechanica, deel 2",5);
-			Course org = new Course(26,8,"Smet","Organische scheikunde",5);
-			Course kan = new Course(26,6,"Van Dyck","Kansrekenen en statistiek",5);
-			Course iov = new Course(26,6,"Nauwelaers","Informatieoverdracht en -verwerking",5);
-			Course num = new Course(26,10,"Meerbergen","Numerieke wiskunde",5);
-			Course eco = new Course(24,12,"D'haene","Economie",5);
-			Course pno = new Course(8,2000,"Duval","Probleemoplossen en -ontwerpen, deel 3",5);
+			
+			Course anal = new Course(26,6,prof1.getName(),"Analyse, deel 3",5);
+			Course mech = new Course(26,8,prof2.getName(),"Mechanica, deel 2",5);
+			Course org = new Course(26,8,prof3.getName(),"Organische scheikunde",5);
+			Course kan = new Course(26,6,prof4.getName(),"Kansrekenen en statistiek",5);
+			Course iov = new Course(26,6,prof5.getName(),"Informatieoverdracht en -verwerking",5);
+			Course num = new Course(26,10,prof6.getName(),"Numerieke wiskunde",5);
+			Course eco = new Course(24,12,prof7.getName(),"Economie",5);
+			Course pno = new Course(8,2000,prof8.getName(),"Probleemoplossen en -ontwerpen, deel 3",5);
 			
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Entity analy = new Entity("Course","Analyse, deel 3");
@@ -113,7 +113,7 @@ public class CourseManager {
 			peno.setProperty("name", pno.toString());
 			peno.setProperty("studypoints", pno.getStudyPoints());
 			List<Entity> vakken = Arrays.asList(analy, mecha, orga, kans, ioev, nume, econ, peno);
-			datastore.put(vakken);
+			datastore.put(vakken);	
 			
 			Entity Prof1 = new Entity("Prof","Dierckx",analy.getKey());
 			Entity Prof2 = new Entity("Prof","Vander Sloten",mecha.getKey());			
@@ -124,9 +124,8 @@ public class CourseManager {
 			Entity Prof7 = new Entity("Prof","D'haene",econ.getKey());			
 			Entity Prof8 = new Entity("Prof","Duval",peno.getKey());
 			List<Entity> profs = Arrays.asList(Prof1, Prof2, Prof3, Prof4, Prof5, Prof6, Prof7, Prof8);
-			datastore.put(profs);						
-			
-		}
+			datastore.put(profs);
+		}		
 		
 		/**
 		 * geeft een lijst met alle vakken weer
@@ -144,18 +143,36 @@ public class CourseManager {
 			return courses;
 		}
 		
-		public Course getCurrentCourse(){
-			return currentCourse;
-		}
-		public void setCurrentCourse(Course course){
-			currentCourse=course;
+			
+		
+		public ArrayList<String> getCourseNames(ArrayList<Course> courses){
+			ArrayList<String> courseNames = new ArrayList<String>();
+			for (Course course: courses){
+				courseNames.add(course.toString());
+			}
+			return courseNames;
 		}
 		
-		/**
-		 * geeft het opgevraagde vak weer, indien de naam van het ingegeven vak door de gebruiker overeenkomt met de naam van een vak in de lijst
-		 * @param name : de naam van het vak dat de gebruiker wil opvragen (type: String)
-		 * @return coursje : het vak dat de gebruiker heeft opgevraagd (type: Course)
-		 */
+		public Course getCourse(Key k){
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Transaction txn = datastore.beginTransaction();
+			Course vak = null;
+			try{
+				Entity Course = datastore.get(k);
+				vak = new Course(Integer.parseInt(Course.getProperty("totalLecture").toString()), Integer.parseInt(Course.getProperty("totalPractice").toString()), (String) Course.getProperty("prof"), (String) Course.getProperty("name"), Integer.parseInt(Course.getProperty("studypoints").toString()));			
+			}
+			catch (EntityNotFoundException e){
+				if (txn.isActive()) {
+			        txn.rollback();
+			    }
+			}
+			return vak;
+		}
 		
+		public Key getKey(String name){
+			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			Key l = KeyFactory.createKey("Course",name);
+			return l;			
+		}
 	
 }

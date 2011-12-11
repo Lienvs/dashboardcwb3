@@ -24,37 +24,31 @@ public class CourseSelectionServlet extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
 			throws ServletException, IOException {
-				resp.setContentType("text/plain");
-				String userName = UserManager.getInstance().getCurrentUserName();
+				resp.setContentType("text/plain");				
 				
-				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(userName);
-				ArrayList<Course> allcourses = CourseManager.getInstance().getAllCourses();//welke van de 2?
+				ArrayList<Course> courses = new ArrayList<Course>();
 				Boolean possible=false;
-				for(int i=0; i<allcourses.size() && !possible; i++){
-					if(req.getParameter(allcourses.get(i).toString())!=null){
+				for(int i=0; i<CourseManager.getInstance().getAllCourses().size() && !possible; i++){
+					if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())!=null){
 						possible=true;
 					}
 				}
 				
 				if(possible){
-					for(int i=0; i<allcourses.size() ;i++){
-						if(req.getParameter(allcourses.get(i).toString())==null){
-							for(int j=0; j<courses.size();j++){
-								if(courses.get(j).toString().equals(allcourses.get(i).toString())){
-									courses.remove(allcourses.get(i));
-								}
+					for(int i=0; i<CourseManager.getInstance().getAllCourses().size() ;i++){
+						if(req.getParameter(CourseManager.getInstance().getAllCourses().get(i).toString())==null){
+							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){
+								courses.remove(CourseManager.getInstance().getAllCourses().get(i));
 							}
 						}
 						else{
-							for(int j=0; j<courses.size();j++){
-								if(!courses.get(j).toString().equals(allcourses.get(i).toString())){
-									courses.add(CourseManager.getInstance().getAllCourses().get(i));
-								}
+							if(courses.contains(CourseManager.getInstance().getAllCourses().get(i))){}
+							else{
+								courses.add(CourseManager.getInstance().getAllCourses().get(i));
 							}
 						}
 					}
-					UserManager.getInstance().updateCourses(userName,courses);
-					
+					UserManager.getInstance().updateCourses(courses);
 					getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 				}
 				if(!possible){
@@ -74,5 +68,3 @@ public class CourseSelectionServlet extends HttpServlet{
 	
 
 }
-
-

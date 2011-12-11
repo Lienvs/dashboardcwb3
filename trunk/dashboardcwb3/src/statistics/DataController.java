@@ -13,13 +13,13 @@ import activity.IndividualStudy;
 public class DataController {
 	private String currentUserName;
 		public  DataController(){
-			
+			String currentUserName = UserManager.getInstance().getCurrentUserName();
 }
 	
 public int getGemiddeldeStudie(){
 	int result = 0;
 	
-		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+		ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -37,7 +37,7 @@ public int getGemiddeldeStudie(){
 public int getGemiddeldeStudie(Course course){
 	int result = 0;
 	
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+	ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -52,7 +52,7 @@ public int getGemiddeldeStudie(Course course){
 for(String userName:UserManager.getInstance().getUserNames()){
 	boolean vak = false;
 	
-	for(Activity act:ActivityManager.getInstance().getActivities(userName)){
+	for(Activity act:UserManager.getInstance().getActivities()){
 	while(!vak){
 		if (act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity) act;
@@ -74,7 +74,7 @@ else{result = result/users;}
 }
 public int getGemiddeldeLes(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+	ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -92,7 +92,7 @@ public int getGemiddeldeLes(){
 public int getGemiddeldeLes(Course course){
 	int result = 0;
 	
-		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+		ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -109,7 +109,7 @@ public int getGemiddeldeLes(Course course){
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:ActivityManager.getInstance().getActivities(userName)){
+		for(Activity act:UserManager.getInstance().getActivities()){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -132,7 +132,7 @@ public int getGemiddeldeLes(Course course){
 
 public int getGemiddeldeOefenzitting(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+	ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -150,7 +150,7 @@ public int getGemiddeldeOefenzitting(){
 public int getGemiddeldeOefenzitting(Course course){
 	int result = 0;
 	
-		ArrayList<Activity> actList = ActivityManager.getInstance().getActivities();
+		ArrayList<Activity> actList = ActivityManager.getInstance().getAllActivities();
 	
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -167,7 +167,7 @@ public int getGemiddeldeOefenzitting(Course course){
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:ActivityManager.getInstance().getActivities(userName)){
+		for(Activity act:UserManager.getInstance().getActivities()){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -188,7 +188,7 @@ public int getGemiddeldeOefenzitting(Course course){
 	return result;
 }
 public int getDuurZelfstudie(){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -202,7 +202,7 @@ public int getDuurZelfstudie(){
 }
 
 public int getDuurLes(){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -216,7 +216,7 @@ public int getDuurLes(){
 
 }
 public int getDuurOefenzitting(){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -230,7 +230,7 @@ public int getDuurOefenzitting(){
 
 }
 public int getDuurExtraScolair(){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("extra-scolair")){
@@ -244,7 +244,7 @@ public int getDuurExtraScolair(){
 }
 public int getDuurThuisZelfstudie(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -259,7 +259,7 @@ public int getDuurThuisZelfstudie(){
 }
 public int getDuurBibZelfstudie(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -274,7 +274,7 @@ public int getDuurBibZelfstudie(){
 }
 public int getDuurKotZelfstudie(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -289,7 +289,7 @@ public int getDuurKotZelfstudie(){
 }
 public int getDuurOtherZelfstudie(){
 	int result = 0;
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
@@ -303,7 +303,7 @@ public int getDuurOtherZelfstudie(){
 	} return result;
 }
 public int getTotalScolair(Course course){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -324,7 +324,7 @@ public int getGemiddeldeScolair(Course course){
 	return result;
 }
 public int getDuurZelfstudie(Course course){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -340,7 +340,7 @@ public int getDuurZelfstudie(Course course){
 
 }
 public int getDuurLes(Course course){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -356,7 +356,7 @@ public int getDuurLes(Course course){
 
 }
 public int getDuurOefenzitting(Course course){
-	ArrayList<Activity> actList = ActivityManager.getInstance().getActivities(currentUserName);
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
 	int result = 0;
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
@@ -379,7 +379,7 @@ public String ToHourMinute(int minuten){
 public String getMaximumStudie(){
 	String result = "You didn't study at all";
 	int maxDuur =0;
-	ArrayList<Course> courseList= UserManager.getInstance().getAllCourses(currentUserName);
+	ArrayList<Course> courseList= UserManager.getInstance().getCourses();
 	if(courseList.size()>0){
 	Course maxCourse= courseList.get(0);
 	for(Course course:courseList){
@@ -394,4 +394,3 @@ public String getMaximumStudie(){
 }
 
 }
-

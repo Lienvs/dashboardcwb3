@@ -32,18 +32,19 @@ public class HomeServlet extends HttpServlet{
 
 			throws ServletException, IOException {
 				resp.setContentType("text/plain");
-				String userName =UserManager.getInstance().getCurrentUserName();
+				//User user =UserManager.getInstance().getCurrentUser();
 				
 				//indien er een activiteit bezig is
 				if(timerControler.isBusy()){
 					req.setAttribute("bezig", "ja");
-					req.setAttribute("allusersstring", UserManager.getInstance().getUserNames());
+					//req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
 					req.setAttribute("curract", timerControler.getCurrentActivity());
-					req.setAttribute("startDate",timerControler.getCurrentActivity().getStart() );
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
-				ArrayList<Course> courses = UserManager.getInstance().getAllCourses(UserManager.getInstance().getCurrentUserName());
+				ArrayList<Course> courses = UserManager.getInstance().getCourses();
+				
+				
 				req.setAttribute("allcourses", allCourses);//alle vakken 
 				req.setAttribute("courses", courses);//vakken student
 				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());//plaatsen waar men kan studeren
@@ -51,28 +52,29 @@ public class HomeServlet extends HttpServlet{
 				//einde attributen
 				
 				//stats
-				req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
-				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
-				req.setAttribute("myCourseBar1", statController.myCourseBar().get(0));
-				req.setAttribute("myCourseBar2", statController.myCourseBar().get(1));
-				req.setAttribute("myCourseBar3", statController.myCourseBar().get(2));
-				req.setAttribute("myFunInTime", statController.myFunInTime());
-				req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
-				req.setAttribute("mySleepInTime", statController.mySleepInTime());
-				req.setAttribute("mySportInTime", statController.mySportInTime());
-				req.setAttribute("myTime", statController.myTime());
-				req.setAttribute("myTimeInTime", statController.myTimeInTime());
-				req.setAttribute("overallTime", statController.overallTime());
-				HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
-				ArrayList<String> statscourse=new ArrayList<String>();
+				//req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
+				//req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
+				//req.setAttribute("myCourseBar1", statController.myCourseBar().get(0));
+				//req.setAttribute("myCourseBar2", statController.myCourseBar().get(1));
+				//req.setAttribute("myCourseBar3", statController.myCourseBar().get(2));
+				//req.setAttribute("myFunInTime", statController.myFunInTime());
+				//req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
+				//req.setAttribute("mySleepInTime", statController.mySleepInTime());
+				//req.setAttribute("mySportInTime", statController.mySportInTime());
+				//req.setAttribute("myTime", statController.myTime());
+				//req.setAttribute("myTimeInTime", statController.myTimeInTime());
+				//req.setAttribute("overallTime", statController.overallTime());
+				//HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
+				//ArrayList<String> statscourse=new ArrayList<String>();
 				for(int i=0;i<courses.size();i++){
-					statscourse.add(statController.myTypeCheese(courses.get(i)));
-					statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
-					statscourse.add(statController.myTypeBar(courses.get(i)));
-					
-					hashmap.put(courses.get(i), statscourse);
+					//statscourse.add(statController.myTypeCheese(courses.get(i)));
+					//statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
+					//hashmap.put(courses.get(i), statscourse);
 				}
-				req.setAttribute("arrcoursesstats", hashmap);//hashmap met vakkan als key en arraylist van string
+				//req.setAttribute("", statController.);
+				//req.setAttribute("", statController.);
+				//req.setAttribute("", statController.);
+				//req.setAttribute("", statController.);
 				//einde stats
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	
@@ -80,5 +82,3 @@ public class HomeServlet extends HttpServlet{
 	
 
 }
-
-

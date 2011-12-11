@@ -45,25 +45,28 @@ public class StartServlet extends HttpServlet{
 							for(int i=0; i<CourseManager.getInstance().getAllCourses().size(); i++){
 								if(CourseManager.getInstance().getAllCourses().get(i).toString().equals(vak)){
 									course=CourseManager.getInstance().getAllCourses().get(i);
-									CourseManager.getInstance().setCurrentCourse(course);
+									
 								}
 							}
 							//les
 							if(req.getParameter("type").equals("Les")){
 								Lecture les=new Lecture(course);
 								ActivityManager.getInstance().addActivity(les);
+								UserManager.getInstance().updateActivities(les);
 								timerControler.startTiming(les);
 							}
 							//zs
 							if(req.getParameter("type").equals("Zelfstudie")){
 								IndividualStudy zelfstudie=new IndividualStudy(course);
 								ActivityManager.getInstance().addActivity(zelfstudie);
+								UserManager.getInstance().updateActivities(zelfstudie);
 								timerControler.startTiming(zelfstudie);
 							}
 							//oz
 							if(req.getParameter("type").equals("Oefenzitting")){
 								Practice oefenzitting=new Practice(course);
 								ActivityManager.getInstance().addActivity(oefenzitting);
+								UserManager.getInstance().updateActivities(oefenzitting);
 								timerControler.startTiming(oefenzitting);
 							}
 						}
@@ -73,6 +76,7 @@ public class StartServlet extends HttpServlet{
 							ExtraFun extra=ExtraFun.getExtraFun(wa);
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
 							ActivityManager.getInstance().addActivity(act);
+							UserManager.getInstance().updateActivities(act);
 							timerControler.startTiming(act);
 						}
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
@@ -84,5 +88,3 @@ public class StartServlet extends HttpServlet{
 	
 
 }
-
-

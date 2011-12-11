@@ -39,7 +39,7 @@ public class TimerController {
 	}
 	
 	/**
-	 * beïndigt het timen van de huidige activiteit (=currentActivity).Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
+	 * beï¿½indigt het timen van de huidige activiteit (=currentActivity).Er wordt een Calendar object aangemaakt en door daar de tijd van op te vragen krijgen we de tijd die het op dat moment is.
 	 * die tijd slaan we op in de stopdatum van de activiteit (elke activiteit heeft een start- en stop datum). In deze methode wordt de huidige activiteit ook op nul gezet.
 	 * 
 	 */
@@ -107,7 +107,7 @@ public class TimerController {
 		String currentUserName =UserManager.getInstance().getCurrentUserName();
 		boolean isBusy=false;
 		Activity cur = null;
-		for(Activity act : ActivityManager.getInstance().getActivities(currentUserName)){
+		for(Activity act : UserManager.getInstance().getActivities()){
 			if(act.getStop()==null){
 				isBusy = true;
 				cur = act;
@@ -125,7 +125,7 @@ public class TimerController {
 		String currentUserName =UserManager.getInstance().getCurrentUserName();
 		boolean ca=false;
 		Activity cur = null;
-		for(Activity act : ActivityManager.getInstance().getActivities(currentUserName)){
+		for(Activity act : UserManager.getInstance().getActivities()){
 			if(act.getStop()==null){
 				ca = true;
 				cur = act;
@@ -160,4 +160,3 @@ public class TimerController {
 	 }
 	 
 }
-
