@@ -26,11 +26,18 @@ If you would like to stop the tracking of your current activity, please do fill 
   			<%{ Activity act=(Activity) request.getAttribute("curract");
   			if(act.getType().equals("Zelfstudie")){%>
   				Study location: 
+  				<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");%>
 						<select name="place" id="place">
-							<% ArrayList places = null; places=(ArrayList)request.getAttribute("plaatsen");
- 							for(int i=0 ; i<places.size(); i++){%>
- 								<option value="<%out.print(places.get(i));%>"> <%out.print(places.get(i));%></option>
-    						<%}%>
+							<%
+ 							for(int i=0 ; i<places.size(); i++){
+ 								if(places.get(i).equals("Other")){%>
+ 									<option SELECTED value="<%out.print(places.get(i));%>" > <%out.print(places.get(i));%></option>
+ 								<%}
+ 								else{%>
+ 									<option value="<%out.print(places.get(i));%>" > <%out.print(places.get(i));%></option>
+ 								<%}
+ 								
+    						}%>
 						</select><br />
 						Study type: 
 						<select name="stype" id="stype">
