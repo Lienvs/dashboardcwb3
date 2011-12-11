@@ -18,8 +18,11 @@
 <head>	
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/jquery.tzineClock.css" />
+
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
+<script language="javascript" type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
@@ -29,11 +32,18 @@
   <script >
   $(document).ready(function() {
   	//stats aanmaken
-   		var l1 = <%=request.getAttribute("myCoursesCheese")%>;
+   		var l1=<%=request.getAttribute("myCoursesCheese")%>;
 	    var l2=<%=request.getAttribute("myPlacesCheese")%>;
 	    var l3=<%=request.getAttribute("myCourseBar1")%>;
 	    var l4=<%=request.getAttribute("myCourseBar2")%>;
 	    var l5=<%=request.getAttribute("myCourseBar3")%>;
+	    var l6=<%=request.getAttribute("myFunInTime")%>;
+	    var l7=<%=request.getAttribute("myNightlifeInTime")%>;
+	    var l8=<%=request.getAttribute("mySleepInTime")%>;
+	    var l9=<%=request.getAttribute("mySportInTime")%>;
+	    var l10=<%=request.getAttribute("myTime")%>;
+	    var l11=<%=request.getAttribute("myTimeInTime")%>;
+	    var l12=<%=request.getAttribute("overallTime")%>;
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
 	      		width: 500,
@@ -48,14 +58,27 @@
 	      		series:[{renderer:$.jqplot.PieRenderer}],
 	      		legend:{show:true}
 	    	});
-	    	//var plot3 = jQuery.jqplot ('chart3', [l3,l4], { 
-	      	//	height: 300,
-	      	//	width: 500,
-	      	//	showDataLabels: true,
-	      	//	series:[{renderer:$.jqplot.BarRenderer}],
-	      //		legend:{show:true}
-	    //	});
-	
+   			$.jqplot.config.enablePlugins = true;       
+    			line1 = [20, 0];
+   			 plot3 = $.jqplot('chart3', [line1], { 
+        seriesColors: ["#82BC24","#363636"],
+        seriesDefaults: {
+            renderer: $.jqplot.BarRenderer,
+            rendererOptions:{barMargin: 25}, 
+            yaxis:'y2axis',
+            shadow: false
+        },
+        axes: {
+            xaxis:{
+                ticks:[2010, 2040], 
+                renderer:$.jqplot.CategoryAxisRenderer, 
+                tickOptions:{markSize:0}
+            },
+            y2axis:{ticks:[0, 100], tickOptions:{formatString:'%d\%'}}
+        }
+    });
+	    	
+	    
 
 	/*!
 	 * jquery.tzineClock.js - Tutorialzine Colorful Clock Plugin
