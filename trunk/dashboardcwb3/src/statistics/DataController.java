@@ -42,7 +42,7 @@ public int getGemiddeldeStudie(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 				result = result + scol.getDuration(); 
 			}}
 		}
@@ -57,7 +57,7 @@ for(String userName:UserManager.getInstance().getUserNames()){
 		if (act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity) act;
 			if(scol.getType().equals("Zelfstudie")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 					users++;
 					vak=true;
 				}
@@ -98,7 +98,7 @@ public int getGemiddeldeLes(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 				result = result + scol.getDuration(); 
 			}}
 		}
@@ -114,7 +114,7 @@ public int getGemiddeldeLes(Course course){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
 				if(scol.getType().equals("Les")){
-					if(scol.getCourse().equals(course)){
+					if(scol.getCourse().toString().equals(course.toString())){
 						users++;
 						vak=true;
 					}
@@ -156,7 +156,7 @@ public int getGemiddeldeOefenzitting(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 				result = result + scol.getDuration(); 
 			}}
 		
@@ -172,7 +172,7 @@ public int getGemiddeldeOefenzitting(Course course){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
 				if(scol.getType().equals("Les")){
-					if(scol.getCourse().equals(course)){
+					if(scol.getCourse().toString().equals(course.toString())){
 						users++;
 						vak=true;
 					}
@@ -309,7 +309,7 @@ public int getTotalScolair(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
 				}
 			
@@ -330,7 +330,7 @@ public int getDuurZelfstudie(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Zelfstudie")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
 				}
 			}
@@ -346,7 +346,7 @@ public int getDuurLes(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Les")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
 				}
 			}
@@ -362,7 +362,7 @@ public int getDuurOefenzitting(Course course){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
 			if(scol.getType().equals("Oefenzitting")){
-				if(scol.getCourse().equals(course)){
+				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
 				}
 			}
