@@ -70,7 +70,7 @@ public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-w
 	String result1 = "[";
 	String result2 = "[";
 	String result3= "['";
-	String currentUserName = UserManager.getInstance().getCurrentUserName();
+	
 	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
 	while(it.hasNext()){
 		Course course = it.next();
