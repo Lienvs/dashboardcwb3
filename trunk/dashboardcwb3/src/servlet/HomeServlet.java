@@ -74,14 +74,17 @@ public class HomeServlet extends HttpServlet{
 				
 
 
-				//HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
-				//ArrayList<String> statscourse=new ArrayList<String>();
-				//for(int i=0;i<courses.size();i++){
-					//statscourse.add(statController.myTypeCheese(courses.get(i)));
-					//statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
-					//hashmap.put(courses.get(i), statscourse);
-				//}
-				//req.setAttribute("", statController.);
+				HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
+				ArrayList<String> statscourse=new ArrayList<String>();
+				for(int i=0;i<courses.size();i++){
+					statscourse.add(statController.myTypeCheese(courses.get(i)));
+					statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
+					//statscourse.add(statController.meVSGoal2(courses.get(i)));
+					//statscourse.add(statController.meVSModel2(courses.get(i)));
+					statscourse.add(statController.myTypeBar(courses.get(i)));
+					hashmap.put(courses.get(i), statscourse);
+				}
+				req.setAttribute("hashcourses", hashmap);
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
