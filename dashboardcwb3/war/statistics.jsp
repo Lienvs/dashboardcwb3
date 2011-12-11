@@ -30,17 +30,12 @@
 		navigation: true
     		});		
     		$('#accordion').bind('accordionchange', function(event, ui) {
-     			 var index = $(this).find("h3").index ( ui.newHeader[0] );
-      				if (index === 1) {
-        			plot1.replot();
-        			plot3.replot();
+     			if (ui.index === 1 && plot1._drawCount === 0) {
+       				plot1.replot();
+      			}
+      			else if (ui.index === 2 && plot2._drawCount === 0) {
         			plot2.replot();
-      				}
-      				else{
-      					plot1.destroy();
-        				plot3.destroy();
-        				plot2.destroy();
-      				}
+     			}
     		});	
    			
 	});
@@ -51,7 +46,7 @@
 		<div>
 			<div id="chart1"></div>
 			
-			<div id="chart3"></div>
+		//	<div id="chart3"></div>
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>

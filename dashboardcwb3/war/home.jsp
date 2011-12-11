@@ -46,13 +46,13 @@
 	      		series:[{renderer:$.jqplot.PieRenderer}],
 	      		legend:{show:true}
 	    	});
-	    	var plot3 = jQuery.jqplot ('chart3', [l3,l4], { 
-	      		height: 300,
-	      		width: 500,
-	      		showDataLabels: true,
-	      		series:[{renderer:$.jqplot.BarRenderer}],
-	      		legend:{show:true}
-	    	});
+	    	//var plot3 = jQuery.jqplot ('chart3', [l3,l4], { 
+	      	//	height: 300,
+	      	//	width: 500,
+	      	//	showDataLabels: true,
+	      	//	series:[{renderer:$.jqplot.BarRenderer}],
+	      //		legend:{show:true}
+	    //	});
 	
 
 	/*!
