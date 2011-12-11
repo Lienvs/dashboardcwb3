@@ -52,20 +52,21 @@ public int getGemiddeldeStudie(Course course){
 	int users =0;
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
-	
-			for(Activity act:UserManager.getInstance().getActivities(userName)){
-				while(!vak){
+		Iterator<Activity> it = UserManager.getInstance().getActivities(userName).iterator();
+			while(it.hasNext()&& !vak){
+				Activity act = it.next();
 					if (act.getActivityType().equals("scolair")){
 						CurricularActivity scol = (CurricularActivity) act;
 							if(scol.getType().equals("Zelfstudie")){
 								if(scol.getCourse().toString().equals(course.toString())){
 									users++;
 									vak=true;
-								}
+								
 							}
 					}
 				}
 			}
+			String a= "";
 	}
 	if(users==0){
 		result = 0;
@@ -111,9 +112,9 @@ public int getGemiddeldeLes(Course course){
 	int users =0;
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
-		
-		for(Activity act:UserManager.getInstance().getActivities(userName)){
-		while(!vak){
+		Iterator<Activity> it = UserManager.getInstance().getActivities(userName).iterator();
+		while(it.hasNext()&& !vak){
+			Activity act = it.next();
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
 				if(scol.getType().equals("Les")){
@@ -125,7 +126,7 @@ public int getGemiddeldeLes(Course course){
 			}
 		}
 		}
-	}
+	
 	if(users==0){
 		result = 0;
 	}
@@ -169,9 +170,9 @@ public int getGemiddeldeOefenzitting(Course course){
 	int users =0;
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
-		
-		for(Activity act:UserManager.getInstance().getActivities(userName)){
-		while(!vak){
+		Iterator<Activity> it = UserManager.getInstance().getActivities(userName).iterator();
+		while(it.hasNext()&& !vak){
+			Activity act = it.next();
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
 				if(scol.getType().equals("Les")){
@@ -183,7 +184,7 @@ public int getGemiddeldeOefenzitting(Course course){
 			}
 		}
 		}
-	}
+	
 	if(users==0){
 		result = 0;
 	}
