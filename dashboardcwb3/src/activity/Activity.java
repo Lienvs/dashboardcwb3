@@ -25,7 +25,7 @@ public abstract class Activity {
 	public Activity(String activityType) {
 		
 		
-		this.start = null;
+		this.start = Calendar.getInstance().getTime();
 		this.stop = null;
 		
 		comment = null;
