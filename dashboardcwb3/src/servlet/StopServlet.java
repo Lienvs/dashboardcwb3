@@ -39,7 +39,7 @@ public class StopServlet extends HttpServlet{
 
 					//timerControler.getCurrentActivity().submitVragenLijst(place, stype, comment, rating, studyBuddy);
 					timerControler.stopTiming();
-					ActivityManager.getInstance().updateActivity(rating,comment,place,stype);
+					ActivityManager.getInstance().updateActivity(rating,comment,place,stype, studyBuddy);
 					
 				
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	

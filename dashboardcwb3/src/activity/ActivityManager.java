@@ -50,7 +50,7 @@ public class ActivityManager {
 		datastore.put(Activity);
 	}
 	
-	public void updateActivity(int rating, String comment, String place, String stype){
+	public void updateActivity(int rating, String comment, String place, String stype, String buddy){
 		Calendar cal = Calendar.getInstance();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();		
 		ArrayList<Key> keys = new ArrayList<Key>();
@@ -68,6 +68,7 @@ public class ActivityManager {
 					if (((String)Activity.getProperty("type")).equals("Zelfstudie")){
 						Activity.setProperty("studielocatie", place);
 						Activity.setProperty("studietype", stype);
+						Activity.setProperty("buddy", buddy);
 					}
 					datastore.put(Activity);
 				}
