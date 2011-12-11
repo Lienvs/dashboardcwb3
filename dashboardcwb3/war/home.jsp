@@ -19,10 +19,10 @@
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/jquery.tzineClock.css" />
 
-<script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
-<script language="javascript" type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
+<script type="text/javascript"  src="/plugin/jqplot.pieRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
+<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
@@ -41,9 +41,9 @@
 	    var l7=<%=request.getAttribute("myNightlifeInTime")%>;
 	    var l8=<%=request.getAttribute("mySleepInTime")%>;
 	    var l9=<%=request.getAttribute("mySportInTime")%>;
-	    var l10=<%=request.getAttribute("myTime")%>;
-	    var l11=<%=request.getAttribute("myTimeInTime")%>;
-	    var l12=<%=request.getAttribute("overallTime")%>;
+	    var l10=<%=request.getAttribute("myTimeInTime")%>;
+	    var l11=<%=request.getAttribute("overallMeanTimeInTime")%>;
+
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
 	      		width: 500,
@@ -58,25 +58,52 @@
 	      		series:[{renderer:$.jqplot.PieRenderer}],
 	      		legend:{show:true}
 	    	});
-   			$.jqplot.config.enablePlugins = true;       
-    			line1 = [20, 0];
-   			 plot3 = $.jqplot('chart3', [line1], { 
-        seriesColors: ["#82BC24","#363636"],
-        seriesDefaults: {
-            renderer: $.jqplot.BarRenderer,
-            rendererOptions:{barMargin: 25}, 
-            yaxis:'y2axis',
-            shadow: false
-        },
-        axes: {
-            xaxis:{
-                ticks:[2010, 2040], 
-                renderer:$.jqplot.CategoryAxisRenderer, 
-                tickOptions:{markSize:0}
-            },
-            y2axis:{ticks:[0, 100], tickOptions:{formatString:'%d\%'}}
-        }
-    });
+
+			var plot3 = $.jqplot('chart3', [l3,l4], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			rendererOptions: {fillToZero: true}
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My stats'},
+            		{label:'Overal stats'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l5
+            		},
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		yaxis: {
+                		pad: 1.05
+            		}
+        		}
+    		});
+    		
+    		var plot4 = $.jqplot ('chart4', [l6]);
+    		var plot5 = $.jqplot ('chart5', [l7]);
+    		var plot6 = $.jqplot ('chart6', [l8]);
+    		var plot7 = $.jqplot ('chart7', [l9]);
+    		var plot8 = $.jqplot ('chart8', [l10]);
+    		var plot9 = $.jqplot ('chart9', [l11]);
+
+ 
+ 
 	    	
 	    
 
