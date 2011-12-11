@@ -35,8 +35,7 @@
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> <font size="10"> Learnkeeper </font> </br></h1>
-    	<h2> This Application will allow you to track your study behavior at the KUL and model it in a very useful series of charts </br>
-    		 Register and start tracking !</h2>
+    	<h4> The ultimate app to track your studies !</h4>
     	
  
        
@@ -59,15 +58,15 @@
 			<input type="submit" class="check" name="login" value="Login"/>
 		</form>
 	</div>
-	<h3><a href="#">Register</a></h3>
+	<h3><a href="#">Click here to Sign up</a></h3>
 	<div>
 		<form action="/register" method="post">
 			User Name: <input type="text" name="username" > <br />
 			Password:  <input type="password" name="password" /> <br />
-			Confirm password:  <input type="password" name="confirmedpassword" /><br />
+			Please confirm your password:  <input type="password" name="confirmedpassword" /><br />
 			First Name:  <input type="text" name="firstname" /><br />
 			Last Name: <input type="text" name="lastname"> <br />
-			<input type="radio" name="gender" value="male" /> Male<br />
+			Gender:<br/> <input type="radio" name="gender" value="male" /> Male<br />
 			<input type="radio" name="gender" value="female" /> Female<br />
 			r-number: <input type="text" name="rnumber"> <br />
 			<input type="submit" class="check" name="signup" value="Sign up"/>
