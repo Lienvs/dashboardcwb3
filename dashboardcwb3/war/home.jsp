@@ -328,11 +328,23 @@
  		$('#tree').show();
  		$('.wat').val("Extrascolair");
     });
+    $('#backonea').click(function() {
+ 		$('#one').show();
+ 		$('#two').hide();	
+    });
+    $('#backoneb').click(function() {
+ 		$('#one').show();
+ 		$('#tree').hide(); 		
+    });
     $('#twoa').click(function() {
  		$('#two').hide();
  		$('#four').show();
  		var text=$("#welkvak").val();
  		$('.vak').val(text);
+    });
+    $('#backtwo').click(function() {
+ 		$('#two').show();
+ 		$('#four').hide(); 		
     });
     $('#foura').click(function() {
  		$('#four').hide();
@@ -355,7 +367,7 @@
  		$('.type').val("Oefenzitting");
  		var text=$("#watextra").val();
  		$('.watextra').val(text);
-    });	
+    });		
 	
     	$('#tabs').bind('tabsshow', function(event, ui) {
   			if (ui.index == 1 && plot1._drawCount == 0) {
