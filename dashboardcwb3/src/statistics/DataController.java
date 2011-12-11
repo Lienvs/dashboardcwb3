@@ -48,28 +48,31 @@ public int getGemiddeldeStudie(Course course){
 		}
 	
 	
-}	int users =0;
-for(String userName:UserManager.getInstance().getUserNames()){
-	boolean vak = false;
+	}	
+	int users =0;
+	for(String userName:UserManager.getInstance().getUserNames()){
+		boolean vak = false;
 	
-	for(Activity act:UserManager.getInstance().getActivities()){
-	while(!vak){
-		if (act.getActivityType().equals("scolair")){
-			CurricularActivity scol = (CurricularActivity) act;
-			if(scol.getType().equals("Zelfstudie")){
-				if(scol.getCourse().toString().equals(course.toString())){
-					users++;
-					vak=true;
+			for(Activity act:UserManager.getInstance().getActivities(userName)){
+				while(!vak){
+					if (act.getActivityType().equals("scolair")){
+						CurricularActivity scol = (CurricularActivity) act;
+							if(scol.getType().equals("Zelfstudie")){
+								if(scol.getCourse().toString().equals(course.toString())){
+									users++;
+									vak=true;
+								}
+							}
+					}
 				}
 			}
-		}
 	}
+	if(users==0){
+		result = 0;
 	}
-}
-if(users==0){
-	result = 0;
-}
-else{result = result/users;}
+	else{
+		result = result/users;
+	}
 	return result;
 }
 public int getGemiddeldeLes(){
@@ -109,7 +112,7 @@ public int getGemiddeldeLes(Course course){
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:UserManager.getInstance().getActivities()){
+		for(Activity act:UserManager.getInstance().getActivities(userName)){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -167,7 +170,7 @@ public int getGemiddeldeOefenzitting(Course course){
 	for(String userName:UserManager.getInstance().getUserNames()){
 		boolean vak = false;
 		
-		for(Activity act:UserManager.getInstance().getActivities()){
+		for(Activity act:UserManager.getInstance().getActivities(userName)){
 		while(!vak){
 			if (act.getActivityType().equals("scolair")){
 				CurricularActivity scol = (CurricularActivity) act;
@@ -320,7 +323,9 @@ public int getTotalScolair(Course course){
 }
 public int getGemiddeldeScolair(Course course){
 	int result = 0;
-	result = getGemiddeldeStudie(course) + getGemiddeldeLes(course) + getGemiddeldeOefenzitting(course);
+	result = getGemiddeldeStudie(course)
+	+ getGemiddeldeLes(course) + 
+	getGemiddeldeOefenzitting(course);
 	return result;
 }
 public int getDuurZelfstudie(Course course){
