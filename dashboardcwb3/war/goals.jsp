@@ -21,17 +21,17 @@ Please fill in your goals for this week.</br>
 Attention: if you've already filled in your goals you will overwrite them.</br>
 <form action=\goal  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
-		ArrayList<int> goal=(ArrayList<int>) request.getAttribute("goal");
+		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
 		if(goal.size()==0){
 			for(int i=0; i<courses.size();i++){%>
 			<%=courses.get(i).toString()%>:
-				<input type="text" class="numbersOnly" name="<%=courses.get(i).toString()%>" value="0">	</br>
+				<input type="int" class="numbersOnly" name="<%=courses.get(i).toString()%>" value="0">	</br>
 			<%}
 		}
 		else{
 			for(int i=0; i<courses.size();i++){%>
 				<%=courses.get(i).toString()%>:
-				<input type="text" class="numbersOnly" name="<%=courses.get(i).toString()%>" value=<%=goal.get(i)%>>	</br>
+				<input type="int" class="numbersOnly" name="<%=courses.get(i).toString()%>" value=<%=goal.get(i)%>>	</br>
 			<%}
 		
 		
