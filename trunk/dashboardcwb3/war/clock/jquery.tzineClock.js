@@ -54,10 +54,6 @@
 	
 	function setUp()
 	{
-		var currentTime = new Date(2011,12,6,9,15,55);
-		var timerTime = new Date(currentTime.getTime());
-		var timerStart = timerTime.getTime()-currentTime.getTime();
-		timerTime.setTime(timerStart);
 		// The colors of the dials:
 		var colors = ['orange','blue','green'];
 		
@@ -95,12 +91,11 @@
 		
 		// Setting up a interval, executed every 1000 milliseconds:
 		setInterval(function(){
-			var secs = timerTime.getSeconds()+1;
-			timerTime.setSeconds(secs);
-
-			var h = timerTime.getHours();
-			var m = timerTime.getMinutes();
-			var s = timerTime.getSeconds();
+		
+			var currentTime = new Date();
+			var h = currentTime.getHours();
+			var m = currentTime.getMinutes();
+			var s = currentTime.getSeconds();
 			
 			animation(gVars.green, s, 60);
 			animation(gVars.blue, m, 60);
