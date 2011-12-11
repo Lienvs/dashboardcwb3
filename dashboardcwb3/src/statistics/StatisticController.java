@@ -123,25 +123,38 @@ public String overallMeanTimeInTime(){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
-	if(start.WEEK_OF_YEAR>20){
-		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	Calendar mid = Calendar.getInstance();
+	int i = 7;
+	while(i>0){
+		start.roll(Calendar.DAY_OF_YEAR,false);
+		mid.roll(Calendar.DAY_OF_YEAR,false);
+		i--;
 	}
-	else{int i = start.WEEK_OF_YEAR-1;
-	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
-	}
-	Calendar mid = start;
 
 	while(start.before(stop)){
 		int getal=0;
 		int total=0;
+		int users = 0;
+		boolean ja = false;
 		mid.roll(Calendar.DAY_OF_YEAR,true);
 		for(String userName:UserManager.getInstance().getUserNames()){
-	for(Activity act:UserManager.getInstance().getActivities()){
+			 ja = false;
+	for(Activity act:UserManager.getInstance().getActivities(userName)){
 		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())&&act.getActivityType().equals("scolair")){
 			getal = getal+act.getDuration();
+			ja = true;
 			}
-		}}
-		total = getal/UserManager.getInstance().getUserNames().size();
+		}
+		if(ja){
+			users++;
+		}
+	}
+		if(users ==0){
+			total = 0;
+		}
+		else{
+		total = getal/users;
+		}
 	result = result + total;
 	start.roll(Calendar.DAY_OF_YEAR,true);
 	if(start.before(stop)){result = result + ",";
@@ -155,13 +168,14 @@ public String myTimeInTime(){//dit is voor 20 weken (in januari minder) week per
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
-	if(start.WEEK_OF_YEAR>20){
-		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	Calendar mid= Calendar.getInstance();
+	int i = 7;
+	while(i>0){
+		start.roll(Calendar.DAY_OF_YEAR,false);
+		mid.roll(Calendar.DAY_OF_YEAR,false);
+		i--;
 	}
-	else{int i = start.WEEK_OF_YEAR-1;
-	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
-	}
-	Calendar mid = start;
+	
 	String currentUserName = UserManager.getInstance().getCurrentUserName();
 	while(start.before(stop)){
 		int getal=0;
@@ -185,43 +199,48 @@ private String myInTime(String type,String type2){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
-	if(start.WEEK_OF_YEAR>20){
-		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
-	}
-	else{int i = start.WEEK_OF_YEAR-1;
-	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
-	}
-	Calendar mid = start;
-	String currentUserName = UserManager.getInstance().getCurrentUserName();
-	while(start.before(stop)){
-		int getal=0;
-		mid.roll(Calendar.DAY_OF_YEAR,true);
-	for(Activity act:UserManager.getInstance().getActivities()){
-		if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
-			
-			if(act.getType().equals(type)||act.getType().equals(type2)){
-			getal = getal+act.getDuration();
-			}}
-		}
-	result = result + getal;
-	start.roll(Calendar.DAY_OF_YEAR,true);
-	if(start.before(stop)){result = result + ",";
+	Calendar mid = Calendar.getInstance();
+	int i = 7;
+	while(i>0){
+		start.roll(Calendar.DAY_OF_YEAR,false);
+		mid.roll(Calendar.DAY_OF_YEAR,false);
+		i--;
 	}
 	
-}result= result+"]";
-return result;
+	
+	String currentUserName = UserManager.getInstance().getCurrentUserName();
+	while(start.compareTo(stop)<0){
+		int getal=0;
+		mid.roll(Calendar.DAY_OF_YEAR,1);
+		for(Activity act:UserManager.getInstance().getActivities()){
+			if(act.getStart().after(start.getTime())&&act.getStart().before(mid.getTime())){
+			
+				if(act.getType().equals(type)||act.getType().equals(type2)){
+						getal = getal+act.getDuration();
+				}
+			}
+		}
+		result = result + getal;
+		start.roll(Calendar.DAY_OF_YEAR,1);
+		if(start.before(stop)){
+			result = result + ",";
+		}
+	
+	}
+	result= result+"]";
+	return result;
 }
 private String overallMeanFunInTime(){
 	String result ="[";
 	Calendar stop = Calendar.getInstance();
 	Calendar start = Calendar.getInstance();
-	if(start.WEEK_OF_YEAR>20){
-		start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-20);
+	Calendar mid = Calendar.getInstance();
+	int i = 7;
+	while(i>0){
+		start.roll(Calendar.DAY_OF_YEAR,false);
+		mid.roll(Calendar.DAY_OF_YEAR,false);
+		i--;
 	}
-	else{int i = start.WEEK_OF_YEAR-1;
-	start.set(Calendar.WEEK_OF_YEAR,stop.WEEK_OF_YEAR-i);
-	}
-	Calendar mid = start;
 	for(String userName:UserManager.getInstance().getUserNames()){
 	
 	while(start.before(stop)){
@@ -258,18 +277,19 @@ public String myFunInTime(){
 return myInTime("Sport","Nightlife");
 }
 
-public ArrayList<String> myStudyVSGoal(){//1wat al gedaan, 2 wat totaal te doen, 3 vakken
 
-ArrayList<String> l = meVSModel();
-ArrayList<String> list = new ArrayList<String>();
-list.add(0,l.get(0));
-list.add(1,l.get(1));
-list.add(2,l.get(3));
-return list;
-}
 public int meVSGoal2(Course course){
 	int result = 0;
+	int j = 0;
+	int i = 7;
 	GoalController go = new GoalController();
+	Calendar start = Calendar.getInstance();
+	while(i>0){
+		start.roll(Calendar.DAY_OF_YEAR,false);
+		
+		i--;
+	}
+	
 	int a = go.getGoal(course);
 	int b = data.getTotalScolair(course);
 	if(a==0||b==0){
@@ -285,37 +305,38 @@ public int meVSGoal2(Course course){
 	}
 	return result;
 }
-public ArrayList<String> meVSModel(){//1wat al gedaan, 2 wat totaal te doen, 3 modeltraject,4 vakken
+public ArrayList<String> meVSModel(){//1wat al gedaan, 2 modeltraject,3 vakken
 	String r1="[";
 	String r2 = "[";
 	String r3 = "[";
 	String r4 = "['";
-	String currentUserName = UserManager.getInstance().getCurrentUserName();
-	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
 	GoalController go = new GoalController();
+	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
+	
 	while(it.hasNext()){
 		Course c = it.next();
-		r2= r2+ go.getGoal(c);
-		r3= r3+c.getAvarageWork();
+		
+		r2=r2+go.getGoal(c);
+		r3= r3+c.getAvarageWork()*12;
 		r4 = r4 + c.toString()+"'";
-		int g = go.getGoal(c)-go.compareGoals().get(c);
-		r1 = r1 + g;
+		
+		r1 = r1 + data.getTotalScolair(c);
 		if(it.hasNext()){
 			r1 = r1 +",";
-			r2 = r2 +",";
+			
 			r3 = r3 +",";
 			r4 = r4 + ",'";
 		}
 	}
 	r1 = r1 +"]";
-	r2 = r2 +"]";
+	
 	r3 = r3 +"]";
 	r4 = r4 +"]";
 	ArrayList<String> list = new ArrayList<String>();
 	list.add(0,r1);
-	list.add(1,r2);
-	list.add(2,r3);
-	list.add(3,r4);
+	
+	list.add(1,r3);
+	list.add(2,r4);
 	return list;
 }
 public int meVSModel2(Course course){

@@ -323,7 +323,8 @@ public class UserManager {
 			Entity User = datastore.get(k);
 			if (User.hasProperty("goals")){
 				goals = (ArrayList<Integer>) User.getProperty("goals");
-			}			
+			}
+			
 		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
@@ -341,7 +342,9 @@ public class UserManager {
 			Entity User = datastore.get(k);
 			if (User.hasProperty("goals")){
 				User.removeProperty("goals");
-			}			
+			}		
+			datastore.put(User);
+			txn.commit();
 		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
@@ -357,6 +360,8 @@ public class UserManager {
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
 			User.setProperty("goals", goals);
+			datastore.put(User);
+			txn.commit();
 		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {

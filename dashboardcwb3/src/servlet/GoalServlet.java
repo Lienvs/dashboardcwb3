@@ -29,13 +29,14 @@ public class GoalServlet extends HttpServlet{
 				resp.setContentType("text/plain");
 				String userName =UserManager.getInstance().getCurrentUserName();
 				
-				ArrayList<Course> courses=CourseManager.getInstance().getAllCourses();
+				ArrayList<Course> courses=UserManager.getInstance().getCourses();
+				ArrayList<Integer> goals=new ArrayList<Integer>();
 				for(int i=0; i<courses.size();i++){
-					if(req.getParameter(courses.get(i).toString())!=null){
-						double aDouble = Double.parseDouble(req.getParameter(courses.get(i).toString()));
-						goalController.setGoal(courses.get(i), aDouble);
-					}
+						String str=req.getParameter(courses.get(i).toString());
+						int intValue = Integer.parseInt("5");
+						goals.add(intValue);
 				}
+				UserManager.getInstance().setGoals(goals);
 				
 				getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
