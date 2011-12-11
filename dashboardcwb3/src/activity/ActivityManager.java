@@ -44,6 +44,14 @@ public class ActivityManager {
 		Activity.setProperty("startdatum",activity.getStart());
 		Activity.setProperty("activitytype", activity.getActivityType());
 		Activity.setProperty("type", activity.getType());
+		String leeg = "";
+		Date empty = null;
+		//Activity.setProperty("buddy", leeg);
+		//Activity.setProperty("comment", leeg);
+		//Activity.setProperty("rating", leeg);
+		//Activity.setProperty("stopdatum", empty);
+		//Activity.setProperty("studielocatie", leeg);
+		//Activity.setProperty("studietype", leeg);
 		if (activity.getActivityType().equals("scolair")){
 			Activity.setProperty("course", CourseManager.getInstance().getKey(activity.getCourse().toString()));
 		}
@@ -93,19 +101,74 @@ public class ActivityManager {
 			String activityType = (String) result.getProperty("activitytype");
 			if(type.equals("les")){
 				Lecture les = new Lecture(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
+				les.setStart((Date)result.getProperty("startdatum"));
+				if (result.hasProperty("stopdatum")){
+					les.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("rating")){
+					les.setRating(Integer.parseInt(result.getProperty("rating").toString()));
+				}
+				if (result.hasProperty("comment")){
+					les.postComment((String)result.getProperty("comment"));
+				}
 				activities.add(les);
 			}
 			else if(type.equals("Oefenzitting")){
 				Practice oefenzitting = new Practice(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
+				oefenzitting.setStart((Date)result.getProperty("startdatum"));
+				if (result.hasProperty("stopdatum")){
+					oefenzitting.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("stopdatum")){
+					oefenzitting.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("rating")){
+					oefenzitting.setRating(Integer.parseInt(result.getProperty("rating").toString()));
+				}
+				if (result.hasProperty("comment")){
+					oefenzitting.postComment((String)result.getProperty("comment"));
+				}
 				activities.add(oefenzitting);
 			}
 			else if(type.equals("Zelfstudie")){
 				IndividualStudy zelfstudie = new IndividualStudy(CourseManager.getInstance().getCourse((Key) result.getProperty("course")));
+				zelfstudie.setStart((Date)result.getProperty("startdatum"));
+				if (result.hasProperty("stopdatum")){
+					zelfstudie.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("stopdatum")){
+					zelfstudie.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("rating")){
+					zelfstudie.setRating(Integer.parseInt(result.getProperty("rating").toString()));
+				}
+				if (result.hasProperty("comment")){
+					zelfstudie.postComment((String)result.getProperty("comment"));
+				}
+				if (result.hasProperty("buddy")){
+					zelfstudie.setStudyBuddy((String)result.getProperty("buddy"));
+				}	
+				if (result.hasProperty("studielocatie")){
+					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)result.getProperty("buddy")));
+				}
+				if (result.hasProperty("studietype")){
+					zelfstudie.setType(StudyType.getStudyType((String)result.getProperty("buddy")));
+				}
 				activities.add(zelfstudie);
 			}
 			else if(activityType.equals("fun")){
 				ExtraFun ex = ExtraFun.getExtraFun((String) result.getProperty("type"));
 				ExtraCurricularActivity act = new ExtraCurricularActivity(ex);
+				act.setStart((Date)result.getProperty("startdatum"));
+				if (result.hasProperty("stopdatum")){
+					act.setStop((Date)result.getProperty("stopdatum"));
+				}
+				if (result.hasProperty("rating")){
+					act.setRating(Integer.parseInt(result.getProperty("rating").toString()));
+				}
+				if (result.hasProperty("comment")){
+					act.postComment((String)result.getProperty("comment"));
+				}
 				activities.add(act);
 			}			
 		}
@@ -122,21 +185,76 @@ public class ActivityManager {
 			String activityType = (String) Activity.getProperty("activitytype");
 			if(type.equals("les")){
 				Lecture les = new Lecture(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
-				act = les;
+				les.setStart((Date)Activity.getProperty("startdatum"));
+				if (Activity.hasProperty("stopdatum")){
+					les.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("rating")){
+					les.setRating(Integer.parseInt(Activity.getProperty("rating").toString()));
+				}
+				if (Activity.hasProperty("comment")){
+					les.postComment((String)Activity.getProperty("comment"));
+				}
+				act=les;
 			}
 			else if(type.equals("Oefenzitting")){
 				Practice oefenzitting = new Practice(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
-				act = oefenzitting;
+				oefenzitting.setStart((Date)Activity.getProperty("startdatum"));
+				if (Activity.hasProperty("stopdatum")){
+					oefenzitting.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("stopdatum")){
+					oefenzitting.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("rating")){
+					oefenzitting.setRating(Integer.parseInt(Activity.getProperty("rating").toString()));
+				}
+				if (Activity.hasProperty("comment")){
+					oefenzitting.postComment((String)Activity.getProperty("comment"));
+				}
+				act=oefenzitting;
 			}
 			else if(type.equals("Zelfstudie")){
 				IndividualStudy zelfstudie = new IndividualStudy(CourseManager.getInstance().getCourse((Key) Activity.getProperty("course")));
-				act = zelfstudie;
+				zelfstudie.setStart((Date)Activity.getProperty("startdatum"));
+				if (Activity.hasProperty("stopdatum")){
+					zelfstudie.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("stopdatum")){
+					zelfstudie.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("rating")){
+					zelfstudie.setRating(Integer.parseInt(Activity.getProperty("rating").toString()));
+				}
+				if (Activity.hasProperty("comment")){
+					zelfstudie.postComment((String)Activity.getProperty("comment"));
+				}
+				if (Activity.hasProperty("buddy")){
+					zelfstudie.setStudyBuddy((String)Activity.getProperty("buddy"));
+				}	
+				if (Activity.hasProperty("studielocatie")){
+					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)Activity.getProperty("buddy")));
+				}
+				if (Activity.hasProperty("studietype")){
+					zelfstudie.setType(StudyType.getStudyType((String)Activity.getProperty("buddy")));
+				}
+				act=zelfstudie;
 			}
 			else if(activityType.equals("fun")){
 				ExtraFun ex = ExtraFun.getExtraFun((String) Activity.getProperty("type"));
-				ExtraCurricularActivity activ = new ExtraCurricularActivity(ex);
-				act = activ;				
-			}						
+				ExtraCurricularActivity actt = new ExtraCurricularActivity(ex);
+				actt.setStart((Date)Activity.getProperty("startdatum"));
+				if (Activity.hasProperty("stopdatum")){
+					actt.setStop((Date)Activity.getProperty("stopdatum"));
+				}
+				if (Activity.hasProperty("rating")){
+					actt.setRating(Integer.parseInt(Activity.getProperty("rating").toString()));
+				}
+				if (Activity.hasProperty("comment")){
+					actt.postComment((String)Activity.getProperty("comment"));
+				}
+				act=actt;
+			}									
 		}
 		catch (EntityNotFoundException e){
 			if (txn.isActive()) {
