@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -51,6 +54,8 @@ public class StartServlet extends HttpServlet{
 							//les
 							if(req.getParameter("type").equals("Les")){
 								Lecture les=new Lecture(course);
+								Date date = Calendar.getInstance().getTime();
+								les.setStart(date);
 								ActivityManager.getInstance().addActivity(les);
 								UserManager.getInstance().updateActivities(les);
 								timerControler.startTiming(les);
@@ -58,6 +63,8 @@ public class StartServlet extends HttpServlet{
 							//zs
 							if(req.getParameter("type").equals("Zelfstudie")){
 								IndividualStudy zelfstudie=new IndividualStudy(course);
+								Date date = Calendar.getInstance().getTime();
+								zelfstudie.setStart(date);
 								ActivityManager.getInstance().addActivity(zelfstudie);
 								UserManager.getInstance().updateActivities(zelfstudie);
 								timerControler.startTiming(zelfstudie);
@@ -65,6 +72,8 @@ public class StartServlet extends HttpServlet{
 							//oz
 							if(req.getParameter("type").equals("Oefenzitting")){
 								Practice oefenzitting=new Practice(course);
+								Date date = Calendar.getInstance().getTime();
+								oefenzitting.setStart(date);
 								ActivityManager.getInstance().addActivity(oefenzitting);
 								UserManager.getInstance().updateActivities(oefenzitting);
 								timerControler.startTiming(oefenzitting);
@@ -75,6 +84,8 @@ public class StartServlet extends HttpServlet{
 							String wa=(String) req.getParameter("watextra");
 							ExtraFun extra=ExtraFun.getExtraFun(wa);
 							ExtraCurricularActivity act=new ExtraCurricularActivity(extra);
+							Date date = Calendar.getInstance().getTime();
+							act.setStart(date);
 							ActivityManager.getInstance().addActivity(act);
 							UserManager.getInstance().updateActivities(act);
 							timerControler.startTiming(act);
