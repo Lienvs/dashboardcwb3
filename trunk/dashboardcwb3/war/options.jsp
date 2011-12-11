@@ -28,24 +28,25 @@ Be aware, deleting a course once, deletes all your information regarding this co
 	</div>
 	<%}%>
 	<form action="/courses" method="post">
-				<%{
-				ArrayList allcourses=null; allcourses=(ArrayList)request.getAttribute("allcourses");
-				ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");	%>
-				<%=allcourses.size()%>		
-				<%=courses.size()%>	
-				<%for(int i=0 ; i<allcourses.size(); i++){
-					boolean checked=false;
-					for(int j=0; j<courses.size();j++){
-						if(courses.get(j).toString().equals(allcourses.get(i).toString()) && !checked){%>
-							<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
-							<%checked=true;
-						}
-					}
-					if(!checked){%>
-							<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+				<%
+				ArrayList<Course> allcourses = null; allcourses=(ArrayList<Course>)request.getAttribute("allcourses");
+				ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");	
+				ArrayList<String> alleVakken = new ArrayList<String>();
+				for (Course course: allcourses){
+					alleVakken.add(course.toString());
+				}
+				ArrayList<String> vakken = new ArrayList<String>();
+				for (Course course: courses){
+					vakken.add(course.toString());
+				}
+				for(int i=0 ; i<allcourses.size(); i++){
+					if(vakken.contains(alleVakken.get(i))){%>
+						<input type="checkbox" checked="yes" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
 					<%}
-						
-				}}%>
+					else{%>
+						<input type="checkbox" class="check" id="<%out.print(allcourses.get(i).toString());%>" name="<%out.print(allcourses.get(i).toString());%>"/><label for="<%out.print(allcourses.get(i).toString());%>" style="width:400px"><%out.print(allcourses.get(i).toString());%></label></br>
+					<%}		
+				}%></br>
 				<input type="submit" class="check" value="Submit" name="submit"/>
 			</form>	
 <script>
