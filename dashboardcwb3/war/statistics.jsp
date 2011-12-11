@@ -44,14 +44,30 @@
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
+			<%=request.getAttribute("myCoursesCheese")%>
 			<div id="chart1"></div>
 			<%=request.getAttribute("myCourseBar1")%>
 			<%=request.getAttribute("myCourseBar2")%>
 			<%=request.getAttribute("myCourseBar3")%>
 			<div id="chart3"></div>
+			<%=request.getAttribute("myFunInTime")%>
+			<div id="chart4"></div>
+			<%=request.getAttribute("myNightlifeInTime")%>
+			<div id="chart5"></div>
+			<%=request.getAttribute("mySleepInTime")%>
+			<div id="chart6"></div>
+			<%=request.getAttribute("mySportInTime")%>
+			<div id="chart7"></div>
+			<%=request.getAttribute("myTimeInTime")%>
+			<div id="chart8"></div>
+			<%=request.getAttribute("overallMeanTimeInTime")%>
+			<div id="chart9"></div>
+
+			
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
+			<%=request.getAttribute("myPlacesCheese")%>
 				<div id="chart2"></div>	
 		</div>
 		<h3><a href="#">Your courses</a></h3>
