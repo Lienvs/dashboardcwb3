@@ -39,12 +39,13 @@
 			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br>
 		</div>
 		<div style="display: none" id="five">
+							
 			Please confirm your choice </br>
 				<form action="/start" method="post">
-					<input  type="hidden" class="wat" name="wat" value="">
-					<input  type="hidden" class="vak" name="vak" value="">
-					<input  type="hidden" class="type" name="type" value="">
-					<input  type="hidden" class="watextra" name="watextra" value="">
+					<input class="wat" name="wat" value="">
+							<input  class="vak" name="vak" value="">
+							<input  class="type" name="type" value="">
+							<input   class="watextra" name="watextra" value="">
 					<input type="submit" class="check" value="OK" name="ok">
 				</form>	
 				<form action="/home" method="post">
