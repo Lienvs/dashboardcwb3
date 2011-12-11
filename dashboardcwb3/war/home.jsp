@@ -26,7 +26,8 @@
 
   <script >
   $(document).ready(function() {
-   	/**	var l1 = <%=request.getAttribute("myCoursesCheese")%>;
+  	//stats aanmaken
+   		var l1 = <%=request.getAttribute("myCoursesCheese")%>;
 	    var l2=<%=request.getAttribute("myPlacesCheese")%>;
 	    var l3=<%=request.getAttribute("myCourseBar1")%>;
 	    var l4=<%=request.getAttribute("myCourseBar2")%>;
@@ -52,7 +53,7 @@
 	      		series:[{renderer:$.jqplot.BarRenderer}],
 	      		legend:{show:true}
 	    	});
-	**/
+	
 
 	/*!
 	 * jquery.tzineClock.js - Tutorialzine Colorful Clock Plugin
