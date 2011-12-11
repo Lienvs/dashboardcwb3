@@ -107,53 +107,81 @@
 
 			return this;
 		}
-		function setUp()
-		{
-			var currentTime = new Date()
-			var someDate = new Date(2011,12,7,23,15,55);
-			var timerTime = new Date(someDate.getTime());
-			var timerStart = -someDate.getTime()+currentTime.getTime();
-			timerTime.setTime(timerStart);
-			// The colors of the dials:
-			var colors = ['orange','blue','green'];
-
-			var tmp;
-
-			for(var i=0;i<3;i++)
+			function setUp()
 			{
-				// Creating a new element and setting the color as a class name:
+				var currentTime = new Date();
+			    var startdate = <%=(Date)request.getAttribute("startDate")%>;
+			if(startdate!=null){
 
-				tmp = $('<div>').attr('class',colors[i]+' clock').html(
-					'<div class="display"></div>'+
-
-					'<div class="front left"></div>'+
-
-					'<div class="rotate left">'+
-						'<div class="bg left"></div>'+
-					'</div>'+
-
-					'<div class="rotate right">'+
-						'<div class="bg right"></div>'+
-					'</div>'
-				);
-
-				// Appending to the container:
-				$(this).append(tmp);
-
-				// Assigning some of the elements as variables for speed:
-				tmp.rotateLeft = tmp.find('.rotate.left');
-				tmp.rotateRight = tmp.find('.rotate.right');
-				tmp.display = tmp.find('.display');
-
-				// Adding the dial as a global variable. Will be available as gVars.colorName
-				gVars[colors[i]] = tmp;
+					var someDate = startdate;
 			}
+			else{
 
-			// Setting up a interval, executed every 1000 milliseconds:
-			if(timerStart > 0){
+				var someDate = new Date(2011,12,9,0,0,0);
+			}	
+				var timerTime = new Date(someDate.getTime());
+				var timerStart = currentTime.getTime()-someDate.getTime();
+				timerTime.setTime(timerStart);
+				// The colors of the dials:
+				var colors = ['orange','blue','green'];
+
+				var tmp;
+
+				for(var i=0;i<3;i++)
+				{
+					// Creating a new element and setting the color as a class name:
+
+					tmp = $('<div>').attr('class',colors[i]+' clock').html(
+						'<div class="display"></div>'+
+
+						'<div class="front left"></div>'+
+
+						'<div class="rotate left">'+
+							'<div class="bg left"></div>'+
+						'</div>'+
+
+						'<div class="rotate right">'+
+							'<div class="bg right"></div>'+
+						'</div>'
+					);
+
+					// Appending to the container:
+					$(this).append(tmp);
+
+					// Assigning some of the elements as variables for speed:
+					tmp.rotateLeft = tmp.find('.rotate.left');
+					tmp.rotateRight = tmp.find('.rotate.right');
+					tmp.display = tmp.find('.display');
+
+					// Adding the dial as a global variable. Will be available as gVars.colorName
+					gVars[colors[i]] = tmp;
+				}
+
+				// Setting up a interval, executed every 1000 milliseconds
+
+				if(someDate.getTime()<=currentTime.getTime()){
+					setInterval(function(){
+					var secs = timerTime.getSeconds()+1;
+					timerTime.setSeconds(secs);
+
+					var h = timerTime.getHours()-1;
+					var m = timerTime.getMinutes();
+					var s = timerTime.getSeconds();
+
+					animation(gVars.green, s, 60);
+					animation(gVars.blue, m, 60);
+					animation(gVars.orange, h, 24);
+
+				},1000);
+			}
+			else{
+				timerTime.setHours(0);
+				timerTime.setMinutes(0);
+				timerTime.setSeconds(0);
 				setInterval(function(){
 				var secs = timerTime.getSeconds()+1;
 				timerTime.setSeconds(secs);
+
 
 				var h = timerTime.getHours();
 				var m = timerTime.getMinutes();
@@ -161,67 +189,50 @@
 
 				animation(gVars.green, s, 60);
 				animation(gVars.blue, m, 60);
-				animation(gVars.orange, h, 24);
+				animation(gVars.orange, h, 12);
 
 			},1000);
-		}
-		else{
-			setInterval(function(){
-			timerTime.setHours(0);
-			timerTime.setMinutes(0);
-			timerTime.setSeconds(0);
-
-			var h = timerTime.getHours();
-			var m = timerTime.getMinutes();
-			var s = timerTime.getSeconds();
-
-			animation(gVars.green, s, 60);
-			animation(gVars.blue, m, 60);
-			animation(gVars.orange, h, 24);
-
-		},1000);
-		}
-		}
-
-		function animation(clock, current, total)
-		{
-			// Calculating the current angle:
-			var angle = (360/total)*(current+1);
-
-			var element;
-
-			if(current==0)
-			{
-				// Hiding the right half of the background:
-				clock.rotateRight.hide();
-
-				// Resetting the rotation of the left part:
-				rotateElement(clock.rotateLeft,0);
+			}
 			}
 
-			if(angle<=180)
+			function animation(clock, current, total)
 			{
-				// The left part is rotated, and the right is currently hidden:
-				element = clock.rotateLeft;
+				// Calculating the current angle:
+				var angle = (360/total)*(current+1);
+
+				var element;
+
+				if(current==0)
+				{
+					// Hiding the right half of the background:
+					clock.rotateRight.hide();
+
+					// Resetting the rotation of the left part:
+					rotateElement(clock.rotateLeft,0);
+				}
+
+				if(angle<=180)
+				{
+					// The left part is rotated, and the right is currently hidden:
+					element = clock.rotateLeft;
+				}
+				else
+				{
+					// The first part of the rotation has completed, so we start rotating the right part:
+					clock.rotateRight.show();
+					clock.rotateLeft.show();
+
+					rotateElement(clock.rotateLeft,180);
+
+					element = clock.rotateRight;
+					angle = angle-180;
+				}
+
+				rotateElement(element,angle);
+
+				// Setting the text inside of the display element, inserting a leading zero if needed:
+				clock.display.html(current<10?'0'+current:current);
 			}
-			else
-			{
-				// The first part of the rotation has completed, so we start rotating the right part:
-				clock.rotateRight.show();
-				clock.rotateLeft.show();
-
-				rotateElement(clock.rotateLeft,180);
-
-				element = clock.rotateRight;
-				angle = angle-180;
-			}
-
-			rotateElement(element,angle);
-
-			// Setting the text inside of the display element, inserting a leading zero if needed:
-			clock.display.html(current<10?'0'+current:current);
-		}
-
 		function rotateElement(element,angle)
 		{
 			// Rotating the element, depending on the browser:
