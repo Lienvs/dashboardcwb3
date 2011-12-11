@@ -78,7 +78,7 @@ public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-w
 		result2 = result2 + data.getGemiddeldeScolair(course);
 		result3 = result3 + course.toString()+"'";
 		
-	if(it.hasNext()){
+		if(it.hasNext()){
 		result1 = result1 + ",";
 		result2 = result2 + ",";
 		result3 = result3 + ",'";
