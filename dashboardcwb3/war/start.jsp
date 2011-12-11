@@ -23,7 +23,8 @@
  						<option value="<%=courses.get(i).toString()%>"> <%=courses.get(i).toString()%></option>
     				<%}}%>
 			</select>
-    		<input type="submit" id="twoa" class="check" value="Submit" >				
+    		<input type="submit" id="twoa" class="check" value="Submit" ></br>
+    		<input type="submit" id="backonea" class="check" value="Back">				
 		</div>		
 		<div style="display: none" id="tree">
 			<select name="watextra" id="watextra">
@@ -31,12 +32,14 @@
  				<option value="Sport"> Sport</option>
  				<option value="Nightlife"> Nightlife</option>
 			</select>
-    		<input type="submit" id="treea" class="check" value="Submit" >	
+    		<input type="submit" id="treea" class="check" value="Submit" ></br>
+    		<input type="submit" id="backoneb" class="check" value="Back">	
 		</div>		
 		<div style="display: none" id="four">
 			<input type="button" id="foura" class="check" value="Les" name="typea" ></br>
 			<input type="button" id="fourb" class="check" value="Zelfstudie" name="typeb" ></br>
-			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br>
+			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br></br>
+    		<input type="submit" id="backtwo" class="check" value="Back">
 		</div>
 		<div style="display: none" id="five">
 							
