@@ -104,7 +104,7 @@ public class TimerController {
 	 */
 	public boolean isBusy(){
 		
-		String currentUserName =UserManager.getInstance().getCurrentUserName();
+		
 		boolean isBusy=false;
 		Activity cur = null;
 		for(Activity act : UserManager.getInstance().getActivities()){
@@ -122,7 +122,7 @@ public class TimerController {
 	 * @return currentActivity (type: Activity)
 	 */
 	public Activity getCurrentActivity(){
-		String currentUserName =UserManager.getInstance().getCurrentUserName();
+		
 		boolean ca=false;
 		Activity cur = null;
 		for(Activity act : UserManager.getInstance().getActivities()){
