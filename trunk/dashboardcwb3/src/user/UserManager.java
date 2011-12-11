@@ -1,6 +1,7 @@
 package user;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import activity.Activity;
 import activity.ActivityManager;
@@ -103,7 +104,22 @@ public class UserManager {
 			userNames.add(userName);
 		}
 		return userNames;
-	}	
+	}
+	
+	public String getUsersString(){
+		ArrayList<String> userNames = getUserNames();
+		Iterator<String> it = userNames.iterator();
+		String result = "[";
+		while(it.hasNext()){
+			String name = it.next();
+			result = result +"'"+ name+"'";
+		if(it.hasNext()){
+			result = result +",";}
+		
+		}
+		result = result+"]";
+		return result;
+	}
 	
 	public String getPassword(String userName){
 		String password = "";
