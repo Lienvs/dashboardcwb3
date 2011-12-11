@@ -29,9 +29,11 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
 	<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
 
-  <script >
+  <script  type="text/javascript">
   $(document).ready(function() {
   	//stats aanmaken
+  		
+  	
    		var l1=<%=request.getAttribute("myCoursesCheese")%>;
 	    var l2=<%=request.getAttribute("myPlacesCheese")%>;
 	    var l3=<%=request.getAttribute("myCourseBar1")%>;
@@ -43,6 +45,7 @@
 	    var l9=<%=request.getAttribute("mySportInTime")%>;
 	    var l10=<%=request.getAttribute("myTimeInTime")%>;
 	    var l11=<%=request.getAttribute("overallMeanTimeInTime")%>;
+
 
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
@@ -101,6 +104,9 @@
     		var plot7 = $.jqplot ('chart7', [l9]);
     		var plot8 = $.jqplot ('chart8', [l10]);
     		var plot9 = $.jqplot ('chart9', [l11]);
+    		
+    		
+    		
 
  
  
