@@ -37,7 +37,7 @@ public class HomeServlet extends HttpServlet{
 				//indien er een activiteit bezig is
 				if(timerControler.isBusy()){
 					req.setAttribute("bezig", "ja");
-					//req.setAttribute("allusersstring", UserManager.getInstance().getAllUsers());
+					req.setAttribute("allusersstring", UserManager.getInstance().getUsersString());
 					req.setAttribute("curract", timerControler.getCurrentActivity());
 				}
 				

@@ -18,7 +18,7 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		while(cal.DAY_OF_WEEK!=Calendar.SUNDAY){
+		while(cal.DAY_OF_WEEK!=cal.SUNDAY){
 			cal.roll(Calendar.DAY_OF_WEEK,true);
 		}
 		cal.set(Calendar.HOUR_OF_DAY,23);
@@ -26,7 +26,7 @@ public class GoalController {
 		
 		stopDate=cal.getTime();
 		cal.roll(Calendar.DAY_OF_WEEK,false);
-		while(cal.DAY_OF_WEEK!=Calendar.SUNDAY){
+		while(cal.DAY_OF_WEEK!=cal.SUNDAY){
 			cal.roll(Calendar.DAY_OF_WEEK,false);
 		}
 		cal.set(Calendar.HOUR_OF_DAY,23);
