@@ -19,6 +19,8 @@
 		});
 	});
 	</script>
+	
+<%=request.getAttribute("allusersstring")%>	
 If you would like to stop the tracking of your current activity, please do fill in this form and click 'stop'.</br>
   <form action="/stop" method="post">
   			<%{ Activity act=(Activity) request.getAttribute("curract");
