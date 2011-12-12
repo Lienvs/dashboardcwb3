@@ -13,9 +13,16 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <script>
-$('.numbersOnly').keyup(function () { 
-    this.value = this.value.replace(/[^0-9\.]/g,'');
-});
+function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+};
 </script>
 Please fill in your goals for this week.</br>
 Attention: if you've already filled in your goals you will overwrite them.</br>
@@ -25,13 +32,13 @@ Attention: if you've already filled in your goals you will overwrite them.</br>
 		if(goal.size()==0){
 			for(int i=0; i<courses.size();i++){%>
 			<%=courses.get(i).toString()%>:
-				<input type="int" class="numbersOnly" name="<%=courses.get(i).toString()%>" value="0">	</br>
+				<input type="int" class="numbersOnly" onkeypress='validate(event)' name="<%=courses.get(i).toString()%>" value="0">	</br>
 			<%}
 		}
 		else{
 			for(int i=0; i<courses.size();i++){%>
 				<%=courses.get(i).toString()%>:
-				<input type="int" class="numbersOnly" name="<%=courses.get(i).toString()%>" value=<%=goal.get(i)%>>	</br>
+				<input type="int" class="numbersOnly" onkeypress='validate(event)' name="<%=courses.get(i).toString()%>" value=<%=goal.get(i)%>>	</br>
 			<%}
 		
 		
