@@ -33,7 +33,7 @@ public class GoalServlet extends HttpServlet{
 				ArrayList<Integer> goals=new ArrayList<Integer>();
 				for(int i=0; i<courses.size();i++){
 						String str=req.getParameter(courses.get(i).toString());
-						int intValue = Integer.parseInt("5");
+						int intValue = Integer.parseInt(str);
 						goals.add(intValue);
 				}
 				UserManager.getInstance().setGoals(goals);
