@@ -395,10 +395,12 @@
 	<ul>
     	<h1> <font size="10"> Learnkeeper </font> </br></h1>
     	<h2><%=(String)request.getAttribute("username")%></h2>
-    	<div id="fancyClock"></div>
+    	
 		<% String bezig=(String)request.getAttribute("bezig");
 		if(bezig!=null){%>
-			<p allign="right"> <%=request.getAttribute("curract").toString()%></p>
+			<p allign="right"> <%=request.getAttribute("curract").toString()%>
+				<div id="fancyClock"></div>
+			</p>
 			<li><a href="#fragment-2"><span>Stop</span></a></li>
 		<%}
 		else{%>
