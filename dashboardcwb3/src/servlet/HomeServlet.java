@@ -39,6 +39,7 @@ public class HomeServlet extends HttpServlet{
 					req.setAttribute("bezig", "ja");
 					req.setAttribute("allusersstring", UserManager.getInstance().getUsersString());
 					req.setAttribute("curract", timerControler.getCurrentActivity());
+					req.setAttribute("startDate", timerControler.getCurrentActivity().getStart());
 				}
 				
 				ArrayList<Course> allCourses = CourseManager.getInstance().getAllCourses();
