@@ -14,6 +14,8 @@ import statistics.StatisticController;
 import course.Course;
 import course.CourseManager;
 
+import activity.Activity;
+import activity.ExtraCurricularActivity;
 import activity.TimerController;
 import activity.StudyLocation;
 
@@ -52,6 +54,21 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("username", UserManager.getInstance().getCurrentUserName());//username
 				ArrayList<Integer> goal= UserManager.getInstance().getGoals();
 				req.setAttribute("goal", goal);//goals
+				
+				ArrayList<Activity> act=UserManager.getInstance().getActivities();
+				ArrayList<Activity> scol=new ArrayList<Activity>();
+				ArrayList<Activity> extra=new ArrayList<Activity>();
+				for(int i=0; i<act.size(); i++){
+					if(act.get(i).getType().equals("les") ||act.get(i).getType().equals("Oefenzitting") ||act.get(i).getType().equals("Zelfstudie")){
+						scol.add(act.get(i));
+					}
+					else{
+						extra.add(act.get(i));
+					}
+				}
+								
+				req.setAttribute("scol", scol);
+				req.setAttribute("extra", extra);
 				//einde attributen
 				
 				//stats
