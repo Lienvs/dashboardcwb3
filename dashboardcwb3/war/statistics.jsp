@@ -23,11 +23,13 @@
 	 $(document).ready(function() {
 		$("#accordion").accordion({
 		autoHeight: false,
-		navigation: true
+		navigation: true,
+		collapsible: true
     		});	
     	$("#accordioncourses").accordion({
 		autoHeight: false,
-		navigation: true
+		navigation: true,
+		collapsible: true
     		});		
     		$('#accordion').bind('accordionchange', function(event, ui) {
      			if (ui.index === 1 && plot1._drawCount === 0) {
@@ -41,6 +43,10 @@
    			
 	});
 	</script>
+
+
+	
+	
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
@@ -82,8 +88,93 @@
 				<%}}%>
 			</div>
 		</div>
-		<h3><a href="#">Section 4</a></h3>
+		<h3><a href="#">All your activities</a></h3>
 		<div>
-		sec4
+		
+			<%ArrayList<Activity> scol=(ArrayList<Activity>) request.getAttribute("scol");%>
+<%ArrayList<Activity> extra=(ArrayList<Activity>) request.getAttribute("extra");%>
+<%if(scol.size()!=0 || extra.size()!=0){%>
+	<%if(scol.size()!=0){%>
+		<h3> Scolair activities:</h3>
+		<table border="1">
+			<tr>
+				<th >Course</th>
+				<th >Type</th>
+				<th >Duration</th>
+				<th >Start</th>
+				<th >Rating</th>
+				<th >Comment</th>
+			</tr>
+			
+			<%for(int i=0; i<scol.size();i++){%>
+				<tr>
+					<td><%=scol.get(i).getCourse().toString()%></td>
+					<td><%=scol.get(i).getType()%></td>
+					
+					<%if(scol.get(i).equals(request.getAttribute("curract"))){%>
+						<td> This is your current activity </td>
+					<%}
+					else{%>
+						<td><%=scol.get(i).getDuration()%></td>
+					<%}%>
+					
+					
+					<td><%=scol.get(i).getStart().getTime()%></td>
+					<td><%=scol.get(i).getRating()%></td>
+					<td><%=scol.get(i).getComment()%></td>
+				</tr>
+			<%}%>
+		</table>
+	<%}%>
+	
+	
+
+	<%if(extra.size()!=0){%>
+		<h3> ExtraScolair activities:</h3>
+		
+		<table border="1">
+			<tr>
+				<th >Type</th>
+				<th >Duration</th>
+				<th >Start</th>
+				<th >Rating</th>
+				<th >Comment</th>
+			</tr>
+			
+			<%for(int i=0; i<extra.size();i++){%>
+				<tr>
+					<td><%=extra.get(i).getType()%></td>
+					
+					<%if(extra.get(i).equals(request.getAttribute("curract"))){%>
+						<td> This is your current activity </td>
+					<%}
+					else{%>
+						<td><%=extra.get(i).getDuration()%></td>
+					<%}%>
+					
+					
+					<td><%=extra.get(i).getStart().getTime()%></td>
+					<td><%=extra.get(i).getRating()%></td>
+					<td><%=extra.get(i).getComment()%></td>
+				</tr>
+			<%}%>
+		</table>
+	<%}%>
+
+
+
+
+<%}
+else{%>
+
+<p> You have no activities. </p>
+
+<%}%>
+
+
+
+
+	
+		
 		</div>
 </div>
