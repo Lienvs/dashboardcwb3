@@ -17,8 +17,8 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="clock/styles.css" />
-	<link rel="stylesheet" type="text/css" href="clock/jquery.tzineClock.css" />
+	<link rel="stylesheet" type="text/css" href="clock/test/styles.css" />
+	<link rel="stylesheet" type="text/css" href="clock/test/jquery.tzineClock.css" />
 	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript" src="clock/jquery.tzineClock.js"></script>
