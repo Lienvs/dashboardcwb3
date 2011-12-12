@@ -13,10 +13,12 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 	<div id="one">
-		<input type="button" id="onea" class="check" value="Scolair" name="wata" > </br>
-		<input type="button" id="oneb" class="check" value="Extrascolair" name="watb" >
+		Is your activity studyrelated or not ? </br>
+		<input type="button" id="onea" class="check" value="Yes" name="wata" > </br>
+		<input type="button" id="oneb" class="check" value="No" name="watb" >
 	</div>		
 		<div style="display: none" id="two">
+			Select a course </br>
 			<select name="welkvak" id="welkvak">
 					<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");%>
  					<%for(int i=0 ; i<courses.size(); i++){%>
@@ -27,6 +29,7 @@
     		<input type="submit" id="backonea" class="check" value="Back">				
 		</div>		
 		<div style="display: none" id="tree">
+			Select what you wish to track </br>
 			<select name="watextra" id="watextra">
 				<option value="Sleep"> Sleep</option>
  				<option value="Sport"> Sport</option>
@@ -36,14 +39,15 @@
     		<input type="submit" id="backoneb" class="check" value="Back">	
 		</div>		
 		<div style="display: none" id="four">
-			<input type="button" id="foura" class="check" value="Les" name="typea" ></br>
-			<input type="button" id="fourb" class="check" value="Zelfstudie" name="typeb" ></br>
-			<input type="button" id="fourc" class="check" value="Oefenzitting" name="typec" ></br></br>
+			Select the type of your activity </br>
+			<input type="button" id="foura" class="check" value="A lecture" name="typea" ></br>
+			<input type="button" id="fourb" class="check" value="Studying" name="typeb" ></br>
+			<input type="button" id="fourc" class="check" value="Practice / lab / exercising" name="typec" ></br></br>
     		<input type="submit" id="backtwo" class="check" value="Back">
 		</div>
 		<div style="display: none" id="five">
 							
-			Please confirm your choice </br>
+			Confirm your choice or go back to Home </br>
 				<form action="/start" method="post">
 					<input class="wat" name="wat" value="">
 							<input  class="vak" name="vak" value="">

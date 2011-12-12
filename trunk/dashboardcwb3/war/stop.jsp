@@ -21,7 +21,7 @@
 	</script>
 	
 <%=request.getAttribute("allusersstring")%>	
-If you would like to stop the tracking of your current activity, please do fill in this form and click 'stop'.</br>
+To stop tracking your activity, fill in this form and click 'Stop' </br>
   <form action="/stop" method="post">
   			<%{ Activity act=(Activity) request.getAttribute("curract");
   			if(act.getType().equals("Zelfstudie")){%>
@@ -39,23 +39,24 @@ If you would like to stop the tracking of your current activity, please do fill 
  								
     						}%>
 						</select><br />
-						Study type: 
+						Was it rather theoretical or more focussed on practice ? 
 						<select name="stype" id="stype">
 							<option value="Theory"> Theory</option>
  							<option value="Practice"> Practice</option>
 						</select><br />
 				<div class="ui-widget">
+					Studied with a friend ? Select your studybuddy (only if he is also on this App)  
 					<label for="tags">Studybuddy: </label>
 					<input name="studybuddy" id="tags">	
 				</div>								
 			<%}}%>
-			rating: 
+			Give a rating of your productivity (1 = deceiving ; 5 = optimal) </br>
 				<input type="radio" name="rating" value="1" /> 1
 				<input type="radio" name="rating" value="2" /> 2
 				<input type="radio" name="rating" value="3" /> 3
 				<input type="radio" name="rating" value="4" /> 4
-				<input type="radio" name="rating" value="5" /> 5</br>
-			comment: <textarea name="comment" id="comment">
+				<input type="radio" name="rating" value="5" /> 5 </br>
+			Perhaps a comment ?   <textarea name="comment" id="comment">
   				</textarea></br>
 			<input type="submit" class="check" name="stop" value="Stop"/>
 		</form>

@@ -25,7 +25,9 @@ function validate(evt) {
 };
 </script>
 Please fill in your goals for this week.</br>
-Attention: if you've already filled in your goals you will overwrite them.</br>
+o  a week is defined from Monday 0 am to Sunday 12 pm </br>
+o  if you happen not to update your goals for the new week, we will set the identical goals as given for the previous week </br>
+o  it is always possible to overwrite your.</br>
 <form action=\goal  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
