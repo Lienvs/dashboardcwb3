@@ -35,8 +35,8 @@
 <body>
 <div class="tabs" id="tabs">
 	<ul>
-    	<h1> <font size="10"> Learnkeeper </font> </br></h1>
-    	<h4> The ultimate app to track your studies !</h4>
+    	<h1> <img src="stylesheets/Logo.png"/></br></h1>
+    	<h4>   The ultimate app to track your studies !</h4>
     	
  
        
