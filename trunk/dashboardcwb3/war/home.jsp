@@ -169,10 +169,10 @@
 			function setUp()
 			{
 				var currentTime = new Date();
-			    var startdate = <%=(Date)request.getAttribute("startDate")%>;
+			    var startdate = <%=request.getAttribute("startDate")%>;
 			if(startdate!=null){
 
-					var someDate = startdate;
+					var someDate = new Date(startdate);
 			}
 			else{
 
@@ -390,7 +390,6 @@
 </head>
 
 <body>
-
  
 <div class="tabs" id="tabs">
 	<ul>
