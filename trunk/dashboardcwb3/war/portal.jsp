@@ -12,6 +12,7 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <html>
 <head>
+<script src="/form/gen_validatorv4.js" type="text/javascript"></script>
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
@@ -60,17 +61,54 @@
 	</div>
 	<h3><a href="#">Click here to Sign up</a></h3>
 	<div>
-		<form action="/register" method="post">
-			User Name: <input type="text" name="username" > <br />
-			Password:  <input type="password" name="password" /> <br />
-			Please confirm your password:  <input type="password" name="confirmedpassword" /><br />
-			First Name:  <input type="text" name="firstname" /><br />
-			Last Name: <input type="text" name="lastname"> <br />
-			Gender:<br/> <input type="radio" name="gender" value="male" /> Male<br />
-			<input type="radio" name="gender" value="female" /> Female<br />
-			r-number: <input type="text" name="rnumber"> <br />
-			<input type="submit" class="check" name="signup" value="Sign up"/>
+		<form action="/register" id="myform" method="post">
+		<p>
+			<label for='username'>User Name: </label>
+			<input id="username" type="text" name="username" />
+		</p>
+		<p>
+			<label for='password'>Password: </label>
+			<input id="password" type="password" name="password" />
+		</p>
+		<p>
+			<label for='confirmedpassword'>Confirm password:</label>
+			<input id="confirmedpassword" type="password" name="confirmedpassword" />
+		</p>
+		<p>
+			<label for='firstname'>First Name: </label>
+			<input id="firstname" type="text" name="firstname" />
+		</p>
+		<p>
+			<label for='lastname'>Last Name: </label>
+			<input id="lastname" type="text" name="lastname"/>
+		</p>
+		<p>
+			<label for='gender'>Gender: </label>
+    		<select id="gender"  name="gender">
+        		<option value="000" selected="selected">[choose your gender]</option>
+        		<option value="male">Male</option>
+        		<option value="female">Female</option>
+        	</select>
+		</p>
+		<p>
+			<label for='rnumber'>r-number: </label>
+			<input id="rnumber" type="text" name="rnumber"/>
+		</p>
+		<p>
+			<input type="submit" id="submit" class="check" name="submit" value="Sign up"/>
+		</p>
 		</form>
+		
+		<script  type="text/javascript">
+			var frmvalidator = new Validator("myform");
+ 			frmvalidator.addValidation("username","req","Please enter your User Name");		
+ 			frmvalidator.addValidation("password","req","Please enter a password");
+ 			frmvalidator.addValidation("confirmedpassword","eqelmnt=password","The confirmed password is not same as password");
+ 			frmvalidator.addValidation("firstname","req","Please enter your First Name");
+ 			frmvalidator.addValidation("lastname","req","Please enter your Last Name");
+ 			frmvalidator.addValidation("gender","dontselect=000");
+ 			frmvalidator.addValidation("rnumber","req","Please enter your r-number");
+		</script>
 	</div>	
 </div>
 </body>
