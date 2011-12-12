@@ -17,9 +17,14 @@
 		$( ".check" ).button();		
 	});
 	</script>
-Courses you are currently subscribed to are in orange.</br>
-Courses you can still subscribe to are in blue.</br>
-Be aware, deleting a course once, deletes all your information regarding this course!</br> 
+Courses you are currently subscribed to are listed in orange.</br>
+Courses you can still subscribe to are listed in blue.</br> 
+</br>
+Beware! Submitting the deletion of a course, deletes all your information regarding this course! Resubmitting to this very cours will NOT restore your statistics concerning this course, but start from 0.</br> 
+</br>
+Any submitted change will affect your Goals : they will be resetted to 0.</br>
+</br>
+
 <%String message=(String) request.getAttribute("message");
   if(message==null){}
   else{%>

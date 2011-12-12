@@ -392,10 +392,10 @@
 			<p allign="right"> <%=request.getAttribute("curract").toString()%>
 				<div id="fancyClock"></div>
 			</p>
-			<li><a href="#fragment-2"><span>Stop</span></a></li>
+			<li><a href="#fragment-2"><span>Stop Tracking</span></a></li>
 		<%}
 		else{%>
-			<li><a href="#fragment-1"><span>Start</span></a></li>
+			<li><a href="#fragment-1"><span>Start Tracking</span></a></li>
 		<%}%>
  
         <li><a href="#fragment-3"><span>Statistics</span></a></li>

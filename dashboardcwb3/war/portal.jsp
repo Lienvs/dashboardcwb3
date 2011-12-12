@@ -36,7 +36,7 @@
 <div class="tabs" id="tabs">
 	<ul>
     	<h1> <img src="stylesheets/Logo.png"/></br></h1>
-    	<h4>   The ultimate app to track your studies !</h4>
+    	<h4>   The one App to track your studies !</h4>
     	
  
        
@@ -59,7 +59,7 @@
 			<input type="submit" class="check" name="login" value="Login"/>
 		</form>
 	</div>
-	<h3><a href="#">Click here to Sign up</a></h3>
+	<h3><a href="#">New on LearnKeeper? Click to Sign up</a></h3>
 	<div>
 		<form action="/register" id="myform" method="post">
 		<p>
@@ -67,11 +67,11 @@
 			<input id="username" type="text" name="username" />
 		</p>
 		<p>
-			<label for='password'>Password: </label>
+			<label for='password'>Choose a password: </label>
 			<input id="password" type="password" name="password" />
 		</p>
 		<p>
-			<label for='confirmedpassword'>Confirm password:</label>
+			<label for='confirmedpassword'>Confirm password: </label>
 			<input id="confirmedpassword" type="password" name="confirmedpassword" />
 		</p>
 		<p>

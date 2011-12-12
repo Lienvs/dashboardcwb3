@@ -30,6 +30,9 @@
 		<p><%=message%></p>
 	</div>
 	<%}%>
+	
+Select the courses you wish to use on this App. </br>
+We advise you take  all the courses you are subscribed to for your actual study : it will promote the accuracy of your tracking!  </br>
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
 	for(int i=0 ; i<courses.size(); i++){%>
