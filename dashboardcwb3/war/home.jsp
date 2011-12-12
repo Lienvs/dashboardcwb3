@@ -399,8 +399,8 @@
  
 <div class="tabs" id="tabs">
 	<ul>
-    	<h1> <font size="10"> Learnkeeper </font> </br></h1>
-    	<h2><%=(String)request.getAttribute("username")%></h2>
+    	<h1><img src="stylesheets/Logo.png"/> </br></h1>
+    	<h2>Welcome <%=(String)request.getAttribute("username")%> ! </h2>
     	
 		<% String bezig=(String)request.getAttribute("bezig");
 		if(bezig!=null){%>
