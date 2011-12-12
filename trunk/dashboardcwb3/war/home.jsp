@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/jquery.tzineClock.css" />
 
-<script type="text/javascript"  src="/plugin/jqplot.pieRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
 <script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
 <script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
 <script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
@@ -50,15 +50,21 @@
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
 	      		width: 500,
-	      		showDataLabels: true,
-	      		series:[{renderer:$.jqplot.PieRenderer}],
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
 	      		legend:{show:true}
 	    	});
 	    	var plot2 = jQuery.jqplot ('chart2', [l2], { 
 	      		height: 300,
 	      		width: 500,
-	      		showDataLabels: true,
-	      		series:[{renderer:$.jqplot.PieRenderer}],
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
 	      		legend:{show:true}
 	    	});
 
