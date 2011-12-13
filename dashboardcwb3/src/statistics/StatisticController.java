@@ -43,7 +43,7 @@ public String myPlacesCheese(){
 	String result = "[";
 	result = result +"['" +  "Library" + "'," + data.getDuurBibZelfstudie() + "],";
 	result = result +"['" +  "Home" + "'," + data.getDuurThuisZelfstudie() + "],";
-	result = result +"['" +  "Kot" + "'," + data.getDuurKotZelfstudie() + "]";
+	result = result +"['" +  "Kot" + "'," + data.getDuurKotZelfstudie() + "],";
 	result = result +"['" +  "Other" + "'," + data.getDuurOtherZelfstudie() + "]";
 	result = result + "]";
 	return result;
