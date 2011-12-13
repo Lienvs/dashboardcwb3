@@ -64,6 +64,18 @@ public class GoalController {
 		int goal = getGoal(courseName);
 		return goal*60-studieTime;
 	}
+	public int getTotalWeek(String courseName){
+		int studieTime = 0;
+		for(Activity act : UserManager.getInstance().getActivities()){
+			if(act.getActivityType().equals("scolair")){
+			if(act.getCourse().toString().equals(courseName)){
+				if(act.getStart().compareTo(startDate)<0 && act.getStart().compareTo(stopDate)>0){
+				studieTime = studieTime+act.getDuration();
+				}
+			}
+		}}
+		return studieTime;
+	}
 	
 
 	
