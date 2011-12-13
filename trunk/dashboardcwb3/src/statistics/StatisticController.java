@@ -393,7 +393,7 @@ public String myRatingBar(Course course){
 	int vier=0;
 	int vijf=0;
 	for(Activity act: UserManager.getInstance().getActivities()){
-		if(act.getActivityType().equals("scolair")){
+		if(act.getActivityType().equals("scolair")&&act.getStop()!=null){
 			CurricularActivity scol = (CurricularActivity) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				if(scol.getRating() == 1){
@@ -428,7 +428,7 @@ public ArrayList<String> myMeanRatingBar(){//1 de gemiddelde rating voor elk vak
 		int rating =0;
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
-		if(act.getActivityType().equals("scolair")){
+		if(act.getActivityType().equals("scolair")&&act.getStop()!=null){
 			CurricularActivity scol = (CurricularActivity) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				rating = rating + scol.getRating();
@@ -461,7 +461,7 @@ public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 d
 	for(String buddy: UserManager.getInstance().getUserNames() ){
 		int w = 0;
 		for(Activity act:UserManager.getInstance().getActivities()){
-			if(act.getType().equals("Zelfstudie")){
+			if(act.getType().equals("Zelfstudie")&&act.getStop()!=null){
 			IndividualStudy stu = (IndividualStudy) act;
 				if(stu.getStudyBuddy().equals(buddy)){
 					w++;
@@ -497,7 +497,7 @@ public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor el
 		int rating =0;
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
-		if(act.getType().equals("Zelfstudie")){
+		if(act.getType().equals("Zelfstudie")&&act.getStop()!=null){
 			IndividualStudy scol = (IndividualStudy) act;
 			if(scol.getStudyLocation()!=null){
 			if(scol.getStudyLocation().equals(st)){
@@ -535,7 +535,8 @@ public ArrayList<String> myMeanBuddyRatingBar(){//1 de gemiddelde rating voor el
 		int rating =0;
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
-		if(act.getType().equals("ZelfStudie")){
+		
+		if(act.getType().equals("ZelfStudie")&& act.getStop()!=null){
 			IndividualStudy scol = (IndividualStudy) act;
 			if(scol.getStudyBuddy().equals(buddy)){
 				rating = rating + scol.getRating();
