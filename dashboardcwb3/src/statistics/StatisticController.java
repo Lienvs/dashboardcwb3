@@ -582,7 +582,15 @@ public ArrayList<String> myMeanBuddyRatingBar(){//1 de gemiddelde rating voor el
 			listje.add(1,r2);
 			return listje;
 }
-
+public String overallTypeCheese(){
+	String result = "[";
+	result = result +"['" +  "Zelfstudie" + "'," + (data.getGemiddeldeStudie()*UserManager.getInstance().getUserNames().size()) + "],";
+	result = result +"['" +  "Les" + "'," + (data.getGemiddeldeLes()*UserManager.getInstance().getUserNames().size()) + "],";
+	result = result +"['" +  "Oefenzitting" + "'," + (data.getGemiddeldeOefenzitting()*UserManager.getInstance().getUserNames().size()) + "]";
+	result = result + "]";
+	return result;
+	
+}
 
 
 }
