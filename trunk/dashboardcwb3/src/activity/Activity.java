@@ -86,7 +86,11 @@ public abstract class Activity {
 	public String startDateToString() {
 		int month = start.getMonth()+1;
 		int day = start.getDate();
-		int hour = start.getHours()+1;
+		int hour = 0;
+		if(start.getHours()==23){
+			 hour = 0;
+		}
+		else{ hour = start.getHours()+1;}
 		int minute = start.getMinutes();
 		int sec = start.getSeconds();
 		String aMonth;
