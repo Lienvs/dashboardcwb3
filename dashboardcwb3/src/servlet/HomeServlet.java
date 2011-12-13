@@ -91,16 +91,7 @@ public class HomeServlet extends HttpServlet{
 				//req.setAttribute("myStudyVSGoal", statController.myStudyVSGoal());
 				
 
-				ArrayList<String> statscourse=new ArrayList<String>();
-				for(int i=0;i<courses.size();i++){
-					statscourse.add(statController.myTypeCheese(courses.get(i)));
-					statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
-					//statscourse.add(statController.meVSGoal2(courses.get(i)));
-					//statscourse.add(statController.meVSModel2(courses.get(i)));
-					statscourse.add(statController.myTypeBar(courses.get(i)));
-					req.setAttribute(courses.get(i).toString(), statscourse);
-					statscourse.clear();
-				}
+				
 				req.setAttribute("numberCourses", courses.size());
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
