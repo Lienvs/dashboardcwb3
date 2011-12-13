@@ -57,6 +57,14 @@ public String myTypeCheese(Course course){
 	return result;
 	
 }
+public String myActiTypeCheese(){
+	String result = "[";
+	result = result +"['" +  "Curricular activity" + "'," + data.getTotalScolair() + "],";
+	result = result +"['" +  "Extra-curricular activity" + "'," + data.getTotalFun() + "]";
+	
+	result = result + "]";
+	return result;
+}
 public String myTypeCheese(){
 	String result = "[";
 	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie() + "],";
@@ -574,4 +582,7 @@ public ArrayList<String> myMeanBuddyRatingBar(){//1 de gemiddelde rating voor el
 			listje.add(1,r2);
 			return listje;
 }
+
+
+
 }

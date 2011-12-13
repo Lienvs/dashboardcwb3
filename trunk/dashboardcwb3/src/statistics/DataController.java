@@ -322,6 +322,26 @@ public int getTotalScolair(Course course){
 	return result;
 
 }
+public int getTotalScolair(){
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getActivityType().equals("scolair")){
+			result =result+act.getDuration();
+		}
+	}
+	return result;
+}
+public int getTotalFun(){
+	ArrayList<Activity> actList = UserManager.getInstance().getActivities();
+	int result = 0;
+	for(Activity act : actList){
+		if(act.getActivityType().equals("fun")){
+			result =result+act.getDuration();
+		}
+	}
+	return result;
+}
 public int getGemiddeldeScolair(Course course){
 	int result = 0;
 	result = getGemiddeldeStudie(course)
