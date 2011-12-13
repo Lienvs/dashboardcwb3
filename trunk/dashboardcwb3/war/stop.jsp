@@ -20,7 +20,7 @@
 	});
 	</script>
 	
-<%=request.getAttribute("allusersstring")%>	
+
 To stop tracking your activity, fill in this form and click 'Stop' </br>
   <form action="/stop" method="post">
   			<%{ Activity act=(Activity) request.getAttribute("curract");

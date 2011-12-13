@@ -45,7 +45,10 @@
 	</script>
 
 
-	
+	<font size="6">
+	<b>Choose statistics you want to show</b></font>
+	</br>
+	</br>
 	
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
