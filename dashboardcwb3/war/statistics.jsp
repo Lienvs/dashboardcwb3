@@ -65,9 +65,9 @@
 	</br>
 	
 	<% StatisticController stats=new StatisticController();%>
-		Cummulated time of study: <b><%=stats.myTime()%><b/> 
+		Cummulated time of study: <b><%=stats.myTime()%></b> 
 		</br>
-		Longest study spree:<b><%=stats.getMaximumStudie()%></b>
+		Longest study spree: <b><%=stats.getMaximumStudie()%></b>
 		</br>
 		
 <div id="accordion">
