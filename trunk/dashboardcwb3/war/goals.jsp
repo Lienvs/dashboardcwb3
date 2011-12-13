@@ -24,18 +24,27 @@ function validate(evt) {
   }
 };
 </script>
-Please fill in your goals for this week.</br>
-o  a week is defined from Monday 0 am to Sunday 12 pm </br>
-o  if you happen not to update your goals for the new week, we will set the identical goals as given for the previous week </br>
-o  it is always possible to overwrite your goals.</br>
+<b>Please fill in your goals for this week.</b></br>
+<li>  a week is defined from Monday 0 am to Sunday 12 pm </li></br>
+<li>  if you happen not to update your goals for the new week, we will set the identical goals as given for the previous week</li> </br>
+<li>  it is always possible to overwrite your goals.</li>
+</br>
+</br>
+<b>Choose the amount of hours you want to spend on each of your courses this week</b>
 <form action=\goal  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
 		if(goal.size()==0){
 			for(int i=0; i<courses.size();i++){%>
 			<%=courses.get(i).toString()%>:
-				<input type="int" class="numbersOnly" onkeypress='validate(event)' name="<%=courses.get(i).toString()%>" value="0">	hours of activity </br>
+					<select id="test"  name="<%=courses.get(i).toString()%>">
+		        	<%for(int j=0; j<=30;j++){%>
+						<option value="<%=j%>"><%=j%></option><%}%>
+		        	</select>
+		</br>
+	
 			<%}
+			</br>
 		}
 		else{
 			for(int i=0; i<courses.size();i++){%>
