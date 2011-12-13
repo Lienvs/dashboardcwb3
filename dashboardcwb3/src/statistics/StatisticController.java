@@ -343,7 +343,7 @@ public int meVSModel2(Course course){
 	}
 	return result;
 }
-public int myTime(){
+public String myTime(){
 	int result=0;
 
 	 String currentUserName = UserManager.getInstance().getCurrentUserName();
@@ -353,7 +353,10 @@ public int myTime(){
 		 Course course = it.next();
 		result=result+ data.getTotalScolair(course);
 }
-	 return result;
+	 int uur = result/60;
+	 int minuten = result%60; 
+	 String show = "You studied already " + uur +" hours and " + minuten + " minutes.";
+	 return show;
 }
 public int overallTime(){
 	int result=0;
