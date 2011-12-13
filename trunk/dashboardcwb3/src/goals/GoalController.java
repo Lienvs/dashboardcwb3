@@ -48,7 +48,7 @@ public class GoalController {
 			ArrayList<String> str = CourseManager.getInstance().getCourseNames(courses);
 			int i =(int)str.indexOf(courseName);
 			
-			long r = UserManager.getInstance().getGoals().get(i);
+			int r = UserManager.getInstance().getGoals().get(i).intValue();
 			result = (int) r;
 		}
 		return result;
