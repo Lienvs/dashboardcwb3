@@ -79,7 +79,7 @@
 			<div id="chart8"></div>
 			<div id="chart9"></div>
 			<div id="chart10"></div>
-			
+			<div id="chart11"></div>
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>

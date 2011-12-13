@@ -96,43 +96,8 @@
    		var l1=<%=stat.myCoursesCheese()%>;//werkt
    		var l2=<%=stat.myPlacesCheese()%>;//werkt
    		
-   		var l3=<%=stat.myCourseBar().get(0)%>;//ipv chart3
-   		var l4=<%=stat.myCourseBar().get(1)%>;
-   		var l5=<%=stat.myCourseBar().get(2)%>;
    		
-   		var l6=<%=stat.myFunInTime()%>;//half
-   		
-   		var l7=<%=stat.myNightlifeInTime()%>;//half
-   		var l8=<%=stat.mySleepInTime()%>;//half
-   		var l9=<%=stat.mySportInTime()%>;//half
-   		
-   		var l10=<%=stat.myTimeInTime()%>;//half
-   		
-   		var l11=<%=stat.overallMeanTimeInTime()%>;//half
-   		var l12=<%=stat.overallMeanFunInTime()%>;//half
-   		
-   		var l131=<%=stat.meVSModel().get(0)%>;  //arr:1wat al gedaan,2 goals, 3 modeltraject,4 vakken
-   		var l132=<%=stat.meVSModel().get(1)%>; 
-   		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
-   		var l134=<%=stat.meVSModel().get(3)%>; 
-   	
-   		var l15=<%=stat.overallTime()%>;//int
-   		//var l16=<%=stat.getMaximumStudie()%>;
-   		
-   		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
-   		var l172=<%=stat.myMeanRatingBar().get(1)%>; //bar==>niet
-   		
-   		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
-   		//var l182=<%=stat.myStuddyBuddys().get(1)%>;  //bar==>niet
-   		
-   		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
-   		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>;    //bar==> niet
-   		
-   		var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
-   		var l202=<%=stat.myMeanBuddyRatingBar().get(1)%>;//bar==>niet
-   		
-   		
-	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
+   		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
 	      		width: 500,
 	      		seriesDefaults:{
@@ -160,9 +125,23 @@
         			show: true
     			}
 	    	});
-
-	
-    		var plot4 = $.jqplot('chart4', [l6], {
+   		
+   		
+   		
+   		
+   		var l3=<%=stat.myCourseBar().get(0)%>;//ipv chart3
+   		var l4=<%=stat.myCourseBar().get(1)%>;
+   		var l5=<%=stat.myCourseBar().get(2)%>;
+   		
+   		var l6=<%=stat.myFunInTime()%>;//half
+   		var l7=<%=stat.myNightlifeInTime()%>;//half
+   		var l8=<%=stat.mySleepInTime()%>;//half
+   		var l9=<%=stat.mySportInTime()%>;//half
+   		var l10=<%=stat.myTimeInTime()%>;//half
+   		var l11=<%=stat.overallMeanTimeInTime()%>;//half
+   		var l12=<%=stat.overallMeanFunInTime()%>;//half
+   		
+   		var plot4 = $.jqplot('chart4', [l6], {
    				axes: {
         			xaxis: {
           				renderer: $.jqplot.DateAxisRenderer,
@@ -227,6 +206,51 @@
         			}
     			},
   			});
+  			
+  			
+  			
+  		var l21<=<%=stat.myTypeCheese()%>;
+  		
+  			var plot11 = jQuery.jqplot ('chart11', [l21], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: '?',   // title for the plot,
+        			show: true
+    			}
+	    	});
+   		
+   		
+   		
+   		
+   		var l131=<%=stat.meVSModel().get(0)%>;  //arr:1wat al gedaan,2 goals, 3 modeltraject,4 vakken
+   		var l132=<%=stat.meVSModel().get(1)%>; 
+   		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
+   		var l134=<%=stat.meVSModel().get(3)%>; 
+   	
+   		var l15=<%=stat.overallTime()%>;//int
+   		//var l16=<%=stat.getMaximumStudie()%>;
+   		
+   		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
+   		var l172=<%=stat.myMeanRatingBar().get(1)%>; //bar==>niet
+   		
+   		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
+   		//var l182=<%=stat.myStuddyBuddys().get(1)%>;  //bar==>niet
+   		
+   		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
+   		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>;    //bar==> niet
+   		
+   		var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
+   		var l202=<%=stat.myMeanBuddyRatingBar().get(1)%>;//bar==>niet
+   		
+   		
+   		
 
     		
     		
