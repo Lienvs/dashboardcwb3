@@ -371,7 +371,7 @@ public class UserManager {
 		    }
 		}
 	}
-	public int getAmountUsers(Date start, String courseName, String type){
+	public int getAmountUsers( String courseName, String type){
 		int result = -1;
 		for(Activity act:ActivityManager.getInstance().getAllActivities()){
 			if(act.getType().equals(type)){
