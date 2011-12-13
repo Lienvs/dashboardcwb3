@@ -13,11 +13,12 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
   <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
+  <script language="javascript" type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>-->
+ <!-- <script language="javascript" type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>-->
+  <!--<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />-->
 <script>
 	 $(document).ready(function() {
 		$("#accordioncourse").accordion({
