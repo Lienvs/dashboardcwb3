@@ -299,7 +299,7 @@
    		//var l15=<%=stat.overallTime()%>;//int
    		//var l16=<%=stat.getMaximumStudie()%>;
    		
-   		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
+	var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
    		var l172=<%=stat.myMeanRatingBar().get(1)%>; //bar==>niet
    		
    		var plot14 = $.jqplot('chart14', [l171], {
@@ -338,8 +338,8 @@
         			show: true
     			}
     		});
-   		
-   		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
+    		
+    		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
    		//var l182=<%=stat.myStuddyBuddys().get(1)%>;  //bar==>niet
    		
    		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
@@ -381,9 +381,8 @@
         			show: true
     			}
     		});
-   		
-   		
-   		var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
+    		
+    		/**var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
    		var l202=<%=stat.myMeanBuddyRatingBar().get(1)%>;//bar==>niet
    		
    		var plot16 = $.jqplot('chart16', [l201], {
@@ -422,8 +421,60 @@
         			show: true
     			}
     		});
+    		**/
+    		
+    		var l23=<%=stat.overallTypeCheese()%>;//werkt
+   			var l24=<%=stat.overallActiTypeCheese()%>;//werkt
+   			var l25=<%=stat.overallPlacesCheese()%>;//werkt
    		
    		
+   		var plot17 = jQuery.jqplot ('chart17', [l23], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Personnal relative time per course',   // title for the plot,
+        			show: true
+    			}
+	    	});
+	    	var plot18 = jQuery.jqplot ('chart18', [l24], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Your study locations',   // title for the plot,
+        			show: true
+    			}
+	    	});
+	    	var plot19 = jQuery.jqplot ('chart19', [l25], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Your study locations',   // title for the plot,
+        			show: true
+    			}
+	    	});
+    		
+    		
+    		
+   		
+   	
    		
 
     		
@@ -533,7 +584,7 @@
         						show: true
     						}
     					});
-    			
+
     			
     			<%}%>
     			

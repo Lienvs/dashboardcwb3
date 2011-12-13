@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="activity.*" %>
 <%@ page import="course.*"%>
+<%@ page import="statistics.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -87,8 +88,12 @@
 			<div id="chart13"></div>
 			<div id="chart14"></div>
 			<div id="chart15"></div>
-			<div id="chart16"></div>
-		</div>
+			<!--<div id="chart16"></div>-->
+			<div id="chart17"></div>
+			<div id="chart18"></div>
+			<div id="chart19"></div>
+			
+				</div>
 		<h3><a href="#">My courses</a></h3>
 		<div>
 			<div id="accordioncourses">
@@ -97,6 +102,8 @@
 					<h3><a href="#"><%=courses.get(j).toString()%></a></h3>
 					<div>
 						<div id="chartc<%=j%>"></div>
+						<div id="chartd<%=j%>"></div>
+						<div id="chartg<%=j%>"></div>
 					</div>
 				<%}}%>
 			</div>
