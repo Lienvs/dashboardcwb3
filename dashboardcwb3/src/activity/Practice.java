@@ -24,6 +24,9 @@ public class Practice extends CurricularActivity{
 	public String getType(){
 		return "Oefenzitting";
 	}
+	public String getTypeEnglish(){
+		return "Practice";
+	}
 	public String toString(){
 		String result="You are attending a practice of " + getCourse().toString();
 		if(UserManager.getInstance().getAmountUsers(getCourse().toString(), "Oefenzitting")==0){

@@ -190,6 +190,9 @@ public abstract class Activity {
 		
 	public abstract Course getCourse();
 	
+	public abstract String getTypeEnglish(); 
+
+	
 
 	
 	

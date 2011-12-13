@@ -40,6 +40,10 @@ public class Lecture extends CurricularActivity {
 	public String getType(){
 		return "les";
 	}
+	
+	public String getTypeEnglish(){
+		return "Lecture";
+	}
 	public void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy){
 		
 		postComment(comment);
