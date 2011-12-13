@@ -12,17 +12,32 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <html>
 <head>
+ <script src="/form/gen_validatorv4.js" type="text/javascript"></script>
+	
+	
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
   <script>
 	$(function() {
 		$( ".check" ).button();	
+	    $("#tabs").tabs();
 		$( "#dialog" ).dialog();	
 	});
 	</script>
 </head>
 <body>
+<div class="tabs" id="tabs">
+	<ul>
+    	<h1> <img src="stylesheets/Logo.png"/></br></h1>
+    	<h4> Select the courses you wish to use on this App. </br>
+		We advise you take  all the courses you are subscribed to for your actual study : it will promote the accuracy of your tracking!  </br>  </h4>
+    	
+ 
+       
+    </ul>
+</div>
+
 <%String message=(String) request.getAttribute("message");
   if(message==null){}
   else{%>
@@ -31,8 +46,6 @@
 	</div>
 	<%}%>
 	
-Select the courses you wish to use on this App. </br>
-We advise you take  all the courses you are subscribed to for your actual study : it will promote the accuracy of your tracking!  </br>
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
 	for(int i=0 ; i<courses.size(); i++){%>
