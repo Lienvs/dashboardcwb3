@@ -392,7 +392,7 @@ public String myRatingBar(Course course){
 	int vijf=0;
 	for(Activity act: UserManager.getInstance().getActivities()){
 		if(act.getActivityType().equals("scolair")){
-			ExtraCurricularActivity scol = (ExtraCurricularActivity) act;
+			CurricularActivity scol = (CurricularActivity) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				if(scol.getRating() == 1){
 					een++;
