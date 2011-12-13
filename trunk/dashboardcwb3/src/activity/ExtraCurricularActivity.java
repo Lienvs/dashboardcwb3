@@ -46,6 +46,8 @@ public String getType(){
 	return ex.toString();
 	
 }
+
+
 public void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy){
 	changePlace(place);
 	setRating(rating);
