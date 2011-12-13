@@ -59,7 +59,10 @@
 	});
 	</script>
 
-
+	<font size="6">
+	<b>Your work trough stats</b></font>
+	</br>
+	</br>
 	
 	<% StatisticController stats=new StatisticController();%>
 		<p><%=stats.myTime()%></br>
@@ -126,7 +129,7 @@
 			<%for(int i=0; i<scol.size();i++){%>
 				<tr>
 					<td><%=scol.get(i).getCourse().toString()%></td>
-					<td><%=scol.get(i).getType()%></td>
+					<td><%=scol.get(i).getTypeEnglish()%></td>
 					
 					<%if(scol.get(i).equals(request.getAttribute("curract"))){%>
 						<td> This is your current activity </td>
@@ -160,7 +163,7 @@
 			
 			<%for(int i=0; i<extra.size();i++){%>
 				<tr>
-					<td><%=extra.get(i).getType()%></td>
+					<td><%=extra.get(i).getTypeEnglish()%></td>
 					
 					<%if(extra.get(i).equals(request.getAttribute("curract"))){%>
 						<td> This is your current activity </td>
