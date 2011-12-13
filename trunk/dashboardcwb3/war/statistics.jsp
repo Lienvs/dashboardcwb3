@@ -153,7 +153,7 @@
 					<%}%>
 					
 					
-					<td><%=extra.get(i).getStartToString()%></td>
+					<td><%=extra.get(i).startDateToString()	%></td>
 					<td><%=extra.get(i).getRating()%></td>
 					<td><%=extra.get(i).getComment()%></td>
 				</tr>
