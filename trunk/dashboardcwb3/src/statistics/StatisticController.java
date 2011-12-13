@@ -57,6 +57,15 @@ public String myTypeCheese(Course course){
 	return result;
 	
 }
+public String myTypeCheese(){
+	String result = "[";
+	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie() + "],";
+	result = result +"['" +  "Les" + "'," + data.getDuurLes() + "],";
+	result = result +"['" +  "Oefenzitting" + "'," + data.getDuurOefenzitting() + "]";
+	result = result + "]";
+	return result;
+	
+}
 public String myTypeBar(Course course){//geeft 3 getallen in een string voor bar-stat: Les/oef/zs (samen met volgend methode in 1 stat!!)
 	String result = "[";
 	result= result+ data.getDuurLes(course)+","+data.getDuurOefenzitting(course)+","+data.getDuurZelfstudie(course)+"]";
