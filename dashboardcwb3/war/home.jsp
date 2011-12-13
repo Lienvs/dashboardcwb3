@@ -614,6 +614,10 @@
     	</div>
 		
     	<div id="fragment-7">
+			<font size="6">
+			<b>See you soon !</b></font>
+			</br>
+			</br>
         	<form action="/logout" method="post">
 				<input type="submit" class="check" value="Logout" name="logout">
 			</form>
