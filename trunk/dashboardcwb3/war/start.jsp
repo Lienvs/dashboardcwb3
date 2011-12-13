@@ -13,7 +13,7 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 	<div id="one">
-		Is your activity studyrelated or not ? </br>
+		Is the activity you want to track studyrelated or not ? </br>
 		<input type="button" id="onea" class="check" value="Yes" name="wata" > </br>
 		<input type="button" id="oneb" class="check" value="No" name="watb" >
 	</div>		
