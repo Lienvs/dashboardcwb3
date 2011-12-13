@@ -483,4 +483,40 @@ public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 d
 	list.add(1,names);
 	return list;
 }
+public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor elk vak 2 de vakken
+	String r1 = "[";
+	String r2 ="[";
+	
+	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
+	while(it.hasNext()){
+		Course course = it.next();
+		int i = 0;
+		int rating =0;
+		int gem = 0;
+	for(Activity act: UserManager.getInstance().getActivities()){
+		if(act.getType().equals("Zelfstudie")){
+			CurricularActivity scol = (CurricularActivity) act;
+			if(scol.getCourse().toString().equals(course.toString())){
+				rating = rating + scol.getRating();
+				if(scol.getRating()!=0){i++;}
+			}
+		}
+	}
+	if(rating!=0&&i!=0){
+	gem = rating/i;}
+	else{gem = 0;}
+	r1 = r1 + gem;
+	r2 = r2 +"'"+course.toString()+"'";
+	if(it.hasNext()){
+		r1 = r1+",";
+		r2 = r2 +",";
+	}
+	}
+	r1 = r1+"]";
+	r2 = r2 +"]";
+	ArrayList<String> list = new ArrayList<String>();
+			list.add(0,r1);
+			list.add(1,r2);
+			return list;
+}
 }
