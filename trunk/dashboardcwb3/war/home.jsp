@@ -108,8 +108,8 @@
         	// option on the series option.  Here a series option object
         	// is specified for each series.
        			series:[
-            		{label:'My stats'},
-            		{label:'Overal stats'}
+            		{label:'My study'},
+            		{label:'Average of all users'}
         		],
         	// Show the legend and put it outside the grid, but inside the
         	// plot container, shrinking the grid to accomodate the legend.
@@ -124,13 +124,16 @@
             		xaxis: {
                 		renderer: $.jqplot.CategoryAxisRenderer,
                 		ticks: l5
-            		}
+            		},
+        			yaxis:{
+          				label:'minutes'
+        			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             		
         		},
         		title: {
-       				text: 'comparison between you and the average for each course',   // title for the plot,
+       				text: 'Comparison between youre and the average time of study',   // title for the plot,
         			show: true
     			}
     		});
@@ -141,6 +144,7 @@
    		var l7=<%=stat.myNightlifeInTime()%>;//half
    		var l8=<%=stat.mySleepInTime()%>;//half
    		var l9=<%=stat.mySportInTime()%>;//half
+   		
    		var l10=<%=stat.myTimeInTime()%>;//half
    		var l11=<%=stat.overallMeanTimeInTime()%>;//half
    		var l12=<%=stat.overallMeanFunInTime()%>;//half
@@ -158,57 +162,148 @@
            
         			},
        				yaxis: {
-          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-      			}
+      			},
+      			title: {
+       				text: 'Time spent on nightlife and sports ',   // title for the plot,
+        			show: true
+    			}
     		});
+    		
+    		
   			var plot5 = $.jqplot('chart5', [l7], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'Time spent on nightlife',   // title for the plot,
+        			show: true
+    			}
   			});
   			var plot6 = $.jqplot('chart6', [l8], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'Time spent on sleeping ',   // title for the plot,
+        			show: true
+    			}
   			});
   			var plot7 = $.jqplot('chart7', [l9], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'Time spent on sports ',   // title for the plot,
+        			show: true
+    			}
   			});
   			var plot8 = $.jqplot('chart8', [l10], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'The evolution of my daily study',   // title for the plot,
+        			show: true
+    			}
   			});
   			var plot9 = $.jqplot('chart9', [l11], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'The evolution of the average daily study of all students ',   // title for the plot,
+        			show: true
+    			}
   			});
   			var plot10 = $.jqplot('chart10', [l12], {
-   				title:'Default Date Axis',
-    			axes:{
-        			xaxis:{
-            			renderer:$.jqplot.DateAxisRenderer
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          				label:'minutes'
         			}
-    			},
+      			},
+      			title: {
+       				text: 'Average time spent by all students on nightlife and sports ',   // title for the plot,
+        			show: true
+    			}
   			});
   			
 
@@ -224,7 +319,7 @@
         		},
 	      		legend:{show:true},
 	      		title: {
-       				text: '?',   // title for the plot,
+       				text: 'My study methods',   // title for the plot,
         			show: true
     			}
 	    	});
@@ -241,7 +336,7 @@
         		},
 	      		legend:{show:true},
 	      		title: {
-       				text: '?',   // title for the plot,
+       				text: 'Relative time spent on curricular and exra-curricular activities',   // title for the plot,
         			show: true
     			}
 	    	});
