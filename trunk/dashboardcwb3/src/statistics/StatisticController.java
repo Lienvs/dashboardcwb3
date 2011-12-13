@@ -489,20 +489,21 @@ public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 d
 	list.add(1,names);
 	return list;
 }
-public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor elk vak 2 de vakken
+public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor elke locatie 2 de locaties
 	String r1 = "[";
 	String r2 ="[";
-	int i = 0;
-	int it = StudyLocation.values().length;
-	while(i<it){
-		StudyLocation st = StudyLocation.values().get(i);
+
+	ArrayList<StudyLocation> lis =StudyLocation.getStudyLocationAsList();
+	Iterator<StudyLocation> it = lis.iterator();
+	while(it.hasNext()){
+		StudyLocation st = it.next();
 		int i = 0;
 		int rating =0;
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
 		if(act.getType().equals("Zelfstudie")){
 			IndividualStudy scol = (IndividualStudy) act;
-			if(scol.getCourse().toString().equals(course.toString())){
+			if(scol.getStudyLocation().equals(st)){
 				rating = rating + scol.getRating();
 				if(scol.getRating()!=0){i++;}
 			}
@@ -512,7 +513,7 @@ public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor el
 	gem = rating/i;}
 	else{gem = 0;}
 	r1 = r1 + gem;
-	r2 = r2 +"'"+course.toString()+"'";
+	r2 = r2 +"'"+st.toString()+"'";
 	if(it.hasNext()){
 		r1 = r1+",";
 		r2 = r2 +",";
