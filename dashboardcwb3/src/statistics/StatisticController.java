@@ -503,11 +503,12 @@ public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor el
 	for(Activity act: UserManager.getInstance().getActivities()){
 		if(act.getType().equals("Zelfstudie")){
 			IndividualStudy scol = (IndividualStudy) act;
+			if(scol.getStudyLocation()!=null){
 			if(scol.getStudyLocation().equals(st)){
 				rating = rating + scol.getRating();
 				if(scol.getRating()!=0){i++;}
 			}
-		}
+		}}
 	}
 	if(rating!=0&&i!=0){
 	gem = rating/i;}
@@ -525,5 +526,43 @@ public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor el
 			list.add(0,r1);
 			list.add(1,r2);
 			return list;
+}
+public ArrayList<String> myMeanBuddyRatingBar(){//1 de gemiddelde rating voor elke buddy 2 de buddy's
+	String r1 = "[";
+	String r2 ="[";
+
+	ArrayList<String> list =UserManager.getInstance().getUserNames();
+	Iterator<String> ix = list.iterator();
+	while(ix.hasNext()){
+		String buddy = ix.next();
+		int i = 0;
+		int rating =0;
+		int gem = 0;
+	for(Activity act: UserManager.getInstance().getActivities()){
+		if(act.getType().equals("ZelfStudie")){
+			IndividualStudy scol = (IndividualStudy) act;
+			if(scol.getStudyBuddy().equals(buddy)){
+				rating = rating + scol.getRating();
+				if(scol.getRating()!=0){i++;}
+			}
+		}
+	}
+	if(rating!=0&&i!=0){
+	gem = rating/i;}
+	else{gem = 0;}
+	if (i!=0){
+	r1 = r1 + gem;
+	r2 = r2 +"'"+buddy+"'";
+	if(ix.hasNext()){
+		r1 = r1+",";
+		r2 = r2 +",";
+	}}
+	}
+	r1 = r1+"]";
+	r2 = r2 +"]";
+	ArrayList<String> listje = new ArrayList<String>();
+			listje.add(0,r1);
+			listje.add(1,r2);
+			return listje;
 }
 }
