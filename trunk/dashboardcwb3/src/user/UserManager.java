@@ -376,7 +376,7 @@ public class UserManager {
 		for(Activity act:ActivityManager.getInstance().getAllActivities()){
 			if(act.getType().equals(type)){
 				CurricularActivity scol = (CurricularActivity) act;
-				if(scol.getStop().equals(null)&&scol.getCourse().toString().equals(courseName)){
+				if(scol.getStop()==null&&scol.getCourse().toString().equals(courseName)){
 					result++;
 				}
 			}
