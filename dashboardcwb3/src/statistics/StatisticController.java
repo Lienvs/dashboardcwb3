@@ -4,6 +4,7 @@ import goals.GoalController;
 import java.util.*;
 
 import activity.Activity;
+import activity.CurricularActivity;
 import activity.ExtraCurricularActivity;
 import activity.IndividualStudy;
 
@@ -426,7 +427,7 @@ public ArrayList<String> myMeanRatingBar(){//1 de gemiddelde rating voor elk vak
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
 		if(act.getActivityType().equals("scolair")){
-			ExtraCurricularActivity scol = (ExtraCurricularActivity) act;
+			CurricularActivity scol = (CurricularActivity) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				rating = rating + scol.getRating();
 				if(scol.getRating()!=0){i++;}
