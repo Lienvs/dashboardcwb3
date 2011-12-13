@@ -50,9 +50,9 @@ public String myPlacesCheese(){
 }
 public String myTypeCheese(Course course){
 	String result = "[";
-	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie(course) + "],";
-	result = result +"['" +  "Les" + "'," + data.getDuurLes(course) + "],";
-	result = result +"['" +  "Oefenzitting" + "'," + data.getDuurOefenzitting(course) + "]";
+	result = result +"['" +  "Individual study" + "'," + data.getDuurZelfstudie(course) + "],";
+	result = result +"['" +  "Lecture" + "'," + data.getDuurLes(course) + "],";
+	result = result +"['" +  "Practice" + "'," + data.getDuurOefenzitting(course) + "]";
 	result = result + "]";
 	return result;
 	
@@ -67,9 +67,9 @@ public String myActiTypeCheese(){
 }
 public String myTypeCheese(){
 	String result = "[";
-	result = result +"['" +  "Zelfstudie" + "'," + data.getDuurZelfstudie() + "],";
-	result = result +"['" +  "Les" + "'," + data.getDuurLes() + "],";
-	result = result +"['" +  "Oefenzitting" + "'," + data.getDuurOefenzitting() + "]";
+	result = result +"['" +  "Individual study" + "'," + data.getDuurZelfstudie() + "],";
+	result = result +"['" +  "Lecture" + "'," + data.getDuurLes() + "],";
+	result = result +"['" +  "Practice" + "'," + data.getDuurOefenzitting() + "]";
 	result = result + "]";
 	return result;
 	
