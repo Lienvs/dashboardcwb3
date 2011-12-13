@@ -10,10 +10,12 @@ import activity.Activity;
 import activity.ActivityManager;
 import activity.CurricularActivity;
 import course.Course;
+import course.CourseManager;
 public class GoalController {
 	private Date startDate;
 	private Date currentDate;
 	private Date stopDate;
+	private HashMap<String, Integer> map;
 	
 	
 	public GoalController(){
@@ -36,39 +38,46 @@ public class GoalController {
 		
 		
 	}
-	public int getGoal(Course course){
+	public int getGoal(String courseName){
 		int result = 0;
-	
-		int i =0; boolean ja = true;
-		while(i<UserManager.getInstance().getCourses().size()&&ja){
-			Course c = UserManager.getInstance().getCourses().get(i);
-			if(c.toString().equals(course.toString())){
-				ja = false;
-			}
-		i++;}
-		ArrayList<Integer> list = UserManager.getInstance().getGoals();
-		if(!ja){result = list.get(i-1);
+		HashMap<String, Integer> map= new HashMap<String,Integer>();
+		ArrayList<Integer> list = new ArrayList<Integer>(9);
+		if(UserManager.getInstance().getGoals()!=null){
+			ArrayList<Integer> lijst = UserManager.getInstance().getGoals();
+			int i =0;
+			while(i<CourseManager.getInstance().getAllCourses().size()){
+				int getal=0;
+				String vak = CourseManager.getInstance().getAllCourses().get(i).toString();
+				if(lijst.get(i)!=null){
+					getal = lijst.get(i);
+					
+					
+				}
+				map.put(vak, getal);
+				list.set(i, getal);
+			i++;}
+			result =map.get(courseName);
 		}
+		
+		UserManager.getInstance().setGoals(list);
+		
 		return result;
 	}
 	
-	public void setGoal(Course course,double time){//tijd in uren(kan ook naar minuten aangepast worden)
-	double tijd = time*60;
-	int t = (int) tijd;
-	int i =0; boolean ja = true;
-	while(i<UserManager.getInstance().getCourses().size()&&ja){
-		Course c = UserManager.getInstance().getCourses().get(i);
-		if(c.toString().equals(course.toString())){
-			ja = false;
+	public int getDifGoal(String courseName){
+		int studieTime=0;
+		int i = 0;
+		for(Activity act : UserManager.getInstance().getActivities()){
+			if(act.getCourse().toString().equals(courseName)){
+				if(act.getStart().compareTo(startDate)<0 && act.getStart().compareTo(stopDate)>0){
+				studieTime = studieTime+act.getDuration();
+				}
+			}
 		}
-	i++;}
-	ArrayList<Integer> list = UserManager.getInstance().getGoals();
-	
-	if(!ja&&UserManager.getInstance().getCourses().size()!=0){list.set(i-1,t);
+		int goal = getGoal(courseName);
+		return goal*60-studieTime;
 	}
 	
-	UserManager.getInstance().setGoals(list);
-	}
 
 	
 			
