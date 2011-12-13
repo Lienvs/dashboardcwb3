@@ -37,6 +37,7 @@ public class RegisterController {
 		boolean freeRNumber = true;
 		boolean passwordConfirmed=false;
 		boolean allFieldsFilledIn = false;
+		boolean chosenGender = true;
 		
 		 //Controle of username nog niet bestaat		
 		if (UserManager.getInstance().exist(userName)){
@@ -49,7 +50,11 @@ public class RegisterController {
 			freeRNumber = false;
 			registered = "rNumber";
 		}
-		
+		else if(gender.equals("[choose your gender]")){
+			chosenGender = false;
+			registered = "nogender";
+			
+		}
 		//Paswoord en confirmed paswoord moeten gelijk zijn
 		if (password.equals(confirmedPassword)){
 			passwordConfirmed=true;
@@ -67,7 +72,7 @@ public class RegisterController {
 		}
 		
 		//Als alle controles positief blijken, maak nieuwe user aan
-		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn&&freeRNumber){
+		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn&&freeRNumber&&chosenGender){
 			User user = new User(userName,password,firstName,lastName,gender,rNumber);
 			UserManager.getInstance().setCurrentUserName(user.getUserName());
 			UserManager.getInstance().addUser(user);
