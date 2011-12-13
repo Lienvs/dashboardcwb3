@@ -1,10 +1,12 @@
 package user;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 import activity.Activity;
 import activity.ActivityManager;
+import activity.CurricularActivity;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -369,7 +371,18 @@ public class UserManager {
 		    }
 		}
 	}
-	
+	public int getAmountUsers(Date start, String courseName, String type){
+		int result = -1;
+		for(Activity act:ActivityManager.getInstance().getAllActivities()){
+			if(act.getType().equals(type)){
+				CurricularActivity scol = (CurricularActivity) act;
+				if(scol.getStop().equals(null)&&scol.getCourse().toString().equals(courseName)){
+					result++;
+				}
+			}
+		}
+		return result;
+	}
 	
 	
 	
