@@ -5,6 +5,7 @@ import java.util.*;
 
 import activity.Activity;
 import activity.ExtraCurricularActivity;
+import activity.IndividualStudy;
 
 import course.Course;
 
@@ -428,7 +429,7 @@ public ArrayList<String> myMeanRatingBar(){//1 de gemiddelde rating voor elk vak
 			ExtraCurricularActivity scol = (ExtraCurricularActivity) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				rating = rating + scol.getRating();
-				i++;
+				if(scol.getRating()!=0){i++;}
 			}
 		}
 	}
@@ -448,5 +449,37 @@ public ArrayList<String> myMeanRatingBar(){//1 de gemiddelde rating voor elk vak
 			list.add(0,r1);
 			list.add(1,r2);
 			return list;
+}
+public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
+	ArrayList<String> list = new ArrayList<String>();
+	String waarden = "[";
+	String names ="[";
+	int j = 0;
+	for(String buddy: UserManager.getInstance().getUserNames() ){
+		int w = 0;
+		for(Activity act:UserManager.getInstance().getActivities()){
+			if(act.getType().equals("Zelfstudie")){
+			IndividualStudy stu = (IndividualStudy) act;
+				if(stu.getStudyBuddy().equals(buddy)){
+					w++;
+				}
+			}	
+		}
+		if(w!=0){
+			if(j==0){
+			waarden=waarden +w;
+			names = names +"'"+buddy+"'";
+			j++;
+			}
+			else{waarden=waarden +","+w;
+			names = names + ","+buddy;
+			}
+		}
+	}
+	waarden = waarden+"]";
+	names = names ="]";
+	list.add(0,waarden);
+	list.add(1,names);
+	return list;
 }
 }
