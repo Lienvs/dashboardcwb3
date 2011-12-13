@@ -187,7 +187,7 @@ public abstract class Activity {
 	public abstract String toString();
 	
 	public abstract String getType(); 
-	
+		
 	public abstract Course getCourse();
 	
 
