@@ -44,7 +44,7 @@ function validate(evt) {
 		</br>
 	
 			<%}
-			</br>
+
 		}
 		else{
 			for(int i=0; i<courses.size();i++){%>
