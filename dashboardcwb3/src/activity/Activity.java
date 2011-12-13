@@ -141,32 +141,14 @@ public abstract class Activity {
 			}
 		}
 		
-		return duur +1;
+		return duur+1;
 	}
 	
 	public String getDurationToString() {
 		int minuten = getDuration();
 		int uur = minuten/60;
 		minuten = minuten%60;
-		String uren = "";
-		String minuuuuuten = "";
-		String output;
-		if(uur<10){
-			uren = "0" + uur;
-		}
-		if(minuten<10){
-			minuuuuuten = "0" + uur;
-		}
-		if(uur==0){
-			output = minuuuuuten;
-		}
-		if(uur==1){
-			output = uren + "hour" + minuuuuuten + "min";
-		}
-		else {
-			output = uren + "hours" + minuuuuuten + "min";
-		}
-		return output;
+		return uur + "h" + minuten + "min";
 	}
 	
 	
