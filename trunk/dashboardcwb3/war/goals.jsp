@@ -24,7 +24,10 @@ function validate(evt) {
   }
 };
 </script>
-<b>Please fill in your goals for this week.</b></br>
+<font size="6">
+<b>Define your goals for the week</b></font>
+</br>
+</br>
 <li>  a week is defined from Monday 0 am to Sunday 12 pm </li></br>
 <li>  if you happen not to update your goals for the new week, we will set the identical goals as given for the previous week</li> </br>
 <li>  it is always possible to overwrite your goals.</li>
@@ -39,7 +42,7 @@ function validate(evt) {
 			<%=courses.get(i).toString()%>:
 					<select id="test"  name="<%=courses.get(i).toString()%>">
 		        	<%for(int j=0; j<=30;j++){%>
-						<option value="<%=j%>"><%=j%></option><%}%>
+						<option value="<%=j%>"><%=j%></option><%}%> 
 		        	</select>
 		</br>
 	
@@ -47,14 +50,19 @@ function validate(evt) {
 
 		}
 		else{
-			for(int i=0; i<courses.size();i++){%>
-				<%=courses.get(i).toString()%>:
-				<input type="int" class="numbersOnly" onkeypress='validate(event)' name="<%=courses.get(i).toString()%>" value=<%=goal.get(i)%>>	</br>
+			for(int k=0; k<courses.size();k++){%>
+				<%=courses.get(k).toString()%> :
+				 
+					<select id="test"  name="<%=courses.get(k).toString()%>">
+		        	<%for(int l=0; l<=30;l++){%>
+						<option value="<%=l%>"> <%=l%></option><%}%>
+		        	</select>
+					 (current goal : <%=goal.get(k)%> )</br>
 			<%}
 		
 		
 		}}%>
 		
 	
-<input type="submit" id="submit" class="check" value="Submit">	
+<input type="submit" id="submit" class="check" value="Submit">
 </form>
