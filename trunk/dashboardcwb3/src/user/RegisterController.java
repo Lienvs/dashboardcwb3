@@ -31,33 +31,47 @@ public class RegisterController {
 	 * @param rNumber
 	 * @return
 	 */
-	public boolean register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
-		boolean registered = false;
+	public String register(String userName,String password,String confirmedPassword, String firstName, String lastName, String gender, String rNumber) {
+		String registered = "leeg";
 		boolean freeUserName = true;
+		boolean freeRNumber = true;
 		boolean passwordConfirmed=false;
 		boolean allFieldsFilledIn = false;
 		
-		 //Controle of username en rNummer nog niet bestaan		
-		if (UserManager.getInstance().exist(userName) | UserManager.getInstance().getRnumbers().contains(rNumber)){
+		 //Controle of username nog niet bestaat		
+		if (UserManager.getInstance().exist(userName)){
 			freeUserName = false;
-		}		
+			registered = "userName";
+		}
+		
+		//Controle of rmummer nog niet bestaat
+		if(UserManager.getInstance().getRnumbers().contains(rNumber))	{
+			freeRNumber = false;
+			registered = "rNumber";
+		}
 		
 		//Paswoord en confirmed paswoord moeten gelijk zijn
 		if (password.equals(confirmedPassword)){
 			passwordConfirmed=true;
-		}		
+		}
+		else if(!password.equals(confirmedPassword)){
+			registered = "password";
+			}
 		
 		//Controleer of alle velden ingevuld zijn
 		if(userName!=""&password!=""&firstName!=""&lastName!=""&gender!=""&rNumber!=""){
 			allFieldsFilledIn = true;
-		}		
+		}	
+		else if(!(userName!=""&password!=""&firstName!=""&lastName!=""&gender!=""&rNumber!="")){
+			registered = "fields";
+		}
 		
 		//Als alle controles positief blijken, maak nieuwe user aan
-		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn){
-			registered = true;
+		if(freeUserName&&passwordConfirmed&&allFieldsFilledIn&&freeRNumber){
 			User user = new User(userName,password,firstName,lastName,gender,rNumber);
 			UserManager.getInstance().setCurrentUserName(user.getUserName());
 			UserManager.getInstance().addUser(user);
+			registered = "ok";
 		}	
 		return registered;
 	}
