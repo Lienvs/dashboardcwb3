@@ -78,6 +78,8 @@
 			
 			<div id="chart11"></div>
 			<div id="chart12"></div>
+			
+			<div id="chart13"></div>
 		</div>
 		<h3><a href="#">My courses</a></h3>
 		<div>

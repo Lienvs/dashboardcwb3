@@ -30,12 +30,12 @@
 	 
 <script  language="javascript" type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script  language="javascript" type="text/javascript" src="/plugins/jqplot.pointLabels.min.js"></script>
-<!--<script  language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>-->
+<script  language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
 
-<!--<script language="javascript" type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>-->
-<!--<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>-->
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
 
 
 
@@ -50,51 +50,6 @@
   <script  type="text/javascript">
   $(document).ready(function() {
   
-  	var s1 = [200, 600, 700, 1000];
-    var s2 = [460, -210, 690, 820];
-    var s3 = [-260, -440, 320, 200];
-    // Can specify a custom tick Array.
-    // Ticks should match up one for each y value (category) in the series.
-    var ticks = ['May', 'June', 'July', 'August'];
-     
-    var plot3 = jQuery.jqplot('chart3', [s1, s2, s3], {
-        // The "seriesDefaults" option is an options object that will
-        // be applied to all series in the chart.
-        seriesDefaults:{
-            renderer:$.jqplot.BarRenderer,
-            rendererOptions: {fillToZero: true}
-        },
-        // Custom labels for the series are specified with the "label"
-        // option on the series option.  Here a series option object
-        // is specified for each series.
-        series:[
-            {label:'Hotel'},
-            {label:'Event Regristration'},
-            {label:'Airfare'}
-        ],
-        // Show the legend and put it outside the grid, but inside the
-        // plot container, shrinking the grid to accomodate the legend.
-        // A value of "outside" would not shrink the grid and allow
-        // the legend to overflow the container.
-        legend: {
-            show: true,
-            placement: 'outsideGrid'
-        },
-        axes: {
-            // Use a category axis on the x axis and use our custom ticks.
-            xaxis: {
-                renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
-            },
-            // Pad the y axis just a little so bars can get close to, but
-            // not touch, the grid boundaries.  1.2 is the default padding.
-            yaxis: {
-                pad: 1.05,
-                tickOptions: {formatString: '$%d'}
-            }
-        }
-    });
-  	
   	
   	<%StatisticController stat=new StatisticController();%>
     <%ArrayList<Course> coursesstudent=UserManager.getInstance().getCourses();%>
@@ -141,6 +96,46 @@
    		var l3=<%=stat.myCourseBar().get(0)%>;//ipv chart3
    		var l4=<%=stat.myCourseBar().get(1)%>;
    		var l5=<%=stat.myCourseBar().get(2)%>;
+   		
+   		var plot3 = $.jqplot('chart3', [l3,l4], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			pointlabels:{show:true},
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My stats'},
+            		{label:'Overal stats'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l5
+            		}
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
+    		});
+   		
+   		
    		
    		var l6=<%=stat.myFunInTime()%>;//half
    		var l7=<%=stat.myNightlifeInTime()%>;//half
@@ -259,6 +254,47 @@
    		var l132=<%=stat.meVSModel().get(1)%>; 
    		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
    		var l134=<%=stat.meVSModel().get(3)%>; 
+   		
+   		var plot13 = $.jqplot('chart13', [l131,l132,l133], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			pointlabels:{show:true},
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My stats'},
+            		{label:'goals'},
+            		{label:'model'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l134
+            		}
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
+    		});
+   		
+   		
    	
    		var l15=<%=stat.overallTime()%>;//int
    		//var l16=<%=stat.getMaximumStudie()%>;
