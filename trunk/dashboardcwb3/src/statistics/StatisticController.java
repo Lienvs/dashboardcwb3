@@ -404,7 +404,7 @@ public String getMaximumStudie(){
 	}
 	int min = maxDuur%60;
 	int uur = maxDuur/60;
-	result = uur+" h "+min + " min " + "for"+ maxCourse.toString();
+	result = uur+" h "+min + " min " + "for "+ maxCourse.toString();
 	}
 	return result;
 }
