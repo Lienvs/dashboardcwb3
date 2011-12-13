@@ -391,7 +391,7 @@ public int overallTime(){
 
 public String getMaximumStudie(){
 	String currentUserName = UserManager.getInstance().getCurrentUserName();
-	String result = "You didn't study at all";
+	String result = "0";
 	int maxDuur =0;
 	ArrayList<Course> courseList= UserManager.getInstance().getCourses();
 	if(courseList.size()>0){
@@ -402,7 +402,9 @@ public String getMaximumStudie(){
 			maxCourse = course;
 		}
 	}
-	result = "You studied a maximum of " + maxDuur +"minutes"+ " for " + maxCourse.toString();
+	int min = maxDuur%60;
+	int uur = maxDuur/60;
+	result = uur+" h "+min + " min " + "for"+ maxCourse.toString();
 	}
 	return result;
 }
