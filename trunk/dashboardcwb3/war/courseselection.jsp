@@ -36,7 +36,7 @@ We advise you take  all the courses you are subscribed to for your actual study 
 <form action="/courses" method="post">
 	<%ArrayList courses = null; courses=(ArrayList)request.getAttribute("course");
 	for(int i=0 ; i<courses.size(); i++){%>
-		<input type="checkbox" class="check" id="<%out.print(courses.get(i).toString());%>" name="<%out.print(courses.get(i).toString());%>"/><label for="<%out.print(courses.get(i).toString());%>" style="width:400px"><%out.print(courses.get(i).toString());%></label></br>
+		<input type="checkbox" class="check" id="<%out.print(courses.get(i).toString());%>" name="<%out.print(courses.get(i).toString());%>"/><label for="<%out.print(courses.get(i).toString());%>" style="width:800px"><%out.print(courses.get(i).toString());%></label></br>
 	<%}%></br>
 	<input type="submit" class="check" value="Submit" name="submitcourse"/>
 </form>	
