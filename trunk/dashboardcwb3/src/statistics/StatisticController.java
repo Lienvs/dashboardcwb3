@@ -74,17 +74,27 @@ public String myTypeCheese(){
 	return result;
 	
 }
-public String myTypeBar(Course course){//geeft 3 getallen in een string voor bar-stat: Les/oef/zs (samen met volgend methode in 1 stat!!)
+private String myTypeBar(Course course){//geeft 3 getallen in een string voor bar-stat: Les/oef/zs (samen met volgend methode in 1 stat!!)
 	String result = "[";
 	result= result+ data.getDuurLes(course)+","+data.getDuurOefenzitting(course)+","+data.getDuurZelfstudie(course)+"]";
 	return result;
 	
 }
-public String overallMeanTypeBar(Course course){//zelfde als hierboven, ma dan voor het gemiddelde
+private String overallMeanTypeBar(Course course){//zelfde als hierboven, ma dan voor het gemiddelde
 	String result = "[";
 	result= result+ data.getGemiddeldeLes(course)+","+data.getGemiddeldeOefenzitting(course)+","+data.getGemiddeldeStudie(course)+"]";
 	return result;
 
+}
+
+public ArrayList<String> typeBar(Course course){//1mytype 2 overallmean type 3types
+	ArrayList<String> list = new ArrayList<String>();
+	list.add(myTypeBar(course));
+	list.add(overallMeanTypeBar(course));
+	
+	list.add("'"+"Lecture"+"',"+"'"+"Practice"+"',"+"'"+"Individual study"+"'");
+	return list;
+	
 }
 public ArrayList<String> myCourseBar(){//geeft 2 strings: het eerste zijn de P-waarden (zoals nodig voor grafiek) de 2de de O-waarden en  de 3de zijn de bijhorende vaknamen(zoals nodig voor assen van grafiek)
 	String result1 = "[";
