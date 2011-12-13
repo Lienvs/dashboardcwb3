@@ -82,4 +82,7 @@ public class IndividualStudy extends CurricularActivity {
 	public String getType(){
 		return "Zelfstudie";
 	}
+	public String toString(){
+		return "You are studying "+ getCourse().toString() + " right now.";
+	}
 }

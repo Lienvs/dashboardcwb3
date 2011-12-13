@@ -22,4 +22,7 @@ public class Practice extends CurricularActivity{
 	public String getType(){
 		return "Oefenzitting";
 	}
+	public String toString(){
+		return "You are attending a practice of " + getCourse().toString();
+	}
 }

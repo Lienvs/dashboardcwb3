@@ -43,4 +43,7 @@ public class Lecture extends CurricularActivity {
 		postComment(comment);
 		setRating(rating);
 	}
+	public String toString(){
+		return "You are attending a lecture of " + getCourse().toString();
+	}
 }

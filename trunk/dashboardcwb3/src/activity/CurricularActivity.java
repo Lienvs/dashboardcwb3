@@ -45,9 +45,7 @@ public abstract class CurricularActivity extends Activity{
 	 * scholair activiteit, het type van de scholaire activiteit en voor welk vak.
 	 *  @return result (type: String)
 	 */
-	public String toString(){
-		String result = "U studeert momenteel "+course.toString() + " "+getType() + ".";
-		return result;
-	}
+	public abstract String toString();
+		
 	public abstract void submitVragenLijst(String place, String studyType, String comment, int rating,String studybuddy);
 }
