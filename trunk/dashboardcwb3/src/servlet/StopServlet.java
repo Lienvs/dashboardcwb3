@@ -43,13 +43,6 @@ public class StopServlet extends HttpServlet{
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
 			}
-	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 
-			throws ServletException, IOException {
-		
-			doPost(req,resp);
-	}
-	
 
 }
