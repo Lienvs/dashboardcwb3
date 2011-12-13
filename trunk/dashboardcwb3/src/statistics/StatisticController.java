@@ -501,8 +501,8 @@ public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 d
 	}
 	waarden = waarden+"]";
 	names = names ="]";
-	list.add(0,waarden);
-	list.add(1,names);
+	list.add(waarden);
+	list.add(names);
 	return list;
 }
 public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor elke locatie 2 de locaties
