@@ -29,17 +29,41 @@ public class RegisterServlet extends HttpServlet{
 				String lastName = req.getParameter("lastname");
 				String gender = req.getParameter("gender");
 				String rNumber = req.getParameter("rnumber");
-				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber)){
+				if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("ok")){
 					CourseManager.getInstance().makeCourses();
 					req.setAttribute("course", CourseManager.getInstance().getAllCourses());					
 					getServletContext().getRequestDispatcher("/courseselection.jsp").forward(req, resp);   //courseselection.jsp
 				}
-				else{
-					req.setAttribute("message1", "Sign up failed.");
-					req.setAttribute("message2", "Please try again, or login.");
+				
+				else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("userName")){
+					
+					req.setAttribute("message1", "Sign-up failed");
+					req.setAttribute("message2", "Username already in use");
 					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 				}
-	
+				else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("rNumber")){
+					
+					req.setAttribute("message1", "Sign-up failed");
+					req.setAttribute("message2", "R-number already in use");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+				}
+				else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("password")){
+					
+					req.setAttribute("message1", "Sign-up failed");
+					req.setAttribute("message2", "Unmatching passwords");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+				}
+                else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("fields")){
+					
+					req.setAttribute("message1", "Sign-up failed");
+					req.setAttribute("message2", "Incomplete form");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+				}
+                else{
+                	req.setAttribute("message1", "Sign-up failed");
+					req.setAttribute("message2", "Please try again, or login.");
+					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
+                }
 			}
 }
 
