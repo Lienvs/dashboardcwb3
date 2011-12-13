@@ -40,27 +40,13 @@ public class GoalController {
 	}
 	public int getGoal(String courseName){
 		int result = 0;
-		HashMap<String, Integer> map= new HashMap<String,Integer>();
-		ArrayList<Integer> list = new ArrayList<Integer>(9);
-		if(UserManager.getInstance().getGoals()!=null){
-			ArrayList<Integer> lijst = UserManager.getInstance().getGoals();
-			int i =0;
-			while(i<CourseManager.getInstance().getAllCourses().size()){
-				int getal=0;
-				String vak = CourseManager.getInstance().getAllCourses().get(i).toString();
-				if(lijst.size()!=0){
-					getal = lijst.get(i);
-				}
-					
-				
-				map.put(vak, getal);
-				list.set(i, getal);
-			i++;}
-			result =map.get(courseName);
+		if(UserManager.getInstance().getGoals().size()==0){
+			
 		}
-		
-		UserManager.getInstance().setGoals(list);
-		
+		else{
+			int index = UserManager.getInstance().getUserNames().indexOf(courseName);
+			result = UserManager.getInstance().getGoals().get(index);
+		}
 		return result;
 	}
 	
