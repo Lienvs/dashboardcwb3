@@ -62,7 +62,7 @@ function validate(evt) {
 		
 		
 		}}%>
-		
+		</br>
 	
 <input type="submit" id="submit" class="check" value="Submit">
 </form>
