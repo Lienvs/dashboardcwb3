@@ -13,8 +13,11 @@
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 	<div id="one">
-	 <font size="+2"><font color="black">Is the activity you want to track study-related or not ?</font></font> 
-		</br>
+	<font size="6">
+	<b>Start tracking here</b></font>
+	</br>
+	</br>
+	 <font size="3"><font color="black">Is the activity you want to track study-related or not ?</font></font> 
 		</br>
 		<input type="button" id="onea" class="check" value="Yes" name="wata" > </br>
 		<input type="button" id="oneb" class="check" value="No" name="watb" >
