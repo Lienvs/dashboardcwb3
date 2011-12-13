@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import javax.servlet.*;
+
 import user.LoginController;
 import user.UserManager;
 import course.CourseManager;
@@ -35,5 +36,13 @@ public class LoginServlet extends HttpServlet {
 				}
 
 		}
+	
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+
+			throws ServletException, IOException {
+		
+			doPost(req,resp);
+	}
 
 }

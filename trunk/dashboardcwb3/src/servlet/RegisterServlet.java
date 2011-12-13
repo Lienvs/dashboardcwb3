@@ -65,6 +65,13 @@ public class RegisterServlet extends HttpServlet{
 					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
                 }
 			}
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+
+			throws ServletException, IOException {
+		
+			doPost(req,resp);
+	}
 }
 
 

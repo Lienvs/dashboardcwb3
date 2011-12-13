@@ -71,44 +71,17 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("extra", extra);
 				//einde attributen
 				
-				//stats
-				req.setAttribute("myCoursesCheese", statController.myCoursesCheese());
-				req.setAttribute("myPlacesCheese", statController.myPlacesCheese());
-				ArrayList<String> myCourseBar = statController.myCourseBar();
 				
-				req.setAttribute("myCourseBar1", myCourseBar.get(0));
-				req.setAttribute("myCourseBar2", myCourseBar.get(1));
-				req.setAttribute("myCourseBar3", myCourseBar.get(2));
-				
-				req.setAttribute("myFunInTime", statController.myFunInTime());
-				req.setAttribute("myNightlifeInTime", statController.myNightlifeInTime());
-				req.setAttribute("mySleepInTime", statController.mySleepInTime());
-				req.setAttribute("mySportInTime", statController.mySportInTime());
-				req.setAttribute("myTimeInTime", statController.myTimeInTime());
-				
-				req.setAttribute("overallMeanTimeInTime", statController.overallMeanTimeInTime());
-				//req.setAttribute("meVSModel", statController.meVSModel());
-				//req.setAttribute("myStudyVSGoal", statController.myStudyVSGoal());
-				
-
-				ArrayList<String> statscourse=new ArrayList<String>();
-				for(int i=0;i<courses.size();i++){
-					statscourse.add(statController.myTypeCheese(courses.get(i)));
-					statscourse.add(statController.overallMeanTypeBar(courses.get(i)));	
-					//statscourse.add(statController.meVSGoal2(courses.get(i)));
-					//statscourse.add(statController.meVSModel2(courses.get(i)));
-					statscourse.add(statController.myTypeBar(courses.get(i)));
-					req.setAttribute(courses.get(i).toString(), statscourse);
-					statscourse.clear();
-				}
-				req.setAttribute("numberCourses", courses.size());
-				//req.setAttribute("", statController.);
-				//req.setAttribute("", statController.);
-				//req.setAttribute("", statController.);
-				//einde stats
 				getServletContext().getRequestDispatcher("/home.jsp").forward(req, resp);	
 	
 			}
 	
+	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+
+			throws ServletException, IOException {
+		
+			doPost(req,resp);
+	}
 
 }
