@@ -296,11 +296,48 @@
    		
    		
    	
-   		var l15=<%=stat.overallTime()%>;//int
+   		//var l15=<%=stat.overallTime()%>;//int
    		//var l16=<%=stat.getMaximumStudie()%>;
    		
    		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
    		var l172=<%=stat.myMeanRatingBar().get(1)%>; //bar==>niet
+   		
+   		var plot14 = $.jqplot('chart14', [l171], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			pointlabels:{show:true},
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My ratings'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l172
+            		}
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
+    		});
    		
    		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
    		//var l182=<%=stat.myStuddyBuddys().get(1)%>;  //bar==>niet
@@ -308,8 +345,83 @@
    		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
    		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>;    //bar==> niet
    		
+   		var plot15 = $.jqplot('chart15', [l191], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			pointlabels:{show:true},
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My ratings'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l192
+            		}
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
+    		});
+   		
+   		
    		var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
    		var l202=<%=stat.myMeanBuddyRatingBar().get(1)%>;//bar==>niet
+   		
+   		var plot16 = $.jqplot('chart16', [l201], {
+       		// The "seriesDefaults" option is an options object that will
+        	// be applied to all series in the chart.
+        		seriesDefaults:{
+            		renderer:$.jqplot.BarRenderer,
+           			pointlabels:{show:true},
+        		},
+        	// Custom labels for the series are specified with the "label"
+        	// option on the series option.  Here a series option object
+        	// is specified for each series.
+       			series:[
+            		{label:'My ratings'}
+        		],
+        	// Show the legend and put it outside the grid, but inside the
+        	// plot container, shrinking the grid to accomodate the legend.
+        	// A value of "outside" would not shrink the grid and allow
+        	// the legend to overflow the container.
+        		legend: {
+            		show: true,
+            		placement: 'outsideGrid'
+        		},
+        		axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            		xaxis: {
+                		renderer: $.jqplot.CategoryAxisRenderer,
+                		ticks: l202
+            		}
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
+    		});
    		
    		
    		
@@ -319,11 +431,7 @@
     			
     			<%for(int a=0; a<coursesstudent.size();a++){%>
     					var c<%=a%> = <%=stat.myTypeCheese(coursesstudent.get(a))%>;
-    					var d<%=a%> = <%=stat.myTypeBar(coursesstudent.get(a))%>;
-    					var e<%=a%> = <%=stat.overallMeanTypeBar(coursesstudent.get(a))%>;
-    					var f<%=a%> = <%=stat.meVSGoal2(coursesstudent.get(a))%>;
-    					var g<%=a%> = <%=stat.meVSModel2(coursesstudent.get(a))%>;
-    					var g<%=a%> = <%=stat.myRatingBar(coursesstudent.get(a))%>;
+    					
     					
     					
     					var plotc<%=a%> = jQuery.jqplot ('chartc<%=a%>', [c<%=a%>], { 
@@ -340,6 +448,91 @@
         						show: true
     						}
 	    				});
+	    				
+	    				var d1<%=a%> = <%=stat.typeBar(coursesstudent.get(a)).get(0)%>;
+    					var d2<%=a%> = <%=stat.typeBar(coursesstudent.get(a)).get(1)%>;
+    					
+    					var plotd<%=a%> = $.jqplot('chartd<%=a%>', [d1<%=a%>], {
+       					// The "seriesDefaults" option is an options object that will
+        				// be applied to all series in the chart.
+        					seriesDefaults:{
+            					renderer:$.jqplot.BarRenderer,
+           						pointlabels:{show:true},
+        					},
+        				// Custom labels for the series are specified with the "label"
+        				// option on the series option.  Here a series option object
+        				// is specified for each series.
+       						series:[
+            					{label:'My stats'}
+        					],
+        				// Show the legend and put it outside the grid, but inside the
+        				// plot container, shrinking the grid to accomodate the legend.
+        				// A value of "outside" would not shrink the grid and allow
+        				// the legend to overflow the container.
+        					legend: {
+            					show: true,
+            					placement: 'outsideGrid'
+        					},
+        					axes: {
+            				// Use a category axis on the x axis and use our custom ticks.
+            					xaxis: {
+                					renderer: $.jqplot.CategoryAxisRenderer,
+                					ticks: d2<%=a%>
+            					}
+            				// Pad the y axis just a little so bars can get close to, but
+            				// not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        					},
+        					title: {
+       							text: 'comparison between you and the average for each course',   // title for the plot,
+        						show: true
+    						}
+    					});
+    					
+    					
+    					var e<%=a%> = <%=stat.meVSGoal2(coursesstudent.get(a))%>; //int
+    					var f<%=a%> = <%=stat.meVSModel2(coursesstudent.get(a))%>;//int
+    					
+    					
+    					
+    					var g<%=a%> = <%=stat.myRatingBar(coursesstudent.get(a))%>;
+    					
+    					var plotg<%=a%> = $.jqplot('chartg<%=a%>', [g<%=a%>], {
+       					// The "seriesDefaults" option is an options object that will
+        				// be applied to all series in the chart.
+        					seriesDefaults:{
+            					renderer:$.jqplot.BarRenderer,
+           						pointlabels:{show:true},
+        					},
+        				// Custom labels for the series are specified with the "label"
+        				// option on the series option.  Here a series option object
+        				// is specified for each series.
+       						series:[
+            					{label:'My ratings'}
+        					],
+        				// Show the legend and put it outside the grid, but inside the
+        				// plot container, shrinking the grid to accomodate the legend.
+        				// A value of "outside" would not shrink the grid and allow
+        				// the legend to overflow the container.
+        					legend: {
+            					show: true,
+            					placement: 'outsideGrid'
+        					},
+        					axes: {
+            				// Use a category axis on the x axis and use our custom ticks.
+            					xaxis: {
+                					renderer: $.jqplot.CategoryAxisRenderer,
+                					ticks: [1,2,3,4,5]
+            					}
+            				// Pad the y axis just a little so bars can get close to, but
+            				// not touch, the grid boundaries.  1.2 is the default padding.
+            		
+        					},
+        					title: {
+       							text: 'comparison between you and the average for each course',   // title for the plot,
+        						show: true
+    						}
+    					});
     			
     			
     			<%}%>
