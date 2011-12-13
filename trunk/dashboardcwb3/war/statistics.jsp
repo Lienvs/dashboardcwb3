@@ -115,7 +115,7 @@
 						<td> This is your current activity </td>
 					<%}
 					else{%>
-						<td><%=scol.get(i).getDuration()%></td>
+						<td><%=scol.get(i).getDurationToString()%></td>
 					<%}%>
 					
 					
@@ -149,7 +149,7 @@
 						<td> This is your current activity </td>
 					<%}
 					else{%>
-						<td><%=extra.get(i).getDuration()%></td>
+						<td><%=extra.get(i).getDurationToString()%></td>
 					<%}%>
 					
 					
