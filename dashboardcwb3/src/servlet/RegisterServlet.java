@@ -65,8 +65,6 @@ public class RegisterServlet extends HttpServlet{
 					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
                 }
 			}
-	
-	
 }
 
 

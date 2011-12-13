@@ -30,6 +30,4 @@ public class LogoutServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 
 		}
-	
-	
 }

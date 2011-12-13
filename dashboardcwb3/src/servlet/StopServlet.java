@@ -43,6 +43,6 @@ public class StopServlet extends HttpServlet{
 			getServletContext().getRequestDispatcher("/home").forward(req, resp);	
 	
 			}
-
+	
 
 }
