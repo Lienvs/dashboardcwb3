@@ -26,6 +26,11 @@
     		});		
 	});
 </script>
+
+<font size="6">
+<b>A short description of each course</b></font>
+</br>
+</br>
 <div id="accordioncourse">
 <%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 	for(int j=0; j<courses.size(); j++){%>
