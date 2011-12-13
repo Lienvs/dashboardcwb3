@@ -21,34 +21,114 @@
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/test/jquery.tzineClock.css" />
 
-<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
-<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
-	<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+<script  language="javascript" "type="text/javascript" src="plugin/jqplot.barRenderer.min.js"></script>
+<script  language="javascript" type="text/javascript" src="plugin/jqplot.pieRenderer.min.js"></script>
+	 
+<script  language="javascript" type="text/javascript" src="plugin/jqplot.categoryAxisRenderer.min.js"></script>
+<script  language="javascript" type="text/javascript" src="plugin/jqplot.pointLabels.min.js"></script>
+<script  language="javascript" type="text/javascript" src="plugin/jqplot.dateAxisRenderer.min.js"></script>
+
+<script language="javascript" type="text/javascript" src="plugin/jqplot.logAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="plugin/jqplot.dateAxisRenderer.min.js"></script>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" media=all/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" media=all/>
+
+<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
 
   <script  type="text/javascript">
   $(document).ready(function() {
-  	//stats aanmaken
-  		
+  
+  	var s1 = [200, 600, 700, 1000];
+    var s2 = [460, -210, 690, 820];
+    var s3 = [-260, -440, 320, 200];
+    // Can specify a custom tick Array.
+    // Ticks should match up one for each y value (category) in the series.
+    var ticks = ['May', 'June', 'July', 'August'];
+     
+    var plot3 = $.jqplot('chart3', [s1, s2, s3], {
+        // The "seriesDefaults" option is an options object that will
+        // be applied to all series in the chart.
+        seriesDefaults:{
+            renderer:$.jqplot.BarRenderer,
+            rendererOptions: {fillToZero: true}
+        },
+        // Custom labels for the series are specified with the "label"
+        // option on the series option.  Here a series option object
+        // is specified for each series.
+        series:[
+            {label:'Hotel'},
+            {label:'Event Regristration'},
+            {label:'Airfare'}
+        ],
+        // Show the legend and put it outside the grid, but inside the
+        // plot container, shrinking the grid to accomodate the legend.
+        // A value of "outside" would not shrink the grid and allow
+        // the legend to overflow the container.
+        legend: {
+            show: true,
+            placement: 'outsideGrid'
+        },
+        axes: {
+            // Use a category axis on the x axis and use our custom ticks.
+            xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                ticks: ticks
+            }
+        }
+    });
   	
-   		var l1=<%=request.getAttribute("myCoursesCheese")%>;
-	    var l2=<%=request.getAttribute("myPlacesCheese")%>;
-	    var l3=<%=request.getAttribute("myCourseBar1")%>;
-	    var l4=<%=request.getAttribute("myCourseBar2")%>;
-	    var ticks=<%=request.getAttribute("myCourseBar3")%>;
-	    var l6=<%=request.getAttribute("myFunInTime")%>;
-	    var l7=<%=request.getAttribute("myNightlifeInTime")%>;
-	    var l8=<%=request.getAttribute("mySleepInTime")%>;
-	    var l9=<%=request.getAttribute("mySportInTime")%>;
-	    var l10=<%=request.getAttribute("myTimeInTime")%>;
-	    var l11=<%=request.getAttribute("overallMeanTimeInTime")%>;
+  	
+  	<%StatisticController stat=new StatisticController();%>
+    <%ArrayList<Course> coursesstudent=UserManager.getInstance().getCourses();%>
+  	
+  	
 
-
+  	
+   		var l1=<%=stat.myCoursesCheese()%>;
+   		var l2=<%=stat.myPlacesCheese()%>;
+   		
+   		var l3=<%=stat.myCourseBar().get(0)%>;
+   		var l4=<%=stat.myCourseBar().get(1)%>;
+   		var l5=<%=stat.myCourseBar().get(2)%>;
+   		
+   		var l6=<%=stat.myFunInTime()%>;
+   		
+   		var l7=<%=stat.myNightlifeInTime()%>;
+   		var l8=<%=stat.mySleepInTime()%>;
+   		var l9=<%=stat.mySportInTime()%>;
+   		
+   		var l10=<%=stat.myTimeInTime()%>;
+   		
+   		var l11=<%=stat.overallMeanTimeInTime()%>;
+   		var l12=<%=stat.overallMeanFunInTime()%>;
+   		
+   		var l131=<%=stat.meVSModel().get(0)%>;  //arr:1wat al gedaan,2 goals, 3 modeltraject,4 vakken
+   		var l132=<%=stat.meVSModel().get(1)%>; 
+   		var l133=<%=stat.meVSModel().get(2)%>; 
+   		var l134=<%=stat.meVSModel().get(3)%>; 
+   		
+   		var l14=<%=stat.myTime()%>;	//int
+   		var l15=<%=stat.overallTime()%>;//int
+   		//var l16=<%=stat.getMaximumStudie()%>;
+   		
+   		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
+   		var l172=<%=stat.myMeanRatingBar().get(1)%>;
+   		
+   		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
+   		//var l182=<%=stat.myStuddyBuddys().get(1)%>;
+   		
+   		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
+   		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>; 
+   		
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,
 	      		width: 500,
@@ -78,56 +158,84 @@
     			}
 	    	});
 
-			var plot3 = $.jqplot('chart3', [l3,l4], {
-       		// The "seriesDefaults" option is an options object that will
-        	// be applied to all series in the chart.
-        		seriesDefaults:{
-            		renderer:$.jqplot.BarRenderer,
-           			pointlabels:{show:true},
-        		},
-        	// Custom labels for the series are specified with the "label"
-        	// option on the series option.  Here a series option object
-        	// is specified for each series.
-       			series:[
-            		{label:'My stats'},
-            		{label:'Overal stats'}
-        		],
-        	// Show the legend and put it outside the grid, but inside the
-        	// plot container, shrinking the grid to accomodate the legend.
-        	// A value of "outside" would not shrink the grid and allow
-        	// the legend to overflow the container.
-        		legend: {
-            		show: true,
-            		placement: 'outsideGrid'
-        		},
-        		axes: {
-            // Use a category axis on the x axis and use our custom ticks.
-            		xaxis: {
-                		renderer: $.jqplot.CategoryAxisRenderer,
-                		ticks: ticks
-            		},
-            // Pad the y axis just a little so bars can get close to, but
-            // not touch, the grid boundaries.  1.2 is the default padding.
-            		
-        		},
-        		title: {
-       				text: 'comparison between you and the average for each course',   // title for the plot,
-        			show: true
-    			}
+	
+    		var plot4 = $.jqplot('chart4', [l6], {
+   				axes: {
+        			xaxis: {
+          				renderer: $.jqplot.DateAxisRenderer,
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+         				tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          				tickOptions: {
+              				// labelPosition: 'middle',
+              				angle: 15
+          				}
+           
+        			},
+       				yaxis: {
+          				labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+        			}
+      			}
     		});
+  			var plot5 = $.jqplot('chart5', [l7], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+  			var plot6 = $.jqplot('chart6', [l8], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+  			var plot7 = $.jqplot('chart7', [l8], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+  			var plot8 = $.jqplot('chart8', [l10], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+  			var plot9 = $.jqplot('chart9', [l11], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+  			var plot10 = $.jqplot('chart10', [l12], {
+   				title:'Default Date Axis',
+    			axes:{
+        			xaxis:{
+            			renderer:$.jqplot.DateAxisRenderer
+        			}
+    			},
+  			});
+
     		
-    		var plot4 = $.jqplot ('chart4', [l6]);
-    		var plot5 = $.jqplot ('chart5', [l7]);
-    		var plot6 = $.jqplot ('chart6', [l8]);
-    		var plot7 = $.jqplot ('chart7', [l9]);
-    		var plot8 = $.jqplot ('chart8', [l10]);
-    		var plot9 = $.jqplot ('chart9', [l11]);
     		
-    		
-    			<%StatisticController stat=new StatisticController();%>
-    			<%ArrayList<Course> coursesstudent=UserManager.getInstance().getCourses();%>
+    			
     			<%for(int a=0; a<coursesstudent.size();a++){%>
     					var c<%=a%> = <%=stat.myTypeCheese(coursesstudent.get(a))%>;
+    					var d<%=a%> = <%=stat.myTypeBar(coursesstudent.get(a))%>;
+    					var e<%=a%> = <%=stat.overallMeanTypeBar(coursesstudent.get(a))%>;
+    					var f<%=a%> = <%=stat.meVSGoal2(coursesstudent.get(a))%>;
+    					var g<%=a%> = <%=stat.meVSModel2(coursesstudent.get(a))%>;
+    					var g<%=a%> = <%=stat.myRatingBar(coursesstudent.get(a))%>;
+    					
     					
     					var plotc<%=a%> = jQuery.jqplot ('chartc<%=a%>', [c<%=a%>], { 
 	      					height: 300,
