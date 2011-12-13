@@ -80,6 +80,14 @@ public abstract class Activity {
 	}
 	
 	/**
+	 * geeft de start datum terug in een stringvorm.
+	 * @return startDate : de startdatum (type: Date)
+	 */
+	public String startDateToString() {
+		String startDate = start.getHours() + ":" + start.getMinutes() + ":"+ start.getSeconds();
+		return startDate;
+	}
+	/**
 	 * geeft de stop datum van een activiteit weer
 	 * @return stop : de stopdatum (type: Date)
 	 */
