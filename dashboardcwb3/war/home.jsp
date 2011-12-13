@@ -21,28 +21,31 @@
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/test/jquery.tzineClock.css" />
 
-<script  language="javascript" "type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+
 <script  language="javascript" type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
+<script  language="javascript" "type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
 	 
 <script  language="javascript" type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script  language="javascript" type="text/javascript" src="/plugins/jqplot.pointLabels.min.js"></script>
-<script  language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<!--<script  language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>-->
 
-<script language="javascript" type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<!--<script language="javascript" type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>-->
+<!--<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>-->
 
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" media=all/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" media=all/>
 
-<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+
 
   <script  type="text/javascript">
   $(document).ready(function() {
@@ -54,7 +57,7 @@
     // Ticks should match up one for each y value (category) in the series.
     var ticks = ['May', 'June', 'July', 'August'];
      
-    var plot3 = $.jqplot('chart3', [s1, s2, s3], {
+    var plot3 = jQuery.jqplot('chart3', [s1, s2, s3], {
         // The "seriesDefaults" option is an options object that will
         // be applied to all series in the chart.
         seriesDefaults:{
@@ -82,6 +85,12 @@
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
                 ticks: ticks
+            },
+            // Pad the y axis just a little so bars can get close to, but
+            // not touch, the grid boundaries.  1.2 is the default padding.
+            yaxis: {
+                pad: 1.05,
+                tickOptions: {formatString: '$%d'}
             }
         }
     });
@@ -174,7 +183,7 @@
         			}
     			},
   			});
-  			var plot7 = $.jqplot('chart7', [l8], {
+  			var plot7 = $.jqplot('chart7', [l9], {
    				title:'Default Date Axis',
     			axes:{
         			xaxis:{
@@ -224,6 +233,24 @@
         			show: true
     			}
 	    	});
+	    	
+	    var l22=<%=stat.myActiTypeCheese()%>;
+  		
+  			var plot12 = jQuery.jqplot ('chart12', [l22], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: '?',   // title for the plot,
+        			show: true
+    			}
+	    	});
+	    
    		
    		
    		

@@ -12,7 +12,13 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
- <script  type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
+
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>-->
+
+
+<!-- <script  type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
 <script  type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
 	 
 <script  type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
@@ -23,17 +29,11 @@
 <script type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
 <script type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 <script type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
-
-
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>-->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
 
-<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
  <script>
 	 $(document).ready(function() {
 		$("#accordion").accordion({
@@ -67,26 +67,19 @@
 		</p>
 <div id="accordion">
 		
-		<h3><a href="#">Compairison of all your courses</a></h3>
+		<h3><a href="#">Curricular</a></h3>
 		<div>
 			<div id="chart1"></div>
-			<div id="chart3"></div>
-			<%=stat.myFunInTime()%>
-			<div id="chart4"></div>	
-			<div id="chart5"></div>
-			<div id="chart6"></div>
-			<div id="chart7"></div>
+			<div id="chart2"></div>	
+			<div id="chart3"></div> 
+			
 			<div id="chart8"></div>
 			<div id="chart9"></div>
-			<div id="chart10"></div>
+			
 			<div id="chart11"></div>
+			<div id="chart12"></div>
 		</div>
-		<h3><a href="#">Compairison of all your places</a></h3>
-		<div>
-				<%=stat.myPlacesCheese()%>
-				<div id="chart2"></div>	
-		</div>
-		<h3><a href="#">Your courses</a></h3>
+		<h3><a href="#">My courses</a></h3>
 		<div>
 			<div id="accordioncourses">
 				<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
@@ -97,6 +90,18 @@
 					</div>
 				<%}}%>
 			</div>
+		</div>
+		<h3><a href="#">Goals</a></h3>
+		<div>
+				
+		</div>
+		<h3><a href="#">Extra-curricular</a></h3>
+		<div>
+			<div id="chart4"></div>	
+			<div id="chart5"></div>
+			<div id="chart6"></div>
+			<div id="chart7"></div>
+			<div id="chart10"></div>
 		</div>
 		<h3><a href="#">All your activities</a></h3>
 		<div>
