@@ -113,7 +113,7 @@ public String myTimeInTime2(Date startDate){//dit is voor een week per dag bekek
 			getal = getal+act.getDuration();
 			}
 		}
-	result = result + "["+"'"+start.getTime().getDate()+"/"+ (start.getTime().getMonth()+1) +"/"+ start.getTime().getYear() +"'"+ "," + getal + "]";
+	result = result + "["+"'"+(start.getTime().getMonth()+1)+"/"+ start.getTime().getDate() +"/"+ (start.getTime().getYear()+1900) +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
 	start.roll(Calendar.DAY_OF_YEAR,true);
 	i++; if(i<8){result = result + ",";
 	}
@@ -158,7 +158,7 @@ public String overallMeanTimeInTime(){
 		else{
 		total = getal/users;
 		}
-		result = result + "["+"'"+start.getTime().getDate()+"/"+ (start.getTime().getMonth()+1) +"/"+ start.getTime().getYear() +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
+		result = result + "["+"'"+(start.getTime().getMonth()+1)+"/"+ start.getTime().getDate() +"/"+ (start.getTime().getYear()+1900) +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
 	if(start.before(stop)){result = result + ",";
 	}
 	
@@ -187,7 +187,7 @@ public String myTimeInTime(){//dit is voor 20 weken (in januari minder) week per
 			getal = getal+act.getDuration();
 			}
 		}
-	result = result + "["+"'"+start.getTime().getDate()+"/"+ (start.getTime().getMonth()+1) +"/"+ start.getTime().getYear() +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
+	result = result + "["+"'"+(start.getTime().getMonth()+1)+"/"+ start.getTime().getDate() +"/"+ (start.getTime().getYear()+1900) +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
 	if(start.before(stop)){result = result + ",";
 	}
 	
@@ -221,7 +221,7 @@ private String myInTime(String type,String type2){
 				}
 			}
 		}
-		result = result + "["+"'"+start.getTime().getDate()+"/"+ (start.getTime().getMonth()+1) +"/"+ start.getTime().getYear() +"'"+ "," + getal + "]";		start.roll(Calendar.DAY_OF_YEAR,1);
+		result = result + "["+"'"+(start.getTime().getMonth()+1)+"/"+ start.getTime().getDate() +"/"+ (start.getTime().getYear()+1900) +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
 		if(start.before(stop)){
 			result = result + ",";
 		}
@@ -254,7 +254,7 @@ public String overallMeanFunInTime(){
 			}}
 		}
 	getal = getal/UserManager.getInstance().getUserNames().size();
-	result = result + "["+"'"+start.getTime().getDate()+"/"+ (start.getTime().getMonth()+1) +"/"+ start.getTime().getYear() +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
+	result = result + "["+"'"+(start.getTime().getMonth()+1)+"/"+ start.getTime().getDate() +"/"+ (start.getTime().getYear()+1900) +"'"+ "," + getal + "]";	start.roll(Calendar.DAY_OF_YEAR,true);
 	if(start.before(stop)){result = result + ",";
 	}
 	
