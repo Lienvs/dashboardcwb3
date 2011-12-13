@@ -57,7 +57,7 @@ function validate(evt) {
 		        	<%for(int l=0; l<=30;l++){%>
 						<option value="<%=l%>"> <%=l%></option><%}%>
 		        	</select>
-					 (current goal : <%=goal.get(k)%> )</br>
+					 (current goal : <%=goal.get(k)%> hours )</br>
 			<%}
 		
 		
