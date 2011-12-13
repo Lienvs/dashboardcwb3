@@ -12,9 +12,9 @@
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <html>
 <head>
-<script src="/form/gen_validatorv4.js" type="text/javascript"></script>
+  <script src="/form/gen_validatorv4.js" type="text/javascript"></script>
   <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
@@ -99,16 +99,7 @@
 		</p>
 		</form>
 		
-		<script  type="text/javascript">
-			var frmvalidator = new Validator("myform");
- 			frmvalidator.addValidation("username","req","Please enter your User Name");		
- 			frmvalidator.addValidation("password","req","Please enter a password");
- 			frmvalidator.addValidation("confirmedpassword","eqelmnt=password","The confirmed password is not same as password");
- 			frmvalidator.addValidation("firstname","req","Please enter your First Name");
- 			frmvalidator.addValidation("lastname","req","Please enter your Last Name");
- 			frmvalidator.addValidation("gender","dontselect=000");
- 			frmvalidator.addValidation("rnumber","req","Please enter your r-number");
-		</script>
+	
 	</div>	
 </div>
 </body>
