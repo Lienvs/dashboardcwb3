@@ -3,6 +3,8 @@
 <%@ page import="activity.*" %>
 <%@ page import="statistics.*"%>
 <%@ page import="course.*"%>
+<%@ page import="user.*"%>
+<%@ page import="statistics.*"%>
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -38,7 +40,7 @@
 	    var l2=<%=request.getAttribute("myPlacesCheese")%>;
 	    var l3=<%=request.getAttribute("myCourseBar1")%>;
 	    var l4=<%=request.getAttribute("myCourseBar2")%>;
-	    var l5=<%=request.getAttribute("myCourseBar3")%>;
+	    var ticks=<%=request.getAttribute("myCourseBar3")%>;
 	    var l6=<%=request.getAttribute("myFunInTime")%>;
 	    var l7=<%=request.getAttribute("myNightlifeInTime")%>;
 	    var l8=<%=request.getAttribute("mySleepInTime")%>;
@@ -55,7 +57,11 @@
             		trendline:{ show:false }, 
             		rendererOptions: { padding: 8, showDataLabels: true }
         		},
-	      		legend:{show:true}
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Personnal relative time per course',   // title for the plot,
+        			show: true
+    			}
 	    	});
 	    	var plot2 = jQuery.jqplot ('chart2', [l2], { 
 	      		height: 300,
@@ -65,7 +71,11 @@
             		trendline:{ show:false }, 
             		rendererOptions: { padding: 8, showDataLabels: true }
         		},
-	      		legend:{show:true}
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Your study locations',   // title for the plot,
+        			show: true
+    			}
 	    	});
 
 			var plot3 = $.jqplot('chart3', [l3,l4], {
@@ -73,7 +83,7 @@
         	// be applied to all series in the chart.
         		seriesDefaults:{
             		renderer:$.jqplot.BarRenderer,
-           			rendererOptions: {fillToZero: true}
+           			pointlabels:{show:true},
         		},
         	// Custom labels for the series are specified with the "label"
         	// option on the series option.  Here a series option object
@@ -94,14 +104,16 @@
             // Use a category axis on the x axis and use our custom ticks.
             		xaxis: {
                 		renderer: $.jqplot.CategoryAxisRenderer,
-                		ticks: l5
+                		ticks: ticks
             		},
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
-            		yaxis: {
-                		pad: 1.05
-            		}
-        		}
+            		
+        		},
+        		title: {
+       				text: 'comparison between you and the average for each course',   // title for the plot,
+        			show: true
+    			}
     		});
     		
     		var plot4 = $.jqplot ('chart4', [l6]);
@@ -112,8 +124,42 @@
     		var plot9 = $.jqplot ('chart9', [l11]);
     		
     		
+    			<%StatisticController stat=new StatisticController();%>
+    			<%ArrayList<Course> coursesstudent=UserManager.getInstance().getCourses();%>
+    			<%for(int a=0; a<coursesstudent.size();a++){%>
+    					var c<%=a%> = <%=stat.myTypeCheese(coursesstudent.get(a))%>;
+    					
+    					var plotc<%=a%> = jQuery.jqplot ('chartc<%=a%>', [c<%=a%>], { 
+	      					height: 300,
+	      					width: 500,
+	      					seriesDefaults:{
+           						renderer:$.jqplot.PieRenderer, 
+            					trendline:{ show:false }, 
+            					rendererOptions: { padding: 8, showDataLabels: true }
+        					},
+	      					legend:{show:true},
+	      					title: {
+       							text: 'try',   // title for the plot,
+        						show: true
+    						}
+	    				});
+    			
+    			
+    			<%}%>
+    			
+    			
     		
-
+    			
+    			
+    			
+    			
+    		
+    
+    			
+    			
+    		
+    		
+			
  
  
 	    	

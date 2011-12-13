@@ -83,7 +83,7 @@
 				for(int j=0; j<courses.size(); j++){%>
 					<h3><a href="#"><%=courses.get(j).toString()%></a></h3>
 					<div>
-						
+						<div id="chartc<%=j%>"></div>
 					</div>
 				<%}}%>
 			</div>
