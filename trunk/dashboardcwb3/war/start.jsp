@@ -51,13 +51,14 @@
 							
 			Confirm your choice or go back to Home </br>
 				<form action="/start" method="post">
-					<input class="wat" name="wat" value="">
-							<input  class="vak" name="vak" value="">
-							<input  class="type" name="type" value="">
-							<input   class="watextra" name="watextra" value="">
-					<input type="submit" class="check" value="OK" name="ok">
+					<input type="hidden" class="wat" name="wat" value="">
+					<input type="hidden" class="vak" name="vak" value="">
+					<input type="hidden" class="type" name="type" value="">
+					<input  type="hidden" class="watextra" name="watextra" value="">
+					<input type="submit" class="check" value="Confirm" name="ok">
 				</form>	
+				</br>
 				<form action="/home" method="post">
-					<input type="submit" class="check" value="Don't confirm" name="home">
+					<input type="submit" class="check" value="Home" name="home">
 				</form>		
 		</div>
