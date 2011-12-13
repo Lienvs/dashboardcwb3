@@ -279,33 +279,15 @@ return myInTime("Sport","Nightlife");
 
 
 public int meVSGoal2(Course course){
-	int result = 0;
-	int j = 0;
-	int i = 7;
 	GoalController go = new GoalController();
-	Calendar start = Calendar.getInstance();
-	while(i>0){
-		start.roll(Calendar.DAY_OF_YEAR,false);
-		
-		i--;
-	}
-	
-	int a = go.getGoal(course);
-	int b = data.getTotalScolair(course);
-	if(a==0||b==0){
-		result = 0;
-	}
-	else{
-		a =a*100;
-		b= b*100;
-		result = b/a;
-	}
-	if(result>100){
-		result = 100;
-	}
+	int goal = go.getGoal(course.toString())*60;
+	int verschil = go.getDifGoal(course.toString());
+	int studieTime = goal-verschil;
+	int result = studieTime*100;
+	result = result/goal;
 	return result;
 }
-public ArrayList<String> meVSModel(){//1wat al gedaan, 2 modeltraject,3 vakken
+public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 vakken
 	String r1="[";
 	String r2 = "[";
 	String r3 = "[";
@@ -314,29 +296,30 @@ public ArrayList<String> meVSModel(){//1wat al gedaan, 2 modeltraject,3 vakken
 	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
 	
 	while(it.hasNext()){
-		Course c = it.next();
-		
+		Course course= it.next();
+		String c = course.toString();
 		r2=r2+go.getGoal(c);
-		r3= r3+c.getAvarageWork()*12;
-		r4 = r4 + c.toString()+"'";
+		r3= r3+course.getAvarageWork();
+		r4 = r4 + c +"'";
 		
-		r1 = r1 + data.getTotalScolair(c);
+		r1 = r1 + (go.getGoal(c)-go.getDifGoal(c));
+		
 		if(it.hasNext()){
 			r1 = r1 +",";
-			
+			r2 = r2 +",";
 			r3 = r3 +",";
 			r4 = r4 + ",'";
 		}
 	}
 	r1 = r1 +"]";
-	
+	r2 = r2 +"]";
 	r3 = r3 +"]";
 	r4 = r4 +"]";
 	ArrayList<String> list = new ArrayList<String>();
 	list.add(0,r1);
-	
-	list.add(1,r3);
-	list.add(2,r4);
+	list.add(1,r2);
+	list.add(2,r3);
+	list.add(3,r4);
 	return list;
 }
 public int meVSModel2(Course course){
