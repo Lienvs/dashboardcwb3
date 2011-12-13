@@ -7,6 +7,7 @@ import activity.Activity;
 import activity.CurricularActivity;
 import activity.ExtraCurricularActivity;
 import activity.IndividualStudy;
+import activity.StudyLocation;
 
 import course.Course;
 
@@ -286,7 +287,12 @@ public int meVSGoal2(Course course){
 	int verschil = go.getDifGoal(course.toString());
 	int studieTime = goal-verschil;
 	int result = studieTime*100;
-	result = result/goal;
+	if(goal!=0){
+	result = result/goal;}
+	else{result = 100;}
+	if (result>100){
+		result = 100;
+	}
 	return result;
 }
 public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 vakken
@@ -486,16 +492,16 @@ public ArrayList<String> myStuddyBuddys(){//1 hoeveel keer de buddy voorkomt 2 d
 public ArrayList<String> myMeanPlaceRatingBar(){//1 de gemiddelde rating voor elk vak 2 de vakken
 	String r1 = "[";
 	String r2 ="[";
-	
-	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
-	while(it.hasNext()){
-		Course course = it.next();
+	int i = 0;
+	int it = StudyLocation.values().length;
+	while(i<it){
+		StudyLocation st = StudyLocation.values().get(i);
 		int i = 0;
 		int rating =0;
 		int gem = 0;
 	for(Activity act: UserManager.getInstance().getActivities()){
 		if(act.getType().equals("Zelfstudie")){
-			CurricularActivity scol = (CurricularActivity) act;
+			IndividualStudy scol = (IndividualStudy) act;
 			if(scol.getCourse().toString().equals(course.toString())){
 				rating = rating + scol.getRating();
 				if(scol.getRating()!=0){i++;}
