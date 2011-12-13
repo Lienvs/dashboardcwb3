@@ -12,13 +12,28 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
+ <script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+	 
+<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
+
+<script type="text/javascript" src="/plugin/jqplot.logAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
+
+<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
  <script>
 	 $(document).ready(function() {
 		$("#accordion").accordion({
@@ -45,38 +60,26 @@
 	</script>
 
 
-	<font size="6">
-	<b>Choose statistics you want to show</b></font>
-	</br>
-	</br>
+	
 	
 <div id="accordion">
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
-			<%=request.getAttribute("myCoursesCheese")%>
 			<div id="chart1"></div>
-			<%=request.getAttribute("myCourseBar1")%>
-			<%=request.getAttribute("myCourseBar2")%>
-			<%=request.getAttribute("myCourseBar3")%>
 			<div id="chart3"></div>
-			<%=request.getAttribute("myFunInTime")%>
-			<div id="chart4"></div>
-			<%=request.getAttribute("myNightlifeInTime")%>
+			<%=stat.myFunInTime()%>
+			<div id="chart4"></div>	
 			<div id="chart5"></div>
-			<%=request.getAttribute("mySleepInTime")%>
 			<div id="chart6"></div>
-			<%=request.getAttribute("mySportInTime")%>
 			<div id="chart7"></div>
-			<%=request.getAttribute("myTimeInTime")%>
 			<div id="chart8"></div>
-			<%=request.getAttribute("overallMeanTimeInTime")%>
 			<div id="chart9"></div>
-
+			<div id="chart10"></div>
 			
 		</div>
 		<h3><a href="#">Compairison of all your places</a></h3>
 		<div>
-			<%=request.getAttribute("myPlacesCheese")%>
+				<%=stat.myPlacesCheese()%>
 				<div id="chart2"></div>	
 		</div>
 		<h3><a href="#">Your courses</a></h3>
