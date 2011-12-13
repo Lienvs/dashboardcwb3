@@ -91,8 +91,6 @@ public class HomeServlet extends HttpServlet{
 				//req.setAttribute("myStudyVSGoal", statController.myStudyVSGoal());
 				
 
-
-				HashMap<Course, ArrayList<String>> hashmap=new HashMap<Course,ArrayList<String>>();//hashmap met vakkan als key en arraylist van string
 				ArrayList<String> statscourse=new ArrayList<String>();
 				for(int i=0;i<courses.size();i++){
 					statscourse.add(statController.myTypeCheese(courses.get(i)));
@@ -100,9 +98,10 @@ public class HomeServlet extends HttpServlet{
 					//statscourse.add(statController.meVSGoal2(courses.get(i)));
 					//statscourse.add(statController.meVSModel2(courses.get(i)));
 					statscourse.add(statController.myTypeBar(courses.get(i)));
-					hashmap.put(courses.get(i), statscourse);
+					req.setAttribute(courses.get(i).toString(), statscourse);
+					statscourse.clear();
 				}
-				req.setAttribute("hashcourses", hashmap);
+				req.setAttribute("numberCourses", courses.size());
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
 				//req.setAttribute("", statController.);
