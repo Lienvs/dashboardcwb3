@@ -151,10 +151,10 @@ public class ActivityManager {
 					zelfstudie.setStudyBuddy((String)result.getProperty("buddy"));
 				}	
 				if (result.hasProperty("studielocatie")){
-					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)result.getProperty("buddy")));
+					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)result.getProperty("studielocatie")));
 				}
 				if (result.hasProperty("studietype")){
-					zelfstudie.setType(StudyType.getStudyType((String)result.getProperty("buddy")));
+					zelfstudie.setType(StudyType.getStudyType((String)result.getProperty("studietype")));
 				}
 				activities.add(zelfstudie);
 			}
@@ -235,10 +235,10 @@ public class ActivityManager {
 					zelfstudie.setStudyBuddy((String)Activity.getProperty("buddy"));
 				}	
 				if (Activity.hasProperty("studielocatie")){
-					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)Activity.getProperty("buddy")));
+					zelfstudie.setLocation(StudyLocation.getStudyLocation((String)Activity.getProperty("studielocatie")));
 				}
 				if (Activity.hasProperty("studietype")){
-					zelfstudie.setType(StudyType.getStudyType((String)Activity.getProperty("buddy")));
+					zelfstudie.setType(StudyType.getStudyType((String)Activity.getProperty("studietype")));
 				}
 				act=zelfstudie;
 			}
