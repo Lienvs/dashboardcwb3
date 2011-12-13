@@ -351,7 +351,7 @@ public int getDuurLes(Course course){
 	for(Activity act : actList){
 		if(act.getActivityType().equals("scolair")){
 			CurricularActivity scol = (CurricularActivity)act;
-			if(scol.getType().equals("Les")){
+			if(scol.getType().equals("les")){
 				if(scol.getCourse().toString().equals(course.toString())){
 					result = result + scol.getDuration(); 
 				}
