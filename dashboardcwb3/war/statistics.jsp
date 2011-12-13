@@ -119,7 +119,7 @@
 					<%}%>
 					
 					
-					<td><%=scol.get(i).getStart().getTime()%></td>
+					<td><%=scol.get(i).startDateToString()%></td>
 					<td><%=scol.get(i).getRating()%></td>
 					<td><%=scol.get(i).getComment()%></td>
 				</tr>
