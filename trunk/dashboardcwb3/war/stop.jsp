@@ -20,9 +20,10 @@
 	});
 	</script>
 	
-
-To stop tracking your activity, fill in this form and click 'Stop' </br>
-  <form action="/stop" method="post">
+	<font size="6">
+	<b>Fill in to stop tracking</b></font>
+	</br></br>
+    <form action="/stop" method="post">
   			<%{ Activity act=(Activity) request.getAttribute("curract");
   			if(act.getType().equals("Zelfstudie")){%>
   				Study location: 
@@ -33,30 +34,35 @@ To stop tracking your activity, fill in this form and click 'Stop' </br>
  								if(places.get(i).equals("Other")){%>
  									<option SELECTED value="<%out.print(places.get(i));%>" > <%out.print(places.get(i));%></option>
  								<%}
- 								else{%>
- 									<option value="<%out.print(places.get(i));%>" > <%out.print(places.get(i));%></option>
- 								<%}
- 								
-    						}%>
-						</select><br />
+								else{%>
+								<option value="<%out.print(places.get(i));%>" > <%out.print(places.get(i));%></option>
+ 								<%}	
+    				  		}%>
+							
+						</select>
+						</br></br>
 						Was it rather theoretical or more focussed on practice ? 
 						<select name="stype" id="stype">
 							<option value="Theory"> Theory</option>
  							<option value="Practice"> Practice</option>
-						</select><br />
+						</select><br /> </br>
 				<div class="ui-widget">
-					Studied with a friend ? Select your studybuddy (only if he is also on this App)  
-					<label for="tags">Studybuddy: </label>
+					<b> Studied with a friend ? </b></br>
+				    Select your studybuddy (only if he is also on this App)  
+					
 					<input name="studybuddy" id="tags">	
-				</div>								
+				</div>			</br>					
 			<%}}%>
+			</br>
 			Give a rating of your productivity (1 = deceiving ; 5 = optimal) </br>
 				<input type="radio" name="rating" value="1" /> 1
 				<input type="radio" name="rating" value="2" /> 2
 				<input type="radio" name="rating" value="3" /> 3
 				<input type="radio" name="rating" value="4" /> 4
-				<input type="radio" name="rating" value="5" /> 5 </br>
-			Perhaps a comment ?   <textarea name="comment" id="comment">
-  				</textarea></br>
+				<input type="radio" name="rating" value="5" /> 5 </br> </br>
+			Perhaps a comment ?   
+			</br>
+			<textarea name="comment" id="comment"> </textarea>
+			</br></br>
 			<input type="submit" class="check" name="stop" value="Stop"/>
 		</form>
