@@ -50,7 +50,7 @@ public class RegisterController {
 			freeRNumber = false;
 			registered = "rNumber";
 		}
-		else if(gender.equals("[choose your gender]")){
+		else if(gender.equals("000")){
 			chosenGender = false;
 			registered = "nogender";
 			
