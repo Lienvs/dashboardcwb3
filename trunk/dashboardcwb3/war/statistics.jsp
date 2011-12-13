@@ -12,18 +12,18 @@
 <%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
 <%@ page import="com.google.appengine.api.datastore.Key" %>
 <%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
- <script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+ <script  type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
 	 
-<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugins/jqplot.pointLabels.min.js"></script>
+<script  type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
 
-<script type="text/javascript" src="/plugin/jqplot.logAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasTextRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
 
 
 
@@ -63,6 +63,7 @@
 	
 	
 <div id="accordion">
+	<p>You have learned already
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
 			<div id="chart1"></div>

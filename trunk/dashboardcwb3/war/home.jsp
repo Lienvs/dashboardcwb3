@@ -21,18 +21,18 @@
 <link rel="stylesheet" type="text/css" href="clock/styles.css" />
 <link rel="stylesheet" type="text/css" href="clock/test/jquery.tzineClock.css" />
 
-<script  language="javascript" "type="text/javascript" src="plugin/jqplot.barRenderer.min.js"></script>
-<script  language="javascript" type="text/javascript" src="plugin/jqplot.pieRenderer.min.js"></script>
+<script  language="javascript" "type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
+<script  language="javascript" type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
 	 
-<script  language="javascript" type="text/javascript" src="plugin/jqplot.categoryAxisRenderer.min.js"></script>
-<script  language="javascript" type="text/javascript" src="plugin/jqplot.pointLabels.min.js"></script>
-<script  language="javascript" type="text/javascript" src="plugin/jqplot.dateAxisRenderer.min.js"></script>
+<script  language="javascript" type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+<script  language="javascript" type="text/javascript" src="/plugins/jqplot.pointLabels.min.js"></script>
+<script  language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
 
-<script language="javascript" type="text/javascript" src="plugin/jqplot.logAxisRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasTextRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script language="javascript" type="text/javascript" src="plugin/jqplot.dateAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script language="javascript" type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
 
 
 
@@ -93,27 +93,27 @@
   	
 
   	
-   		var l1=<%=stat.myCoursesCheese()%>;
-   		var l2=<%=stat.myPlacesCheese()%>;
+   		var l1=<%=stat.myCoursesCheese()%>;//werkt
+   		var l2=<%=stat.myPlacesCheese()%>;//werkt
    		
-   		var l3=<%=stat.myCourseBar().get(0)%>;
+   		var l3=<%=stat.myCourseBar().get(0)%>;//ipv chart3
    		var l4=<%=stat.myCourseBar().get(1)%>;
    		var l5=<%=stat.myCourseBar().get(2)%>;
    		
-   		var l6=<%=stat.myFunInTime()%>;
+   		var l6=<%=stat.myFunInTime()%>;//half
    		
-   		var l7=<%=stat.myNightlifeInTime()%>;
-   		var l8=<%=stat.mySleepInTime()%>;
-   		var l9=<%=stat.mySportInTime()%>;
+   		var l7=<%=stat.myNightlifeInTime()%>;//half
+   		var l8=<%=stat.mySleepInTime()%>;//half
+   		var l9=<%=stat.mySportInTime()%>;//half
    		
-   		var l10=<%=stat.myTimeInTime()%>;
+   		var l10=<%=stat.myTimeInTime()%>;//half
    		
-   		var l11=<%=stat.overallMeanTimeInTime()%>;
-   		var l12=<%=stat.overallMeanFunInTime()%>;
+   		var l11=<%=stat.overallMeanTimeInTime()%>;//half
+   		var l12=<%=stat.overallMeanFunInTime()%>;//half
    		
    		var l131=<%=stat.meVSModel().get(0)%>;  //arr:1wat al gedaan,2 goals, 3 modeltraject,4 vakken
    		var l132=<%=stat.meVSModel().get(1)%>; 
-   		var l133=<%=stat.meVSModel().get(2)%>; 
+   		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
    		var l134=<%=stat.meVSModel().get(3)%>; 
    		
    		var l14=<%=stat.myTime()%>;	//int
