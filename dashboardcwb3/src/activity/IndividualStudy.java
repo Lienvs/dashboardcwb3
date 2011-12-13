@@ -38,7 +38,10 @@ public class IndividualStudy extends CurricularActivity {
 	public void setLocation(StudyLocation x) {
 		location = x;
 	}
-	
+	public StudyLocation getStudyLocation()
+	{
+		return location;
+	}
 	/**
 	 * verandert het studietype
 	 * @param x (type: StudyType)
