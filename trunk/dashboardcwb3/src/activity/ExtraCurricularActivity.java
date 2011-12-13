@@ -25,6 +25,11 @@ public ExtraCurricularActivity(ExtraFun extra){
 	
 }
 
+public String getTypeEnglish(){
+	ExtraFun ex =  getExtra();
+	return ex.toStringEnglish();
+}
+
 
 public void changePlace(String place){
 	place=this.place;

@@ -7,11 +7,17 @@ public enum ExtraFun {
 		public String toString() {
 			return "Sleep";
 		}
+		public String toStringEnglish() {
+			return "Sleep";
+		}
 		
 	},SPORT {
 
 		@Override
 		public String toString() {
+			return "Sport";
+		}
+		public String toStringEnglish() {
 			return "Sport";
 		}
 		
@@ -21,24 +27,32 @@ public enum ExtraFun {
 		public String toString() {
 			return "Nightlife";
 		}
+		public String toStringEnglish() {
+			return "Nightlife";
+		}
 	},OTHER {
 
 		@Override
 		public String toString() {
 			return "Other";
 		}
+		public String toStringEnglish() {
+			return "Other";
+		}
 	};
 		public abstract String toString();
-		public static ExtraFun getExtraFun(String sl) { //niet echt nuttige methode ? 
+			
+		public static ExtraFun getExtraFun(String sl) { 
 		
-		for(ExtraFun sll : ExtraFun.values()) {
-			if( sll.toString().equals(sl) ) {
-				return sll;
+			for(ExtraFun sll : ExtraFun.values()) {
+				if( sll.toString().equals(sl) ) {
+					return sll;
+				}
 			}
-		}
 		return null;
 		
-	}
+		}
 
+		public abstract String toStringEnglish();
 
 }

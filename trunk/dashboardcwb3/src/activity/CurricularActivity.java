@@ -39,6 +39,9 @@ public abstract class CurricularActivity extends Activity{
 	 */
 	public abstract String getType();
 		
+	
+	public abstract String getTypeEnglish(); 
+
 	/**
 	 * geeft een samenvatting weer van de activiteit die de gebruiker heeft geselecteerd:
 	 * scholair activiteit, het type van de scholaire activiteit en voor welk vak.
