@@ -185,7 +185,9 @@ public abstract class Activity {
 	 * abstracte methode die ervoor zorgt dat men de toString methode kan oproepen in de subklassen van superklasse Activity.
 	 */
 	public abstract String toString();
+	
 	public abstract String getType(); 
+	
 	public abstract Course getCourse();
 	
 
