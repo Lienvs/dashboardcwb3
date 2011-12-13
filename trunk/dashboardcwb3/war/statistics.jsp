@@ -134,11 +134,11 @@
 		
 		<table border="1">
 			<tr>
-				<th >Type</th>
-				<th >Duration</th>
-				<th >Start</th>
-				<th >Rating</th>
-				<th >Comment</th>
+				<th >   Type     </th>
+				<th >   Duration     </th>
+				<th >   Start     </th>
+				<th >   Rating      </th>
+				<th >   Comment      </th>
 			</tr>
 			
 			<%for(int i=0; i<extra.size();i++){%>
