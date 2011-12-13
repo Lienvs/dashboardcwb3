@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet{
 					req.setAttribute("message2", "Unmatching passwords");
 					getServletContext().getRequestDispatcher("/portal.jsp").forward(req, resp);
 				}
-				else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("000")){
+				else if(network.register(userName,password,confirmedPassword,firstName,lastName,gender,rNumber).equals("nogender")){
 					
 					req.setAttribute("message1", "Sign-up failed");
 					req.setAttribute("message2", "No gender Selected");
