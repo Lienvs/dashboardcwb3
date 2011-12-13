@@ -93,12 +93,6 @@ public class StartServlet extends HttpServlet{
 		return course;
 	}
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-
-			throws ServletException, IOException {
-		
-			doPost(req,resp);
-	}
 	
 
 }
