@@ -39,19 +39,18 @@ public class GoalController {
 		
 	}
 	public int getGoal(String courseName){
-		int result = 0;
+		
 		if(UserManager.getInstance().getGoals().size()==0){
-			
+			return 0;
 		}
 		else{
 			ArrayList<Course> courses = UserManager.getInstance().getCourses();
 			ArrayList<String> str = CourseManager.getInstance().getCourseNames(courses);
 			int i =str.indexOf(courseName);
-			
-			result = UserManager.getInstance().getGoals().get(i).intValue();
+			return UserManager.getInstance().getGoals().get(i).intValue();
 			
 		}
-		return result;
+		
 	}
 	
 	public int getDifGoal(String courseName){
