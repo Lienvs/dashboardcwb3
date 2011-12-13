@@ -84,8 +84,33 @@ public abstract class Activity {
 	 * @return startDate : de startdatum (type: Date)
 	 */
 	public String startDateToString() {
-		String startDate = start.getHours() + ":" + start.getMinutes() + ":"+ start.getSeconds();
+		int month = start.getMonth()+1;
+		int day = start.getDate();
+		int hour = start.getHours()+1;
+		int minute = start.getMinutes();
+		int sec = start.getSeconds();
+		String aMonth;
+		String aDay;
+		String anHour;
+		String aMin;
+		String aSec;
+		
+		if(hour<10){ anHour = "0"+hour;} 
+		else{anHour = hour+"";}
+		if(minute<10){aMin = "0"+minute;}
+		else{aMin = minute+"";}
+		if(sec<10){aSec = "0"+sec;}
+		else{aSec = sec +"";}
+		if(month<10){aMonth = "0"+month;} 
+		else{aMonth = month+"";}
+		if(day<10){aDay = "0"+day;}
+		else{aDay = day+"";}
+		
+		String startDate = "  " + aDay + "/" +  aMonth +  " " + anHour + ":" + aMin + ":"+ aSec + " ";
 		return startDate;
+		
+		
+		
 	}
 	/**
 	 * geeft de stop datum van een activiteit weer
@@ -116,8 +141,34 @@ public abstract class Activity {
 			}
 		}
 		
-		return duur;
+		return duur +1;
 	}
+	
+	public String getDurationToString() {
+		int minuten = getDuration();
+		int uur = minuten/60;
+		minuten = minuten%60;
+		String uren = "";
+		String minuuuuuten = "";
+		String output;
+		if(uur<10){
+			uren = "0" + uur;
+		}
+		if(minuten<10){
+			minuuuuuten = "0" + uur;
+		}
+		if(uur==0){
+			output = minuuuuuten;
+		}
+		if(uur==1){
+			output = uren + "hour" + minuuuuuten + "min";
+		}
+		else {
+			output = uren + "hours" + minuuuuuten + "min";
+		}
+		return output;
+	}
+	
 	
 	/**
 	 * geeft comment weer
