@@ -603,6 +603,23 @@ public String overallTypeCheese(){
 	return result;
 	
 }
-
+public String overallActiTypeCheese(){
+	int scol = 0;
+	int fun = 0;
+	for(Activity act:ActivityManager.getInstance().getAllActivities()){
+		if(act.getActivityType().equals("scolair")){
+			scol = scol+act.getDuration();
+		}
+		else{
+			fun = fun+act.getDuration();
+		}
+	}
+	String result = "[";
+	result = result +"['" +  "Curricular activity" + "'," + scol + "],";
+	result = result +"['" +  "Extra-curricular activity" + "'," + fun + "]";
+	
+	result = result + "]";
+	return result;
+}
 
 }
