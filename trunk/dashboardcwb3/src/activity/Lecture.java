@@ -1,6 +1,8 @@
 package activity;
 import java.util.*;
 
+import user.UserManager;
+
 import course.Course;
 
 /**
@@ -44,6 +46,17 @@ public class Lecture extends CurricularActivity {
 		setRating(rating);
 	}
 	public String toString(){
-		return "You are attending a lecture of " + getCourse().toString();
+		String result="You are attending a lecture of " + getCourse().toString();
+		if(UserManager.getInstance().getAmountUsers(getCourse().toString(), "les")==0){
+		
+		}
+		else if(UserManager.getInstance().getAmountUsers(getCourse().toString(), "les")==1){
+			result = result + ". " + "There is " + UserManager.getInstance().getAmountUsers(getCourse().toString(), "les")+ " other student with you.";
+		}
+		else{
+			result = result + ". " + "There are " + UserManager.getInstance().getAmountUsers(getCourse().toString(), "les")+ " other students with you.";
+		}
+		return result;
 	}
+	
 }
