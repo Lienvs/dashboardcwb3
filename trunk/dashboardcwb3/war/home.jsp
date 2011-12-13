@@ -207,9 +207,8 @@
     			},
   			});
   			
-  			
-  			
-  		var l21<=<%=stat.myTypeCheese()%>;
+
+  		var l21=<%=stat.myTypeCheese()%>;
   		
   			var plot11 = jQuery.jqplot ('chart11', [l21], { 
 	      		height: 300,
