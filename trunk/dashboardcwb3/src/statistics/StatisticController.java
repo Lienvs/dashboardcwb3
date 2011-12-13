@@ -385,7 +385,7 @@ public String getMaximumStudie(){
 			maxCourse = course;
 		}
 	}
-	result = "You studied " + maxDuur + " for " + maxCourse.toString();
+	result = "You studied a maximum of " + maxDuur +"minutes"+ " for " + maxCourse.toString();
 	}
 	return result;
 }
