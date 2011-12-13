@@ -39,7 +39,7 @@ function validate(evt) {
 		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
 		if(goal.size()==0){
 			for(int i=0; i<courses.size();i++){%>
-			<%=courses.get(i).toString()%>:
+			<DD> <%=courses.get(i).toString()%>:
 					<select id="test"  name="<%=courses.get(i).toString()%>">
 		        	<%for(int j=0; j<=30;j++){%>
 						<option value="<%=j%>"><%=j%></option><%}%> 
