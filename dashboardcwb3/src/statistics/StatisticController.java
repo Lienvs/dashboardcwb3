@@ -621,5 +621,34 @@ public String overallActiTypeCheese(){
 	result = result + "]";
 	return result;
 }
-
+public String overallPlacesCheese(){
+	int bib = 0;
+	int home = 0;
+	int kot = 0;
+	int ot = 0;
+	for(Activity act:ActivityManager.getInstance().getAllActivities()){
+		if(act.getType().equals("Zelfstudie")){
+			IndividualStudy a = (IndividualStudy) act;
+			if(a.getLocation().equals("Library")){
+				bib = bib+ a.getDuration();
+			}
+			if(a.getLocation().equals("Home")){
+				home = home+ a.getDuration();
+			}
+			if(a.getLocation().equals("Kot")){
+				kot = kot+ a.getDuration();
+			}
+			if(a.getLocation().equals("Other")){
+				ot = ot+ a.getDuration();
+			}
+		}
+	}
+	String result = "[";
+	result = result +"['" +  "Library" + "'," + bib + "],";
+	result = result +"['" +  "Home" + "'," + home + "],";
+	result = result +"['" +  "Kot" + "'," + kot + "],";
+	result = result +"['" +  "Other" + "'," + ot + "]";
+	result = result + "]";
+	return result;
+}
 }
