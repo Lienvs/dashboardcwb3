@@ -382,5 +382,71 @@ public String getMaximumStudie(){
 	}
 	return result;
 }
-
+public String myRatingBar(Course course){
+	int een=0;
+	int twee=0;
+	int drie=0;
+	int vier=0;
+	int vijf=0;
+	for(Activity act: UserManager.getInstance().getActivities()){
+		if(act.getActivityType().equals("scolair")){
+			ExtraCurricularActivity scol = (ExtraCurricularActivity) act;
+			if(scol.getCourse().toString().equals(course.toString())){
+				if(scol.getRating() == 1){
+					een++;
+				}
+				if(scol.getRating() == 2){
+					twee++;
+				}
+				if(scol.getRating() == 3){
+					drie++;
+				}
+				if(scol.getRating() == 4){
+					vier++;
+				}
+				if(scol.getRating() == 5){
+					vijf++;
+				}
+			}
+		}
+	}
+	String result = "["+een +","+twee +","+drie +","+vier +","+vijf +","+"]";
+	return result;
+}
+public ArrayList<String> myMeanRatingBar(){//1 de gemiddelde rating voor elk vak 2 de vakken
+	String r1 = "[";
+	String r2 ="[";
+	
+	Iterator<Course> it = UserManager.getInstance().getCourses().iterator();
+	while(it.hasNext()){
+		Course course = it.next();
+		int i = 0;
+		int rating =0;
+		int gem = 0;
+	for(Activity act: UserManager.getInstance().getActivities()){
+		if(act.getActivityType().equals("scolair")){
+			ExtraCurricularActivity scol = (ExtraCurricularActivity) act;
+			if(scol.getCourse().toString().equals(course.toString())){
+				rating = rating + scol.getRating();
+				i++;
+			}
+		}
+	}
+	if(rating!=0&&i!=0){
+	gem = rating/i;}
+	else{gem = 0;}
+	r1 = r1 + gem;
+	r2 = r2 +"'"+course.toString()+"'";
+	if(it.hasNext()){
+		r1 = r1+",";
+		r2 = r2 +",";
+	}
+	}
+	r1 = r1+"]";
+	r2 = r2 +"]";
+	ArrayList<String> list = new ArrayList<String>();
+			list.add(0,r1);
+			list.add(1,r2);
+			return list;
+}
 }
