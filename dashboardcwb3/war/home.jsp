@@ -115,19 +115,22 @@
    		var l132=<%=stat.meVSModel().get(1)%>; 
    		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
    		var l134=<%=stat.meVSModel().get(3)%>; 
-   		
-   		var l14=<%=stat.myTime()%>;	//int
+   	
    		var l15=<%=stat.overallTime()%>;//int
    		//var l16=<%=stat.getMaximumStudie()%>;
    		
    		var l171=<%=stat.myMeanRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
-   		var l172=<%=stat.myMeanRatingBar().get(1)%>;
+   		var l172=<%=stat.myMeanRatingBar().get(1)%>; //bar==>niet
    		
    		//var l181=<%=stat.myStuddyBuddys().get(0)%>;   //arr 1 hoeveel keer de buddy voorkomt 2 de namen van de buddys.
-   		//var l182=<%=stat.myStuddyBuddys().get(1)%>;
+   		//var l182=<%=stat.myStuddyBuddys().get(1)%>;  //bar==>niet
    		
    		var l191=<%=stat.myMeanPlaceRatingBar().get(0)%>;  //arr 1 de gemiddelde rating voor elk vak 2 de vakken
-   		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>; 
+   		var l192=<%=stat.myMeanPlaceRatingBar().get(1)%>;    //bar==> niet
+   		
+   		var l201=<%=stat.myMeanBuddyRatingBar().get(0)%>;//1 de gemiddelde rating voor elke buddy 2 de buddy's
+   		var l202=<%=stat.myMeanBuddyRatingBar().get(1)%>;//bar==>niet
+   		
    		
 	  		var plot1 = jQuery.jqplot ('chart1', [l1], { 
 	      		height: 300,

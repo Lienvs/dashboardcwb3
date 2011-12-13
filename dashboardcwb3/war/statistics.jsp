@@ -61,9 +61,12 @@
 
 
 	
-	
+	<% StatisticController stats=new StatisticController();%>
+		<p><%=stats.myTime()%></br>
+		<%=stats.getMaximumStudie()%></br>
+		</p>
 <div id="accordion">
-	<p>You have learned already
+		
 		<h3><a href="#">Compairison of all your courses</a></h3>
 		<div>
 			<div id="chart1"></div>
