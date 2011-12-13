@@ -93,6 +93,5 @@ public class StartServlet extends HttpServlet{
 		return course;
 	}
 	
-	
 
 }
