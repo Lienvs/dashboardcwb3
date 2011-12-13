@@ -48,11 +48,11 @@ public class GoalController {
 			while(i<CourseManager.getInstance().getAllCourses().size()){
 				int getal=0;
 				String vak = CourseManager.getInstance().getAllCourses().get(i).toString();
-				if(lijst.get(i)!=null){
+				if(lijst.size()!=0){
 					getal = lijst.get(i);
-					
-					
 				}
+					
+				
 				map.put(vak, getal);
 				list.set(i, getal);
 			i++;}
