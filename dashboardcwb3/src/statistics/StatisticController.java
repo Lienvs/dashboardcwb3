@@ -10,6 +10,7 @@ import activity.IndividualStudy;
 import activity.StudyLocation;
 
 import course.Course;
+import course.CourseManager;
 
 import activity.ActivityManager;
 
@@ -650,5 +651,19 @@ public String overallPlacesCheese(){
 	result = result +"['" +  "Other" + "'," + ot + "]";
 	result = result + "]";
 	return result;
+}
+public String overallCourseCheese(){
+	String result = "[";
+	 ArrayList<Course> courseList = UserManager.getInstance().getCourses();
+	 Iterator<Course> it = courseList.iterator();
+	 while(it.hasNext()){
+		 Course course = it.next();
+		 result = result + "['" +  course.toString() + "'," + (data.getGemiddeldeScolair(course)*UserManager.getInstance().getUserNames().size()) + "]";
+		 if(it.hasNext()){
+			 result = result + ",";
+		 }
+	 }
+	 result = result+"]";
+	 return result;
 }
 }
