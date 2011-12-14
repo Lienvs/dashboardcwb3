@@ -138,7 +138,7 @@
 <%ArrayList<Activity> extra=(ArrayList<Activity>) request.getAttribute("extra");%>
 <%if(scol.size()!=0 || extra.size()!=0){%>
 	<%if(scol.size()!=0){%>
-		<h3> Scolair activities:</h3>
+		<h3> Scolar activities:</h3>
 		<table border="1">
 			<tr>
 				<th >Course</th>
@@ -173,7 +173,7 @@
 	
 
 	<%if(extra.size()!=0){%>
-		<h3> ExtraScolair activities:</h3>
+		<h3> ExtraScolar activities:</h3>
 		
 		<table border="1">
 			<tr>
