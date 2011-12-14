@@ -101,7 +101,7 @@ public class Course {
 	 * @return studyPoints *30 *60/13 (type: int)
 	 */
 	public int getAvarageWork(){//per week (in uur)
-		return studyPoints *30 *60/13; // 30 uren studie per studiepunt , wrm maal 60? 
+		return 240; // 30 uren studie per studiepunt , wrm maal 60? 
 	}
 	
 }

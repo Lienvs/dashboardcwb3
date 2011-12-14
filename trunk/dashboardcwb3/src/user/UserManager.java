@@ -316,15 +316,15 @@ public class UserManager {
 	}	
 	
 	@SuppressWarnings("unchecked")
-	public ArrayList<Integer> getGoals(){
-		ArrayList<Integer> goals = new ArrayList<Integer>();
+	public ArrayList<Long> getGoals(){
+		ArrayList<Long> goals = new ArrayList<Long>();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Transaction txn = datastore.beginTransaction();
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
 			if (User.hasProperty("goals")){
-				goals = (ArrayList<Integer>) User.getProperty("goals");
+				goals = (ArrayList<Long>) User.getProperty("goals");
 			}
 			
 		}

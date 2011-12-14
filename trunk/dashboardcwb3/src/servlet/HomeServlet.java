@@ -52,7 +52,7 @@ public class HomeServlet extends HttpServlet{
 				req.setAttribute("courses", courses);//vakken student
 				req.setAttribute("plaatsen", StudyLocation.getStudyLocationAsList());//plaatsen waar men kan studeren
 				req.setAttribute("username", UserManager.getInstance().getCurrentUserName());//username
-				ArrayList<Integer> goal= UserManager.getInstance().getGoals();
+				ArrayList<Long> goal= UserManager.getInstance().getGoals();
 				req.setAttribute("goal", goal);//goals
 				
 				ArrayList<Activity> act=UserManager.getInstance().getActivities();
