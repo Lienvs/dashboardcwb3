@@ -93,7 +93,7 @@ public ArrayList<String> typeBar(Course course){//1mytype 2 overallmean type 3ty
 	list.add(myTypeBar(course));
 	list.add(overallMeanTypeBar(course));
 	
-	list.add("'"+"Lecture"+"',"+"'"+"Practice"+"',"+"'"+"Individual study"+"'");
+	list.add("["+"'"+"Lecture"+"',"+"'"+"Practice"+"',"+"'"+"Individual study"+"'"+"]");
 	return list;
 	
 }
