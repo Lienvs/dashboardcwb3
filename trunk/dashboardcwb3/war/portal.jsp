@@ -13,8 +13,8 @@
 <html>
 <head>
   <script src="/form/gen_validatorv4.js" type="text/javascript"></script>
-  <script language="javascript" type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>	 
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
