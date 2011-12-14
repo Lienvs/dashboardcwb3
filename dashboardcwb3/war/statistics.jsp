@@ -76,22 +76,30 @@
 		<h3><a href="#">Curricular</a></h3>
 		<div>
 			<div id="chart1"></div>
+			<div id="chart20"></div>
+			
 			<div id="chart2"></div>	
+			<div id="chart19"></div>
+			
 			<div id="chart3"></div> 
 			
 			<div id="chart8"></div>
 			<div id="chart9"></div>
 			
 			<div id="chart11"></div>
+			<div id="chart17"></div>
+			
 			<div id="chart12"></div>
+			<div id="chart18"></div>
 			
 			<div id="chart13"></div>
 			<div id="chart14"></div>
 			<div id="chart15"></div>
 			<!--<div id="chart16"></div>-->
-			<div id="chart17"></div>
-			<div id="chart18"></div>
-			<div id="chart19"></div>
+			
+			
+			
+			
 			
 				</div>
 		<h3><a href="#">My courses</a></h3>
@@ -104,13 +112,16 @@
 						<div id="chartc<%=j%>"></div>
 						<div id="chartd<%=j%>"></div>
 						<div id="chartg<%=j%>"></div>
+						
+						<p>My progress reaching my goal:</p>
+						<div id="progressbare<%=j%>"></div>
+						<p>My progress reaching the model:</p>
+						<div id="progressbarf<%=j%>"></div>
+						
+						
 					</div>
 				<%}}%>
 			</div>
-		</div>
-		<h3><a href="#">Goals</a></h3>
-		<div>
-				
 		</div>
 		<h3><a href="#">Extra-curricular</a></h3>
 		<div>

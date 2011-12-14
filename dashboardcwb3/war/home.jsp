@@ -133,7 +133,7 @@
             		
         		},
         		title: {
-       				text: 'Comparison between youre and the average time of study',   // title for the plot,
+       				text: 'Comparison between your and the average time of study',   // title for the plot,
         			show: true
     			}
     		});
@@ -378,13 +378,16 @@
             		xaxis: {
                 		renderer: $.jqplot.CategoryAxisRenderer,
                 		ticks: l134
-            		}
+            		},
+        			yaxis:{
+          				label:'minutes'
+        			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             		
         		},
         		title: {
-       				text: 'comparison between you and the average for each course',   // title for the plot,
+       				text: 'Me vs my goals vs modelstudent',   // title for the plot,
         			show: true
     			}
     		});
@@ -423,13 +426,16 @@
             		xaxis: {
                 		renderer: $.jqplot.CategoryAxisRenderer,
                 		ticks: l172
-            		}
+            		},
+        			yaxis:{
+          				label:'minutes'
+        			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             		
         		},
         		title: {
-       				text: 'comparison between you and the average for each course',   // title for the plot,
+       				text: 'Average rating of my courses',   // title for the plot,
         			show: true
     			}
     		});
@@ -466,13 +472,16 @@
             		xaxis: {
                 		renderer: $.jqplot.CategoryAxisRenderer,
                 		ticks: l192
-            		}
+            		},
+        			yaxis:{
+          				label:'minutes'
+        			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             		
         		},
         		title: {
-       				text: 'comparison between you and the average for each course',   // title for the plot,
+       				text: 'Average rating in function of my study location',   // title for the plot,
         			show: true
     			}
     		});
@@ -519,6 +528,7 @@
     		**/
     		
     		var l23=<%=stat.overallTypeCheese()%>;//werkt
+    		
    			var l24=<%=stat.overallActiTypeCheese()%>;//werkt
    			var l25=<%=stat.overallPlacesCheese()%>;//werkt
    		
@@ -533,7 +543,7 @@
         		},
 	      		legend:{show:true},
 	      		title: {
-       				text: 'Personnal relative time per course',   // title for the plot,
+       				text: 'Average repartition of all students study methods',   // title for the plot,
         			show: true
     			}
 	    	});
@@ -547,7 +557,7 @@
         		},
 	      		legend:{show:true},
 	      		title: {
-       				text: 'Your study locations',   // title for the plot,
+       				text: 'Relative time spent by the average student on curricular and exra-curricular activities',   // title for the plot,
         			show: true
     			}
 	    	});
@@ -561,7 +571,23 @@
         		},
 	      		legend:{show:true},
 	      		title: {
-       				text: 'Your study locations',   // title for the plot,
+       				text: 'Average study locations',   // title for the plot,
+        			show: true
+    			}
+	    	});
+	    	
+	    	var l26=<%=stat.overallCourseCheese()%>;
+	    	var plot20 = jQuery.jqplot ('chart20', [l26], { 
+	      		height: 300,
+	      		width: 500,
+	      		seriesDefaults:{
+           			renderer:$.jqplot.PieRenderer, 
+            		trendline:{ show:false }, 
+            		rendererOptions: { padding: 8, showDataLabels: true }
+        		},
+	      		legend:{show:true},
+	      		title: {
+       				text: 'Relative time spent per course for all students',   // title for the plot,
         			show: true
     			}
 	    	});
@@ -590,15 +616,16 @@
         					},
 	      					legend:{show:true},
 	      					title: {
-       							text: 'try',   // title for the plot,
+       							text: 'Study methods',   // title for the plot,
         						show: true
     						}
 	    				});
 	    				
 	    				var d1<%=a%> = <%=stat.typeBar(coursesstudent.get(a)).get(0)%>;
     					var d2<%=a%> = <%=stat.typeBar(coursesstudent.get(a)).get(1)%>;
+    					var d3<%=a%> = <%=stat.typeBar(coursesstudent.get(a)).get(2)%>;
     					
-    					var plotd<%=a%> = $.jqplot('chartd<%=a%>', [d1<%=a%>], {
+    					var plotd<%=a%> = $.jqplot('chartd<%=a%>', [d1<%=a%>,d2<%=a%>], {
        					// The "seriesDefaults" option is an options object that will
         				// be applied to all series in the chart.
         					seriesDefaults:{
@@ -609,7 +636,8 @@
         				// option on the series option.  Here a series option object
         				// is specified for each series.
        						series:[
-            					{label:'My stats'}
+            					{label:'My study'},
+            					{label:'User average study'}
         					],
         				// Show the legend and put it outside the grid, but inside the
         				// plot container, shrinking the grid to accomodate the legend.
@@ -623,14 +651,14 @@
             				// Use a category axis on the x axis and use our custom ticks.
             					xaxis: {
                 					renderer: $.jqplot.CategoryAxisRenderer,
-                					ticks: d2<%=a%>
+                					ticks: d3<%=a%>//courses!!!!
             					}
             				// Pad the y axis just a little so bars can get close to, but
             				// not touch, the grid boundaries.  1.2 is the default padding.
             		
         					},
         					title: {
-       							text: 'comparison between you and the average for each course',   // title for the plot,
+       							text: 'Comparison between you and the average for each course',   // title for the plot,
         						show: true
     						}
     					});
@@ -638,6 +666,15 @@
     					
     					var e<%=a%> = <%=stat.meVSGoal2(coursesstudent.get(a))%>; //int
     					var f<%=a%> = <%=stat.meVSModel2(coursesstudent.get(a))%>;//int
+    					
+    					
+							$( "#progressbare<%=a%>" ).progressbar({
+								value: e<%=a%>
+							});
+							$( "#progressbarf<%=a%>" ).progressbar({
+								value: f<%=a%>
+							});
+	
     					
     					
     					
@@ -675,7 +712,7 @@
             		
         					},
         					title: {
-       							text: 'comparison between you and the average for each course',   // title for the plot,
+       							text: 'Amount of different given ratings',   // title for the plot,
         						show: true
     						}
     					});
