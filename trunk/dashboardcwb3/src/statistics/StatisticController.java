@@ -307,7 +307,7 @@ return myInTime("Sport","Nightlife");
 
 public int meVSGoal2(Course course){
 	GoalController go = new GoalController();
-	int goal = go.getGoal(course.toString())*60;
+	int goal = (int)go.getGoal(course.toString())*60;
 	int verschil = go.getDifGoal(course.toString());
 	int studieTime = goal-verschil;
 	int result = studieTime*100;
