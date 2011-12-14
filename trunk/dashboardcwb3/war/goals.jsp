@@ -34,7 +34,7 @@ function validate(evt) {
 </br>
 </br>
 <b>Choose the amount of hours you want to spend on each of your courses this week</b>
-<form action=\goal  method="post">
+<form action="/goal"  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
 		if(goal.size()==0){
