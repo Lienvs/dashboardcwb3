@@ -19,18 +19,18 @@
 <script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>-->
 
 
-<!-- <script  type="text/javascript" src="/plugins/jqplot.barRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugins/jqplot.pieRenderer.min.js"></script>
+<!-- <script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
 	 
-<script  type="text/javascript" src="/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugins/jqplot.pointLabels.min.js"></script>
-<script  type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
+<script  type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
 
-<script type="text/javascript" src="/plugins/jqplot.logAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/plugins/jqplot.canvasTextRenderer.min.js"></script>
-<script type="text/javascript" src="/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script type="text/javascript" src="/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script type="text/javascript" src="/plugins/jqplot.dateAxisRenderer.min.js"></script>-->
+<script type="text/javascript" src="/plugin/jqplot.logAxisRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>-->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
