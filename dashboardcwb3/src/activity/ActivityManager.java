@@ -29,7 +29,8 @@ public class ActivityManager {
 	*
 	*@author cwb3
 	*@param /
-	*@return de instantie van de ActivityManager die al geïnitaliseerd was of die wordt aangemaakt indien er nog geen ActivityManager bestond.
+	*@return de instantie van de ActivityManager die al geïnitaliseerd was of die wordt aangemaakt indien 
+	*er nog geen ActivityManager bestond.
 	*/
 	public static ActivityManager getInstance() {
 		if( instance == null ) {
