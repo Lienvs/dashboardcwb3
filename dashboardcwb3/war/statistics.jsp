@@ -1,39 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
-<%@ page import="activity.*" %>
-<%@ page import="course.*"%>
-<%@ page import="statistics.*"%>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
-<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
-<%@ page import="com.google.appengine.api.datastore.Key" %>
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
-
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>-->
-
-
-<!-- <script  type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-	 
-<script  type="text/javascript" src="/plugin/jqplot.categoryAxisRenderer.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.pointLabels.min.js"></script>
-<script  type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>
-
-<script type="text/javascript" src="/plugin/jqplot.logAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasTextRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
-<script type="text/javascript" src="/plugin/jqplot.dateAxisRenderer.min.js"></script>-->
-
-<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="course.Course"%>
+<%@ page import="statistics.StatisticController"%>
+<%@ page import="activity.Activity" %>
 
  <script>
 	 $(document).ready(function() {
@@ -75,6 +44,10 @@
 		
 		<h3><a href="#">Curricular</a></h3>
 		<div>
+		<%=stat.meVSModel().get(0)%>
+		<%=stat.meVSModel().get(1)%>
+		<%=stat.meVSModel().get(2)%>
+		<%=stat.meVSModel().get(3)%>
 			<div id="chart1"></div>
 			<div id="chart20"></div>
 			
@@ -112,6 +85,7 @@
 						<div id="chartc<%=j%>"></div>
 						<div id="chartd<%=j%>"></div>
 						<div id="chartg<%=j%>"></div>
+						<%=stat.meVSGoal2(coursesstudent.get(1))%>
 						
 						<p>My progress reaching my goal:</p>
 						<div id="progressbare<%=j%>"></div>
@@ -138,7 +112,7 @@
 <%ArrayList<Activity> extra=(ArrayList<Activity>) request.getAttribute("extra");%>
 <%if(scol.size()!=0 || extra.size()!=0){%>
 	<%if(scol.size()!=0){%>
-		<h3> Scolar activities:</h3>
+		<h3> Scolair activities:</h3>
 		<table border="1">
 			<tr>
 				<th >Course</th>
@@ -173,7 +147,7 @@
 	
 
 	<%if(extra.size()!=0){%>
-		<h3> ExtraScolar activities:</h3>
+		<h3> ExtraScolair activities:</h3>
 		
 		<table border="1">
 			<tr>
