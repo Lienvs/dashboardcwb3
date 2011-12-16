@@ -309,10 +309,10 @@ public int meVSGoal2(Course course){
 	GoalController go = new GoalController();
 	int goal = (int)go.getGoal(course.toString())*60;
 	int verschil = go.getDifGoal(course.toString());
-	int studieTime = goal-verschil;
+	int studieTime = (goal)-verschil;
 	int result = studieTime*100;
 	if(goal!=0){
-	result = result/goal;}
+	result = result/(goal);}
 	else{result = 100;}
 	if (result>100){
 		result = 100;
@@ -330,11 +330,11 @@ public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 
 	while(it.hasNext()){
 		Course course= it.next();
 		String c = course.toString();
-		r2=r2+go.getGoal(c);
+		r2=r2+(go.getGoal(c)*60);
 		r3= r3+course.getAvarageWork();
 		r4 = r4 + c +"'";
 		
-		r1 = r1 + (go.getGoal(c)-go.getTotalWeek(c));
+		r1 = r1 + ((go.getGoal(c)*60)-go.getTotalWeek(c));
 		
 		if(it.hasNext()){
 			r1 = r1 +",";
@@ -355,9 +355,10 @@ public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 
 	return list;
 }
 public int meVSModel2(Course course){
+	GoalController go = new GoalController();
 	int result = 0;
-	int a = course.getAvarageWork()*13;
-	int b = data.getTotalScolair(course);
+	int a = course.getAvarageWork();
+	int b = go.getTotalWeek(course.toString());
 	if(a==0||b==0){
 		result = 0;
 	}
