@@ -334,7 +334,7 @@ public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 
 		r3= r3+course.getAvarageWork();
 		r4 = r4 + c +"'";
 		
-		r1 = r1 + ((go.getGoal(c))-go.getTotalWeek(c));
+		r1 = r1 + (go.getTotalWeek(c));
 		
 		if(it.hasNext()){
 			r1 = r1 +",";
