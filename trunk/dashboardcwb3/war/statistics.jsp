@@ -44,10 +44,6 @@
 		
 		<h3><a href="#">Curricular</a></h3>
 		<div>
-		<%=stat.meVSModel().get(0)%>
-		<%=stat.meVSModel().get(1)%>
-		<%=stat.meVSModel().get(2)%>
-		<%=stat.meVSModel().get(3)%>
 			<div id="chart1"></div>
 			<div id="chart20"></div>
 			
@@ -85,7 +81,6 @@
 						<div id="chartc<%=j%>"></div>
 						<div id="chartd<%=j%>"></div>
 						<div id="chartg<%=j%>"></div>
-						<%=stat.meVSGoal2(coursesstudent.get(1))%>
 						
 						<p>My progress reaching my goal:</p>
 						<div id="progressbare<%=j%>"></div>
