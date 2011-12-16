@@ -21,18 +21,18 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		while(cal.DAY_OF_WEEK!=1){
-			cal.set(Calendar.DAY_OF_WEEK,1);
-		}
-		cal.set(11, 22);
+		
+			
+		
 		
 		
 		stopDate=cal.getTime();
 		int i = 7;
-		while(i>0){
-		cal.roll(Calendar.DAY_OF_WEEK,false);}
-		
-		
+		while (i>0){
+		cal.roll(Calendar.DAY_OF_WEEK,false);
+		i--;}
+		cal.set(Calendar.HOUR_OF_DAY,23);
+		cal.set(Calendar.MINUTE,55);
 		startDate= cal.getTime();
 		
 		
