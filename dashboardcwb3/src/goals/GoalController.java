@@ -22,7 +22,7 @@ public class GoalController {
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
 		while(cal.DAY_OF_WEEK!=1){
-			cal.roll(Calendar.DAY_OF_WEEK,1);
+			cal.roll(Calendar.DAY_OF_WEEK,true);
 		}
 		cal.set(11, 22);
 		
