@@ -3,9 +3,7 @@ package activity;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import user.UserManager;
-
+//De benodigde Google App Engine services importeren
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -14,7 +12,8 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
-
+//De benodigde eigen klassen importeren
+import user.UserManager;
 import course.CourseManager;
 
 public class ActivityManager {
