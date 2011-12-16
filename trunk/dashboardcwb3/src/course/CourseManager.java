@@ -155,22 +155,20 @@ public class CourseManager {
 		
 		public Course getCourse(Key k){
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-			Transaction txn = datastore.beginTransaction();
+			
 			Course vak = null;
 			try{
 				Entity Course = datastore.get(k);
 				vak = new Course(Integer.parseInt(Course.getProperty("totalLecture").toString()), Integer.parseInt(Course.getProperty("totalPractice").toString()), (String) Course.getProperty("prof"), (String) Course.getProperty("name"), Integer.parseInt(Course.getProperty("studypoints").toString()));			
 			}
 			catch (EntityNotFoundException e){
-				if (txn.isActive()) {
-			        txn.rollback();
-			    }
+				
 			}
 			return vak;
 		}
 		
 		public Key getKey(String name){
-			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+			
 			Key l = KeyFactory.createKey("Course",name);
 			return l;			
 		}
