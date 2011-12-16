@@ -49,7 +49,7 @@ public class GoalController {
 			int i =str.indexOf(courseName);
 			ArrayList<Long> arr=UserManager.getInstance().getGoals();
 			int a=arr.get(i).intValue();
-			return a;
+			return a*60;
 			
 		}
 		
@@ -59,15 +59,12 @@ public class GoalController {
 		int studieTime=0;
 		int i = 0;
 		for(Activity act : UserManager.getInstance().getActivities()){
-			if(act.getActivityType().equals("scolair")){
-			if(act.getCourse().toString().equals(courseName)){
-				if(act.getStart().compareTo(startDate)>0 && act.getStart().compareTo(stopDate)<0){
-				studieTime = studieTime+act.getDuration();
-				}
-			}
-		}}
-		int goal = (int)getGoal(courseName);
-		return goal*60-studieTime;
+			
+				studieTime = getTotalWeek(courseName);
+			
+		}
+		int goal = getGoal(courseName);
+		return goal-studieTime;
 	}
 	public int getTotalWeek(String courseName){
 		int studieTime = 0;
