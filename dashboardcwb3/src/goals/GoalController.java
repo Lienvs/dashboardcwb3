@@ -21,19 +21,18 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		while(cal.DAY_OF_WEEK!=7){
+		while(cal.DAY_OF_WEEK!=1){
 			cal.roll(Calendar.DAY_OF_WEEK,1);
 		}
-		cal.set(Calendar.HOUR_OF_DAY,23);
-		cal.set(Calendar.MINUTE,55);
+		cal.set(11, 22);
+		
 		
 		stopDate=cal.getTime();
-		cal.roll(Calendar.DAY_OF_WEEK,false);
-		while(cal.DAY_OF_WEEK!=7){
-			cal.roll(Calendar.DAY_OF_WEEK,false);
-		}
-		cal.set(Calendar.HOUR_OF_DAY,23);
-		cal.set(Calendar.MINUTE,55);
+		int i = 7;
+		while(i>0){
+		cal.roll(Calendar.DAY_OF_WEEK,false);}
+		
+		
 		startDate= cal.getTime();
 		
 		
@@ -71,7 +70,7 @@ public class GoalController {
 		for(Activity act : UserManager.getInstance().getActivities()){
 			if(act.getActivityType().equals("scolair")){
 			if(act.getCourse().toString().equals(courseName)){
-				if(act.getStart().compareTo(startDate)<=0 && act.getStart().compareTo(stopDate)>=0){
+				if(act.getStart().compareTo(startDate)>=0 && act.getStart().compareTo(stopDate)<=0){
 				studieTime = studieTime+act.getDuration();
 				}
 			}
