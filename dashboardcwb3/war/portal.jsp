@@ -1,25 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
-<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
-<%@ page import="com.google.appengine.api.datastore.Key" %>
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+
 <html>
 <head>
-  <script src="/form/gen_validatorv4.js" type="text/javascript"></script>
-  <script language="javascript" type="text/javascript" src="/plugin/jqplot.pieRenderer.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/plugin/jqplot.barRenderer.min.js"></script>	 
+  <script src="/form/gen_validatorv4.js" type="text/javascript"></script> 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" />
-	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" />
-	<script language="javascript" type="text/javascript" src="/js/jquery.jqplot.min.js"></script>
+
   <script>
   $(document).ready(function() {
     $("#accordion").accordion({
