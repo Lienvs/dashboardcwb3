@@ -21,19 +21,12 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		startDate = cal.getTime();
-			
-		
-		
-		
 		stopDate=cal.getTime();
-		int i = 7;
-		while (i>0){
-		cal.roll(Calendar.DAY_OF_WEEK,false);
-		i--;}
-		long lo = cal.getTimeInMillis();
-		startDate.setTime(lo);
-		String a="a";
+		if(currentDate.getDate()<7){
+			startDate = new Date(currentDate.getYear(),currentDate.getMonth(),currentDate.getDate()-7);;
+		}
+		else{startDate = new Date(currentDate.getYear(),currentDate.getMonth()-1,27);}
+		
 		
 	}
 	public int getGoal(String courseName){
