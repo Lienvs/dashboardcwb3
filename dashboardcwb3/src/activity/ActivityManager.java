@@ -179,7 +179,7 @@ public class ActivityManager {
 	
 	public Activity getActivity(Key k){
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		//Transaction txn = datastore.beginTransaction();
 		Activity act = null;
 		try{
 			Entity Activity = datastore.get(k);
@@ -259,9 +259,9 @@ public class ActivityManager {
 			}									
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			//if (txn.isActive()) {
+		      //  txn.rollback();
+		   // }
 		}
 		return act;
 	}
