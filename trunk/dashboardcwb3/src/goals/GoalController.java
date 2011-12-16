@@ -21,7 +21,7 @@ public class GoalController {
 	public GoalController(){
 		Calendar cal = Calendar.getInstance();
 		currentDate = cal.getTime();
-		
+		startDate = cal.getTime();
 			
 		
 		
