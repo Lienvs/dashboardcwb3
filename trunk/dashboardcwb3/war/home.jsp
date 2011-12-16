@@ -1,20 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
-<%@ page import="activity.*" %>
-<%@ page import="statistics.*"%>
-<%@ page import="course.*"%>
-<%@ page import="user.*"%>
-<%@ page import="statistics.*"%>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
-<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
-<%@ page import="com.google.appengine.api.datastore.Key" %>
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="course.CourseManager"%>
+<%@ page import="course.Course"%>
+<%@ page import="user.UserManager"%>
+<%@ page import="statistics.StatisticController"%>
+
 
 <html>
 <head>	
@@ -36,11 +26,6 @@
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.canvasTextRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.canvasAxisLabelRenderer.min.js"></script>
 <script language="javascript" type="text/javascript" src="/plugin/jqplot.canvasAxisTickRenderer.min.js"></script>
-
-
-
-
-
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui-1.8.16.custom.css" media=all/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jqplot.min.css" media=all/>
@@ -343,8 +328,7 @@
 	    
    		
    		
-   		
-   		
+
    		var l131=<%=stat.meVSModel().get(0)%>;  //arr:1wat al gedaan,2 goals, 3 modeltraject,4 vakken
    		var l132=<%=stat.meVSModel().get(1)%>; 
    		var l133=<%=stat.meVSModel().get(2)%>; //bar==>niet
@@ -428,7 +412,7 @@
                 		ticks: l172
             		},
         			yaxis:{
-          				label:'rating'
+          				label:'minutes'
         			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
@@ -474,7 +458,7 @@
                 		ticks: l192
             		},
         			yaxis:{
-          				label:'rating'
+          				label:'minutes'
         			}
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
