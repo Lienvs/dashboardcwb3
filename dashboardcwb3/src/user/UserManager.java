@@ -151,16 +151,14 @@ public class UserManager {
 		ArrayList<Course> courses = new ArrayList<Course>();
 		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
 			object = User.getProperty("courses");			
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			
 		}	
 		ArrayList <Key> keys = new ArrayList<Key>();
 		keys = (ArrayList<Key>) object;
@@ -202,16 +200,14 @@ public class UserManager {
 		ArrayList<Activity> activities = new ArrayList<Activity>();
 		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
 			object = User.getProperty("activities");			
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			
 		}	
 		ArrayList <Key> keys = new ArrayList<Key>();
 		keys = (ArrayList<Key>) object;
@@ -230,16 +226,14 @@ public class UserManager {
 		ArrayList<Activity> activities = new ArrayList<Activity>();
 		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		
 		try{
 			Key k = KeyFactory.createKey("User", name);
 			Entity User = datastore.get(k);
 			object = User.getProperty("activities");			
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			
 		}	
 		ArrayList <Key> keys = new ArrayList<Key>();
 		keys = (ArrayList<Key>) object;
@@ -258,16 +252,14 @@ public class UserManager {
 		ArrayList<Key> keys = new ArrayList<Key>();
 		Object object = new Object();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
 			object = User.getProperty("activities");			
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			
 		}	
 		keys = (ArrayList<Key>) object;		
 		return keys;
@@ -319,7 +311,7 @@ public class UserManager {
 	public ArrayList<Long> getGoals(){
 		ArrayList<Long> goals = new ArrayList<Long>();
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Transaction txn = datastore.beginTransaction();
+		
 		try{
 			Key k = KeyFactory.createKey("User", currentUserName);
 			Entity User = datastore.get(k);
@@ -329,9 +321,7 @@ public class UserManager {
 			
 		}
 		catch (EntityNotFoundException e){
-			if (txn.isActive()) {
-		        txn.rollback();
-		    }
+			
 		}
 		return goals;
 	}
