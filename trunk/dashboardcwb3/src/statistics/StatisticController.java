@@ -307,7 +307,7 @@ return myInTime("Sport","Nightlife");
 
 public int meVSGoal2(Course course){
 	GoalController go = new GoalController();
-	int goal = go.getGoal(course.toString())*60;
+	int goal = go.getGoal(course.toString());
 	int verschil = go.getDifGoal(course.toString());
 	int studieTime = (goal)-verschil;
 	int result = studieTime*100;
@@ -330,11 +330,11 @@ public ArrayList<String> meVSModel(){//1wat al gedaan,2 goals, 3 modeltraject,4 
 	while(it.hasNext()){
 		Course course= it.next();
 		String c = course.toString();
-		r2=r2+(go.getGoal(c)*60);
+		r2=r2+(go.getGoal(c));
 		r3= r3+course.getAvarageWork();
 		r4 = r4 + c +"'";
 		
-		r1 = r1 + ((go.getGoal(c)*60)-go.getTotalWeek(c));
+		r1 = r1 + ((go.getGoal(c))-go.getTotalWeek(c));
 		
 		if(it.hasNext()){
 			r1 = r1 +",";
