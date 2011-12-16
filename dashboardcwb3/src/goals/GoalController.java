@@ -31,9 +31,8 @@ public class GoalController {
 		while (i>0){
 		cal.roll(Calendar.DAY_OF_WEEK,false);
 		i--;}
-		cal.set(Calendar.HOUR_OF_DAY,23);
-		cal.set(Calendar.MINUTE,55);
-		startDate= cal.getTime();
+		long lo = cal.getTimeInMillis();
+		startDate.setTime(lo);
 		
 		
 	}
