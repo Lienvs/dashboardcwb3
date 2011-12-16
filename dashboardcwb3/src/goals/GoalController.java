@@ -33,7 +33,7 @@ public class GoalController {
 		i--;}
 		long lo = cal.getTimeInMillis();
 		startDate.setTime(lo);
-		
+		String a="a";
 		
 	}
 	public int getGoal(String courseName){
