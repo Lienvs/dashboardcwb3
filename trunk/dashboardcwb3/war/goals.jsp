@@ -1,17 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.*" %>
-<%@ page import="activity.*" %>
-<%@ page import="course.*"%>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.datastore.DatastoreService" %>
-<%@ page import="com.google.appengine.api.datastore.Query" %>
-<%@ page import="com.google.appengine.api.datastore.Entity" %>
-<%@ page import="com.google.appengine.api.datastore.FetchOptions" %>
-<%@ page import="com.google.appengine.api.datastore.Key" %>
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="course.Course"%>
 <script>
 function validate(evt) {
   var theEvent = evt || window.event;
@@ -34,7 +23,7 @@ function validate(evt) {
 </br>
 </br>
 <b>Choose the amount of hours you want to spend on each of your courses this week</b>
-<form action="/goal"  method="post">
+<form action=\goal  method="post">
 	<%{ArrayList<Course> courses=(ArrayList<Course>) request.getAttribute("courses");
 		ArrayList<Integer> goal=(ArrayList<Integer>) request.getAttribute("goal");
 		if(goal.size()==0){
