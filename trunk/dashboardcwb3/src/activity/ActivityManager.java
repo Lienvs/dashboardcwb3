@@ -4,22 +4,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-//De benodigde zaken ivm Google App Engine importeren
+import user.UserManager;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
-//De eigen benodigde klassen importeren
-import user.UserManager;
-import course.Course;
+
 import course.CourseManager;
-import activity.Activity;
-import servlet.StartServlet;
 
 public class ActivityManager {
 	
