@@ -1,7 +1,6 @@
 package user;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 
 import activity.Activity;
@@ -17,7 +16,6 @@ import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Transaction;
-import java.lang.NullPointerException;
 
 import course.Course;
 import course.CourseManager;
